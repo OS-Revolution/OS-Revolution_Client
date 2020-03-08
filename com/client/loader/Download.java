@@ -20,7 +20,7 @@ public class Download {
 	}
 
 	private void visitSite() throws IOException {
-		String url = "http://www.runecessor.com/download/OS-Revolution.jar";
+		String url = "https://www.runecessor.com/download/OS-Revolution.jar";
 		URL u = new URL(url);
 		BufferedReader in = new BufferedReader(new InputStreamReader(u.openStream()));
 
@@ -30,7 +30,7 @@ public class Download {
 				continue;
 			String arch = read.split("archive=\"")[1];
 			arch = arch.split("\"")[0];
-			URL uu = new URL("http://OS-Revolution.net" + arch);
+			URL uu = new URL("http://OS-Revolution.com" + arch);
 			int length = getFileSize(uu);
 			URLConnection conn = uu.openConnection();
 			conn.setDoOutput(true);

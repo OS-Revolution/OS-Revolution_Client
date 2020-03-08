@@ -49,7 +49,7 @@ public class Configuration {
 
 	public static boolean repackIndexOne = false, repackIndexTwo = false, repackIndexThree = false, repackIndexFour = false;
 
-	public static final String CACHE_LINK = "http://www.runecessor.com/download/OS-Revolution.zip"; 
+	public static final String CACHE_LINK = "https://www.runecessor.com/download/OS-Revolution.zip"; 
 	
 	public static final String MEDIA_ARCHIVES_LINK = "https://www.dropbox.com/s/4ots89rqjze708t/media_archives.zip?raw=1"; 
 	

@@ -342,7 +342,7 @@ public class Client extends RSApplet {
 	private int modifiableXValue = 1; // u dont care if it starts at 1? Can't see a real problem with it :P kk
 	private int achievementCutoff = 100;
 	private Sprite[] minimapIcons = new Sprite[2];
-	public int port = Configuration.PORT; // ? 5555 : worldSelect == true ? 5555 : 43594;
+	public int port = Configuration.PORT; // ? 5555 : worldSelect == true ? 5555 : 43595;
 	private String macAddress;
 
 	public static void dumpModels() {
@@ -3161,7 +3161,7 @@ public class Client extends RSApplet {
 	}
 
 	public void resetLogout() {
-		firstLoginMessage = "Enter your username & password.";
+		firstLoginMessage = "      Enter your username & password.";
 		secondLoginMessage = "";
 		try {
 			if (socketStream != null)
@@ -4360,9 +4360,9 @@ public class Client extends RSApplet {
 		new DrawingArea().drawAlphaGradient(x + ((int) Math.round(percentage * offset)), y,
 				width - ((int) Math.round(percentage * offset) / 2), height, 0x000000, 0x000000, 200);
 		if (percentage >= 198) {
-			newBoldFont.drawCenteredString("OS-Revolution Has Finished Downloading.", (765 / 2), y + height / 2, 0xffffff, 1);
+			newBoldFont.drawCenteredString("Finished loading OS-Revolution", (765 / 2), y + height / 2, 0xffffff, 1);
 		} else {
-			newBoldFont.drawCenteredString("OS-Revolution Is Booting Up! - " + (percentage) + "%", (765 / 2),
+			newBoldFont.drawCenteredString("Loading OS-Revolution - Please wait - " + (percentage) + "%", (765 / 2),
 					y + height / 2, 0xffffff, 1);
 		}
 		loginScreenGraphicsBuffer.drawGraphics(0, 0, super.graphics);
@@ -8654,9 +8654,9 @@ public class Client extends RSApplet {
 	public boolean missingPassword() {
 
 		if (myPassword == null || myPassword.isEmpty()) {
-			System.out.println("Empty password detected!");
+			System.out.println("      Empty password detected!");
 			loginScreenCursorPos = 0;
-			firstLoginMessage = "Please enter your password.";
+			firstLoginMessage = "      Please enter your password.";
 			return true;
 		}
 		return false;
@@ -8860,44 +8860,44 @@ public class Client extends RSApplet {
 				if (missingPassword()) {
 					return;
 				}
-				firstLoginMessage = "Invalid username or password.";
+				firstLoginMessage = "      Invalid username or password.";
 				secondLoginMessage = "";
 				return;
 			}
 			if (k == 4) {
-				firstLoginMessage = "Your account has been disabled.";
+				firstLoginMessage = "      Your account has been disabled.";
 				secondLoginMessage = "";
 				return;
 			}
 			if (k == 5) {
-				firstLoginMessage = "Your account is already logged in.";
-				secondLoginMessage = "Think It's A Joke?... Try Again In 30 Seconds...";
+				firstLoginMessage = "      Your account is already logged in.";
+				secondLoginMessage = "";
 				return;
 			}
 			if (k == 6) {
-				firstLoginMessage = "OS-Revolution Has Finished Updating!";
-				secondLoginMessage = "Please Restart Your Game's Client.";
+				firstLoginMessage = "      OS-Revolution has been updated!";
+				secondLoginMessage = "";
 				return;
 			}
 			if (k == 7) {
-				firstLoginMessage = "This world is full.";
-				secondLoginMessage = "Please use a different world.";
+				firstLoginMessage = "      This world is full.";
+				secondLoginMessage = "";
 				return;
 			}
 			if (k == 8) {
-				firstLoginMessage = "The Server Is Currently Updating";
-				secondLoginMessage = "Please Check Discord For Server Status.";
+				firstLoginMessage = "      Unable to connect.";
+				secondLoginMessage = "";
 				return;
 			}
 			if (k == 9) {
-				firstLoginMessage = "You Have Too Many Accounts Logged In...";
-				secondLoginMessage = "Quit Playing With Yourself...";
+				firstLoginMessage = "      Login limit exceeded.";
+				secondLoginMessage = "";
 				return;
 			}
 			if (k == 10) {
 
-				firstLoginMessage = "Unable To Connect. Bad Session Id.";
-				secondLoginMessage = "Contact Staff or Try Again.";
+				firstLoginMessage = "      Unable to connect. Bad session id.";
+				secondLoginMessage = "";
 				return;
 			}
 			if (k == 11) {
@@ -8913,8 +8913,8 @@ public class Client extends RSApplet {
 				return;
 			}
 			if (k == 14) {
-				firstLoginMessage = "OS-Revolution Is Currently Updating.";
-				secondLoginMessage = "Please Try Logging In, In 30 Seconds.";
+				firstLoginMessage = "      OS-Revolution is currently being updated.";
+				secondLoginMessage = "";
 				return;
 			}
 			if (k == 15) {
@@ -9006,12 +9006,12 @@ public class Client extends RSApplet {
 			}
 		} catch (IOException _ex) {
 		} catch (Exception e) {
-			System.out.println("Error while generating uid. Skipping step.");
+			System.out.println("      Error while generating uid. Skipping step.");
 			e.printStackTrace();
 		}
 		if (missingPassword())
 			return;
-		firstLoginMessage = "Error connecting to server.";
+		firstLoginMessage = "      Error connecting to server.";
 		secondLoginMessage = "";
 	}
 
@@ -11489,16 +11489,16 @@ public class Client extends RSApplet {
 			g.setFont(new Font("Helvetica", 1, 16));
 			g.setColor(Color.yellow);
 			int k = 35;
-			g.drawString("OS-Revolution Has Encountered An Error...", 30, k);
+			g.drawString("Sorry, an error has occured whilst loading OS-Revolution", 30, k);
 			k += 50;
 			g.setColor(Color.white);
 			g.drawString("To fix this try the following (in order):", 30, k);
 			k += 50;
 			g.setColor(Color.white);
 			g.setFont(new Font("Helvetica", 1, 12));
-			g.drawString("1: Go to your user files and delete OS-Revolution Cache folder", 30, k);
+			g.drawString("1: Go to your user files and delete OS-Revolution folder", 30, k);
 			k += 30;
-			g.drawString("2: Delete the OS-Revolution.jar from your Destop and redownload the loader from our homepage", 30, k);
+			g.drawString("2: Delete the OS-Revolution.jar and redownload the loader from our homepage", 30, k);
 			k += 30;
 			g.drawString("3: After deleting cache and redownloading client, go ahead and open it", 30, k);
 			k += 30;
@@ -11516,7 +11516,7 @@ public class Client extends RSApplet {
 			aBoolean831 = false;
 			g.setColor(Color.yellow);
 			int l = 35;
-			g.drawString("What, are your Drunk? OS-Revolution already appears to be loaded", 30, l);
+			g.drawString("Error a copy of OS-Revolution already appears to be loaded", 30, l);
 			l += 50;
 			g.setColor(Color.white);
 			g.drawString("To fix this try the following (in order):", 30, l);
@@ -11525,7 +11525,7 @@ public class Client extends RSApplet {
 			g.setFont(new Font("Helvetica", 1, 12));
 			g.drawString("1: Go to your user files and delete OS-Revolution folder", 30, l);
 			l += 30;
-			g.drawString("2: Delete the OS-Revolution.jar from your Desktop and redownload the loader from our homepage", 30, l);
+			g.drawString("2: Delete the OS-Revolution.jar and redownload the loader from our homepage", 30, l);
 			l += 30;
 			g.drawString("3: After deleting cache and redownloading client, go ahead and open it", 30, l);
 			l += 30;
@@ -15470,7 +15470,7 @@ public class Client extends RSApplet {
 					return;
 			} else {
 				firstLoginMessage = "";
-				secondLoginMessage = "This world is offline.";
+				secondLoginMessage = "      This world is offline.";
 			}
 
 			// loginScreenState = 2;
@@ -17385,7 +17385,7 @@ public class Client extends RSApplet {
 	public float LP;
 
 	Client() {
-		firstLoginMessage = "Enter your username & password.";
+		firstLoginMessage = "      Enter your username & password.";
 		secondLoginMessage = "";
 		xpAddedPos = expAdded = 0;
 		xpLock = false;
