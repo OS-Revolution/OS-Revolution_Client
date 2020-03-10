@@ -17401,7 +17401,7 @@ public class Client extends RSApplet {
 		channelButtonHoverPosition = -1;
 		channelButtonClickPosition = 0;
 		//server1 = Configuration.LIVE_SERVER ? "127.0.0.1" : "0.0.0.0";
-		server1 = Configuration.LIVE_SERVER ? "162.252.11.137" : "162.252.11.137";
+		server1 = Configuration.LIVE_SERVER ? "127.0.0.1" : "127.0.0.1";
 		anIntArrayArray825 = new int[104][104];
 		friendsNodeIDs = new int[200];
 		groundArray = new NodeList[4][104][104];
@@ -17957,7 +17957,7 @@ public class Client extends RSApplet {
 	private int publicChatMode;
 	private static int anInt1288;
 	public static int anInt1290;
-	public static String server = "162.252.11.137";
+	public static String server = "127.0.0.1";
 	public static boolean controlIsDown;
 	public int drawCount;
 	public int fullscreenInterfaceID;
