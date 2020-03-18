@@ -597,7 +597,7 @@ public class RSInterface {
         addHoverText(47509, "@or1@View Npc Drops", "View  Npc Drops", tda, 0, 1022259, false, true, 150);
         addHoverText(47510, "@or1@View Npc KillCount", "View Npc KillCount", tda, 0, 1022259, false, true, 150);
         addHoverText(47511, "@or1@View Titles", "View Titles", tda, 0, 1022259, false, true, 150);
-        addHoverText(47512, "", "View Details", tda, 0, 1022259, false, true, 150);
+        addHoverText(47512, "", "Coming Soon", tda, 0, 1022259, false, true, 150);
         addText(47513, "@or1@Quick Links", tda, 2, 16750899, false, true);
 
         infoList.totalChildren(58);

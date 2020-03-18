@@ -257,6 +257,43 @@ public final class ObjectDefinition {
 			objectDef.thickness = 80; // Thickness
 			objectDef.height = 250; // Height
 			break;
+			//Donator zone doors
+		case 12617:
+			objectDef.name = "Zone One";
+			objectDef.actions = new String[] { "Enter", "Leave", null, null, null };
+			objectDef.anInt744 = 1;
+			objectDef.anInt761 = 1;
+			objectDef.width = 80; // Width
+			objectDef.thickness = 80; // Thickness
+			objectDef.height = 250; // Height
+			break;
+		case 11987:
+			objectDef.name = "Zone Two";
+			objectDef.actions = new String[] { "Enter", "Leave", null, null, null };
+			objectDef.anInt744 = 1;
+			objectDef.anInt761 = 1;
+			objectDef.width = 80; // Width
+			objectDef.thickness = 80; // Thickness
+			objectDef.height = 250; // Height
+			break;
+		case 12719:
+			objectDef.name = "Zone Three";
+			objectDef.actions = new String[] { "Enter", "Leave", null, null, null };
+			objectDef.anInt744 = 1;
+			objectDef.anInt761 = 1;
+			objectDef.width = 80; // Width
+			objectDef.thickness = 80; // Thickness
+			objectDef.height = 250; // Height
+			break;
+		case 12639:
+			objectDef.name = "Zone Four";
+			objectDef.actions = new String[] { "Enter", "Leave", null, null, null };
+			objectDef.anInt744 = 1;
+			objectDef.anInt761 = 1;
+			objectDef.width = 80; // Width
+			objectDef.thickness = 80; // Thickness
+			objectDef.height = 250; // Height
+			break;
 
 		case 11700:
 			objectDef.anIntArray773 = new int[] { 4086 };

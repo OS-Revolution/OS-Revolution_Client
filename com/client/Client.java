@@ -9973,8 +9973,8 @@ public class Client extends RSApplet {
 		addObject(9030, 3183, 5090, 1, 10, 0);
 		addObject(9030, 3183, 5088, 1, 10, 0);
 		addObject(25824, 3155, 5076, 2, 10, 0);
-		addObject(4878, 3171, 5099, 0, 10, 0);
-		addObject(4877, 3164, 5099, 0, 10, 0);
+		addObject(4878, 2918, 5469, 0, 10, 0);
+		addObject(4877, 2918, 5467, 0, 10, 0);
 		addObject(1278, 3161, 5090, 0, 10, 0);
 		addObject(1278, 3161, 5082, 0, 10, 0);
 		addObject(1278, 3174, 5090, 0, 10, 0);
@@ -10000,7 +10000,7 @@ public class Client extends RSApplet {
 		addObject(2693, 3156, 5090, 3, 10, 0);
 		addObject(4771, 3167, 5103, 0, 10, 0);
 		addObject(8720, 3165, 5095, 3, 10, 0);
-		addObject(8720, 3170, 5095, 3, 10, 0);
+		addObject(8720, 2911, 5465, 3, 10, 0);
 		addObject(172, 3166, 5103, 2, 10, 0);
 		addObject(172, 3169, 5103, 2, 10, 0);
 		addObject(1761, 3170, 5077, 0, 10, 0);
@@ -10012,7 +10012,7 @@ public class Client extends RSApplet {
 		addObject(14842, 3162, 5095, 0, 10, 0);
 		//addObject(14844, 3161, 5095, 0, 10, 0
 		addObject(23093, 3172, 5095, 0, 10, 0);
-		addObject(23095, 3173, 5095, 0, 10, 0);
+		addObject(23095, 2906, 5466, 0, 10, 0);
 		//Donor-Smeltery
 		addObject(2030, 3178, 5073, 2, 10, 0);
 		//Donor-Anvils
@@ -10062,7 +10062,7 @@ public class Client extends RSApplet {
 		addObject(7138, 3164, 5104, 0, 10, 0);
 		addObject(7277, 3157, 5089, 1, 10, 0);
 		addObject(7281, 3158, 5068, 0, 10, 0);
-		addObject(27097, 3166, 5066, 0, 10, 0);
+		addObject(27097, 3166, 5066, 0, 10, 0);//Anti-Santa
 		//Donor-Altar
 		addObject(7814, 3157, 5085, 3, 10, 0);
 		
@@ -10620,7 +10620,7 @@ public class Client extends RSApplet {
 		// addObject(4151, 3089, 3494, 1, 10, 0); //barrows
 		addObject(20877, 1572, 3657, 1, 10, 0); // brimhaven
 		addObject(29735, 1650, 3662, 2, 10, 0); //Slayer
-		addObject(29735, 3077, 3484, 2, 10, 0); //Slayer
+		//addObject(29735, 3077, 3484, 2, 10, 0); //Slayer
 		// Edgehome6-24-17
 		// addObject(29345, 3084, 3487, 3, 10, 0); //Training Portal
 		// addObject(29346, 3084, 3490, 3, 10, 0); //Wilderness Portal
