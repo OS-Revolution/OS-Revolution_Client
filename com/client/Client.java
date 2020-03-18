@@ -3161,7 +3161,7 @@ public class Client extends RSApplet {
 	}
 
 	public void resetLogout() {
-		firstLoginMessage = "      Enter your username & password.";
+		firstLoginMessage = "Enter your username & password.";
 		secondLoginMessage = "";
 		try {
 			if (socketStream != null)
@@ -8654,9 +8654,9 @@ public class Client extends RSApplet {
 	public boolean missingPassword() {
 
 		if (myPassword == null || myPassword.isEmpty()) {
-			System.out.println("      Empty password detected!");
+			System.out.println("Empty password detected!");
 			loginScreenCursorPos = 0;
-			firstLoginMessage = "      Please enter your password.";
+			firstLoginMessage = "Please enter your password.";
 			return true;
 		}
 		return false;
@@ -8860,43 +8860,43 @@ public class Client extends RSApplet {
 				if (missingPassword()) {
 					return;
 				}
-				firstLoginMessage = "      Invalid username or password.";
+				firstLoginMessage = "Invalid username or password.";
 				secondLoginMessage = "";
 				return;
 			}
 			if (k == 4) {
-				firstLoginMessage = "      Your account has been disabled.";
+				firstLoginMessage = "Your account has been disabled.";
 				secondLoginMessage = "";
 				return;
 			}
 			if (k == 5) {
-				firstLoginMessage = "      Your account is already logged in.";
+				firstLoginMessage = "Your account is already logged in.";
 				secondLoginMessage = "";
 				return;
 			}
 			if (k == 6) {
-				firstLoginMessage = "      OS-Revolution has been updated!";
+				firstLoginMessage = "OS-Revolution has been updated!";
 				secondLoginMessage = "";
 				return;
 			}
 			if (k == 7) {
-				firstLoginMessage = "      This world is full.";
+				firstLoginMessage = "This world is full.";
 				secondLoginMessage = "";
 				return;
 			}
 			if (k == 8) {
-				firstLoginMessage = "      Unable to connect.";
+				firstLoginMessage = "Unable to connect.";
 				secondLoginMessage = "";
 				return;
 			}
 			if (k == 9) {
-				firstLoginMessage = "      Login limit exceeded.";
+				firstLoginMessage = "Login limit exceeded.";
 				secondLoginMessage = "";
 				return;
 			}
 			if (k == 10) {
 
-				firstLoginMessage = "      Unable to connect. Bad session id.";
+				firstLoginMessage = "Unable to connect. Bad session id.";
 				secondLoginMessage = "";
 				return;
 			}
@@ -8913,7 +8913,7 @@ public class Client extends RSApplet {
 				return;
 			}
 			if (k == 14) {
-				firstLoginMessage = "      OS-Revolution is currently being updated.";
+				firstLoginMessage = "OS-Revolution is currently being updated.";
 				secondLoginMessage = "";
 				return;
 			}
@@ -9006,12 +9006,12 @@ public class Client extends RSApplet {
 			}
 		} catch (IOException _ex) {
 		} catch (Exception e) {
-			System.out.println("      Error while generating uid. Skipping step.");
+			System.out.println("Error while generating uid. Skipping step.");
 			e.printStackTrace();
 		}
 		if (missingPassword())
 			return;
-		firstLoginMessage = "      Error connecting to server.";
+		firstLoginMessage = "Error connecting to server.";
 		secondLoginMessage = "";
 	}
 
@@ -14916,7 +14916,7 @@ public class Client extends RSApplet {
 		int extraPos = 18;
 		// rememberPasswordHover = mouseInRegion(286 - extraPos, 270, 301 - extraPos,
 		// 283);
-		rememberMeHover = mouseInRegion(286 - extraPos, 300, 301 - extraPos, 313);
+		rememberMeHover = mouseInRegion(257 - extraPos, 358, 291 - extraPos, 358);
 		// rememberMeHover = mouseInRegion(286 - extraPos, 282, 301 - extraPos, 295);
 		rememberPasswordHover = mouseInRegion(416 - extraPos, 300, 433 - extraPos, 313);
 
@@ -14942,12 +14942,12 @@ public class Client extends RSApplet {
 			// newBoldFont.drawCenteredString("@yel@" + firstLoginMessage ,(myWidth / 2) -
 			// 4, myHeight / 2 - 48,0xffffff,0x191919, 255);
 			newBoldFont.drawString(
-					"Login: " + myUsername + ((loginScreenCursorPos == 0) ? "@blu@|" : ""),
+					"    " + myUsername + ((loginScreenCursorPos == 0) ? "@yel@|" : ""),
 					(myWidth / 2) - 119, myHeight / 2 - 21, 0xffffff, 0x191919, 255);
 			j += 15;
 			newBoldFont.drawString(
-					"Password: " + TextClass.passwordAsterisks(myPassword)
-							+ ((loginScreenCursorPos == 1) ? "@blu@|" : ""),
+					"    " + TextClass.passwordAsterisks(myPassword)
+							+ ((loginScreenCursorPos == 1) ? "@yel@|" : ""),
 					(myWidth / 2) - 119, myHeight / 2 + 31, 0xffffff, 0x191919, 255);
 
 			// Buttons
@@ -14959,44 +14959,61 @@ public class Client extends RSApplet {
 			//newSmallFont.drawString("@yel@Forgotten your password? @whi@Click here.", 280, 346, 0xffffff, 0x191919,
 					//255);
 
-			newSmallFont.drawString("Remember username", 283, 308, 0xffffff, 0x191919, 255);
-			newSmallFont.drawString("Remember password", 414, 308, 0xffffff, 0x191919, 255);
+			//newSmallFont.drawString("@yal@Remember username", 383, 408, 0xffffff, 0xffffff, 455);
+			//newSmallFont.drawString("Remember password", 414, 308, 0xffffff, 0x191919, 255);
+			if (super.clickMode3 == 1 && super.saveClickX >= 5
+					&& super.saveClickX <= 118 && super.saveClickY >= 5
+					&& super.saveClickY <= 65) {
+				launchURL("http://www.os-revolution.com/forum");
+			} else if (super.clickMode3 == 1 && super.saveClickX >= 118
+					&& super.saveClickX <= 227 && super.saveClickY >= 5
+					&& super.saveClickY <= 65) {
+				launchURL("http://www.os-revolution.com/store");
+			} else if (super.clickMode3 == 1 && super.saveClickX >= 535
+					&& super.saveClickX <= 625 && super.saveClickY >= 5
+					&& super.saveClickY <= 65) {
+				launchURL("http://www.os-revolution.com/vote");
+			} else if (super.clickMode3 == 1 && super.saveClickX >= 630
+					&& super.saveClickX <= 770 && super.saveClickY >= 5
+					&& super.saveClickY <= 65) {
+				launchURL("http://www.os-revolution.com/hs");
+			}
 
 			if (!informationFile.isUsernameRemembered()) {
 				if (!rememberMeHover) {
-					loginAsset0.drawSprite(264, 295);
+					loginAsset0.drawSprite(200, 400);
 				} else {
-					loginAsset1.drawSprite(264, 295);
+					loginAsset1.drawSprite(200, 400);
 				}
 			} else {
 				if (!rememberMeHover) {
-					loginAsset2.drawSprite(264, 295);
+					loginAsset2.drawSprite(200, 400);
 				} else {
-					loginAsset3.drawSprite(264, 295);
+					loginAsset3.drawSprite(200, 400);
 				}
 			}
-			loginAsset4.drawARGBSprite2(currentGameWidth / 2 - (336 / 2), 25);
+
 			if (!informationFile.isPasswordRemembered()) {
 				if (!rememberPasswordHover) {
-					loginAsset0.drawSprite(395, 295);
+					loginAsset0.drawSprite(200, 400);
 				} else {
-					loginAsset1.drawSprite(395, 295);
+					loginAsset1.drawSprite(200, 400);
 				}
 			} else {
 				if (!rememberPasswordHover) {
-					loginAsset2.drawSprite(395, 295);
+					loginAsset2.drawSprite(200, 400);
 				} else {
-					loginAsset3.drawSprite(395, 295);
+					loginAsset3.drawSprite(200, 400);
 				}
 			}
 
 			// if (flag) {
 			int i1 = myWidth - 80;
 			int l1 = myHeight + 50;
-			newRegularFont.drawString("Register", i1, l1 + 5, 0xffffff, 0x191919, 255);
-			i1 = myWidth / 2 + 80;
+			newRegularFont.drawString("Register", i1, l1 + 5, 0xffffff, 0x191919, 300);
+			i1 = myWidth / 2 + 50;
 			titleButton.drawBackground(i1 - 73, l1 - 20);
-			newRegularFont.drawString("Login", i1, l1 + 5, 0xffffff, 0x191919, 255);
+			newRegularFont.drawString("Login", i1, l1 + 5, 0xffffff, 0x191919, 300);
 			// }
 		}
 		loginScreenGraphicsBuffer.drawGraphics(0, 0, super.graphics);
@@ -15440,15 +15457,15 @@ public class Client extends RSApplet {
 			}
 		}
 
-		if (super.clickMode3 == 1 && super.saveClickY >= 300 && super.saveClickY <= 313
-				&& super.saveClickX >= 286 - extraPos && super.saveClickX <= 301 - extraPos) {
+		if (super.clickMode3 == 1 && super.saveClickY >= 425 && super.saveClickY <= 453
+				&& super.saveClickX >= 245 - extraPos && super.saveClickX <= 301 - extraPos) {
 			informationFile.setUsernameRemembered(!informationFile.isUsernameRemembered());
 			if (informationFile.isUsernameRemembered()) {
 				informationFile.setStoredUsername(myUsername);
 			}
 		}
-		if (super.clickMode3 == 1 && super.saveClickY >= 300 && super.saveClickY <= 313
-				&& super.saveClickX >= 416 - extraPos && super.saveClickX <= 433 - extraPos) {
+		if (super.clickMode3 == 1 && super.saveClickY >= 425 && super.saveClickY <= 453
+				&& super.saveClickX >= 245 - extraPos && super.saveClickX <= 301 - extraPos) {
 			informationFile.setPasswordRemembered(!informationFile.isPasswordRemembered());
 			if (informationFile.isPasswordRemembered()) {
 				informationFile.setStoredPassword(myPassword);
@@ -17385,7 +17402,7 @@ public class Client extends RSApplet {
 	public float LP;
 
 	Client() {
-		firstLoginMessage = "      Enter your username & password.";
+		firstLoginMessage = "Enter your username & password.";
 		secondLoginMessage = "";
 		xpAddedPos = expAdded = 0;
 		xpLock = false;

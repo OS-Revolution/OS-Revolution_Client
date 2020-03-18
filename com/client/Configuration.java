@@ -31,7 +31,7 @@ public class Configuration {
     public static int fogColor = 0xDCDBDF;
 	public static long fogDelay = 500;
 	public static final String CLIENT_TITLE = "OS-Revolution";
-	public static final int CLIENT_VERSION = 4;
+	public static final int CLIENT_VERSION = 1;
 	public static Boolean LIVE_SERVER = false;
 	public static final int PORT = 43595;
 
