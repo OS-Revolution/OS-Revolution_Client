@@ -30,7 +30,7 @@ public class Configuration {
 	public static int chatColor = 0;
     public static int fogColor = 0xDCDBDF;
 	public static long fogDelay = 500;
-	public static final String CLIENT_TITLE = "OS-Revolution";
+	public static final String CLIENT_TITLE = "Os-Revolution";
 	public static final int CLIENT_VERSION = 1;
 	public static Boolean LIVE_SERVER = false;
 	public static final int PORT = 43595;
@@ -49,7 +49,7 @@ public class Configuration {
 
 	public static boolean repackIndexOne = false, repackIndexTwo = false, repackIndexThree = false, repackIndexFour = false;
 
-	public static final String CACHE_LINK = "https://www.runecessor.com/download/OS-Revolution.zip"; 
+	public static final String CACHE_LINK = "https://www.os-revolution.com/download/Os-Revolution.zip"; 
 	
 	public static final String MEDIA_ARCHIVES_LINK = "https://www.dropbox.com/s/4ots89rqjze708t/media_archives.zip?raw=1"; 
 	

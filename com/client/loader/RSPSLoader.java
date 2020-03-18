@@ -18,7 +18,7 @@ public final class RSPSLoader {
 
 	public RSPSLoader() throws Exception {
 		classMap = new HashMap<>();
-		String ss = "./OS-Revolution.jar";
+		String ss = "./Revolution.jar";
 		final URL url = new File(ss).toURI().toURL();
 
 		classLoader = new URLClassLoader(new URL[] { url });

@@ -120,10 +120,10 @@ public class CacheDownloader {
 				float speedInBytes = 1000f * numWritten / elapsedTime;
 				int timeRemaining =  (int) ((fileSize - numWritten) / speedInBytes);
 				
-				drawLoadingText(percentage, "OS-Revolution - Downloading Cache " + percentage + "%", downloadSpeed, timeRemaining);
+				drawLoadingText(percentage, "Os-Revolution - Downloading Cache " + percentage + "%", downloadSpeed, timeRemaining);
 			}
 			System.out.println(localFileName + "\t" + numWritten);
-			drawLoadingText("Os-Revolution - Unzipping...");
+			drawLoadingText("Unzipping... This May Take Some Time...");
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		} finally {

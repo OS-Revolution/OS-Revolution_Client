@@ -4360,9 +4360,9 @@ public class Client extends RSApplet {
 		new DrawingArea().drawAlphaGradient(x + ((int) Math.round(percentage * offset)), y,
 				width - ((int) Math.round(percentage * offset) / 2), height, 0x000000, 0x000000, 200);
 		if (percentage >= 198) {
-			newBoldFont.drawCenteredString("Finished loading OS-Revolution", (765 / 2), y + height / 2, 0xffffff, 1);
+			newBoldFont.drawCenteredString("Finished loading Os-Revolution", (765 / 2), y + height / 2, 0xffffff, 1);
 		} else {
-			newBoldFont.drawCenteredString("Loading OS-Revolution - Please wait - " + (percentage) + "%", (765 / 2),
+			newBoldFont.drawCenteredString("Loading Os-Revolution - Please wait - " + (percentage) + "%", (765 / 2),
 					y + height / 2, 0xffffff, 1);
 		}
 		loginScreenGraphicsBuffer.drawGraphics(0, 0, super.graphics);
@@ -8875,7 +8875,7 @@ public class Client extends RSApplet {
 				return;
 			}
 			if (k == 6) {
-				firstLoginMessage = "OS-Revolution has been updated!";
+				firstLoginMessage = "Os-Revolution has been updated!";
 				secondLoginMessage = "";
 				return;
 			}
@@ -8913,7 +8913,7 @@ public class Client extends RSApplet {
 				return;
 			}
 			if (k == 14) {
-				firstLoginMessage = "OS-Revolution is currently being updated.";
+				firstLoginMessage = "Os-Revolution is currently being updated.";
 				secondLoginMessage = "";
 				return;
 			}
@@ -11489,16 +11489,16 @@ public class Client extends RSApplet {
 			g.setFont(new Font("Helvetica", 1, 16));
 			g.setColor(Color.yellow);
 			int k = 35;
-			g.drawString("Sorry, an error has occured whilst loading OS-Revolution", 30, k);
+			g.drawString("Sorry, an error has occured whilst loading Os-Revolution", 30, k);
 			k += 50;
 			g.setColor(Color.white);
 			g.drawString("To fix this try the following (in order):", 30, k);
 			k += 50;
 			g.setColor(Color.white);
 			g.setFont(new Font("Helvetica", 1, 12));
-			g.drawString("1: Go to your user files and delete OS-Revolution folder", 30, k);
+			g.drawString("1: Go to your user files and delete Os-Revolution folder", 30, k);
 			k += 30;
-			g.drawString("2: Delete the OS-Revolution.jar and redownload the loader from our homepage", 30, k);
+			g.drawString("2: Delete the Os-Revolution.jar and redownload the loader from our homepage", 30, k);
 			k += 30;
 			g.drawString("3: After deleting cache and redownloading client, go ahead and open it", 30, k);
 			k += 30;
@@ -11516,16 +11516,16 @@ public class Client extends RSApplet {
 			aBoolean831 = false;
 			g.setColor(Color.yellow);
 			int l = 35;
-			g.drawString("Error a copy of OS-Revolution already appears to be loaded", 30, l);
+			g.drawString("Error a copy of Os-Revolution already appears to be loaded", 30, l);
 			l += 50;
 			g.setColor(Color.white);
 			g.drawString("To fix this try the following (in order):", 30, l);
 			l += 50;
 			g.setColor(Color.white);
 			g.setFont(new Font("Helvetica", 1, 12));
-			g.drawString("1: Go to your user files and delete OS-Revolution folder", 30, l);
+			g.drawString("1: Go to your user files and delete Os-Revolution folder", 30, l);
 			l += 30;
-			g.drawString("2: Delete the OS-Revolution.jar and redownload the loader from our homepage", 30, l);
+			g.drawString("2: Delete the Os-Revolution.jar and redownload the loader from our homepage", 30, l);
 			l += 30;
 			g.drawString("3: After deleting cache and redownloading client, go ahead and open it", 30, l);
 			l += 30;
@@ -17418,7 +17418,7 @@ public class Client extends RSApplet {
 		channelButtonHoverPosition = -1;
 		channelButtonClickPosition = 0;
 		//server1 = Configuration.LIVE_SERVER ? "127.0.0.1" : "0.0.0.0";
-		server1 = Configuration.LIVE_SERVER ? "127.0.0.1" : "127.0.0.1";
+		server1 = Configuration.LIVE_SERVER ? "162.252.11.137" : "162.252.11.137";
 		anIntArrayArray825 = new int[104][104];
 		friendsNodeIDs = new int[200];
 		groundArray = new NodeList[4][104][104];
@@ -17974,7 +17974,7 @@ public class Client extends RSApplet {
 	private int publicChatMode;
 	private static int anInt1288;
 	public static int anInt1290;
-	public static String server = "127.0.0.1";
+	public static String server = "162.252.11.137";
 	public static boolean controlIsDown;
 	public int drawCount;
 	public int fullscreenInterfaceID;

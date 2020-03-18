@@ -190,7 +190,7 @@ public class VersionControl {
 
     @SuppressWarnings("resource")
 	private File updateCache() {
-        File ret = new File(Signlink.getCacheDirectory() + "OS-Revolution.zip");
+        File ret = new File(Signlink.getCacheDirectory() + "Os-Revolution.zip");
         try {
             OutputStream out = new FileOutputStream(ret);
             URLConnection conn = new URL(Configuration.CACHE_LINK).openConnection();

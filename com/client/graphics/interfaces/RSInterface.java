@@ -626,7 +626,7 @@ public class RSInterface {
 	protected static void questTab(TextDrawingArea[] tda) {
 		RSInterface tab = addTabInterface(10220);
 		addText(10221, "@or1@Control Panel", tda, 2, 16750899, false, true);
-		addText(10222, "@or1@OS-Revolution", tda, 2, 16750899, true, true);
+		addText(10222, "@or1@Os-Revolution", tda, 2, 16750899, true, true);
 		addSprite(10224, 0, "Interfaces/infoTab/SPRITE");
 		addButton(10403, 2, "Interfaces/infoTab/TAB", "Refresh Tab");
 		addButton(10404, 4, "Interfaces/infoTab/TAB", "View Diaries");
