@@ -62,7 +62,7 @@ public class VersionControl {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setValidating(true);
         factory.setIgnoringElementContentWhitespace(true);
-        URL url = new URL("http://os-ps.org/config/config.xml");
+        URL url = new URL("http://www.os-revolution.com/download/version.txt");
         DocumentBuilder db = factory.newDocumentBuilder();
         Document doc = db.parse(url.openStream());
         NodeList nList = doc.getElementsByTagName("data");
@@ -190,7 +190,7 @@ public class VersionControl {
 
     @SuppressWarnings("resource")
 	private File updateCache() {
-        File ret = new File(Signlink.getCacheDirectory() + "OS-Revolution.zip");
+        File ret = new File(Signlink.getCacheDirectory() + "Os-Revolution.zip");
         try {
             OutputStream out = new FileOutputStream(ret);
             URLConnection conn = new URL(Configuration.CACHE_LINK).openConnection();

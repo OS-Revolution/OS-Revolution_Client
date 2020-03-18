@@ -26,7 +26,7 @@ public class CacheDownloader {
 
 	private final int BUFFER = 1024;
 
-	private final int VERSION = 4;
+	private final int VERSION = 1;
 	private String CACHE_LINK = Configuration.CACHE_LINK;
 
 	private Path FILE_LOCATION = Paths.get(getCacheDir(), getArchivedName());
@@ -120,10 +120,10 @@ public class CacheDownloader {
 				float speedInBytes = 1000f * numWritten / elapsedTime;
 				int timeRemaining =  (int) ((fileSize - numWritten) / speedInBytes);
 				
-				drawLoadingText(percentage, "OS-Revolution - Downloading Cache " + percentage + "%", downloadSpeed, timeRemaining);
+				drawLoadingText(percentage, "Os-Revolution - Downloading Cache " + percentage + "%", downloadSpeed, timeRemaining);
 			}
 			System.out.println(localFileName + "\t" + numWritten);
-			drawLoadingText("Os-Revolution - Unzipping...");
+			drawLoadingText("Unzipping... This May Take Some Time...");
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		} finally {

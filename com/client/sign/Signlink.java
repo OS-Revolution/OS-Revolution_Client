@@ -6,7 +6,7 @@ import java.net.*;
 
 public final class Signlink implements Runnable {
 	
-	private static String CACHE_NAME = "OS-Revolution";
+	private static String CACHE_NAME = "Os-Revolution";
 
 	public static void startpriv(InetAddress inetaddress) {
 		threadliveid = (int) (Math.random() * 99999999D);
