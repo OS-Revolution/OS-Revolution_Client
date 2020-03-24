@@ -9575,7 +9575,7 @@ public class Client extends RSApplet {
 		 */
 		// Home
 		
-		addObject (29878, 2976, 2785, 0, 10, 0); //wogw
+		addObject (29878, 1625, 3681, 0, 10, 0); //wogw
 		addObject(611, 2955, 2759, 0, 10, 0); //picnic table
 		addObject(12309, 2951, 2787, 3, 10, 0); //rfd chest
 		addObject(12355, 2951, 2788, 0, 10, 0); //rfd portal
