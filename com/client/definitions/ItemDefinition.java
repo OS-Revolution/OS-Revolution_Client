@@ -282,7 +282,6 @@ public final class ItemDefinition {
 		case 2550:
 			itemDef.equipActions[2] = "Check";
 			break;
-
 		case 1712:
 		case 1710:
 		case 1708:

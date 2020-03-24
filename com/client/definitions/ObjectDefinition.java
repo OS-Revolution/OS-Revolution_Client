@@ -257,6 +257,15 @@ public final class ObjectDefinition {
 			objectDef.thickness = 80; // Thickness
 			objectDef.height = 250; // Height
 			break;
+		case 27095://lava dragon teleport
+			objectDef.name = "Portal";
+			objectDef.actions = new String[] { "Teleport Home", null, null, null, null };
+			objectDef.anInt744 = 1;
+			objectDef.anInt761 = 1;
+			//objectDef.width = 80; // Width
+			//objectDef.thickness = 80; // Thickness
+			//objectDef.height = 250; // Height
+			break;
 			//Donator zone doors
 		case 12617:
 			objectDef.name = "Zone One";
