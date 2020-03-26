@@ -42,16 +42,101 @@ public final class NpcDefinition {
 		}
 		
 		if (i == 5527) {
-			entityDef.name = "Donator Shop";
-			entityDef.description = "Thanks for all the support!";
+			entityDef.name = "@red@Donator Shop";
+			entityDef.description = "@yel@Thanks for all the support!";
 			entityDef.actions = new String[] { "Trade", null, null, null, null };
+			
 		}
-
+		if (i==507){
+		entityDef.name = "@cya@General Store";
+		entityDef.description = "@yel@General store for all players";
+		entityDef.actions = new String[] { "Trade", null, null, null, null };
+	    }
+	    if (i == 3216) {
+		entityDef.name = "@cya@Combat Shop";
+		entityDef.description = "@yel@Buy Combat weapons & Armour here";
+		entityDef.actions = new String[] { "Trade", null, null, null, null };
+	    }
+	    if (i == 3217) {
+		entityDef.name = "@cya@Range Shop";
+		entityDef.description = "@yel@Buy Ranged weapons & Gear here";
+		entityDef.actions = new String[] { "Trade", null, null, null, null };
+	    }
+	    if (i == 3218) {
+		entityDef.name = "@cya@Magical Shop";
+		entityDef.description = "@yel@Buy Magic weapons & Gear here";
+		entityDef.actions = new String[] { "Trade", null, null, null, null };
+	    }
+	    if (i == 3219) {
+		entityDef.name = "@cya@Cooking Shop";
+		entityDef.description = "@yel@Buy Potions & Consumables here";
+		entityDef.actions = new String[] { "Trade", null, null, null, null };
+	    }
 		if (i == 506) {
-			entityDef.name = "Iron man shop keeper";
-			entityDef.description = "A shop specifically for iron men.";
-		}if(i==3218 || i ==3217){
-			entityDef.actions = new String[] { "Talk-to", null, null, null, null };
+		entityDef.name = "@gre@Ironman Shop";
+		entityDef.description = "@yel@General Store for all iron+";
+		entityDef.actions = new String[] { "Trade", null, null, null, null };
+		//}
+		//if(i==3218 || i ==3217){
+	    //entityDef.actions = new String[] { "Trade", null, null, null, null };
+			
+		}
+		if (i==311){
+		entityDef.name = "@gre@Ironman Assistant";
+		entityDef.actions = new String[] { "Talk-To", "Armour", null, null, null };
+		entityDef.description = "@yel@Revert Ironman status here & More";
+	    }
+	    if (i==2989){
+		entityDef.name = "@gre@Prestige Assistant";
+		entityDef.actions = new String[] { "Talk-To", null, null, null, null };
+		entityDef.description = "@yel@Prestige your skills here";
+	    }
+		if (i==7456){
+		entityDef.name = "@cya@Item Repairs";
+		entityDef.actions = new String[] { "Talk-To", null, null, null, null };
+		entityDef.description = "@yel@Repair your items with me!";
+		}
+		if (i==7303){
+		entityDef.name = "@cya@Clue Scroll Master";
+		entityDef.description = "@yel@Convert your clue scrolls with me";
+		}
+        if (i == 5314) {
+		entityDef.name = "@cya@Mystical Wizard";
+		entityDef.actions = new String[] { "Teleport", "Previous Location", null, null, null };
+		entityDef.description = "@yel@This wizard has the power to teleport you to many locations.";
+		}
+		if (i==1909){
+		entityDef.name = "@cya@Information Clerk";
+		entityDef.description = "@yel@See Os-Revolution Info";
+		}
+        if (i == 315) {
+		entityDef.name = "@cya@Emblem Master";
+		entityDef.actions = new String[] { "Talk-To", null, "Trade", "Hide-Streaks", "Skull" };
+		entityDef.description = "@yel@Check out my Emblem Shop & More";
+		}
+		if (i==3307){
+		entityDef.name = "@cya@Combat Master";
+		entityDef.description = "@yel@I can reset you combat skills & More";
+		}
+		if (i==2110){
+		entityDef.name = "@cya@Pet Gambler";
+		entityDef.actions = new String[] { "Talk-To", null, null, null, null };
+		entityDef.description = "@yel@Gamble for a possible pet!";
+		}
+		if (i==6875){
+		entityDef.name = "@cya@Nurse";
+		entityDef.actions = new String[] { "Heal", null, null, null, null };
+		entityDef.description = "@yel@I will heal your Hp, Prayer, Stamina, & Special Attack";
+		}
+		if (i==4306){
+		entityDef.name = "@cya@Skillcape Master";
+		entityDef.actions = new String[] { "Trade", null, null, null, null };
+		entityDef.description = "@yel@You can find all your Skillcapes here";
+		}
+		if (i==6481){
+		entityDef.name = "@cya@Mac";
+		entityDef.actions = new String[] { "Talk-To", null, null, null, null };
+		entityDef.description = "@yel@Check my dirty sack ;)";
 		}
 		
 		if (i == 771) {
@@ -74,19 +159,12 @@ public final class NpcDefinition {
             entityDef.combatLevel = 5268;
             entityDef.onMinimap = true;
         }
-		
 		if (i==3257){
 			entityDef.actions = new String[] { "Trade", null, null, null, null };
 		}
 		if (i==4625){
 			entityDef.name = "Donator shop";
 			entityDef.actions = new String[] { "Talk-to", "Trade", null, null, null };
-		}
-
-		if (i == 5314) {
-			entityDef.name = "Mystical Wizard";
-			entityDef.actions = new String[] { "Teleport", "Previous Location", null, null, null };
-			entityDef.description = "This wizard has the power to teleport you to many locations.";
 		}
 		if (i == 8026) {
 			entityDef.name = "Vorkath";
