@@ -252,6 +252,17 @@ public final class ItemDefinition {
 			itemDef.customSpriteLocation = ph8;
 			break;
 			
+		case 22907:
+			itemDef.modelId = 35755;
+			itemDef.name = "Beta Cape";
+			itemDef.description = "It's a Vesta plateskirt.";
+			itemDef.maleModel = 35756;
+			itemDef.femaleModel = 35756;
+			itemDef.inventoryOptions = new String[5];
+			itemDef.inventoryOptions[1] = "Wield";
+			itemDef.inventoryOptions[4] = "Drop";
+			break;
+			
 		case 11864:
 		case 11865:
 		case 19639:
