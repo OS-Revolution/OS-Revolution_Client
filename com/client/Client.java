@@ -9575,7 +9575,7 @@ public class Client extends RSApplet {
 		 */
 		// Home
 		
-		addObject (29878, 1625, 3681, 0, 10, 0); //wogw
+		addObject (29878, 1625, 3664, 0, 10, 0); //wogw
 		addObject(611, 2955, 2759, 0, 10, 0); //picnic table
 		addObject(12309, 2951, 2787, 3, 10, 0); //rfd chest
 		addObject(12355, 2951, 2788, 0, 10, 0); //rfd portal
@@ -10642,7 +10642,7 @@ public class Client extends RSApplet {
 		addObject(4154, 1476, 3688, 1, 10, 0); // lizards
 		addObject(4154, 1454, 3693, 1, 10, 0); // lizards
 		// addObject(4155, 3089, 3496, 1, 10, 0); //zulrah
-		addObject(8356, 1626, 3680, 3, 10, 0); // spirittreekourend
+		addObject(8356, 1626, 3681, 3, 10, 0); // spirittreekourend
 		addObject(8356, 1268, 3561, 0, 10, 0); // spirittreeMountQ
 		addObject(8356, 1315, 3619, 0, 10, 0); // spirittreeXeric
 		addObject(8356, 1477, 3555, 0, 10, 0); // spirittreeHeros
@@ -10841,6 +10841,15 @@ public class Client extends RSApplet {
 		addObject(2151, 1793, 3704, 0, 10, 0); // water
 		addObject(2150, 1240, 3538, 0, 10, 0); // earth
 
+		//Slayer area
+		addObject(27095, 1698, 4575, 0, 10, 0); // home tele
+		//addObject(24101, 1689, 4573, 2, 10, 0); // home tele
+		objectFill(24101, 1689, 4573, 1689, 4576, 10, 3, 0); // Bank
+		//objectFill(24101, 1704, 4576, 1704, 4573, 10, 3, 0); // Bank
+		//objectFill(24101, 2851, 2952, 2853, 2952, 10, 0, 0); // Bank
+		
+		
+		
 		// Bank room
 		addObject(1113, 2850, 2952, 0, 10, 0); // Chair
 		objectFill(24101, 2851, 2952, 2853, 2952, 10, 0, 0); // Bank
