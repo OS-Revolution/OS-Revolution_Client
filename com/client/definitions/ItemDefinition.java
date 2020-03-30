@@ -212,7 +212,12 @@ public final class ItemDefinition {
 			byte[] ph5 = FileOperations.readFile(Signlink.getCacheDirectory() + "/Customs/Vesta's_longsword.png");
 			itemDef.customSpriteLocation = ph5;
 			break;
-			
+		case 7478:
+			itemDef.name = "Donator Token";
+			itemDef.description = "The form of currency for Os-Revolution Donators.";
+			itemDef.inventoryOptions = new String[5];
+			itemDef.inventoryOptions[4] = "Drop";
+			break;
 		case 22506:
 			itemDef.modelId = 8269;
 			itemDef.name = "Vesta's Spear";
@@ -259,7 +264,7 @@ public final class ItemDefinition {
 			itemDef.maleModel = 35756;
 			itemDef.femaleModel = 35756;
 			itemDef.inventoryOptions = new String[5];
-			itemDef.inventoryOptions[1] = "Wield";
+			itemDef.inventoryOptions[1] = "Wear";
 			itemDef.inventoryOptions[4] = "Drop";
 			break;
 			
