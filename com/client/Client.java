@@ -14982,15 +14982,15 @@ public class Client extends RSApplet {
 			} else if (super.clickMode3 == 1 && super.saveClickX >= 118
 					&& super.saveClickX <= 227 && super.saveClickY >= 5
 					&& super.saveClickY <= 65) {
-				launchURL("http://www.os-revolution.com/store");
+				launchURL("https://os-revolution.com/forum/index.php?/shop/");
 			} else if (super.clickMode3 == 1 && super.saveClickX >= 535
 					&& super.saveClickX <= 625 && super.saveClickY >= 5
 					&& super.saveClickY <= 65) {
-				launchURL("http://www.os-revolution.com/vote");
+				launchURL("https://os-revolution.com/forum/index.php?/vote/");
 			} else if (super.clickMode3 == 1 && super.saveClickX >= 630
 					&& super.saveClickX <= 770 && super.saveClickY >= 5
 					&& super.saveClickY <= 65) {
-				launchURL("http://www.os-revolution.com/hs");
+				launchURL("https://os-revolution.com/forum/index.php?/highscores/");
 			}
 
 			if (!informationFile.isUsernameRemembered()) {
