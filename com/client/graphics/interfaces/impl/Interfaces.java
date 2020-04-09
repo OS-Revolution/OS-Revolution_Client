@@ -21,6 +21,7 @@ public class Interfaces extends RSInterface {
 		questTab(defaultTextDrawingAreas);
 		caelTournamentSupplies(defaultTextDrawingAreas);
 		infoTab(defaultTextDrawingAreas);
+		detailedTeleport(defaultTextDrawingAreas);
 		safeBox(defaultTextDrawingAreas);
 		helpDatabaseComponent(defaultTextDrawingAreas);
 		helpComponent(defaultTextDrawingAreas);

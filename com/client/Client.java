@@ -13833,6 +13833,11 @@ public class Client extends RSApplet {
 			if (class9.children[k] == -1)
 				break;
 			RSInterface class9_1 = RSInterface.interfaceCache[class9.children[k]];
+			try {
+			System.out.println("Child id: " +  RSInterface.interfaceCache[class9.children[k]].id);
+			} catch(Exception e) {
+				System.out.println("EXCEPTION: Child ID: " + k);
+			}
 			if (class9_1.type == 1)
 				flag1 |= method119(i, class9_1.id);
 			if (class9_1.type == 6 && (class9_1.anInt257 != -1 || class9_1.anInt258 != -1)) {
@@ -16306,6 +16311,8 @@ public class Client extends RSApplet {
 					incomingPacket = -1;
 					return true;
 
+
+					
 				case 99:
 					minimapState = inStream.readUnsignedByte();
 					incomingPacket = -1;
