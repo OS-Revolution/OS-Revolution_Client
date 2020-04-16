@@ -1537,19 +1537,25 @@ public class Interfaces extends RSInterface {
 		addClickableSprites(42403, "Toggle", "Interfaces/Ironman/IMAGE", 2, 3, 4);
 		addClickableSprites(42404, "Toggle", "Interfaces/Ironman/IMAGE", 2, 3, 4);
 		addClickableSprites(42423, "Toggle", "Interfaces/Ironman/IMAGE", 2, 3, 4);
-
 		addClickableSprites(42405, "Toggle", "Interfaces/Ironman/IMAGE", 2, 3, 4);
 		addClickableSprites(42406, "Toggle", "Interfaces/Ironman/IMAGE", 2, 3, 4);
+		
 		addText(42407,
-				"An Iron Man does not receive items or assistance from other players.\\n"
-						+ "They cannot trade, stake, receive PK loot, nor scavenge dropped items.",
+				"An Iron Man does not receive items\\n"
+				+ "or assistance from other players.\\n"
+				+ "They cannot trade, stake, receive PK loot,\\n"
+				+ "nor scavenge dropped items.\\n",
 				tda, 0, 0xFD851A, false, true);
-		addText(42408, "In addition, an Ultimate Iron Man cannot use banks.", tda, 0, 0xFD851A, false, true);
+		addText(42408, "In addition, an Ultimate Iron Man, \\n"
+				+ "cannot use banks.", tda, 0, 0xFD851A, false, true);
 		addText(42409, "No Iron Man restrictions will apply to this account.", tda, 0, 0xFD851A, false, true);
 		addText(42424, "    x1 experience rates within all skills.", tda, 0, 0xFD851A, false, true);
-		addText(42410, "You must talk to an npc that will reset your mode after a seven day\\n" + "delay.", tda, 0,
+		addText(42410, "You must talk to an npc that, \\n"
+				+ "will reset your mode after a \\n"
+				+ "seven day delay.", tda, 0,
 				0xFD851A, false, true);
-		addText(42411, "The Iron Man restrictions can never be removed.", tda, 0, 0xFD851A, false, true);
+		addText(42411, "The Iron Man restrictions, \\n"
+				+ "can never be removed.", tda, 0, 0xFD851A, false, true);
 		addText(42412, "Standard Iron Man", tda, 0, 0xFFFFFF, false, true);
 		addText(42413, "Ultimate Iron Man", tda, 0, 0xFFFFFF, false, true);
 		addText(42422, "Extreme Mode", tda, 0, 0xFFFFFF, false, true);
@@ -1557,81 +1563,97 @@ public class Interfaces extends RSInterface {
 		addText(42415, "NPC", tda, 0, 0xFFFFFF, false, true);
 		addText(42416, "Permanent", tda, 0, 0xFFFFFF, false, true);
 
-		addText(42417, "Iron Man Mode", tda, 1, 0xFFFFFF, false, true);
-		addText(42418, "After Selection...", tda, 1, 0xFFFFFF, false, true);
+		addText(42417, "Game Modes", tda, 1, 0xFFFFFF, false, true);
+		addText(42418, "Restrictions", tda, 1, 0xFFFFFF, false, true);
+		addText(42426, "BETA", tda, 0, 0xFFFFFF, false, true);
+		addText(42427, "Welcome to OS-Revolution", tda, 0, 0xFFFFFF, false, true);
+		addText(42428, "We hope you enjoy your stay and remember", tda, 0, 0xFFFFFF, false, true);
+		addText(42429, "to register on www.os-revolution.com", tda, 0, 0xFFFFFF, false, true);
+		
 		addHoverButton(42419, "Interfaces/Ironman/IMAGE", 5, 23, 23, "Confirm and Continue", 0, 42420, 1);
 		addHoveredButton(42420, "Interfaces/Ironman/IMAGE", 6, 23, 23, 42421);
-
-		setChildren(23, widget);
+		
+		//EXTRA
+		addText(42425, "Confirm Selection", tda, 0, 0xFFFFFF, false, true);
+		//END EXTRA
+		
+		setChildren(28, widget);
 
 		setBounds(42401, 15, 28, 0, widget);
 
-		setBounds(42402, 30, 104, 1, widget); // Ironman toggle
-		setBounds(42403, 30, 142, 2, widget); // Ult iron man toggle
-		setBounds(42423, 30, 163, 21, widget); // OSRS Mode toggle
-		setBounds(42404, 30, 185, 3, widget); // Reg mode toggle
+		setBounds(42402, 30, 70, 1, widget); // Ironman toggle
+		setBounds(42403, 30, 128, 2, widget); // Ult iron man toggle
+		setBounds(42423, 30, 166, 21, widget); // OSRS Mode toggle
+		setBounds(42404, 30, 190, 3, widget); // Reg mode toggle
 
-		setBounds(42405, 110, 244, 4, widget);
-		setBounds(42406, 110, 277, 5, widget);
+		setBounds(42405, 308, 87, 4, widget); //toggle
+		setBounds(42406, 308, 169, 5, widget); //toggle
 
-		setBounds(42407, 50, 102, 6, widget); // Iron man text
+		setBounds(42407, 50, 87, 6, widget); // Iron man text
 		setBounds(42408, 50, 144, 7, widget); // Ult iron man text
-		setBounds(42409, 86, 187, 8, widget); // Reg mode text
-		setBounds(42424, 115, 165, 22, widget); // OSRS Mode text
+		setBounds(42409, 48, 205, 8, widget); // Reg mode text
+		setBounds(42424, 40, 180, 22, widget); // OSRS Mode text
 
-		setBounds(42410, 130, 241, 9, widget);
-		setBounds(42411, 194, 279, 10, widget);
+		setBounds(42410, 325, 105, 9, widget);//
+		setBounds(42411, 330, 185, 10, widget);
 
-		setBounds(42412, 50, 92, 11, widget); // Standard iron man
-		setBounds(42413, 50, 130, 12, widget); // Ultimate iron man
-		setBounds(42422, 50, 165, 20, widget); // OSRS Mode
+		setBounds(42412, 50, 74, 11, widget); // Standard iron man
+		setBounds(42413, 50, 132, 12, widget); // Ultimate iron man
+		setBounds(42422, 50, 170, 20, widget); // OSRS Mode
 
-		setBounds(42414, 50, 187, 13, widget);
-		setBounds(42415, 130, 231, 14, widget);
-		setBounds(42416, 130, 279, 15, widget);
-		setBounds(42417, 174, 69, 16, widget);
-		setBounds(42418, 250, 210, 17, widget);
-		setBounds(42419, 465, 34, 18, widget);
+		setBounds(42414, 50, 194, 13, widget);
+		setBounds(42415, 330, 90, 14, widget);
+		setBounds(42416, 330, 172, 15, widget);
+		setBounds(42417, 120, 55, 16, widget);
+		setBounds(42418, 358, 55, 17, widget);
+		setBounds(42419, 325, 245, 18, widget);
 		setBounds(42420, 465, 34, 19, widget);
-	}
+		setBounds(42426, 160, 235, 24, widget);//beta text
+		setBounds(42427, 105, 250, 25, widget);//Welcome to OS-Revolution
+		setBounds(42428, 70, 261, 26, widget);//We hope you enjoy your stay and remember
+		setBounds(42429, 83, 272, 27, widget);//Register on www.os-revolution.com
+		//EXTRA
+		setBounds(42425, 360, 255, 23, widget);
+		//END EXTRA
+}
 
 	private static void slayerInterface(TextDrawingArea[] tda) {
 		RSInterface rsInterface = addInterface(41000);
 		addSprite(41001, 1, "Interfaces/SlayerInterface/IMAGE");
 		addHoverButton(41002, "Interfaces/SlayerInterface/IMAGE", 4, 16, 16, "Close window", 0, 41003, 1);
 		addHoveredButton(41003, "Interfaces/SlayerInterface/IMAGE", 5, 16, 16, 41004);
-		addHoverButton(41005, "", 0, 85, 20, "Buy", 0, 41006, 1);
-		addHoverButton(41007, "", 0, 85, 20, "Learn", 0, 41008, 1);
-		addHoverButton(41009, "", 0, 85, 20, "Assignment", 0, 41010, 1);
+		addHoverButton(41005, "", 0, 80, 20, "Buy", 0, 41006, 1);
+		addHoverButton(41007, "", 0, 75, 20, "Learn", 0, 41008, 1);
+		addHoverButton(41009, "", 0, 80, 20, "Assignment", 0, 41010, 1);
 		addText(41011, "Slayer Points: ", tda, 3, 0xFF981F);
-		addTextButton(41012, "Slayer Experience						   (50)", "Buy Slayer Experience", 0xFF981F, false,
+		addTextButton(41012, "Slayer Experience(50)", "Buy Slayer Experience", 0xFF981F, false,
 				true, tda, 1, 400);
-		addTextButton(41013, "Slayer's Respite							  (25)", "Buy Slayer's Respite", 0xFF981F,
+		addTextButton(41013, "Slayer's Respite(25)", "Buy Slayer's Respite", 0xFF981F,
 				false, true, tda, 1, 401);
-		addTextButton(41014, "Slayer Darts									  (35)", "Buy Slayer Darts", 0xFF981F,
+		addTextButton(41014, "Slayer Darts(35)", "Buy Slayer Darts", 0xFF981F,
 				false, true, tda, 1, 402);
-		addTextButton(41015, "Broad Arrows									(25)", "Buy Broad Arrows", 0xFF981F, false,
+		addTextButton(41015, "Broad Arrows(250)", "Buy Broad Arrows", 0xFF981F, false,
 				true, tda, 1, 403);
-		addTextButton(41016, "Imbue Slayer Helmet					   (No cost)", "Imbue Slayer Helmet", 0xFF981F,
+		addTextButton(41016, "Imbue Slayer Helmet(No cost)", "Imbue Slayer Helmet", 0xFF981F,
 				false, true, tda, 1, 406);
-		addTextButton(41017, "Extend Boss Tasks					   (100)", "Extend Boss Tasks", 0xFF981F, false, true,
+		addTextButton(41017, "Extend Boss Tasks(100)", "Extend Boss Tasks", 0xFF981F, false, true,
 				tda, 1, 407);
 		addTextButton(41018, "Recolor Slayer Helmet", "Recolor Slayer Helmet", 0xFF981F, false, true, tda, 1, 408);
 		setChildren(14, rsInterface);
 		rsInterface.child(0, 41001, 12, 10);
 		rsInterface.child(1, 41002, 473, 20);
 		rsInterface.child(2, 41003, 473, 20);
-		rsInterface.child(3, 41005, 21, 23);
-		rsInterface.child(4, 41007, 107, 23);
-		rsInterface.child(5, 41009, 193, 23);
-		rsInterface.child(6, 41011, 98, 74);
-		rsInterface.child(7, 41012, 67, 120);
-		rsInterface.child(8, 41013, 67, 145);
-		rsInterface.child(9, 41014, 67, 170);
-		rsInterface.child(10, 41015, 67, 195);
-		rsInterface.child(11, 41016, 68, 220);
-		rsInterface.child(12, 41017, 68, 245);
-		rsInterface.child(13, 41018, 68, 270);
+		rsInterface.child(3, 41005, 19, 23);
+		rsInterface.child(4, 41007, 105, 23);
+		rsInterface.child(5, 41009, 190, 23);
+		rsInterface.child(6, 41011, 40, 58);
+		rsInterface.child(7, 41012, 30, 115);
+		rsInterface.child(8, 41013, 30, 140);
+		rsInterface.child(9, 41014, 30, 165);
+		rsInterface.child(10, 41015, 30, 190);
+		rsInterface.child(11, 41016, 30, 215);
+		rsInterface.child(12, 41017, 30, 240);
+		rsInterface.child(13, 41018, 30, 265);
 
 	}
 
@@ -1644,14 +1666,22 @@ public class Interfaces extends RSInterface {
 		addHoverButton(41507, "", 0, 85, 20, "Learn", 0, 41508, 1);
 		addHoverButton(41509, "", 0, 85, 20, "Assignment", 0, 41510, 1);
 		addText(41511, "Slayer Points: ", tda, 3, 0xFF981F);
-		addTextButton(41512, "Learn how to create slayer helmet								   (350)", "Learn",
+		addTextButton(41512, "Learn how to create\\n"
+				+ "slayer helmet(350)", "Learn",
 				0xFF981F, false, true, tda, 1, 404);
-		addTextButton(41513, "Learn how to create slayer helmet (imbued)				  (150)", "Learn", 0xFF981F,
+		
+		addTextButton(41513, "Learn how to create slayer\\n"
+				+ "helmet (imbued)(150)", "Learn", 0xFF981F,
 				false, true, tda, 1, 405);
-		addTextButton(41514, "Learn the route into cerberus cave				  (1250)", "Learn", 0xFF981F, false,
+		
+		addTextButton(41514, "Learn the route into\\n"
+				+ "cerberus cave(1250)", "Learn", 0xFF981F, false,
 				true, tda, 1, 406);
-		addTextButton(41515, "Learn how to encounter Superior Slayer NPCS				  (250)", "Learn", 0xFF981F,
+		
+		addTextButton(41515, "Learn how to encounter\\n "
+				+ "Superior Slayer NPCS(250)", "Learn", 0xFF981F,
 				false, true, tda, 1, 407);
+		
 		setChildren(11, rsInterface);
 		rsInterface.child(0, 41501, 12, 10);
 		rsInterface.child(1, 41502, 473, 20);
@@ -1659,11 +1689,11 @@ public class Interfaces extends RSInterface {
 		rsInterface.child(3, 41505, 21, 23);
 		rsInterface.child(4, 41507, 107, 23);
 		rsInterface.child(5, 41509, 193, 23);
-		rsInterface.child(6, 41511, 98, 74);
-		rsInterface.child(7, 41512, 67, 120);
-		rsInterface.child(8, 41513, 67, 145);
-		rsInterface.child(9, 41514, 67, 170);
-		rsInterface.child(10, 41515, 67, 195);
+		rsInterface.child(6, 41511, 40, 58);
+		rsInterface.child(7, 41512, 40, 110);
+		rsInterface.child(8, 41513, 40, 160);
+		rsInterface.child(9, 41514, 40, 210);
+		rsInterface.child(10, 41515, 40, 260);
 	}
 
 	private static void slayerInterfaceSub2(TextDrawingArea[] tda) {
@@ -1675,36 +1705,38 @@ public class Interfaces extends RSInterface {
 		addHoverButton(42007, "", 0, 85, 20, "Learn", 0, 42008, 1);
 		addHoverButton(42009, "", 0, 85, 20, "Assignment", 0, 42010, 1);
 		addText(42011, "Slayer Points: ", tda, 3, 0xFF981F);
-		addTextButton(42012, "Cancel Task", "Temporarily cancel your current slayer task", 0xFF981F, false, true, tda,
+		addTextButton(42012, "Cancel Task   -   Cancel current task, warning it will return later", "Cancel", 0xFF981F, false, true, tda,
 				1, 300);
-		addTextButton(42013, "Remove Task permanently", "Permanently remove this monster as a task", 0xFF981F, false,
+		addTextButton(42013, "Remove Task permanently -  This option will completely remove a task", "Remove", 0xFF981F, false,
 				true, tda, 1, 305);
 		addText(42014, "line 1", tda, 1, 0xFF981F);
 		addText(42015, "line 2", tda, 1, 0xFF981F);
 		addText(42016, "line 3", tda, 1, 0xFF981F);
 		addText(42017, "line 4", tda, 1, 0xFF981F);
+		addText(42022, "Warning\\n" + "By choosing to\\n" + "remove you are\\n" + "choosing to\\n" + "Never have the\\n" + "task again", tda, 1, 0xFF981F);
 		addButton(42018, 6, "Interfaces/SlayerInterface/IMAGE", "Delete removed slayer task");
 		addButton(42019, 6, "Interfaces/SlayerInterface/IMAGE", "Delete removed slayer task");
 		addButton(42020, 6, "Interfaces/SlayerInterface/IMAGE", "Delete removed slayer task");
 		addButton(42021, 6, "Interfaces/SlayerInterface/IMAGE", "Delete removed slayer task");
-		setChildren(17, rsInterface);
+		setChildren(18, rsInterface);
 		rsInterface.child(0, 42001, 12, 10);
 		rsInterface.child(1, 42002, 473, 20);
 		rsInterface.child(2, 42003, 473, 20);
 		rsInterface.child(3, 42005, 21, 23);
 		rsInterface.child(4, 42007, 107, 23);
 		rsInterface.child(5, 42009, 193, 23);
-		rsInterface.child(6, 42011, 98, 74);
-		rsInterface.child(7, 42012, 71, 127);
-		rsInterface.child(8, 42013, 71, 146);
-		rsInterface.child(9, 42014, 71, 216);
-		rsInterface.child(10, 42015, 71, 234);
-		rsInterface.child(11, 42016, 71, 252);
-		rsInterface.child(12, 42017, 71, 270);
-		rsInterface.child(13, 42018, 303, 215);
-		rsInterface.child(14, 42019, 303, 233);
-		rsInterface.child(15, 42020, 303, 251);
-		rsInterface.child(16, 42021, 303, 269);
+		rsInterface.child(6, 42011, 40, 58);
+		rsInterface.child(7, 42012, 75, 105);//Cancel task
+		rsInterface.child(8, 42013, 60, 130);//Remove Task
+		rsInterface.child(9, 42014, 32, 173);//text
+		rsInterface.child(10, 42015, 32, 208);
+		rsInterface.child(11, 42016, 32, 242);
+		rsInterface.child(12, 42017, 32, 278);//end of text
+		rsInterface.child(13, 42018, 340, 174);//exit
+		rsInterface.child(14, 42019, 340, 208);
+		rsInterface.child(15, 42020, 340, 243);
+		rsInterface.child(16, 42021, 340, 278);//end of exit
+		rsInterface.child(17, 42022, 385, 190);
 	}
 
 	private static void achievements(TextDrawingArea[] tda) {

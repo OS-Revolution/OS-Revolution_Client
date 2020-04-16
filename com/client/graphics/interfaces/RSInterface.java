@@ -513,7 +513,7 @@ public class RSInterface {
 			addText(46018 + i, titles[i], tda, 1, 0xff7000, true, true);
 			tab.child(4 + i, 46006 + i, xx + x, 36 + y);
 			tab.child(7 + i, 46010 + i, xx + x, 36 + y);
-			tab.child(10 + i, 46018 + i, xx + x + 20, 40 + y);
+			tab.child(10 + i, 46018 + i, xx + x + 80, 40 + y);
 			xx += 161;
 		}
 		tab.child(13, 36023, 8 + x, 82 + y);
