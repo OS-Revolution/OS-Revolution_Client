@@ -10223,7 +10223,8 @@ public class Client extends RSApplet {
 		addObject(-1, 2135, 4920, 0, 10, 0);
 		addObject(-1, 2130, 4920, 0, 10, 0);
 		addObject(-1, 2124, 4918, 0, 10, 0);
-
+		addObject(-1, 3085, 3243, 0, 10, 0);// dummy
+		addObject(10041, 3101, 3252, 0, 10, 0);// dummy
 		// NewObjects
 		addObject(11803, 2126, 4919, 0, 10, 0);// slayerdung
 		addObject(7413, 2136, 4917, 0, 10, 0);// dummy
