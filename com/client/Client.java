@@ -10231,6 +10231,11 @@ public class Client extends RSApplet {
 		addObject(13641, 2121, 4914, 0, 10, 0);// teledevice
 		addObject(170, 2127, 4910, 0, 10, 0);// chest
 		// Obelisks donor
+		addObject(11734, 3079, 3253, 4, 10, 0); // silver stall
+		addObject(11731, 3084, 3247, 0, 10, 0); // gem stall
+		addObject(4277, 3082, 3253, 4, 10, 0); // fish stall
+		
+		
 		addObject(2153, 2141, 4897, 0, 10, 0); // fire
 		addObject(2152, 2141, 4901, 0, 10, 0); // air
 		addObject(2151, 2138, 4898, 0, 10, 0); // water

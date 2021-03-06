@@ -257,6 +257,11 @@ public final class ObjectDefinition {
 			objectDef.thickness = 80; // Thickness
 			objectDef.height = 250; // Height
 			break;
+		case 5595:
+		case 631:
+		case 629:
+			objectDef.actions = new String[] { "Steal-From", null, null, null, null };
+			break;
 		case 27095://lava dragon teleport
 			objectDef.name = "Portal";
 			objectDef.actions = new String[] { "Teleport Home", null, null, null, null };
