@@ -100,11 +100,25 @@ public final class NpcDefinition {
 		entityDef.name = "@cya@Clue Scroll Master";
 		entityDef.description = "@yel@Convert your clue scrolls with me";
 		}
+		//New Home Npcs
+		if (i==7330){
+			entityDef.name = "@cya@CEO";
+			entityDef.actions = new String[] { "Talk-To", null, null, null, null };
+			entityDef.description = "@gre@This guy means business...";
+			}
+		if (i==7924){
+			entityDef.name = "@cya@Regional Director" ;
+			entityDef.description = "@gre@Looks like he helps run the CEO's agency.";
+			}
+		
+		//End
         if (i == 5314) {
 		entityDef.name = "@cya@Mystical Wizard";
 		entityDef.actions = new String[] { "Teleport", "Previous Location", null, null, null };
 		entityDef.description = "@yel@This wizard has the power to teleport you to many locations.";
-		}
+		}if (i == 2123) {
+			entityDef.name = "Bank Guard";
+			}
 		if (i==1909){
 		entityDef.name = "@cya@Information Clerk";
 		entityDef.description = "@yel@See Os-Revolution Info";
@@ -199,6 +213,7 @@ public final class NpcDefinition {
 			entityDef.anInt86 = 100;
 			entityDef.anInt91 = 100;
 		}
+
 		if(i==7144){
 	entityDef.anInt75 = 0;
 		}

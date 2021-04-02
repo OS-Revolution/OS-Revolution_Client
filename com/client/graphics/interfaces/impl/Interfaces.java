@@ -21,13 +21,14 @@ public class Interfaces extends RSInterface {
 		questTab(defaultTextDrawingAreas);
 		caelTournamentSupplies(defaultTextDrawingAreas);
 		infoTab(defaultTextDrawingAreas);
-		detailedTeleport(defaultTextDrawingAreas);
+		teleport(defaultTextDrawingAreas); // Michael - Was "Detailedteleport"
 		safeBox(defaultTextDrawingAreas);
 		helpDatabaseComponent(defaultTextDrawingAreas);
 		helpComponent(defaultTextDrawingAreas);
 		groundItemCustomizing(defaultTextDrawingAreas);
 		staffInterface(defaultTextDrawingAreas);
 		staffInterfaceBank(defaultTextDrawingAreas);
+		teleBook(defaultTextDrawingAreas); // Michael - Tele book added
 		teleportationInterface(defaultTextDrawingAreas);
 		bank(defaultTextDrawingAreas);
 		bankPin(defaultTextDrawingAreas);

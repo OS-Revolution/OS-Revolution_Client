@@ -260,7 +260,19 @@ public final class ObjectDefinition {
 		case 5595:
 		case 631:
 		case 629:
-			objectDef.actions = new String[] { "Steal-From", null, null, null, null };
+		case 3860:
+		case 4275:
+			objectDef.actions = new String[] { null, "Steal-From", null, null, null };
+			break;
+		// bar stool test
+		case 2312:
+			objectDef.actions = new String[] { "sit", "sit", "sit", "sit", "sit" };
+			break;
+		case 13127:
+			objectDef.actions = new String[] { null, null, null, null, null };
+			break;
+		case 13129:
+			objectDef.actions = new String[] { null, "Enter", null, null, null };
 			break;
 		case 27095://lava dragon teleport
 			objectDef.name = "Portal";

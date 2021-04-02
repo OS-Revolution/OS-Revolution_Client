@@ -30,7 +30,7 @@ public class RSInterface {
 
 	public static void unpack(StreamLoader streamLoader, TextDrawingArea textDrawingAreas[],
 			StreamLoader streamLoader_1, RSFont[] newFontSystem) {
-		aMRUNodes_238 = new MRUNodes(80000);
+		aMRUNodes_238 = new MRUNodes(50000);
 		Stream stream = new Stream(streamLoader.getDataForName("data"));
 		newFonts = newFontSystem;
 		int i = -1;
@@ -502,10 +502,10 @@ public class RSInterface {
 		int x = 5, y = 5;
 		tab.totalChildren(19);
 		tab.child(0, 36001, x, y);
-		tab.child(1, 36002, 469 + x, 2 + y);
+		tab.child(1, 36002, 469 + x, 7 + y);
 		tab.child(2, 36003, 469 + x, 7 + y);
-		tab.child(3, 36005, 248 + x, 5 + y);
-		String[] titles = { "Common", "Moderate", "Hardened", "master" };
+		tab.child(3, 36005, 248 + x, 10 + y);
+		String[] titles = { "Easy", "Medium", "Hard" };
 		int xx = 7;
 		for (int i = 0; i < 3; i++) {
 			addHoverButton(46006 + i, dir, 3, 160, 20, "View", -1, 36010 + i, 1);
@@ -597,7 +597,7 @@ public class RSInterface {
         addHoverText(47509, "@or1@View Npc Drops", "View  Npc Drops", tda, 0, 1022259, false, true, 150);
         addHoverText(47510, "@or1@View Npc KillCount", "View Npc KillCount", tda, 0, 1022259, false, true, 150);
         addHoverText(47511, "@or1@View Titles", "View Titles", tda, 0, 1022259, false, true, 150);
-        addHoverText(47512, "", "Coming Soon", tda, 0, 1022259, false, true, 150);
+        addHoverText(47512, "", "View Details", tda, 0, 1022259, false, true, 150);
         addText(47513, "@or1@Quick Links", tda, 2, 16750899, false, true);
 
         infoList.totalChildren(58);
@@ -623,150 +623,10 @@ public class RSInterface {
 
 
     }
-    
-	protected static void detailedTeleport(TextDrawingArea[] Ryan) { //alex
-		RSInterface tab = addInterface(50000);
-	       addSprite(50001, 1215, "Interfaces/Teleport/TELE");
-	       /*
-	        * 
-	protected static void addHover(int i, int aT, int cT, int hoverid, int spritePath, String NAME, int W, int H, String tip) {
-			addHover(17102, 3, 0, 10601, 1, "Interfaces/Equipment/SPRITE", 17, 17, "Close Window");
-		addHovered(10601, 3, "Interfaces/Equipment/SPRITE", 17, 17, 10602);
-	        */
-	       addHover(50002, 3, 0, 50300, 1218, "Interfaces/Teleport/TELE", 17, 17, "Close Window");
-			addHovered(50300, 1219, "Interfaces/Teleport/TELE", 17, 17, 50301);
-		addText(50005, "Bosses", Ryan, 2, 0xff9933, true, true);
-		addText(50006, "Callisto", Ryan, 2, 0xff9933, true, true);
-		addText(50007, "Description", Ryan, 2, 0xff9933, true, true);
-		addText(50008, "Click the button below\\nto view this NPC's drops!", Ryan, 1, 0xff9933, true, true);
-		addText(50009, "Naxos Teleports", Ryan, 2, 0xff9933, true, true);
-		//addHoverButtonWSpriteLoader(int interfaceId, int hoverid, int spriteId, String NAME, int W, int H, String tip) {
-		addHoverButtonWSpriteLoader(50010, 50302, 1216, "Interfaces/Teleport/TELE", 79, 17, "Select");
-		addHovered(50302, 1217, "Interfaces/Teleport/TELE", 79, 17, 50303);
-		
-		addHoverButtonWSpriteLoader(50011, 50304, 1216, "Interfaces/Teleport/TELE", 79, 17, "Select");
-		addHovered(50304, 1217, "Interfaces/Teleport/TELE", 79, 17, 50305);
-		
-		addHoverButtonWSpriteLoader(50012, 50306, 1216, "Interfaces/Teleport/TELE", 79, 17, "Select");
-		addHovered(50306, 1217, "Interfaces/Teleport/TELE", 79, 17, 50307);
-		
-		addHoverButtonWSpriteLoader(50013, 50308, 1216, "Interfaces/Teleport/TELE", 79, 17, "Select");
-		addHovered(50308, 1217, "Interfaces/Teleport/TELE", 79, 17, 50309);
-		
-		addHoverButtonWSpriteLoader(50014, 50310, 1216, "Interfaces/Teleport/TELE", 79, 17, "Select");
-		addHovered(50310, 1217, "Interfaces/Teleport/TELE", 79, 17, 50303);
-		
-		addHoverButtonWSpriteLoader(50015, 50312, 1216, "Interfaces/Teleport/TELE", 79, 17, "Select");
-		addHovered(50312, 1217, "Interfaces/Teleport/TELE", 79, 17, 50313);
-		
-		addText(50016, "Bosses", Ryan, 0, 0xff9933, true, true);
-		addText(50017, "Monsters", Ryan, 0, 0xff9933, true, true);
-		addText(50018, "Donator", Ryan, 0, 0xff9933, true, true);
-		addText(50019, "Skilling", Ryan, 0, 0xff9933, true, true);
-		addText(50020, "Minigames", Ryan, 0, 0xff9933, true, true);
-		addText(50021, "Cities", Ryan, 0, 0xff9933, true, true);
-		addText(50022, "Combat Level: 426", Ryan, 1, 0xff9933, true, true);
-		addText(50023, "Health: 1,100", Ryan, 1, 0xff9933, true, true);
-		addText(50024, "Attack: Magic & Ranged", Ryan, 1, 0xff9933, true, true);
-		addText(50025, "Team Size: 1", Ryan, 1, 0xff9933, true, true);
-		addText(50026, "Wilderness: No", Ryan, 1, 0xff9933, true, true);
-		addText(50027, "Multi: No", Ryan, 1, 0xff9933, true, true);
-		addText(50075, "Weakness: Melee", Ryan, 1, 0xff9933, true, true);
-		addHoverButtonWSpriteLoader(50028, 50314, 1220, "Interfaces/Teleport/TELE", 79, 17, "Select");
-		addHovered(50314, 1221, "Interfaces/Teleport/TELE", 86, 33, 50315);
-		
-		addText(50029, "Teleport", Ryan, 2, 0xff9933, true, true);
-		addHoverButtonWSpriteLoader(50030, 50316, 1220, "Interfaces/Teleport/TELE", 79, 17, "Select");
-		addHovered(50316, 1221, "Interfaces/Teleport/TELE", 86, 33, 50317);
-		
-		addText(50031, "View Drops", Ryan, 1, 0xff9933, true, true);
-		RSInterface npcWidget = RSInterface.addInterface(50049);
-		npcWidget.type = 6;
-		npcWidget.width = 140;
-		npcWidget.height = 153;
-		npcWidget.modelZoom = 980;
-		npcWidget.modelRotation1 = 150;
-		npcWidget.modelRotation2 = 1700;
-		npcWidget.mediaID = 131;
-		
-		tab.totalChildren(41);
-		tab.child(0, 50001, 11, 12);
-		tab.child(1, 50002, 488, 22);
-		tab.child(2, 50005, 90, 51);
-		tab.child(3, 50006, 255, 51);
-		tab.child(4, 50007, 420, 51);
-		tab.child(5, 50008, 253, 230);
-		tab.child(6, 50009, 248, 22);
-		tab.child(7, 50010, 23, 309);
-		tab.child(8, 50011, 103, 309);
-		tab.child(9, 50012, 183, 309);
-		tab.child(10, 50013, 263, 309);
-		tab.child(11, 50014, 342, 309);
-		tab.child(12, 50015, 422, 309);
-		tab.child(13, 50302, 23, 309);
-		tab.child(14, 50304, 103, 309);
-		tab.child(15, 50306, 183, 309);
-		tab.child(16, 50308, 263, 309);
-		tab.child(17, 50310, 342, 309);
-		tab.child(18, 50312, 422, 309);
-		tab.child(19, 50016, 62, 313);
-		tab.child(20, 50017, 142, 313);
-		tab.child(21, 50018, 223, 313);
-		tab.child(22, 50019, 300, 313);
-		tab.child(23, 50020, 380, 313);
-		tab.child(24, 50021, 458, 313);
-		tab.child(25, 50022, 420, 85);
-		tab.child(26, 50023, 420, 100);
-		tab.child(27, 50024, 420, 115);
-		tab.child(28, 50025, 420, 130);
-		tab.child(29, 50026, 420, 145);
-		tab.child(30, 50027, 420, 160);
-		tab.child(31, 50075, 420, 175);
-		tab.child(32, 50028, 380,251);
-		tab.child(33, 50314, 380,251);
-		tab.child(34, 50029, 421, 260);
-		tab.child(35, 50030, 215,265);
-		tab.child(36, 50316, 215,265);
-		tab.child(37, 50031, 254, 273);
-		tab.child(38, 50049, 180, 77);
-		tab.child(39, 50100, 22, 72);
-		tab.child(40, 50300, 488, 22);
-		int amount = 75;
-		RSInterface scrollTabLeft = addTabInterface(50100);
-		scrollTabLeft.width = 127;
-		scrollTabLeft.height = 229;
-		scrollTabLeft.scrollMax = 500;
-		scrollTabLeft.totalChildren(amount);
-		int Ypos = 0;
-		int frameID = 0;
-		for(int iD = 50601; iD <= 50650; iD++) {
-			addHoverButtonWSpriteLoader(iD, iD + 50, 1222, "Interfaces/Teleport/TELE", 127, 20, "Select");
-			scrollTabLeft.child(frameID, iD, 0, Ypos);
-			frameID++;
-			iD++;
-			Ypos += 20;
-		}
-		Ypos = 0;
-		for(int iD = 50651; iD <= 50700; iD++) {
-			addHovered(iD, 1223, "Interfaces/Teleport/TELE", 127, 20, iD + 1);
-			scrollTabLeft.child(frameID, iD, 0, Ypos);
-			frameID++;
-			iD++;
-			Ypos += 20;
-		}
-		Ypos = 3;
-		for(int iD = 50126; iD <= 50150; iD++) {
-			addText(iD, "@or1@Teleport name" + iD, Ryan, 1, 0xff9933, false, true);
-			scrollTabLeft.child(frameID, iD, 3, Ypos);
-			frameID++;
-			Ypos += 20;
-		}
-	}
-    
 	protected static void questTab(TextDrawingArea[] tda) {
 		RSInterface tab = addTabInterface(10220);
 		addText(10221, "@or1@Control Panel", tda, 2, 16750899, false, true);
-		addText(10222, "@or1@Os-Revolution", tda, 2, 16750899, true, true);
+		addText(10222, "@or1@OS-Revolution", tda, 2, 16750899, true, true);
 		addSprite(10224, 0, "Interfaces/infoTab/SPRITE");
 		addButton(10403, 2, "Interfaces/infoTab/TAB", "Refresh Tab");
 		addButton(10404, 4, "Interfaces/infoTab/TAB", "View Diaries");
@@ -976,6 +836,25 @@ public class RSInterface {
 		tab.height = 334;
 		tab.drawsTransparent = true;
 	}
+	
+	// NEW TELEPORTATION INTERFACE (TELEPORTATION BOOK)
+    
+	public static void teleBook(TextDrawingArea[] tda) {
+	
+	RSInterface Interface = addInterface(77700);
+	addSprite(77701, 1, "Interfaces/infoTab/Telebbook/Book");
+	addHoverButton(77702, "Interfaces/infoTab/Telebook/Right", 0, 106, 43, "Next", -1, 77703, 1);
+	addHoveredButton(77703, "Interfaces/infoTab/Telebook/Left", 0, 106, 43, 77704);
+	
+	addText(77705, "Test Text", tda, 3, 16750899, true, false);
+	setChildren(4, Interface);
+	setBounds(77701, 50, 50, 0, Interface);
+	setBounds(77702, 50, 50, 1, Interface);
+	setBounds(77703, 50, 50, 2, Interface);
+	setBounds(77705, 50, 50, 3, Interface);
+	}
+	// END OF TELEPORTATION BOOK - ADDED BY - MICHAEL
+
 
 	public static void addConfigButton(int ID, int pID, int bID, int bID2, int width, int height, String tT,
 			int configID, int aT, int configFrame) {
@@ -1825,8 +1704,6 @@ public class RSInterface {
 	}
 
 	// You can draw this interface in the chat area
-	
-	
 
 	private static void addItemChooser(int interfaceId, TextDrawingArea[] tda) {
 		RSInterface widget = addTabInterface(interfaceId);
@@ -5002,8 +4879,8 @@ public class RSInterface {
 		rsinterface.sprite1 = imageLoader(j, "Equipment/SPRITE");
 		rsinterface.sprite2 = imageLoader(k, "Equipment/SPRITE");
 	}
-	//addHover(48002, 3, 0, 48300, 1218, "Interfaces/Teleport/TELE", 17, 17, "Close Window");
-	protected static void addHover(int i, int aT, int cT, int hoverid, int spritePath, String NAME, int W, int H, String tip) {
+
+	protected static void addHover(int i, int aT, int cT, int hoverid, int sId, String NAME, int W, int H, String tip) {
 		RSInterface rsinterfaceHover = addInterface(i);
 		rsinterfaceHover.id = i;
 		rsinterfaceHover.parentID = i;
@@ -5011,23 +4888,8 @@ public class RSInterface {
 		rsinterfaceHover.atActionType = aT;
 		rsinterfaceHover.contentType = cT;
 		rsinterfaceHover.mOverInterToTrigger = hoverid;
-		rsinterfaceHover.sprite1 = imageLoader(spritePath, NAME);
-		rsinterfaceHover.sprite2 = imageLoader(spritePath, NAME);
-		rsinterfaceHover.width = W;
-		rsinterfaceHover.height = H;
-		rsinterfaceHover.tooltip = tip;
-	}
-	//addHoverButtonWSpriteLoader(48028, 1220, 86, 33, "Select", 0, 48314, 1);
-	protected static void addHoverButtonWSpriteLoader(int interfaceId, int hoverid, int spriteId, String NAME, int W, int H, String tip) {
-		RSInterface rsinterfaceHover = addInterface(interfaceId);
-		rsinterfaceHover.id = interfaceId;
-		rsinterfaceHover.parentID = interfaceId;
-		rsinterfaceHover.type = 5;
-		rsinterfaceHover.atActionType = 3;
-		rsinterfaceHover.contentType = 0;
-		rsinterfaceHover.mOverInterToTrigger = hoverid;
-		rsinterfaceHover.sprite1 = imageLoader(spriteId, NAME);
-		rsinterfaceHover.sprite2 = imageLoader(spriteId, NAME);
+		rsinterfaceHover.sprite1 = imageLoader(sId, NAME);
+		rsinterfaceHover.sprite2 = imageLoader(sId, NAME);
 		rsinterfaceHover.width = W;
 		rsinterfaceHover.height = H;
 		rsinterfaceHover.tooltip = tip;
