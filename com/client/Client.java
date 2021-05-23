@@ -342,7 +342,7 @@ public class Client extends RSApplet {
 	private int modifiableXValue = 1; // u dont care if it starts at 1? Can't see a real problem with it :P kk
 	private int achievementCutoff = 100;
 	private Sprite[] minimapIcons = new Sprite[2];
-	public int port = Configuration.PORT; // ? 5555 : worldSelect == true ? 5555 : 43595;
+	public int port = Configuration.PORT; // ? 5555 : worldSelect == true ? 5555 : 43596;
 	private String macAddress;
 
 	public static void dumpModels() {
@@ -4589,7 +4589,7 @@ public class Client extends RSApplet {
 			experienceCounter = 0L;
 		}
 		if(l==852){
-			//launchURL("http://mysticps.everythingrs.com/services/heatmaps"); // heatmaps
+			//launchURL("http://os-revolution.com"); // heatmaps
 			pushMessage("Coming soon!", 0, "");
 		}
 		if (l == 1850) {

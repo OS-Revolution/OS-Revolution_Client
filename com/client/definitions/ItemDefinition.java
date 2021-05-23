@@ -321,7 +321,7 @@ public final class ItemDefinition {
 			break;
 
 		case 19668:
-			itemDef.name = "Portable Bank";
+			itemDef.name = "Portable Bank"; // Creates a trading post for players // check michael
 			break;
 			
 		case 11739:
