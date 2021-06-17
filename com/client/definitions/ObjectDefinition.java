@@ -283,7 +283,7 @@ public final class ObjectDefinition {
 			//objectDef.thickness = 80; // Thickness
 			//objectDef.height = 250; // Height
 			break;
-		case 15409:
+		case 15439:
 			objectDef.actions = new String[] { "Build", null, null, null, null};
 			break;
 			//Donator zone doors

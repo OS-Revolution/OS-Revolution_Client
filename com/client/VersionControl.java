@@ -62,7 +62,7 @@ public class VersionControl {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setValidating(true);
         factory.setIgnoringElementContentWhitespace(true);
-        URL url = new URL("http://www.os-revolution.com/download/version.txt");
+        URL url = new URL("http://www.os-revolution.com/area51/Cache/version.txt");
         DocumentBuilder db = factory.newDocumentBuilder();
         Document doc = db.parse(url.openStream());
         NodeList nList = doc.getElementsByTagName("data");

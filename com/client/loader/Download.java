@@ -20,7 +20,7 @@ public class Download {
 	}
 
 	private void visitSite() throws IOException {
-		String url = "https://www.os-revolution.com/download/Revolution.jar";
+		String url = "https://www.os-revolution.com/play/Revolution.jar";
 		URL u = new URL(url);
 		BufferedReader in = new BufferedReader(new InputStreamReader(u.openStream()));
 
