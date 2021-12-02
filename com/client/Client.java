@@ -4589,8 +4589,8 @@ public class Client extends RSApplet {
 			experienceCounter = 0L;
 		}
 		if(l==852){
-			//launchURL("http://os-revolution.com"); // heatmaps
-			pushMessage("Coming soon!", 0, "");
+			launchURL("https://explv.github.io/?centreX=3075&centreY=3326&centreZ=0&zoom=7"); // World Map
+			pushMessage("Explv's World Map has been Opened on your Internet Browser.", 0, "");
 		}
 		if (l == 1850) {
 			stream.createFrame(185);
@@ -6504,7 +6504,9 @@ public class Client extends RSApplet {
 				|| name.startsWith("@cr13@") || name.startsWith("@cr14@") || name.startsWith("@cr15@")
 				|| name.startsWith("@cr16@") || name.startsWith("@cr17@") || name.startsWith("@cr18@")
 				|| name.startsWith("@cr19@") || name.startsWith("@cr20@") || name.startsWith("@cr21@")
-				|| name.startsWith("@cr22@") || name.startsWith("@cr23@")) {
+				|| name.startsWith("@cr22@") || name.startsWith("@cr23@") || name.startsWith("@cr24@")
+				|| name.startsWith("@cr25@") || name.startsWith("@cr26@") || name.startsWith("@cr27@")
+				|| name.startsWith("@cr28@") || name.startsWith("@cr29@") || name.startsWith("@cr30@")) {
 			name = name.substring(6);
 		} else {
 			name = name.substring(0);
@@ -7308,6 +7310,20 @@ public class Client extends RSApplet {
 					s = s.substring(6);
 				if (s != null && s.startsWith("@cr23@"))
 					s = s.substring(6);
+				if (s != null && s.startsWith("@cr24@"))
+					s = s.substring(6);
+				if (s != null && s.startsWith("@cr25@"))
+					s = s.substring(6);
+				if (s != null && s.startsWith("@cr26@"))
+					s = s.substring(6);
+				if (s != null && s.startsWith("@cr27@"))
+					s = s.substring(6);
+				if (s != null && s.startsWith("@cr28@"))
+					s = s.substring(6);
+				if (s != null && s.startsWith("@cr29@"))
+					s = s.substring(6);
+				if (s != null && s.startsWith("@cr30@"))
+					s = s.substring(6);
 				if (s.startsWith("<col=")) {
 					s = s.substring(s.indexOf("</col>") + 6);
 				}
@@ -7384,6 +7400,20 @@ public class Client extends RSApplet {
 				s = s.substring(6);
 			if (s != null && s.startsWith("@cr23@"))
 				s = s.substring(6);
+			if (s != null && s.startsWith("@cr24@"))
+				s = s.substring(6);
+			if (s != null && s.startsWith("@cr25@"))
+				s = s.substring(6);
+			if (s != null && s.startsWith("@cr26@"))
+				s = s.substring(6);
+			if (s != null && s.startsWith("@cr27@"))
+				s = s.substring(6);
+			if (s != null && s.startsWith("@cr28@"))
+				s = s.substring(6);
+			if (s != null && s.startsWith("@cr29@"))
+				s = s.substring(6);
+			if (s != null && s.startsWith("@cr30@"))
+				s = s.substring(6);
 			if ((j1 == 5 || j1 == 6) && (!splitPrivateChat || chatTypeView == 2)
 					&& (j1 == 6 || privateChatMode == 0 || privateChatMode == 1 && isFriendOrSelf(s)))
 				l++;
@@ -7459,6 +7489,20 @@ public class Client extends RSApplet {
 			if (s != null && s.startsWith("@cr22@"))
 				s = s.substring(6);
 			if (s != null && s.startsWith("@cr23@"))
+				s = s.substring(6);
+			if (s != null && s.startsWith("@cr24@"))
+				s = s.substring(6);
+			if (s != null && s.startsWith("@cr25@"))
+				s = s.substring(6);
+			if (s != null && s.startsWith("@cr26@"))
+				s = s.substring(6);
+			if (s != null && s.startsWith("@cr27@"))
+				s = s.substring(6);
+			if (s != null && s.startsWith("@cr28@"))
+				s = s.substring(6);
+			if (s != null && s.startsWith("@cr29@"))
+				s = s.substring(6);
+			if (s != null && s.startsWith("@cr30@"))
 				s = s.substring(6);
 			if (chatTypeView == 3 && j1 == 4 && (tradeMode == 0 || tradeMode == 1 && isFriendOrSelf(s))) {
 				if (j > k1 - 14 && j <= k1) {
@@ -10233,6 +10277,13 @@ public class Client extends RSApplet {
 		// Obelisks donor
 		addObject(11734, 3079, 3253, 4, 10, 0); // silver stall
 		addObject(11731, 3084, 3247, 0, 10, 0); // gem stall
+		
+		// ardy
+		addObject(11730, 2655, 3311, 1, 10, 0); // gem stall
+		addObject(11729, 2662, 3314, 2, 10, 0); // gem stall
+		addObject(11729, 2656, 3302, 1, 10, 0); // gem stall
+		//end
+		
 		addObject(4277, 3082, 3253, 4, 10, 0); // fish stall
 		
 		
@@ -14416,8 +14467,9 @@ public class Client extends RSApplet {
 	private boolean specialHover;
 	private int specialEnabled;
 	public int specialAttack=100;
-
-	private void drawSpecialOrb(int xOffset) {
+	
+	// SPECIAL ORB REMOVAL
+	/* private void drawSpecialOrb(int xOffset) {
 		Sprite image = cacheSprite1[specialHover ? 8 : 7];
 		Sprite fill = cacheSprite[specialEnabled == 0 ? 9 : 6];
 		Sprite sword = cacheSprite[12];
@@ -14436,7 +14488,7 @@ public class Client extends RSApplet {
 		smallText.method382(getOrbTextColor((int) (percent * 100)),
 				(isFixed ? 53 : 53) + xOffset, specialAttack + "", isFixed ? 159 : 164,
 				true);
-	}
+	} */
 
 	private void loadPrayerOrb(int xOffset) {
 		int yOff = Configuration.osbuddyGameframe ? currentScreenMode == ScreenMode.FIXED ? 10 : 2
@@ -14445,19 +14497,19 @@ public class Client extends RSApplet {
 				: currentScreenMode == ScreenMode.FIXED ? -1 : -7;
 		Sprite bg = cacheSprite1[prayHover ? 8 : 7];
 		Sprite fg = prayClicked ? new Sprite("Gameframe/newprayclicked") : cacheSprite1[1];
-		bg.drawSprite(0 + xOffset - xOff, 75 - yOff);
-		fg.drawSprite(27 + xOffset - xOff, 79 - yOff);
+		bg.drawSprite(0 + xOffset - xOff, 85 - yOff);
+		fg.drawSprite(27 + xOffset - xOff, 89 - yOff);
 		int level = Integer.parseInt(RSInterface.interfaceCache[4012].message.replaceAll("%", ""));
 		int max = maxStats[5];
 		double percent = level / (double) max;
 		cacheSprite1[14].myHeight = (int) (26 * (1 - percent));
-		cacheSprite1[14].drawSprite(27 + xOffset - xOff, 79 - yOff);
+		cacheSprite1[14].drawSprite(27 + xOffset - xOff, 89 - yOff);
 		if (percent <= .25) {
-			cacheSprite1[10].drawSprite(30 + xOffset - xOff, 82 - yOff);
+			cacheSprite1[10].drawSprite(30 + xOffset - xOff, 92 - yOff);
 		} else {
-			cacheSprite1[10].drawSprite(30 + xOffset - xOff, 82 - yOff);
+			cacheSprite1[10].drawSprite(30 + xOffset - xOff, 92 - yOff);
 		}
-		smallText.method382(getOrbTextColor((int) (percent * 100)), 14 + xOffset - xOff, level + "", 101 - yOff, true);
+		smallText.method382(getOrbTextColor((int) (percent * 100)), 14 + xOffset - xOff, level + "", 111 - yOff, true);
 	}
 
 	private void loadRunOrb(int xOffset) {
@@ -14469,18 +14521,18 @@ public class Client extends RSApplet {
 		Sprite bg = cacheSprite1[runHover ? 8 : 7];
 		boolean running = anIntArray1045[173] == 1;
 		Sprite fg = cacheSprite1[running ? 4 : 3];
-		bg.drawSprite(10 + xOffset - xMinus, 109 - yOff);
-		fg.drawSprite(37 + xOffset - xMinus, 113 - yOff);
+		bg.drawSprite(18 + xOffset - xMinus, 124 - yOff);
+		fg.drawSprite(45 + xOffset - xMinus, 128 - yOff);
 		int level = current;
 		double percent = level / (double) 100;
 		cacheSprite1[14].myHeight = (int) (26 * (1 - percent));
-		cacheSprite1[14].drawSprite(37 + xOffset - xMinus, 113 - yOff);
+		cacheSprite1[14].drawSprite(43 + xOffset - xMinus, 128 - yOff);
 		if (percent <= .25) {
-			cacheSprite1[running ? 12 : 11].drawSprite(43 + xOffset - xMinus, 117 - yOff);
+			cacheSprite1[running ? 12 : 11].drawSprite(51 + xOffset - xMinus, 132 - yOff);
 		} else {
-			cacheSprite1[running ? 12 : 11].drawSprite(43 + xOffset - xMinus, 117 - yOff);
+			cacheSprite1[running ? 12 : 11].drawSprite(51 + xOffset - xMinus, 132 - yOff);
 		}
-		smallText.method382(getOrbTextColor((int) (percent * 100)), 25 + xOffset - xMinus, level + "", 135 - yOff,
+		smallText.method382(getOrbTextColor((int) (percent * 100)), 33 + xOffset - xMinus, level + "", 149 - yOff,
 				true);
 	}
 
@@ -14488,7 +14540,7 @@ public class Client extends RSApplet {
 		loadHpOrb(xOffset);
 		loadPrayerOrb(xOffset);
 		loadRunOrb(xOffset);
-		drawSpecialOrb(xOffset);
+		//drawSpecialOrb(xOffset); //SPECIAL ORB REMOVAL
 		if (drawExperienceCounter) {
 			if (counterHover) {
 				cacheSprite2[5].drawSprite(
@@ -17440,8 +17492,8 @@ public class Client extends RSApplet {
 		clanChatMode = 0;
 		channelButtonHoverPosition = -1;
 		channelButtonClickPosition = 0;
-		server1 = Configuration.LIVE_SERVER ? "127.0.0.1" : "0.0.0.0";
-		//server1 = Configuration.LIVE_SERVER ? "162.252.11.137" : "162.252.11.137";
+		//server1 = Configuration.LIVE_SERVER ? "127.0.0.1" : "0.0.0.0";
+		server1 = Configuration.LIVE_SERVER ? "162.252.11.180" : "162.252.11.180";
 		anIntArrayArray825 = new int[104][104];
 		friendsNodeIDs = new int[200];
 		groundArray = new NodeList[4][104][104];
@@ -17563,7 +17615,7 @@ public class Client extends RSApplet {
 		anIntArray1203 = new int[5];
 		chatAreaScrollLength = 78;
 		promptInput = "";
-		modIcons = new Sprite[24];
+		modIcons = new Sprite[25];
 		tabID = 3;
 		inputTaken = false;
 		songChanging = true;
@@ -17997,8 +18049,8 @@ public class Client extends RSApplet {
 	private int publicChatMode;
 	private static int anInt1288;
 	public static int anInt1290;
-	public static String server = "127.0.0.1";
-	//public static String server = "162.252.11.137";
+	//public static String server = "127.0.0.1";
+	public static String server = "162.252.11.180";
 	public static boolean controlIsDown;
 	public int drawCount;
 	public int fullscreenInterfaceID;

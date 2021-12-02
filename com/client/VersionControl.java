@@ -62,7 +62,7 @@ public class VersionControl {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setValidating(true);
         factory.setIgnoringElementContentWhitespace(true);
-        URL url = new URL("http://www.os-revolution.com/area51/Cache/version.txt");
+        URL url = new URL("http://www.os-revolution.com/area51/Cache/version.txt"); // Read note below when updating cache (line 79)
         DocumentBuilder db = factory.newDocumentBuilder();
         Document doc = db.parse(url.openStream());
         NodeList nList = doc.getElementsByTagName("data");
@@ -76,7 +76,7 @@ public class VersionControl {
                         .getTextContent());
             }
         }
-        if (cacheVersion > 0) {
+        if (cacheVersion > 0) { //Change Cache Version Here Possibly
             System.out.println("Cache version : " + cacheVersion);
         }
         return cacheVersion;

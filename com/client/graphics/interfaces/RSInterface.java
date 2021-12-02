@@ -260,7 +260,115 @@ public class RSInterface {
 		skillMenu(textDrawingAreas);
 		// aMRUNodes_238 = null;
 	}
-
+	public static void priceChecker(TextDrawingArea[] tda) {
+		RSInterface rsi = addTabInterface(43933);
+		addSprite(18245, 1, "Interfaces/Checker/CHECK");
+		addPriceChecker(18246);
+		addHoverButton(18247, "SPRITE", 1, 21, 21, "Close", 250, 18247, 3);
+		addHoveredButton(18248, "SPRITE", 3, 21, 21, 18248);
+		rsi.totalChildren(67);
+		rsi.child(0, 18245, 10, 20);//was 10 so + 10
+		rsi.child(1, 18246, 100, 56);
+		rsi.child(2, 18247, 472, 23);
+		rsi.child(3, 18248, 472, 23);
+		addText(18350, "Total value:", tda, 0, 0xFFFFFF, false, true);
+		rsi.child(4, 18350, 225, 295);  // Open Text
+		addText(18351, "0", tda, 0, 0xFFFFFF, true, true);
+		rsi.child(5, 18351, 251, 306);
+		addText(18352, "", tda, 0, 0xFFFFFF, false, true);
+		rsi.child(6, 18352, 120, 150);
+		addText(18353, "", tda, 0, 0xFFFFFF, true, true);rsi.child(7, 18353, 120, 85);
+		addText(18354, "", tda, 0, 0xFFFFFF, true, true);rsi.child(8, 18354, 120, 95);
+		addText(18355, "", tda, 0, 0xFFFFFF, true, true);rsi.child(9, 18355, 120, 105);
+		addText(18356, "", tda, 0, 0xFFFFFF, true, true);rsi.child(10, 18356, 190, 85);
+		addText(18357, "", tda, 0, 0xFFFFFF, true, true);rsi.child(11, 18357, 190, 95);
+		addText(18358, "", tda, 0, 0xFFFFFF, true, true);rsi.child(12, 18358, 190, 105);
+		addText(18359, "", tda, 0, 0xFFFFFF, true, true);rsi.child(13, 18359, 260, 85);
+		addText(18360, "", tda, 0, 0xFFFFFF, true, true);rsi.child(14, 18360, 260, 95);
+		addText(18361, "", tda, 0, 0xFFFFFF, true, true);rsi.child(15, 18361, 260, 105);
+		addText(18362, "", tda, 0, 0xFFFFFF, true, true);rsi.child(16, 18362, 330, 85);
+		addText(18363, "", tda, 0, 0xFFFFFF, true, true);rsi.child(17, 18363, 330, 95);
+		addText(18364, "", tda, 0, 0xFFFFFF, true, true);rsi.child(18, 18364, 330, 105);
+		addText(18365, "", tda, 0, 0xFFFFFF, true, true);rsi.child(19, 18365, 400, 85);
+		addText(18366, "", tda, 0, 0xFFFFFF, true, true);rsi.child(20, 18366, 400, 95);
+		addText(18367, "", tda, 0, 0xFFFFFF, true, true);rsi.child(21, 18367, 400, 105);
+		addText(18368, "", tda, 0, 0xFFFFFF, true, true);rsi.child(22, 18368, 120, 145);
+		addText(18369, "", tda, 0, 0xFFFFFF, true, true);rsi.child(23, 18369, 120, 155);
+		addText(18370, "", tda, 0, 0xFFFFFF, true, true);rsi.child(24, 18370, 120, 165);
+		addText(18371, "", tda, 0, 0xFFFFFF, true, true);rsi.child(25, 18371, 190, 145);
+		addText(18372, "", tda, 0, 0xFFFFFF, true, true);rsi.child(26, 18372, 190, 155);
+		addText(18373, "", tda, 0, 0xFFFFFF, true, true);rsi.child(27, 18373, 190, 165);
+		addText(18374, "", tda, 0, 0xFFFFFF, true, true);rsi.child(28, 18374, 260, 145);
+		addText(18375, "", tda, 0, 0xFFFFFF, true, true);rsi.child(29, 18375, 260, 155);
+		addText(18376, "", tda, 0, 0xFFFFFF, true, true);rsi.child(30, 18376, 260, 165);
+		addText(18377, "", tda, 0, 0xFFFFFF, true, true);rsi.child(31, 18377, 330, 145);
+		addText(18378, "", tda, 0, 0xFFFFFF, true, true);rsi.child(32, 18378, 330, 155);
+		addText(18379, "", tda, 0, 0xFFFFFF, true, true);rsi.child(33, 18379, 330, 165);
+		addText(18380, "", tda, 0, 0xFFFFFF, true, true);rsi.child(34, 18380, 400, 145);
+		addText(18381, "", tda, 0, 0xFFFFFF, true, true);rsi.child(35, 18381, 400, 155);
+		addText(18382, "", tda, 0, 0xFFFFFF, true, true);rsi.child(36, 18382, 400, 165);
+		addText(18383, "", tda, 0, 0xFFFFFF, true, true);rsi.child(37, 18383, 120, 205);
+		addText(18384, "", tda, 0, 0xFFFFFF, true, true);rsi.child(38, 18384, 120, 215);
+		addText(18385, "", tda, 0, 0xFFFFFF, true, true);rsi.child(39, 18385, 120, 225);
+		addText(18386, "", tda, 0, 0xFFFFFF, true, true);rsi.child(40, 18386, 190, 205);
+		addText(18387, "", tda, 0, 0xFFFFFF, true, true);rsi.child(41, 18387, 190, 215);
+		addText(18388, "", tda, 0, 0xFFFFFF, true, true);rsi.child(42, 18388, 190, 225);
+		addText(18389, "", tda, 0, 0xFFFFFF, true, true);rsi.child(43, 18389, 260, 205);
+		addText(18390, "", tda, 0, 0xFFFFFF, true, true);rsi.child(44, 18390, 260, 215);
+		addText(18391, "", tda, 0, 0xFFFFFF, true, true);rsi.child(45, 18391, 260, 225);
+		addText(18392, "", tda, 0, 0xFFFFFF, true, true);rsi.child(46, 18392, 330, 205);
+		addText(18393, "", tda, 0, 0xFFFFFF, true, true);rsi.child(47, 18393, 330, 215);
+		addText(18394, "", tda, 0, 0xFFFFFF, true, true);rsi.child(48, 18394, 330, 225);
+		addText(18395, "", tda, 0, 0xFFFFFF, true, true);rsi.child(49, 18395, 400, 205);
+		addText(18396, "", tda, 0, 0xFFFFFF, true, true);rsi.child(50, 18396, 400, 215);
+		addText(18397, "", tda, 0, 0xFFFFFF, true, true);rsi.child(51, 18397, 400, 225);	
+		addText(18398, "", tda, 0, 0xFFFFFF, true, true);rsi.child(52, 18398, 120, 260);
+		addText(18399, "", tda, 0, 0xFFFFFF, true, true);rsi.child(53, 18399, 120, 270);
+		addText(18400, "", tda, 0, 0xFFFFFF, true, true);rsi.child(54, 18400, 120, 280);
+		addText(18401, "", tda, 0, 0xFFFFFF, true, true);rsi.child(55, 18401, 190, 260);
+		addText(18402, "", tda, 0, 0xFFFFFF, true, true);rsi.child(56, 18402, 190, 270);
+		addText(18403, "", tda, 0, 0xFFFFFF, true, true);rsi.child(57, 18403, 190, 280);
+		addText(18404, "", tda, 0, 0xFFFFFF, true, true);rsi.child(58, 18404, 260, 260);
+		addText(18405, "", tda, 0, 0xFFFFFF, true, true);rsi.child(59, 18405, 260, 270);
+		addText(18406, "", tda, 0, 0xFFFFFF, true, true);rsi.child(60, 18406, 260, 280);
+		addText(18407, "", tda, 0, 0xFFFFFF, true, true);rsi.child(61, 18407, 330, 260);
+		addText(18408, "", tda, 0, 0xFFFFFF, true, true);rsi.child(62, 18408, 330, 270);
+		addText(18409, "", tda, 0, 0xFFFFFF, true, true);rsi.child(63, 18409, 330, 280);
+		addText(18410, "", tda, 0, 0xFFFFFF, true, true);rsi.child(64, 18410, 400, 260);
+		addText(18411, "", tda, 0, 0xFFFFFF, true, true);rsi.child(65, 18411, 400, 270);
+		addText(18412, "", tda, 0, 0xFFFFFF, true, true);rsi.child(66, 18412, 400, 280);
+	}
+	
+	public static void addPriceChecker(int index) {
+		RSInterface rsi = interfaceCache[index] = new RSInterface();
+   		rsi.actions = new String[10];
+    	rsi.spritesX = new int[20];
+    	rsi.invStackSizes = new int[25];
+    	rsi.inv = new int[30];
+		rsi.spritesY = new int[20];
+   		rsi.children = new int[0];
+   	 	rsi.childX = new int[0];
+    	rsi.childY = new int[0];
+		rsi.actions[0] = "Take 1";
+   		rsi.actions[1] = "Take 5";
+   		rsi.actions[2] = "Take 10";
+   		rsi.actions[3] = "Take All";
+		rsi.actions[4] = "Take X";
+    	rsi.centerText = true;
+		rsi.aBoolean227 = false;
+    	rsi.aBoolean235 = false;
+   		rsi.usableItemInterface = false;
+		rsi.isInventoryInterface = false;
+   		rsi.aBoolean259 = true;
+   		rsi.textShadow = false;
+   		rsi.invSpritePadX = 40;
+   		rsi.invSpritePadY = 28; 
+		rsi.height = 5;
+		rsi.width = 5;
+		rsi.parentID = 18246;
+   		rsi.id = 4393;
+    	rsi.type = 2;
+	}
 	public static final int OPTION_CLOSE = 3;
 
 	public DropdownMenu dropdown;
@@ -650,11 +758,13 @@ public class RSInterface {
 
 		addText(10406, "@or1@Server information", tda, 2, 16750899, false, true);
 		addHoverText(10407, "@cr11@@or1@ Players online : @gre@0", "View Details", tda, 0, 1022259, false, true, 150);
-		addHoverText(10408, "@cr20@@or1@ Double Xp: @red@False", "View Details", tda, 0, 1022259, false, true, 150);
-		addHoverText(10409, "@cr19@@or1@Current event : @red@None", "View Details", tda, 0, 1022259, false, true, 150);
+		addHoverText(10408, "@cr18@@or1@ Double Xp: @red@False", "View Details", tda, 0, 1022259, false, true, 150);
+		addHoverText(10409, "@cr18@@or1@Current event : @red@None", "View Details", tda, 0, 1022259, false, true, 150);
 		addHoverText(10410, "@cr18@@or1@WOGW: @red@None ", "View Details", tda, 0, 1022259, false, true, 150);
-		addHoverText(10411, "@cr9@@or1@ Current deal: @red@None", "View Details", tda, 0, 1022259, false, true, 150);
-		addText(10412, "@or1@Player information", tda, 2, 16750899, false, true);
+		addHoverText(10411, "@cr18@@or1@ Current deal: @red@None", "View Details", tda, 0, 1022259, false, true, 150);
+		addText(10412, "", tda, 2, 16750899, false, true);
+		addText(10413, "", tda, 2, 16750899, false, true);
+		addText(10414, "@or1@Player information", tda, 2, 16750899, false, true);
 
 		infoList.totalChildren(58);
 		infoList.child(0, 10406, 1, 3);
@@ -664,6 +774,8 @@ public class RSInterface {
         infoList.child(4, 10410, 1, 73);
         infoList.child(5, 10411, 1, 89);
         infoList.child(6, 10412, 1, 105);
+        infoList.child(6, 10413, 1, 105);
+        infoList.child(6, 10414, 1, 105);
 
 		int Ypos = 125;
 		int frameID = 7;
