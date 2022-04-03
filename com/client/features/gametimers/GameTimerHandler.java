@@ -25,7 +25,7 @@ public final class GameTimerHandler {
 	/**
 	 * Determines the amount of timers used.
 	 */
-	public static final byte AMOUNT_OF_TIMERS = 11;
+	public static final byte AMOUNT_OF_TIMERS = 22;
 	
 	/**
 	 * A {@link List} of {@link GameTimer} objects
@@ -91,7 +91,8 @@ public final class GameTimerHandler {
 			return;
 		}
 		
-		x -= drawingWidth;
+//		x += drawingWidth;
+//		System.out.println("X: " + x);
 		DrawingArea.drawAlphaBox(x, y, drawingWidth, drawingHeight, 0x000000, Byte.MAX_VALUE / 2);
 		DrawingArea.drawAlphaBox(x, y, drawingWidth, 1, 0xCBBB99, 80);
 		DrawingArea.drawAlphaBox(x + drawingWidth - 1, y, 1, drawingHeight, 0xCBBB99, 80);

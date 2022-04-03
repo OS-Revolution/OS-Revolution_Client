@@ -8,6 +8,13 @@ import java.io.File;
 
 public class Model extends Renderable {
 
+
+    public void printColors(int j) {
+        for (int k = 0; k < numberOfTriangleFaces; k++)
+            System.out.println(face_color[k]);
+    }
+
+
     public static void nullLoader() {
         aClass21Array1661 = null;
         aBooleanArray1663 = null;
@@ -542,6 +549,7 @@ public class Model extends Renderable {
         if (model == 0) {
             return;
         }
+
         byte[] data = aClass21Array1661[model].aByteArray368;
         //data = read(signlink.findcachedir() + "/Raw/" + model + ".dat");
         if (data[data.length - 1] == -1 && data[data.length - 2] == -1) {
@@ -556,6 +564,11 @@ public class Model extends Renderable {
                     face_render_priorities[j] = 10;
                 }
             }
+        }
+
+        if (model == 7875 || model == 7766) {
+            System.out.println("Model: " + model);
+            printColors(model);
         }
     }
 

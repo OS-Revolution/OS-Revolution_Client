@@ -578,7 +578,7 @@ public class Interfaces extends RSInterface {
 
 		final String[] skillNames = { "attack", "defence", "strength", "hitpoints", "ranged", "prayer", "magic",
 				"cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining",
-				"herblore", "agility", "thieving", "slayer", "farming", "runecraft", "hunter", "-unused-", "-unused-",
+				"herblore", "agility", "thieving", "slayer", "foraging", "runecraft", "hunter", "-unused-", "-unused-",
 				"-unused-" };
 
 		RSInterface over = addInterface(37310);

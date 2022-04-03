@@ -11,7 +11,7 @@ final class Skills {
 	        "Prayer", "Magic", "Runecrafting", "Construction", "Hitpoints", "Agility",
 	        "Herblore", "Thieving", "Crafting", "Fletching", "Slayer", "Hunter", "-1",
 	        "Mining", "Smithing", "Fishing", "Cooking", "Firemaking", "Woodcutting",
-	        "Farming"
+	        "Foraging"
 	    };
 	public static final boolean[] SKILLS_ENABLED = { 
 			true, true, true, true, true, true, true, true, true, true, 

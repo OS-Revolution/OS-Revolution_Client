@@ -32,7 +32,7 @@ public class Configuration {
 	public static long fogDelay = 500;
 	public static final String CLIENT_TITLE = "Os-Revolution";
 	public static final int CLIENT_VERSION = 1;
-	public static Boolean LIVE_SERVER = true;
+	public static Boolean LIVE_SERVER = false;
 	public static final int PORT = 43596;
 
 	public static Boolean DUMP_DATA = false;

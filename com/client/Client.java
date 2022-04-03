@@ -11025,7 +11025,11 @@ public class Client extends RSApplet {
 			repackCacheIndex(4);
 		}
 		new CacheDownloader(this).downloadCache();
-		
+//		TODO Better Cache Loading
+//		final CacheAccessor cacheAccessor = new CacheAccessor();
+//
+//		cacheAccessor.initializeCache();
+
 		System.out.println("Loading cache from "+Signlink.getCacheDirectory()+".");
 		
 	
@@ -13525,7 +13529,7 @@ public class Client extends RSApplet {
 
 		if (gameTimers) {
 			try {
-				int startX = 516;
+				int startX = 1;
 				int startY = Client.currentScreenMode == ScreenMode.FIXED ? 294 : Client.currentGameHeight - 209;
 				GameTimerHandler.getSingleton().drawGameTimers(this, startX, startY);
 			} catch (ParseException e) {
@@ -17493,7 +17497,9 @@ public class Client extends RSApplet {
 		channelButtonHoverPosition = -1;
 		channelButtonClickPosition = 0;
 		//server1 = Configuration.LIVE_SERVER ? "127.0.0.1" : "0.0.0.0";
-		server1 = Configuration.LIVE_SERVER ? "162.252.11.180" : "162.252.11.180";
+		server1 = Configuration.LIVE_SERVER ? "162.252.11.180" : "127.0.0.1";
+		System.out.println(server1);
+		System.out.println(server);
 		anIntArrayArray825 = new int[104][104];
 		friendsNodeIDs = new int[200];
 		groundArray = new NodeList[4][104][104];
@@ -18050,7 +18056,7 @@ public class Client extends RSApplet {
 	private static int anInt1288;
 	public static int anInt1290;
 	//public static String server = "127.0.0.1";
-	public static String server = "162.252.11.180";
+	public static String server = "localhost";
 	public static boolean controlIsDown;
 	public int drawCount;
 	public int fullscreenInterfaceID;
