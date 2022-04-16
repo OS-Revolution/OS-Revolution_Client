@@ -1,7 +1,12 @@
 package com.client.definitions;
 
 import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 import com.client.utilities.FileOperations;
 import org.apache.commons.lang3.StringUtils;
@@ -17,20 +22,258 @@ import com.client.StreamLoader;
 
 public final class ObjectDefinition {
 
+    protected Object runGetter(Field field, Object o) {
+        for (Method method : o.getClass().getMethods()) {
+            if (((method.getName().startsWith("get")) || method.getName().startsWith("is"))
+                    && ((method.getName().length() == (field.getName().length() + 3))
+                    || (method.getName().length() == (field.getName().length() + 2)))) {
+                if (method.getName().toLowerCase().endsWith(field.getName().toLowerCase())) {
+                    try {
+                        Logger.getGlobal().info("Invoking Method: " + method.getName());
+                        return method.invoke(o);
+                    } catch (IllegalAccessException | InvocationTargetException e) {
+                        Logger.getGlobal().severe("Could not determine method: " + method.getName());
+                    }
+
+                }
+            }
+        }
+        return null;
+    }
+
+    public static int getTotalObjects() {
+        return totalObjects;
+    }
+
+    public short[] getOriginalTexture() {
+        return originalTexture;
+    }
+
+    public short[] getModifiedTexture() {
+        return modifiedTexture;
+    }
+
+    public boolean isaBoolean736() {
+        return aBoolean736;
+    }
+
+    public byte getaByte742() {
+        return aByte742;
+    }
+
+    public byte getaByte737() {
+        return aByte737;
+    }
+
+    public int getAnInt738() {
+        return anInt738;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getAnInt744() {
+        return anInt744;
+    }
+
+    public int getAnInt745() {
+        return anInt745;
+    }
+
+    public int getAnInt746() {
+        return anInt746;
+    }
+
+    public int[] getOriginalModelColors() {
+        return originalModelColors;
+    }
+
+    public int getThickness() {
+        return thickness;
+    }
+
+    public int getAnInt749() {
+        return anInt749;
+    }
+
+    public boolean isaBoolean751() {
+        return aBoolean751;
+    }
+
+    public static boolean isLowMem() {
+        return lowMem;
+    }
+
+    public static Stream getStream() {
+        return stream;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public static int[] getStreamIndices() {
+        return streamIndices;
+    }
+
+    public boolean isaBoolean757() {
+        return aBoolean757;
+    }
+
+    public int getAnInt758() {
+        return anInt758;
+    }
+
+    public int[] getChildrenIDs() {
+        return childrenIDs;
+    }
+
+    public int getAnInt760() {
+        return anInt760;
+    }
+
+    public int getAnInt761() {
+        return anInt761;
+    }
+
+    public boolean isaBoolean762() {
+        return aBoolean762;
+    }
+
+    public boolean isaBoolean764() {
+        return aBoolean764;
+    }
+
+    public static Client getClientInstance() {
+        return clientInstance;
+    }
+
+    public boolean isaBoolean766() {
+        return aBoolean766;
+    }
+
+    public boolean isaBoolean767() {
+        return aBoolean767;
+    }
+
+    public int getAnInt768() {
+        return anInt768;
+    }
+
+    public boolean isaBoolean769() {
+        return aBoolean769;
+    }
+
+    public static int getCacheIndex() {
+        return cacheIndex;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int[] getAnIntArray773() {
+        return anIntArray773;
+    }
+
+    public int getAnInt774() {
+        return anInt774;
+    }
+
+    public int getAnInt775() {
+        return anInt775;
+    }
+
+    public int[] getAnIntArray776() {
+        return anIntArray776;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isHasActions() {
+        return hasActions;
+    }
+
+    public boolean isaBoolean779() {
+        return aBoolean779;
+    }
+
+    public static MRUNodes getMruNodes2() {
+        return mruNodes2;
+    }
+
+    public int getAnimation() {
+        return animation;
+    }
+
+    public static ObjectDefinition[] getCache() {
+        return cache;
+    }
+
+    public int getAnInt783() {
+        return anInt783;
+    }
+
+    public int[] getModifiedModelColors() {
+        return modifiedModelColors;
+    }
+
+    public static MRUNodes getMruNodes1() {
+        return mruNodes1;
+    }
+
+    public String[] getActions() {
+        return actions;
+    }
+
     public void applyTexturing(Model m, int id) {
         if (id == 26764)
             m.setTexture(26);
     }
 
-    private static void createHerb(ObjectDefinition def, String name, int[] newColors){
+    private static void createHerb(ObjectDefinition def, String name, int[] newColors) {
         def.anIntArray773 = ObjectDefinition.forID(8143).anIntArray773;
         def.name = name;
         def.actions = new String[]{"Forage", null, null, null, null};
-        def.modifiedModelColors = new int[] {20364, 19988, 19992};
+        def.modifiedModelColors = new int[]{20364, 19988, 19992};
 
-        if(newColors != null) {
+        if (newColors != null) {
             def.originalModelColors = newColors;//new int[] {25505, 25496,  25496};
         }
+    }
+
+    public static void createForagable(ObjectDefinition definition, String name, String description) {
+        definition.name = name;
+        definition.actions = new String[]{"Forage", null, null, null, null};
+        definition.description = description;
+    }
+
+    private static void copyDef(ObjectDefinition newDefinition, ObjectDefinition baseDefinition) {
+        newDefinition.name = baseDefinition.name;
+        newDefinition.anIntArray773 = baseDefinition.anIntArray773;
+        newDefinition.description = baseDefinition.description;
+        newDefinition.originalModelColors = baseDefinition.originalModelColors;
+        newDefinition.modifiedModelColors = baseDefinition.modifiedModelColors;
+        newDefinition.width = baseDefinition.width;
+        newDefinition.height = baseDefinition.height;
+        newDefinition.anInt749 = baseDefinition.anInt749;
+        newDefinition.anInt758 = baseDefinition.anInt758;
+        newDefinition.anInt744 = baseDefinition.anInt744;
+        newDefinition.actions = baseDefinition.actions;
+        newDefinition.animation = baseDefinition.animation;
+        newDefinition.anInt761 = baseDefinition.anInt761;
+        newDefinition.aByte742 = baseDefinition.aByte742;
+        newDefinition.aByte737 = baseDefinition.aByte737;
+        newDefinition.aBoolean736 = baseDefinition.aBoolean736;
+        newDefinition.modifiedTexture = baseDefinition.modifiedTexture;
+        newDefinition.originalTexture = baseDefinition.originalTexture;
     }
 
 
@@ -56,47 +299,106 @@ public final class ObjectDefinition {
         }
 
         switch (i) {
+            case 2887:
+                copyDef(objectDef,ObjectDefinition.forID(1304));
+                objectDef.name = "Cinnamon Tree";
+                objectDef.actions = new String[]{"Chop", null, null, null, null};
+                objectDef.description = "A rare tree";
+                break;
+            case 7855:
+                createForagable(objectDef,"Limpwurt plant","A warm climate foragable.");
+                break;
+            case 7725:
+                createForagable(objectDef,"Whiteberry bush","A warm climate foragable.");
+                break;
+            case 8621:
+                createForagable(objectDef,"Snape Grass","A hot climate foragable.");
+                objectDef.modifiedModelColors = new int[]{14786, 21978, 14897, 8148};
+                objectDef.originalModelColors = new int[]{29481, 29481, 28512, 29481};
+//                28512
+                break;
+            case 7134:
+                createForagable(objectDef,"Mort Myre Fungus","A foragable native to wetlands.");
+                break;
+            case 7757:
+                createForagable(objectDef,"Cactus","A hot and dry climate foragable.");
+                break;
+            case 1406:
+                createForagable(objectDef,"Poato Cactus","A hot and dry climate foragable.");
+                break;
+            case 10157:
+            case 26149:
+                ObjectDefinition originalDef = ObjectDefinition.forID(26149);
+                objectDef.anIntArray773 = new int[]{7427, 7428, 7426};
+                objectDef.name = "Dimensional Rift";
+                objectDef.animation = 2260;
+                objectDef.actions = new String[]{"Teleport", null, null, null, null};
+//                objectDef.originalTexture = originalDef.originalTexture;
+//                objectDef.modifiedTexture = originalDef.modifiedTexture;
+//                objectDef.aBoolean736 = originalDef.aBoolean736;
+//                objectDef.aByte737 = originalDef.aByte737;
+//                objectDef.aByte742 = originalDef.aByte742;
+//                objectDef.anInt761 = originalDef.anInt761;
+//                objectDef.anInt744 = originalDef.anInt744;
+//                objectDef.anInt758 = originalDef.anInt758;
+//                objectDef.originalModelColors = originalDef.originalModelColors;
+//                objectDef.modifiedModelColors = originalDef.modifiedModelColors;
+//                objectDef.anInt749 = originalDef.anInt749;
+//                objectDef.height = originalDef.height;
+                break;
+            case 28924:
+                objectDef.anIntArray773 = new int[]{31600, 31657};
+                objectDef.name = "Abyssal Seer";
+                objectDef.animation = 1473;
+                objectDef.actions = new String[]{"Teleport", null, null, null, null};
+                objectDef.modifiedModelColors = new int[] {20364, 19988, 19992};
+                objectDef.originalModelColors = new int[] {20364, 19988, 19992};
+                break;
             case 8132:
-                createHerb(objectDef,"Guam",new int[] {22428, 22418,22428});
+                createHerb(objectDef, "Guam", new int[]{22428, 22418, 22428});
                 break;
             case 8133:
-                createHerb(objectDef,"Marrentill",new int[] {22433, 22424, 22433});
+                createHerb(objectDef, "Marrentill", new int[]{22433, 22424, 22433});
                 break;
             case 8134:
-                createHerb(objectDef,"Tarromin", new int[] {25505, 25496,  25496});
+                createHerb(objectDef, "Tarromin", new int[]{25505, 25496, 25496});
                 break;
             case 8135:
-                createHerb(objectDef,"Harralander", new int[] {16289, 13204,13204});
+                createHerb(objectDef, "Harralander", new int[]{16289, 13204, 13204});
                 break;
             case 8136:
-                createHerb(objectDef,"Ranarr Weed", new int[] {17304, 15250,15250});
+                createHerb(objectDef, "Ranarr Weed", new int[]{17304, 15250, 15250});
                 break;
             case 8137:
-                createHerb(objectDef,"Toadflax", new int[] {22408, 22414,22414});
+                createHerb(objectDef, "Toadflax", new int[]{22408, 22414, 22414});
                 break;
             case 8138:
-                createHerb(objectDef,"Irit Leaf", new int[] {17961, 18974,18974});
+                createHerb(objectDef, "Irit Leaf", new int[]{17961, 18974, 18974});
                 break;
             case 8139:
-                createHerb(objectDef,"Avantoe", new int[] {24342, 25360,25360});
+                createHerb(objectDef, "Avantoe", new int[]{24342, 25360, 25360});
                 break;
             case 8140:
-                createHerb(objectDef,"Kwuarm", new int[] {13204, 14224,14224});
+                createHerb(objectDef, "Kwuarm", new int[]{13204, 14224, 14224});
                 break;
             case 8141:
-                createHerb(objectDef,"Cadantine", new int[] {13974, 14866,14866});
+                createHerb(objectDef, "Cadantine", new int[]{13974, 14866, 14866});
                 break;
             case 8142:
-                createHerb(objectDef,"Snapdragon", new int[] {14226, 13212,13212});
+                createHerb(objectDef, "Snapdragon", new int[]{14226, 13212, 13212});
                 break;
             case 8144:
-                createHerb(objectDef,"Lantadyme", new int[] {27548, 30610,30610});
+                createHerb(objectDef, "Lantadyme", new int[]{27548, 30610, 30610});
                 break;
             case 8145:
-                createHerb(objectDef,"Dwarf Weed", new int[] {22416, 22414,22414});
+                createHerb(objectDef, "Dwarf Weed", new int[]{22416, 22414, 22414});
                 break;
             case 8146:
-                createHerb(objectDef,"Torstol", new int[] {22422, 22416,22416});
+                createHerb(objectDef, "Torstol", new int[]{22422, 22416, 22416});
+                break;
+            case 8147:
+                createHerb(objectDef, "Bloodweed", new int[]{947, 822, 925});
+                objectDef.description = "A rare herb containing a thick blood like substance.";
                 break;
             case 20928:
                 objectDef.name = "Fishing Spot";
@@ -453,20 +755,53 @@ public final class ObjectDefinition {
 
     public static void objectDump() {
         try {
-            FileWriter fw = new FileWriter(System.getProperty("user.home") + "/Desktop/Item Dump.txt");
+            FileWriter fw = new FileWriter(System.getProperty("user.home") + "/Desktop/Object Dump.txt");
             for (int i = 0; i < totalObjects; i++) {
                 ObjectDefinition obj = ObjectDefinition.forID(i);
+
                 fw.write("case " + i + ":");
                 fw.write(System.getProperty("line.separator"));
-                fw.write("itemDef.name = \"" + obj.name + "\";");
-                fw.write(System.getProperty("line.separator"));
-                fw.write("itemDef.modelID= " + Arrays.toString(obj.anIntArray773) + ";");
-                fw.write(System.getProperty("line.separator"));
-                fw.write("itemDef.originalColors= " + Arrays.toString(obj.originalModelColors) + ";");
-                fw.write(System.getProperty("line.separator"));
-                fw.write("itemDef.modifiedColors= " + Arrays.toString(obj.modifiedModelColors) + ";");
-                fw.write(System.getProperty("line.separator"));
-                fw.write("break;");
+                Arrays.stream(obj.getClass().getFields()).forEach(field -> {
+                    try {
+                        if (!field.getName().equalsIgnoreCase("streamIndices") && !field.getName().equalsIgnoreCase("cache")) {
+//                            System.out.println("Working on: " + field.getName());
+                            if (field.getType().isArray()) {
+                                if (field.getType().toString().equalsIgnoreCase("class [I")) {
+                                    fw.write(field.getName() + "= " + Arrays.toString((int[]) field.get(obj)) + ";");
+                                    fw.write(System.getProperty("line.separator"));
+                                } else {
+                                    try {
+                                        fw.write(field.getName() + "= " + Arrays.toString((String[]) field.get(obj)) + ";");
+                                        fw.write(System.getProperty("line.separator"));
+                                    } catch (ClassCastException e) {
+                                        fw.write(field.getName() + "= " + field.get(obj) + ";");
+                                        fw.write(System.getProperty("line.separator"));
+                                    }
+                                }
+
+                            } else {
+                                fw.write(field.getName() + "= " + field.get(obj) + "\";");
+                                fw.write(System.getProperty("line.separator"));
+                            }
+                        }
+                    } catch (IOException | IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+//                fw.write("case " + i + ":");
+//                fw.write(System.getProperty("line.separator"));
+//                fw.write("itemDef.name = \"" + obj.name + "\";");
+//                fw.write(System.getProperty("line.separator"));
+//                fw.write("itemDef.modelID= " + Arrays.toString(obj.anIntArray773) + ";");
+//                fw.write(System.getProperty("line.separator"));
+//                fw.write("itemDef.originalColors= " + Arrays.toString(obj.originalModelColors) + ";");
+//                fw.write(System.getProperty("line.separator"));
+//                fw.write("itemDef.modifiedColors= " + Arrays.toString(obj.modifiedModelColors) + ";");
+//                fw.write(System.getProperty("line.separator"));
+//                fw.write("itemDef.modifiedTexture= " + Arrays.toString(obj.modifiedTexture) + ";");
+//                fw.write(System.getProperty("line.separator"));
+//                fw.write("break;");
                 fw.write(System.getProperty("line.separator"));
                 fw.write(System.getProperty("line.separator"));
             }
@@ -941,24 +1276,24 @@ public final class ObjectDefinition {
         type = -1;
     }
 
-    private short[] originalTexture;
-    private short[] modifiedTexture;
+    public short[] originalTexture;
+    public short[] modifiedTexture;
     public boolean aBoolean736;
     @SuppressWarnings("unused")
-    private byte aByte742;
+    public byte aByte742;
     @SuppressWarnings("unused")
-    private byte aByte737;
-    private int anInt738;
+    public byte aByte737;
+    public int anInt738;
     public String name;
-    private int width;
+    public int width;
     private static final Model[] aModelArray741s = new Model[4];
     public int anInt744;
-    private int anInt745;
+    public int anInt745;
     public int anInt746;
-    private int[] originalModelColors;
-    private int thickness;
+    public int[] originalModelColors;
+    public int thickness;
     public int anInt749;
-    private boolean aBoolean751;
+    public boolean aBoolean751;
     public static boolean lowMem;
     private static Stream stream;
     public int type;
@@ -966,29 +1301,29 @@ public final class ObjectDefinition {
     public boolean aBoolean757;
     public int anInt758;
     public int childrenIDs[];
-    private int anInt760;
+    public int anInt760;
     public int anInt761;
     public boolean aBoolean762;
     public boolean aBoolean764;
     public static Client clientInstance;
-    private boolean aBoolean766;
+    public boolean aBoolean766;
     public boolean aBoolean767;
     public int anInt768;
-    private boolean aBoolean769;
-    private static int cacheIndex;
-    private int height;
+    public boolean aBoolean769;
+    public static int cacheIndex;
+    public int height;
     public int[] anIntArray773;
     public int anInt774;
     public int anInt775;
-    private int[] anIntArray776;
+    public int[] anIntArray776;
     public String description;
     public boolean hasActions;
     public boolean aBoolean779;
     public static MRUNodes mruNodes2 = new MRUNodes(30);
     public int animation;
     private static ObjectDefinition[] cache;
-    private int anInt783;
-    private int[] modifiedModelColors;
+    public int anInt783;
+    public int[] modifiedModelColors;
     public static MRUNodes mruNodes1 = new MRUNodes(500);
     public String actions[];
 

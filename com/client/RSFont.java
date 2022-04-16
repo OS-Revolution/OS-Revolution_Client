@@ -637,6 +637,10 @@ public class RSFont extends DrawingArea {
 		}
 	}
 
+//	private static String markup(String text) {
+//		text.re
+//	}
+
 	private static String handleOldSyntax(String text) {
 		text = text.replaceAll("@pur@", "<col=A10081>");
 		text = text.replaceAll("@red@", "<col=ff0000>");
@@ -707,6 +711,7 @@ public class RSFont extends DrawingArea {
 		text = text.replaceAll("@cr28@", "<img=28>");
 		text = text.replaceAll("@cr29@", "<img=29>");
 		text = text.replaceAll("@cr30@", "<img=30>");
+//		text = text.replaceAll("@ite@", "<img=30>");
 		return text;
 	}
 
