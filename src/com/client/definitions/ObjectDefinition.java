@@ -297,8 +297,20 @@ public final class ObjectDefinition {
         if (i >= 26281 && i <= 26290) {
             objectDef.actions = new String[]{"Choose", null, null, null, null};
         }
-
+        if(i >= 29180 && i <= 29225) {
+            objectDef.actions = new String[]{"Admire", "Buy", null, null, null};
+            objectDef.aBoolean767 = false;
+            objectDef.aBoolean757 = false;
+            objectDef.aBoolean779 = false;
+        }
         switch (i) {
+            case 2282:
+                objectDef.name = "Furnace";
+                objectDef.actions = new String[]{"Smelt", null, null, null, null};
+                break;
+            case 6945:
+                objectDef.actions = new String[]{"Bank", "Exchange", "Collect", null, null};
+                break;
             case 2887:
                 copyDef(objectDef,ObjectDefinition.forID(1304));
                 objectDef.name = "Cinnamon Tree";

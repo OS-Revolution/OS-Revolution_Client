@@ -231,6 +231,7 @@ public final class ItemDefinition {
                 break;
             case 7411:
                 copyDef(itemDef,ItemDefinition.forID(7409));
+                itemDef.name = "Jewel Secateurs";
                 itemDef.originalModelColors = new int[]{-32011, -32041, -32011};
                 itemDef.modifiedModelColors = new int[]{61, 41, 5772};
                 break;

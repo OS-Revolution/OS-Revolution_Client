@@ -27,6 +27,7 @@ import org.runehub.api.io.load.impl.ItemEquipmentContextLoader;
 import org.runehub.api.io.load.impl.ItemIdContextLoader;
 import org.runehub.api.model.entity.item.ItemContext;
 import org.runehub.api.model.entity.item.ItemEquipmentContext;
+import org.runehub.api.model.world.Face;
 import org.runehub.api.util.StringUtils;
 
 import javax.swing.*;
@@ -9815,6 +9816,14 @@ public class Client extends RSApplet {
         /**
          * @link addObject objectId, x, y, face, type, height
          */
+        addObject(20929,3091,3203,4,10,0);
+        addObject(20929,3087,3204,4,10,0);
+
+        addObject(20926,3094,3203,4,10,0);
+
+        addObject(20927,3091,3210,4,10,0);
+        addObject(20927,3088,3210,4,10,0);
+        addObject(20927,3090,3210,4,10,0);
         //Runecraft
         addObject(10157,3116,3167,4,10,0);
         //foraging

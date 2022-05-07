@@ -32,7 +32,9 @@ public final class NpcDefinition {
 		stream.currentOffset = streamIndices[i];
 		entityDef.interfaceType = i;
 		entityDef.readValues(stream);
-		
+		if(i == 3308) {
+			entityDef.name = "Draynor Representative";
+		}
 		if (i == 5736) {
 			entityDef.standAnim = 106;
 			entityDef.walkAnim = 106;
