@@ -81,7 +81,7 @@ public final class Stream extends NodeSub {
     }
 
     public void createFrame(int i) {
-        Logger.getGlobal().info("Sending Packet: " + i);
+//        Logger.getGlobal().info("Sending Packet: " + i);
         buffer[currentOffset++] = (byte) (i + encryption.getNextKey());
     }
 

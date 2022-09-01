@@ -304,12 +304,25 @@ public final class ObjectDefinition {
             objectDef.aBoolean779 = false;
         }
         switch (i) {
+            case 567:
+                objectDef.description = "A strange energy emanates from this.";
+                objectDef.actions = new String[]{"Teleport", null, null, null, null};
+                break;
+            case 10621:
+                objectDef.name = "Shining Chest";
+                objectDef.description = "I should use my @blu@Shiny Keys @bla@on this.";
+                break;
+            case 4126:
+                objectDef.name = "Shining Chest";
+                objectDef.description = "I should use my @blu@Shiny Keys @bla@on this.";
+                objectDef.actions = new String[]{"Open", "Redeem", null, null, null};
+                break;
             case 2282:
                 objectDef.name = "Furnace";
                 objectDef.actions = new String[]{"Smelt", null, null, null, null};
                 break;
             case 6945:
-                objectDef.actions = new String[]{"Bank", "Exchange", "Collect", null, null};
+                objectDef.actions = new String[]{"Bank", "Exchange", "Collect", "Redeem", "Redeem"};
                 break;
             case 2887:
                 copyDef(objectDef,ObjectDefinition.forID(1304));

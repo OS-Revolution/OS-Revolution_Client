@@ -19,6 +19,7 @@ import com.client.graphics.loaders.SpriteLoader1;
 import com.client.graphics.loaders.SpriteLoader2;
 import com.client.graphics.loaders.SpriteLoader3;
 import com.client.graphics.loaders.SpriteLoader4;
+import com.client.runehub.GameNodeController;
 import com.client.sign.Signlink;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.reflection.Sun14ReflectionProvider;
@@ -28,6 +29,7 @@ import org.runehub.api.io.load.impl.ItemIdContextLoader;
 import org.runehub.api.model.entity.item.ItemContext;
 import org.runehub.api.model.entity.item.ItemEquipmentContext;
 import org.runehub.api.model.world.Face;
+import org.runehub.api.util.SkillDictionary;
 import org.runehub.api.util.StringUtils;
 
 import javax.swing.*;
@@ -518,6 +520,9 @@ public class Client extends RSApplet {
                 newBoldFont.drawCenteredString(amountOrNameInput + "*", 259, 80 + yOffset, 128, -1);
             } else if (inputDialogState == 2) {
                 newBoldFont.drawCenteredString("Enter name:", 259, 60 + yOffset, 0, -1);
+                newBoldFont.drawCenteredString(amountOrNameInput + "*", 259, 80 + yOffset, 128, -1);
+            } else if (inputDialogState == 28) {
+                newBoldFont.drawCenteredString("Enter Code:", 259, 60 + yOffset, 0, -1);
                 newBoldFont.drawCenteredString(amountOrNameInput + "*", 259, 80 + yOffset, 128, -1);
             } else if (inputDialogState == 7) {
                 newBoldFont.drawCenteredString("Enter the price for the item:", 259, 60 + yOffset, 0, -1);
@@ -1838,9 +1843,9 @@ public class Client extends RSApplet {
                                                     menuActionName[menuActionRow] = itemDef.inventoryOptions[l3]
                                                             + " @lre@" + itemDef.name;
 //                                                    if (itemDef.inventoryOptions[l3].contains("Wield") || itemDef.inventoryOptions[l3].contains("Wear")) {
-                                                        hintMenu = true;
-                                                        hintName = itemDef.name;
-                                                        hintId = itemDef.id;
+                                                    hintMenu = true;
+                                                    hintName = itemDef.name;
+                                                    hintId = itemDef.id;
 //                                                    } else {
 //                                                        hintMenu = true;
 //                                                    }
@@ -1885,9 +1890,9 @@ public class Client extends RSApplet {
                                                 if (itemDef.inventoryOptions[i4] != null) {
 
 //                                                    if (itemDef.inventoryOptions[i4].contains("Wield") || itemDef.inventoryOptions[i4].contains("Wear")) {
-                                                        hintMenu = true;
-                                                        hintName = itemDef.name;
-                                                        hintId = itemDef.id;
+                                                    hintMenu = true;
+                                                    hintName = itemDef.name;
+                                                    hintId = itemDef.id;
 //                                                    } else {
 //                                                        hintMenu = true;
 //                                                    }
@@ -4975,6 +4980,7 @@ public class Client extends RSApplet {
             }
             this.worldController.method312(y, x);
         }
+        System.out.println("L is: " + l);
         if (l == 1062) {
             anInt924 += baseX;
             if (anInt924 >= 113) {
@@ -5575,12 +5581,13 @@ public class Client extends RSApplet {
          * if (l == 200) clearTopInterfaces();
          */
         if (l == 200) {
-            if (openInterfaceID != 48599 && openInterfaceID != 48598 && openInterfaceID != 48600)
-                clearTopInterfaces();
-            else {
+            System.out.println("Open Interface: " + openInterfaceID);
+//            if (openInterfaceID != 48599 && openInterfaceID != 48598 && openInterfaceID != 48600)
+//                clearTopInterfaces();
+//            else {
                 stream.createFrame(185);
                 stream.writeWord(15333);
-            }
+//            }
         }
 
         if (l == 201) {
@@ -5871,7 +5878,7 @@ public class Client extends RSApplet {
                 examineText = formatNumber(class9_4.invStackSizes[j]) + " x " + itemDef.name;
             else if (itemDef.description != null)
                 examineText = itemDef.description;
-            else if(ItemIdContextLoader.getInstance().containsKey(itemDef.id))
+            else if (ItemIdContextLoader.getInstance().containsKey(itemDef.id))
                 examineText = ItemIdContextLoader.getInstance().read(itemDef.id).getExamine();
             else
                 examineText = "It's a " + itemDef.name + ".";
@@ -5937,7 +5944,7 @@ public class Client extends RSApplet {
             String examineText;
             if (itemDef_1.description != null)
                 examineText = new String(itemDef_1.description);
-            else if(ItemIdContextLoader.getInstance().containsKey(itemDef_1.id))
+            else if (ItemIdContextLoader.getInstance().containsKey(itemDef_1.id))
                 examineText = ItemIdContextLoader.getInstance().read(itemDef_1.id).getExamine();
             else
                 examineText = "It's a " + itemDef_1.name + ".";
@@ -6676,10 +6683,11 @@ public class Client extends RSApplet {
                     inputDialogState = 0;
                     inputTaken = true;
                 }
-            } else if (inputDialogState == 3) {
+            } else if (inputDialogState == 3 || inputDialogState == 28) {
                 if (j == 10) {
                     inputDialogState = 0;
                     inputTaken = true;
+                    sendString(10, amountOrNameInput);
                 }
                 if (j >= 32 && j <= 122 && amountOrNameInput.length() < 40) {
                     amountOrNameInput += (char) j;
@@ -8047,11 +8055,12 @@ public class Client extends RSApplet {
         int[] getSkillId = {0, 0, 2, 1, 4, 5, 6, 20, 22, 3, 16, 15, 17, 12, 9, 18, 21, 14, 14, 13, 10, 7, 11, 8, 19,
                 24};
         if (!Skills.SKILL_NAMES[skillLevel].equals("-1")) {
-
+//            System.out.println("Skill Level: " + skillLevel +  " " + bonusXp.get(skillLevel));
             if (maxStats[getSkillId[skillLevel == 21 ? 22 : skillLevel]] >= 99) {
                 getToolTipText[0] = Skills.SKILL_NAMES[skillLevel] + " XP: "
                         + numberFormat.format(currentExp[getSkillId[skillLevel == 21 ? 22 : skillLevel]]) + "\\n";
-                setToolTipText = getToolTipText[0];
+                getToolTipText[1] = "Bonus XP: " + "\\r" + (bonusXp.get(getSkillId[skillLevel]) != null ? numberFormat.format(bonusXp.get(getSkillId[skillLevel])) : 0) + "\\n";
+                setToolTipText = getToolTipText[0] + getToolTipText[1];
             } else {
                 getToolTipText[0] = Skills.SKILL_NAMES[skillLevel] + " XP: " + "\\r"
                         + numberFormat.format(currentExp[getSkillId[skillLevel == 21 ? 22 : skillLevel]]) + "\\n";
@@ -8060,9 +8069,9 @@ public class Client extends RSApplet {
                 getToolTipText[2] = "Remainder: " + "\\r" + numberFormat.format(
                         getXPForLevel(maxStats[getSkillId[skillLevel == 21 ? 22 : skillLevel]] + 1) - currentExp[getSkillId[skillLevel == 21 ? 22 : skillLevel]])
                         + "\\n";
-                getToolTipText[3] = "";
+                getToolTipText[3] = "Bonus XP: " + "\\r" + (bonusXp.get(getSkillId[skillLevel]) != null ? numberFormat.format(bonusXp.get(getSkillId[skillLevel])) : 0) + "\\n";
 
-                setToolTipText = getToolTipText[0] + getToolTipText[1] + getToolTipText[2];
+                setToolTipText = getToolTipText[0] + getToolTipText[1] + getToolTipText[2] + getToolTipText[3];
             }
         } else {
             setToolTipText = "Click here to logout";
@@ -9816,21 +9825,23 @@ public class Client extends RSApplet {
         /**
          * @link addObject objectId, x, y, face, type, height
          */
-        addObject(20929,3091,3203,4,10,0);
-        addObject(20929,3087,3204,4,10,0);
+        GameNodeController.getInstance().initialize();
 
-        addObject(20926,3094,3203,4,10,0);
+        addObject(20929, 3091, 3203, 4, 10, 0);
+        addObject(20929, 3087, 3204, 4, 10, 0);
 
-        addObject(20927,3091,3210,4,10,0);
-        addObject(20927,3088,3210,4,10,0);
-        addObject(20927,3090,3210,4,10,0);
+        addObject(20926, 3094, 3203, 4, 10, 0);
+
+        addObject(20927, 3091, 3210, 4, 10, 0);
+        addObject(20927, 3088, 3210, 4, 10, 0);
+        addObject(20927, 3090, 3210, 4, 10, 0);
         //Runecraft
-        addObject(10157,3116,3167,4,10,0);
+        addObject(10157, 3116, 3167, 4, 10, 0);
         //foraging
-        addObject(8621,2945,3150,4,10,0);
-        addObject(8621,2946,3151,4,10,0);
-        addObject(8621,2946,3153,4,10,0);
-        addObject(8621,2947,3154,4,10,0);
+        addObject(8621, 2945, 3150, 4, 10, 0);
+        addObject(8621, 2946, 3151, 4, 10, 0);
+        addObject(8621, 2946, 3153, 4, 10, 0);
+        addObject(8621, 2947, 3154, 4, 10, 0);
         // Home
 
         addObject(29878, 1625, 3664, 0, 10, 0); //wogw
@@ -11767,16 +11778,16 @@ public class Client extends RSApplet {
             g.setFont(new Font("Helvetica", 1, 16));
             g.setColor(Color.yellow);
             int k = 35;
-            g.drawString("Sorry, an error has occured whilst loading "+ ClientProperties.getInstance().getGameName() +"", 30, k);
+            g.drawString("Sorry, an error has occured whilst loading " + ClientProperties.getInstance().getGameName() + "", 30, k);
             k += 50;
             g.setColor(Color.white);
             g.drawString("To fix this try the following (in order):", 30, k);
             k += 50;
             g.setColor(Color.white);
             g.setFont(new Font("Helvetica", 1, 12));
-            g.drawString("1: Go to your user files and delete "+ ClientProperties.getInstance().getGameName() +" folder", 30, k);
+            g.drawString("1: Go to your user files and delete " + ClientProperties.getInstance().getGameName() + " folder", 30, k);
             k += 30;
-            g.drawString("2: Delete the "+ ClientProperties.getInstance().getGameName() +".jar and redownload the loader from our homepage", 30, k);
+            g.drawString("2: Delete the " + ClientProperties.getInstance().getGameName() + ".jar and redownload the loader from our homepage", 30, k);
             k += 30;
             g.drawString("3: After deleting cache and redownloading client, go ahead and open it", 30, k);
             k += 30;
@@ -11801,9 +11812,9 @@ public class Client extends RSApplet {
             l += 50;
             g.setColor(Color.white);
             g.setFont(new Font("Helvetica", 1, 12));
-            g.drawString("1: Go to your user files and delete "+ ClientProperties.getInstance().getGameName() +" folder", 30, l);
+            g.drawString("1: Go to your user files and delete " + ClientProperties.getInstance().getGameName() + " folder", 30, l);
             l += 30;
-            g.drawString("2: Delete the "+ ClientProperties.getInstance().getGameName() +".jar and redownload the loader from our homepage", 30, l);
+            g.drawString("2: Delete the " + ClientProperties.getInstance().getGameName() + ".jar and redownload the loader from our homepage", 30, l);
             l += 30;
             g.drawString("3: After deleting cache and redownloading client, go ahead and open it", 30, l);
             l += 30;
@@ -11814,6 +11825,7 @@ public class Client extends RSApplet {
     @Override
     public URL getCodeBase() {
         try {
+
             return new URL(ClientProperties.getInstance().getServerAddress() + ":" + (80 + portOff));
         } catch (Exception _ex) {
         }
@@ -14101,12 +14113,12 @@ public class Client extends RSApplet {
             if (class9.children[k] == -1)
                 break;
             RSInterface class9_1 = RSInterface.interfaceCache[class9.children[k]];
-            try {
-                System.out.println("\nChild id: " + RSInterface.interfaceCache[class9.children[k]].id);
-                System.out.println("Child Message: " + RSInterface.interfaceCache[class9.children[k]].message);
-            } catch (Exception e) {
-                System.out.println("EXCEPTION: Child ID: " + k);
-            }
+//            try {
+//                System.out.println("\nChild id: " + RSInterface.interfaceCache[class9.children[k]].id);
+//                System.out.println("Child Message: " + RSInterface.interfaceCache[class9.children[k]].message);
+//            } catch (Exception e) {
+//                System.out.println("EXCEPTION: Child ID: " + k);
+//            }
             if (class9_1.type == 1)
                 flag1 |= method119(i, class9_1.id);
             if (class9_1.type == 6 && (class9_1.anInt257 != -1 || class9_1.anInt258 != -1)) {
@@ -14894,6 +14906,7 @@ public class Client extends RSApplet {
             int y = drop.getYPosition() - 15;
             int transparency = 256;
             newSmallFont.drawString(text, x, y, 0xFFFFFF, 0x000000, 256);
+            //Todo XP drops for sailing?
             for (int skill : drop.getSkills()) {
                 if (skill == 22) {
                     continue;
@@ -16052,6 +16065,8 @@ public class Client extends RSApplet {
 
     };
 
+    private Map<Integer,Integer> bonusXp = new HashMap<>();
+
     private boolean parsePacket() {
         if (socketStream == null)
             return false;
@@ -16096,6 +16111,7 @@ public class Client extends RSApplet {
             dealtWithPacket = incomingPacket;
             dealtWithPacketSize = packetSize;
 
+//            Logger.getGlobal().info("Parsing Packet: " + incomingPacket + " Expected Size: " + SizeConstants.packetSizes[incomingPacket] + " Actual Size: " + packetSize);
 
             switch (incomingPacket) {
 
@@ -16306,8 +16322,9 @@ public class Client extends RSApplet {
                     int skillId = inStream.readUnsignedByte();
                     int experience2 = inStream.method439();
                     int currentLevel = inStream.readUnsignedByte();
+//                    System.out.println("Drawing Level: "+ currentLevel);
+//                    int bonusxp = inStream.readUnsignedByte();
                     int xp = currentExp[skillId];
-
                     currentExp[skillId] = experience2;
                     currentStats[skillId] = currentLevel;
                     maxStats[skillId] = 1;
@@ -16318,7 +16335,16 @@ public class Client extends RSApplet {
                             maxStats[skillId] = k20 + 2;
                     incomingPacket = -1;
                     return true;
-
+                case 135:
+                    int sId = inStream.readUnsignedByte();
+                    int bonusxp = inStream.readUnsignedWord();
+                    if (bonusXp.containsKey(sId)) {
+                        bonusXp.compute(sId,(key,value) -> value = bonusxp);
+                    } else {
+                        bonusXp.put(sId,bonusxp);
+                    }
+                    incomingPacket = -1;
+                    return true;
                 case 71:
                     int l1 = inStream.readUnsignedWord();
                     int j10 = inStream.method426();
@@ -16986,7 +17012,6 @@ public class Client extends RSApplet {
                     }
                     incomingPacket = -1;
                     return true;
-
                 case 206:
                     publicChatMode = inStream.readUnsignedByte();
                     privateChatMode = inStream.readUnsignedByte();
@@ -17112,7 +17137,13 @@ public class Client extends RSApplet {
                     inputTaken = true;
                     incomingPacket = -1;
                     return true;
-
+                case 28:
+                    messagePromptRaised = false;
+                    inputDialogState = 28;
+                    amountOrNameInput = "";
+                    inputTaken = true;
+                    incomingPacket = -1;
+                    return true;
                 case 191:
                     messagePromptRaised = false;
                     inputDialogState = 7;
@@ -17223,6 +17254,7 @@ public class Client extends RSApplet {
                     return true;
 
                 case 219:
+                    System.out.println("Open Interface:" + openInterfaceID);
                     if (invOverlayInterfaceID != -1) {
                         invOverlayInterfaceID = -1;
                         needDrawTabArea = true;
@@ -17683,7 +17715,7 @@ public class Client extends RSApplet {
     }
 
     private Sprite[] chatButtons;
-//    public String server1;
+    //    public String server1;
     public float LP;
 
     Client() {

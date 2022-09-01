@@ -85,6 +85,7 @@ public class Interfaces extends RSInterface {
 		addStaffSpecialWidget();
 		skillTabWithHovers(defaultTextDrawingAreas);
 		normals(defaultTextDrawingAreas);
+		wushankoTeleportCharge(textDrawingAreas);
 	}
 	private static void mysteryBox(TextDrawingArea[] tda) {
 		RSInterface iface = addInterface(47000);

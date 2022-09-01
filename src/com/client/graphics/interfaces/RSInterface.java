@@ -245,6 +245,7 @@ public class RSInterface {
 		teleport(textDrawingAreas);
 		OsDropViewer(textDrawingAreas);
 		achievementPopup2(textDrawingAreas);
+		voyageSelection(textDrawingAreas);
 		skillMenu(textDrawingAreas);
 		// aMRUNodes_238 = null;
 	}
@@ -663,6 +664,162 @@ public class RSInterface {
 			scroll.scrollMax = 1325;
 		}
 	}
+	private static void voyageSelection(TextDrawingArea[] tda) {
+		RSInterface tab = addInterface(38000);
+		String dir = "Interfaces/Achievements2/SPRITE";
+		addSprite(38001, 0, dir);
+		addHoverButton(38002, dir, 1, 21, 21, "Close", -1, 38003, 1);
+		addHoveredButton(38003, dir, 2, 21, 21, 38004);
+		addText(38005, "Voyage Selection", tda, 2, 0xff9040, true, true);
+		addText(38550, "Possible Rewards:", tda, 0, 0xFFA500, false, true);
+		addText(38026, "Easy", tda, 2, 0xff9040, true, true);
+		int x = 5, y = 5;
+		tab.totalChildren(19);
+		tab.child(0, 38001, x, y);
+		tab.child(1, 38002, 469 + x, 7 + y);
+		tab.child(2, 38003, 469 + x, 7 + y);
+		tab.child(3, 38005, 248 + x, 10 + y);
+		String[] titles = { "Easy", "Medium", "Hard" };
+		int xx = 7;
+		for (int i = 0; i < 3; i++) {
+			addHoverButton(48006 + i, dir, 3, 160, 20, "View", -1, 38010 + i, 1);
+			addHoveredButton(48010 + i, dir, 4, 160, 20, 38014 + i);
+			addText(48018 + i, titles[i], tda, 1, 0xff7000, true, true);
+			tab.child(4 + i, 48006 + i, xx + x, 38 + y);
+			tab.child(7 + i, 48010 + i, xx + x, 38 + y);
+			tab.child(10 + i, 48018 + i, xx + x + 80, 40 + y);
+			xx += 161;
+		}
+		tab.child(13, 38023, 8 + x, 82 + y);
+		tab.child(14, 38500, 152 + x, 68 + y);
+		tab.child(15, 38510, 317 + x, 232 + y);
+		tab.child(16, 38520, 152 + x, 232 + y);
+		tab.child(17, 38550, 171 + x, 218 + y);
+		tab.child(18, 38026, 70 + x, 62 + y);
+
+		RSInterface info = addInterface(38500);
+		addText(38501, "Title Of Achievement", tda, 3, 0xff9040, true, true);
+		addText(38502, "Progress: @gre@0% (0/0)", tda, 1, 0xffffff, true, true);
+		info.totalChildren(8);
+		info.child(0, 38501, 163, 6);
+		info.child(1, 38502, 163, 26);
+		for (int i = 0; i < 6; i++) {
+			addText(38503 + i, "Description #" + i, tda, 0, 0xffffff, true, true);
+			info.child(2 + i, 38503 + i, 163, 51 + (i * 13));
+		}
+
+		RSInterface exp = addInterface(38510);
+		exp.totalChildren(5);
+		for (int i = 0; i < 5; i++) {
+//			addClickableText(38511 + i, "Text", tda, 0, 0xffffff, false, true);
+			addClickableText(38511 + i, "line", "Select", tda, 0, 0xff9040, false, true,
+					112);
+			exp.child(i, 38511 + i, 3, 3 + (i * 13));
+		}
+		exp.width = 146;
+		exp.height = 72;
+		exp.scrollMax = 0;
+
+		RSInterface items = addInterface(38520);
+		items.totalChildren(1);
+		itemGroup(38521, 4, 3, 4, 5, true, true);
+		// fill(38521);
+		interfaceCache[38521].contentType = 206;
+		items.child(0, 38521, 5, 5);
+		items.width = 146;
+		items.height = 72;
+		items.scrollMax = 200;
+
+		for (int i = 0; i < 3; i++) {
+			RSInterface scroll = addInterface(38023 + i);
+			scroll.totalChildren(100);
+			for (int j = 0; j < 100; j++) {
+				addClickableText(38037 + j + (i * 100), "Achievement: " + j, "Select", tda, 0, 0xff9040, false, true,
+						112);
+				scroll.child(j, 38037 + j + (i * 100), 2, 4 + (j * 13));
+			}
+			scroll.width = 109;
+			scroll.height = 232;
+			scroll.scrollMax = 1325;
+		}
+//		RSInterface tab = addInterface(38000);
+//		String dir = "Interfaces/Achievements2/SPRITE";
+//		addSprite(38001, 0, dir);
+//		addHoverButton(38002, dir, 1, 21, 21, "Close", -1, 38003, 1);
+//		addHoveredButton(38003, dir, 2, 21, 21, 38004);
+//		addText(38005, "Voyage Selection", tda, 2, 0xff9040, true, true);
+//		addText(38550, "Possible Rewards for Successful Voyage:", tda, 0, 0xFFA500, false, true);
+//		addText(38026, "Easy", tda, 2, 0xff9040, true, true);
+//		int x = 5, y = 5;
+//		tab.totalChildren(19);
+//		tab.child(0, 38001, x, y);
+//		tab.child(1, 38002, 469 + x, 7 + y);
+//		tab.child(2, 38003, 469 + x, 7 + y);
+//		tab.child(3, 38005, 248 + x, 10 + y);
+//		String[] titles = { "Easy", "Medium", "Hard" };
+//		int xx = 7;
+//		for (int i = 0; i < 3; i++) {
+//			addHoverButton(48006 + i, dir, 3, 160, 20, "View", -1, 38010 + i, 1);
+//			addHoveredButton(48010 + i, dir, 4, 160, 20, 38014 + i);
+//			addText(48018 + i, titles[i], tda, 1, 0xff7000, true, true);
+//			tab.child(4 + i, 48006 + i, xx + x, 36 + y);
+//			tab.child(7 + i, 48010 + i, xx + x, 36 + y);
+//			tab.child(10 + i, 48018 + i, xx + x + 80, 40 + y);
+//			xx += 161;
+//		}
+//		tab.child(13, 38023, 8 + x, 82 + y);
+//		tab.child(14, 38500, 152 + x, 68 + y);
+//		tab.child(15, 38510, 317 + x, 232 + y);
+//		tab.child(16, 38520, 152 + x, 232 + y);
+//		tab.child(17, 38550, 171 + x, 218 + y);
+//		tab.child(18, 38026, 70 + x, 62 + y);
+//
+//		RSInterface info = addInterface(38500);
+//		addText(38501, "Title Of Achievement", tda, 3, 0xff9040, true, true);
+//		addText(38502, "Progress: @gre@0% (0/0)", tda, 1, 0xffffff, true, true);
+//		info.totalChildren(8);
+//		info.child(0, 38501, 163, 6);
+//		info.child(1, 38502, 163, 26);
+//		for (int i = 0; i < 6; i++) {
+//			addText(38503 + i, "Description #" + i, tda, 0, 0xffffff, true, true);
+//			info.child(2 + i, 38503 + i, 163, 51 + (i * 13));
+//		}
+//
+//		RSInterface exp = addInterface(38510);
+//		exp.totalChildren(5);
+//		for (int i = 0; i < 5; i++) {
+////			addText(37511 + i, "Text", tda, 0, 0xffffff, false, true);
+//			addClickableText(38511 + i + (i * 100), "", "Select", tda, 0, 0xff9040, false, true,
+//					112);
+//			exp.child(i, 38511 + i, 3, 3 + (i * 13));
+//		}
+//		exp.width = 146;
+//		exp.height = 72;
+//		exp.scrollMax = 0;
+//
+//		RSInterface items = addInterface(38520);
+//		items.totalChildren(1);
+//		itemGroup(38521, 4, 3, 4, 5, true, true);
+//		// fill(36521);
+//		interfaceCache[38521].contentType = 206;
+//		items.child(0, 38521, 5, 5);
+//		items.width = 146;
+//		items.height = 72;
+//		items.scrollMax = 200;
+//
+//		for (int i = 0; i < 3; i++) {
+//			RSInterface scroll = addInterface(38023 + i);
+//			scroll.totalChildren(100);
+//			for (int j = 0; j < 100; j++) {
+//				addClickableText(38037 + j + (i * 100), "Achievement: " + j, "Select", tda, 0, 0xff9040, false, true,
+//						112);
+//				scroll.child(j, 38037 + j + (i * 100), 2, 4 + (j * 13));
+//			}
+//			scroll.width = 109;
+//			scroll.height = 232;
+//			scroll.scrollMax = 0;
+//		}
+	}
     protected static void infoTab(TextDrawingArea[] tda) {
         RSInterface tab = addTabInterface(47500);
         addText(47501, "@or1@Info Tab", tda, 2, 16750899, false, true);
@@ -833,6 +990,79 @@ public class RSInterface {
 	private static void OsDropViewer(TextDrawingArea[] tda) {
 		RSInterface tab = addInterface(39500);
 		String dir = "Interfaces/DropViewer/SPRITE";
+		addSprite(39501, 0, dir);
+		addHoverButton(39502, dir, 1, 21, 21, "Close", 0, 39503, 1);
+		addHoveredButton(39503, dir, 2, 21, 21, 39504);
+		addText(43005, "Monster Drop Viewer", tda, 2, 0xFFA500, true, true);
+		addText(43110, "Health: @whi@0", tda, 1, 0xff9040, false, true);// overrides
+		addText(43111, "Combat Level: @whi@0", tda, 1, 0xff9040, false, true);
+		addText(43112, "Max Hit: @whi@0", tda, 1, 0xff9040, false, true);
+		addText(43113, "Aggressive: @whi@false", tda, 1, 0xff9040, false, true);
+
+		addInputField(39806, 30, 0xFF981F, "NPC/Item Name..", 130, 28, false, false, "[A-Za-z0-9 .,]");
+		//addText(42522, "Find npc/item drops", drawingArea, 0, 0xFF981F, true, false);
+		int x = 7, y = 7;
+		tab.totalChildren(11);
+		tab.child(0, 39501, 0 + x, 0 + y);
+		tab.child(1, 39502, 472 + x, 7 + y);
+		tab.child(2, 39503, 472 + x, 7 + y);
+		tab.child(3, 43005, 250 + x, 11 + y);
+		tab.child(4, 39806, 8+x, 37+y);
+		tab.child(5, 39507, 6 + x, 66 + y);
+		tab.child(6, 34000, 150 + x, 86 + y);
+		tab.child(7, 43110, 250 + x, 40 + y);
+		tab.child(8, 43111, 250 + x, 60 + y);
+		tab.child(9, 43112, 360 + x, 40 + y);
+		tab.child(10, 43113, 360 + x, 60 + y);
+
+		RSInterface results = addInterface(39507);
+		results.width = 122;
+		results.height = 250;
+		results.scrollMax = 1800;
+		results.totalChildren(200);
+		for (int j = 0; j < 200; j++) {
+			addClickableText(33008 + j, "", "View Drops", tda, 0, 0xff0000, false, true, 110);
+			results.child(j, 33008 + j, 6, 8 + (j * 14));
+		}
+
+		RSInterface main = addInterface(34000);
+		main.totalChildren(720);
+		main.width = 328;
+		main.height = 230;
+		main.scrollMax = 2560;
+		addSprite(34001, 3, dir);
+		addSprite(34002, 4, dir);
+		for (int i = 0; i < 40; i++) {
+			main.child(i, 34001, 0, (i * 64));
+			main.child(i + 40, 34002, 0, 32 + (i * 64));
+		}
+		addText(34003, "Amount:", tda, 0, 0xff9040, true, true);
+		addText(34004, "Rarity:", tda, 0, 0xff9040, true, true);
+		addText(34005, "Chance:", tda, 0, 0xff9040, true, true);
+		for (int i = 0; i < 80; i++) {
+			itemGroup(34010 + i, 1, 1, 1, 1, false, false);
+			interfaceCache[34010 + i].inv[0] = 14485;
+			interfaceCache[34010 + i].invStackSizes[0] = 1;
+			addText(34100 + i, "Item Name", tda, 1, 0xFFA500, false, true);
+			addText(34200 + i, "1-50", tda, 0, 0xffffff, true, true);
+			addText(34300 + i, "Common", tda, 0, 0xffffff, true, true);
+			addText(34400 + i, "1/200", tda, 0, 0xffffff, true, true);
+			int yy = (i * 32);
+			main.child(80 + i, 34010 + i, 1, 0 + yy);
+			main.child(160 + i, 34100 + i, 39, 6 + yy);
+			main.child(240 + i, 34003, 175, 2 + yy);
+			main.child(320 + i, 34004, 234, 2 + yy);
+			main.child(400 + i, 34005, 293, 2 + yy);
+			main.child(480 + i, 34200 + i, 175, 14 + yy);
+			main.child(560 + i, 34300 + i, 234, 14 + yy);
+			main.child(640 + i, 34400 + i, 293, 14 + yy);
+		}
+
+	}
+
+	private static void wushankoTeleportRSI(TextDrawingArea[] tda) {
+		RSInterface tab = addInterface(7700);
+		String dir = "Interfaces/wushanko/teleport/SPRITE";
 		addSprite(39501, 0, dir);
 		addHoverButton(39502, dir, 1, 21, 21, "Close", 0, 39503, 1);
 		addHoveredButton(39503, dir, 2, 21, 21, 39504);
@@ -1154,6 +1384,67 @@ public class RSInterface {
 		Interface.valueIndexArray[0][0] = 2;
 		Interface.valueIndexArray[0][1] = 5;
 		Interface.valueIndexArray[0][2] = 0;
+	}
+
+	public static void wushankoTeleportCharge(TextDrawingArea[] tda) {
+		final int START_ID = 30000;
+		int id = START_ID;
+		int child = 0;
+
+		final int WINDOW_X = 80;
+		final int WINDOW_Y = 25;
+
+		RSInterface rsi = addTabInterface(id++);
+		rsi.totalChildren(34);
+
+		addSprite(id, 0, "/Interfaces/wushanko/teleport/recharge/SPRITE");
+		rsi.child(child++, id++, WINDOW_X, WINDOW_Y);// BACKGROUND
+
+		addHoverButton(id, "/Interfaces/wushanko/teleport/recharge/CLOSE", 0, 21, 21, "Close", 0, id + 1, 1);
+		addHoveredButton(id + 1, "/Interfaces/wushanko/teleport/recharge/CLOSE", 1, 21, 21, id + 2);
+		rsi.child(child++, id, WINDOW_X + 324, WINDOW_Y + 7); // CLOSE BUTTON
+		rsi.child(child++, id + 1, WINDOW_X + 324, WINDOW_Y + 7); // CLOSE
+		// BUTTON
+		// HOVER
+		id += 3;
+
+		/**
+		 * Inventory items
+		 */
+		final int START_X = WINDOW_X + 20;
+		final int START_Y = WINDOW_Y + 135;
+		int x = START_X;
+		int y = START_Y;
+		final int X_DIFF = 47;
+		final int Y_DIFF = 32;
+		// id = 27342;
+
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 7; j++) {
+				// System.out.println("Rune pouch inventory item interface: " + id);
+				addItem(id, new String[] { "Add 1", "Add 5", "Add 10", "Add All", "Add X" });
+				rsi.child(child++, id++, x, y);
+				x += X_DIFF;
+			}
+
+			x = START_X;
+			y += Y_DIFF;
+
+		}
+
+		/**
+		 * Pouch items
+		 */
+		final int START_POUCH_X = WINDOW_X + 104;
+		final int START_POUCH_Y = WINDOW_Y + 64;
+		final int X_POUCH_DIFF = 56;
+		x = START_POUCH_X;
+		y = START_POUCH_Y;
+		for (int i = 0; i < 3; i++) {
+			addItem(id, new String[] { "Remove 1", "Remove 5", "Remove 10", "Remove All", "Remove X" }, 1336);
+			rsi.child(child++, id++, x, y);
+			x += X_POUCH_DIFF;
+		}
 	}
 
 	/**
