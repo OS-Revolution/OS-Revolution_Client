@@ -104,7 +104,7 @@ final class Animable_Sub5 extends Renderable {
 		}
 		ObjectDefinition class46 = ObjectDefinition.forID(anInt1610);
 		anInt1601 = class46.anInt774;
-		anInt1602 = class46.anInt749;
+		anInt1602 = class46.configId;
 		anIntArray1600 = class46.childrenIDs;
 	}
 }

@@ -56,6 +56,7 @@ public class Interfaces extends RSInterface {
 		Pestpanel2(defaultTextDrawingAreas);
 		configureLunar(defaultTextDrawingAreas);
 		achievements(defaultTextDrawingAreas);
+		rift(defaultTextDrawingAreas);
 		updateShopWidget(defaultTextDrawingAreas);
 		teleportation(defaultTextDrawingAreas);
 		preloadEquipmentWidget(defaultTextDrawingAreas);
@@ -1739,6 +1740,26 @@ public class Interfaces extends RSInterface {
 		rsInterface.child(15, 42020, 340, 243);
 		rsInterface.child(16, 42021, 340, 278);//end of exit
 		rsInterface.child(17, 42022, 385, 190);
+	}
+
+	private static void rift(TextDrawingArea[] tda) {
+		RSInterface rsi = addInterface(53000);
+		addText(53001, "Objectives", tda, 2, 0xFD851A, true, true);
+		addText(53002, "", tda, 0, 0xFD851A, true, true);
+		addText(53003, "", tda, 0, 0xFD851A, true, true);
+		addText(53004, "", tda, 0, 0xFD851A, true, true);
+		addText(53005, "", tda, 0, 0xFD851A, true, true);
+		addText(53006, "", tda, 0, 0xFD851A, true, true);
+		addText(53007, "", tda, 0, 0xFD851A, true, true);
+		addText(53008, "Progress", tda, 2, 0xFFFFFF, true, false);
+//		addText(53009, "0", tda, 0, 0xFD851A, true, true);
+		addSprite(53009, 6, "Interfaces/Achievements/IMAGE");
+		setChildren(9, rsi);
+		setBounds(53001, 485, 55, 0, rsi);
+		for (int index = 1; index < 7; index++)
+			setBounds(53001 + index, 485, 60 + index * 14, index, rsi);
+		setBounds(53008, 485, 35, 8, rsi);
+		setBounds(53009, 390, 35, 7, rsi);
 	}
 
 	private static void achievements(TextDrawingArea[] tda) {

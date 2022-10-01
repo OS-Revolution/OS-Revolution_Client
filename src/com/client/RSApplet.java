@@ -375,6 +375,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 
 	@Override
 	public final void mouseReleased(MouseEvent mouseevent) {
+		Client.instance.console.extendingConsole = false;
 		idleTime = 0;
 		clickMode2 = 0;
 		mouseWheelDown = false;
@@ -466,6 +467,15 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 		}
 		if (i == KeyEvent.VK_ESCAPE) {
 			Client.closeInterface();
+		}
+		if(keyevent.getKeyCode() == 192) {
+			Client.instance.console.consoleOpen = ! Client.instance.console.consoleOpen;
+			return;
+		}
+
+		if(Client.instance.console.consoleOpen) {
+			Client.instance.console.parseKeyForConsole(keyevent);
+			return;
 		}
 		// if (i == KeyEvent.VK_SPACE) {
 		// Client
@@ -828,7 +838,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 	protected int clickX;
 	protected int clickY;
 	private long clickTime;
-	int clickMode3;
+	public int clickMode3;
 	int saveClickX;
 	int saveClickY;
 	long aLong29;

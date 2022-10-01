@@ -377,6 +377,30 @@ public final class ItemDefinition {
         }
 
         switch (itemId) {
+            case 7622:
+                copyDef(itemDef,forID(7622));
+                itemDef.name = "Ultracompost";
+                break;
+            case 7623:
+                copyDef(itemDef,forID(7623));
+                itemDef.name = "Ultracompost";
+                break;
+            case 7624:
+                copyDef(itemDef,forID(7624));
+                itemDef.name = "Bottomless compost bucket";
+                itemDef.inventoryOptions = new String[]{null, "Empty", "Check", null, null};
+                itemDef.description = "Can store up to 10,000 compost charges.";
+                break;
+            case 13658:
+                copyDef(itemDef,forID(13658));
+                itemDef.name = "Deck of Cards";
+                itemDef.description = "A deck of playing cards.";
+                break;
+            case 21354:
+                copyDef(itemDef,forID(21354));
+                itemDef.name = "Feather fan";
+                itemDef.description = "An ornate fan made from the feathers of Tengu it is capable of controlling wind";
+                break;
             case 20035:
                 copyDef(itemDef,forID(20035));
                 itemDef.name = "Tetsu kasa";
@@ -915,6 +939,7 @@ public final class ItemDefinition {
                 itemDef.name = "Bank Charge";
                 itemDef.inventoryOptions = new String[]{"Use", null, null, null, "Drop"};
                 itemDef.description = "Gives you one charge for your bank.";
+                itemDef.stackable = true;
                 break;
             case 13136:
                 itemDef.equipActions[2] = "Elidinis";

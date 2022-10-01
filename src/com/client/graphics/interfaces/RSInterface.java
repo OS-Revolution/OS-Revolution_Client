@@ -710,12 +710,26 @@ public class RSInterface {
 
 		RSInterface exp = addInterface(38510);
 		exp.totalChildren(5);
-		for (int i = 0; i < 5; i++) {
-//			addClickableText(38511 + i, "Text", tda, 0, 0xffffff, false, true);
-			addClickableText(38511 + i, "line", "Select", tda, 0, 0xff9040, false, true,
-					112);
-			exp.child(i, 38511 + i, 3, 3 + (i * 13));
-		}
+
+		addClickableText(38511, "Start Voyage", "Select", tda, 0, 0xff0000, false, true, 112);
+		exp.child(0, 38511, 3, 3 + (0 * 13));
+
+		addClickableText(38512, "Re-roll Voyage", "Select", tda, 0, 0xff0000, false, true, 112);
+		exp.child(1, 38512, 3, 3 + (1 * 13));
+
+		addClickableText(38513, "Cancel Voyage", "Select", tda, 0, 0xff0000, false, true, 112);
+		exp.child(2, 38513, 3, 3 + (2 * 13));
+
+		addClickableText(38514, "Complete Voyage", "Select", tda, 0, 0xff0000, false, true, 112);
+		exp.child(3, 38514, 3, 3 + (3 * 13));
+
+		addClickableText(38515, "", "", tda, 0, 0xff9040, false, true, 112);
+		exp.child(4, 38515, 3, 3 + (4 * 13));
+//		for (int i = 0; i < 5; i++) {
+////			addClickableText(38511 + i, "Text", tda, 0, 0xffffff, false, true);
+//			addClickableText(38511 + i, "line", "Select", tda, 0, 0xff9040, false, true, 112);
+//			exp.child(i, 38511 + i, 3, 3 + (i * 13));
+//		}
 		exp.width = 146;
 		exp.height = 72;
 		exp.scrollMax = 0;
@@ -734,7 +748,7 @@ public class RSInterface {
 			RSInterface scroll = addInterface(38023 + i);
 			scroll.totalChildren(100);
 			for (int j = 0; j < 100; j++) {
-				addClickableText(38037 + j + (i * 100), "Achievement: " + j, "Select", tda, 0, 0xff9040, false, true,
+				addClickableText(38037 + j + (i * 100), "", "Select", tda, 0, 0xff9040, false, true,
 						112);
 				scroll.child(j, 38037 + j + (i * 100), 2, 4 + (j * 13));
 			}
@@ -742,6 +756,8 @@ public class RSInterface {
 			scroll.height = 232;
 			scroll.scrollMax = 1325;
 		}
+
+		System.out.println();
 //		RSInterface tab = addInterface(38000);
 //		String dir = "Interfaces/Achievements2/SPRITE";
 //		addSprite(38001, 0, dir);

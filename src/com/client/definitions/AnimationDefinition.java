@@ -3,6 +3,9 @@ package com.client.definitions;
 import com.client.Class36;
 import com.client.Stream;
 import com.client.StreamLoader;
+import com.google.gson.Gson;
+
+import java.io.FileWriter;
 
 public final class AnimationDefinition {
 
@@ -619,6 +622,20 @@ public final class AnimationDefinition {
 			}
 			anInt364 = 0;
 		}
+	}
+
+	public static void dumpList() {
+		System.out.println(anims.length);
+//		try {
+//			FileWriter fw = new FileWriter(System.getProperty("user.home") + "/Desktop/animation_data.json");
+//			for (int i = 0; i < anims.length; i++) {
+//				AnimationDefinition itemDefinition = anims[i];
+//				fw.write("Id: " + itemDefinition.anInt352 + "\n");
+//			}
+//			fw.close();
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
 	}
 
 	public AnimationDefinition() {

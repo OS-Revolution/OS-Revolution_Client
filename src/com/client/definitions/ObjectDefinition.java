@@ -8,12 +8,10 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
-import com.client.utilities.FileOperations;
 import org.apache.commons.lang3.StringUtils;
 
 import com.client.Class36;
 import com.client.Client;
-import com.client.Configuration;
 import com.client.MRUNodes;
 import com.client.Model;
 import com.client.OnDemandFetcher;
@@ -77,8 +75,8 @@ public final class ObjectDefinition {
         return width;
     }
 
-    public int getAnInt744() {
-        return anInt744;
+    public int getVarpId() {
+        return varpId;
     }
 
     public int getAnInt745() {
@@ -97,8 +95,8 @@ public final class ObjectDefinition {
         return thickness;
     }
 
-    public int getAnInt749() {
-        return anInt749;
+    public int getConfigId() {
+        return configId;
     }
 
     public boolean isaBoolean751() {
@@ -243,7 +241,6 @@ public final class ObjectDefinition {
         def.name = name;
         def.actions = new String[]{"Forage", null, null, null, null};
         def.modifiedModelColors = new int[]{20364, 19988, 19992};
-
         if (newColors != null) {
             def.originalModelColors = newColors;//new int[] {25505, 25496,  25496};
         }
@@ -263,9 +260,9 @@ public final class ObjectDefinition {
         newDefinition.modifiedModelColors = baseDefinition.modifiedModelColors;
         newDefinition.width = baseDefinition.width;
         newDefinition.height = baseDefinition.height;
-        newDefinition.anInt749 = baseDefinition.anInt749;
+        newDefinition.configId = baseDefinition.configId;
         newDefinition.anInt758 = baseDefinition.anInt758;
-        newDefinition.anInt744 = baseDefinition.anInt744;
+        newDefinition.varpId = baseDefinition.varpId;
         newDefinition.actions = baseDefinition.actions;
         newDefinition.animation = baseDefinition.animation;
         newDefinition.anInt761 = baseDefinition.anInt761;
@@ -379,52 +376,52 @@ public final class ObjectDefinition {
                 objectDef.modifiedModelColors = new int[] {20364, 19988, 19992};
                 objectDef.originalModelColors = new int[] {20364, 19988, 19992};
                 break;
-            case 8132:
-                createHerb(objectDef, "Guam", new int[]{22428, 22418, 22428});
-                break;
-            case 8133:
-                createHerb(objectDef, "Marrentill", new int[]{22433, 22424, 22433});
-                break;
-            case 8134:
-                createHerb(objectDef, "Tarromin", new int[]{25505, 25496, 25496});
-                break;
-            case 8135:
-                createHerb(objectDef, "Harralander", new int[]{16289, 13204, 13204});
-                break;
-            case 8136:
-                createHerb(objectDef, "Ranarr Weed", new int[]{17304, 15250, 15250});
-                break;
-            case 8137:
-                createHerb(objectDef, "Toadflax", new int[]{22408, 22414, 22414});
-                break;
-            case 8138:
-                createHerb(objectDef, "Irit Leaf", new int[]{17961, 18974, 18974});
-                break;
-            case 8139:
-                createHerb(objectDef, "Avantoe", new int[]{24342, 25360, 25360});
-                break;
-            case 8140:
-                createHerb(objectDef, "Kwuarm", new int[]{13204, 14224, 14224});
-                break;
-            case 8141:
-                createHerb(objectDef, "Cadantine", new int[]{13974, 14866, 14866});
-                break;
-            case 8142:
-                createHerb(objectDef, "Snapdragon", new int[]{14226, 13212, 13212});
-                break;
-            case 8144:
-                createHerb(objectDef, "Lantadyme", new int[]{27548, 30610, 30610});
-                break;
-            case 8145:
-                createHerb(objectDef, "Dwarf Weed", new int[]{22416, 22414, 22414});
-                break;
-            case 8146:
-                createHerb(objectDef, "Torstol", new int[]{22422, 22416, 22416});
-                break;
-            case 8147:
-                createHerb(objectDef, "Bloodweed", new int[]{947, 822, 925});
-                objectDef.description = "A rare herb containing a thick blood like substance.";
-                break;
+//            case 8132:
+//                createHerb(objectDef, "Guam", new int[]{22428, 22418, 22428});
+//                break;
+//            case 8133:
+//                createHerb(objectDef, "Marrentill", new int[]{22433, 22424, 22433});
+//                break;
+//            case 8134:
+//                createHerb(objectDef, "Tarromin", new int[]{25505, 25496, 25496});
+//                break;
+//            case 8135:
+//                createHerb(objectDef, "Harralander", new int[]{16289, 13204, 13204});
+//                break;
+//            case 8136:
+//                createHerb(objectDef, "Ranarr Weed", new int[]{17304, 15250, 15250});
+//                break;
+//            case 8137:
+//                createHerb(objectDef, "Toadflax", new int[]{22408, 22414, 22414});
+//                break;
+//            case 8138:
+//                createHerb(objectDef, "Irit Leaf", new int[]{17961, 18974, 18974});
+//                break;
+//            case 8139:
+//                createHerb(objectDef, "Avantoe", new int[]{24342, 25360, 25360});
+//                break;
+//            case 8140:
+//                createHerb(objectDef, "Kwuarm", new int[]{13204, 14224, 14224});
+//                break;
+//            case 8141:
+//                createHerb(objectDef, "Cadantine", new int[]{13974, 14866, 14866});
+//                break;
+//            case 8142:
+//                createHerb(objectDef, "Snapdragon", new int[]{14226, 13212, 13212});
+//                break;
+//            case 8144:
+//                createHerb(objectDef, "Lantadyme", new int[]{27548, 30610, 30610});
+//                break;
+//            case 8145:
+//                createHerb(objectDef, "Dwarf Weed", new int[]{22416, 22414, 22414});
+//                break;
+//            case 8146:
+//                createHerb(objectDef, "Torstol", new int[]{22422, 22416, 22416});
+//                break;
+//            case 8147:
+//                createHerb(objectDef, "Bloodweed", new int[]{947, 822, 925});
+//                objectDef.description = "A rare herb containing a thick blood like substance.";
+//                break;
             case 20928:
                 objectDef.name = "Fishing Spot";
                 objectDef.actions = new String[]{"Lure", "Bait", null, null, null};
@@ -493,7 +490,7 @@ public final class ObjectDefinition {
             case 1750:
                 objectDef.anIntArray773 = new int[]{8131,};
                 objectDef.name = "Willow";
-                objectDef.anInt744 = 2;
+                objectDef.varpId = 2;
                 objectDef.anInt761 = 2;
                 objectDef.aByte737 = 25;
                 objectDef.actions = new String[]{"Chop down", null, null, null, null};
@@ -507,7 +504,7 @@ public final class ObjectDefinition {
             case 1751:
                 objectDef.anIntArray773 = new int[]{8037, 8040,};
                 objectDef.name = "Oak";
-                objectDef.anInt744 = 3;
+                objectDef.varpId = 3;
                 objectDef.anInt761 = 3;
                 objectDef.aByte737 = 25;
                 objectDef.actions = new String[]{"Chop down", null, null, null, null};
@@ -546,7 +543,7 @@ public final class ObjectDefinition {
                 break;
             case 4873:
                 objectDef.name = "Wilderness Lever";
-                objectDef.anInt744 = 3;
+                objectDef.varpId = 3;
                 objectDef.anInt761 = 3;
                 objectDef.aByte737 = 25;
                 objectDef.actions = new String[]{"Enter Deep Wildy", null, null, null, null};
@@ -592,7 +589,7 @@ public final class ObjectDefinition {
             case 1753:
                 objectDef.anIntArray773 = new int[]{8157,};
                 objectDef.name = "Yew";
-                objectDef.anInt744 = 3;
+                objectDef.varpId = 3;
                 objectDef.anInt761 = 3;
                 objectDef.aByte737 = 25;
                 objectDef.actions = new String[]{"Chop down", null, null, null, null};
@@ -617,7 +614,7 @@ public final class ObjectDefinition {
 
             case 19038:
                 objectDef.actions = new String[]{null, null, null, null, null};
-                objectDef.anInt744 = 3;
+                objectDef.varpId = 3;
                 objectDef.anInt761 = 3;
                 objectDef.width = 340; // Width
                 objectDef.thickness = 500; // Thickness
@@ -627,7 +624,7 @@ public final class ObjectDefinition {
             case 18826:
             case 18819:
             case 18818:
-                objectDef.anInt744 = 3;
+                objectDef.varpId = 3;
                 objectDef.anInt761 = 3;
                 objectDef.width = 200; // Width
                 objectDef.thickness = 200; // Thickness
@@ -637,7 +634,7 @@ public final class ObjectDefinition {
             case 27777:
                 objectDef.name = "Gangplank";
                 objectDef.actions = new String[]{"Travel to CrabClaw Isle", null, null, null, null};
-                objectDef.anInt744 = 1;
+                objectDef.varpId = 1;
                 objectDef.anInt761 = 1;
                 objectDef.width = 80; // Width
                 objectDef.thickness = 80; // Thickness
@@ -646,7 +643,7 @@ public final class ObjectDefinition {
             case 13641:
                 objectDef.name = "Teleportation Device";
                 objectDef.actions = new String[]{"Quick-Teleport", null, null, null, null};
-                objectDef.anInt744 = 1;
+                objectDef.varpId = 1;
                 objectDef.anInt761 = 1;
                 objectDef.width = 80; // Width
                 objectDef.thickness = 80; // Thickness
@@ -672,7 +669,7 @@ public final class ObjectDefinition {
             case 27095://lava dragon teleport
                 objectDef.name = "Portal";
                 objectDef.actions = new String[]{"Teleport Home", null, null, null, null};
-                objectDef.anInt744 = 1;
+                objectDef.varpId = 1;
                 objectDef.anInt761 = 1;
                 //objectDef.width = 80; // Width
                 //objectDef.thickness = 80; // Thickness
@@ -685,7 +682,7 @@ public final class ObjectDefinition {
             case 12617:
                 objectDef.name = "Zone One";
                 objectDef.actions = new String[]{"Enter", "Leave", null, null, null};
-                objectDef.anInt744 = 1;
+                objectDef.varpId = 1;
                 objectDef.anInt761 = 1;
                 objectDef.width = 80; // Width
                 objectDef.thickness = 80; // Thickness
@@ -694,7 +691,7 @@ public final class ObjectDefinition {
             case 11987:
                 objectDef.name = "Zone Two";
                 objectDef.actions = new String[]{"Enter", "Leave", null, null, null};
-                objectDef.anInt744 = 1;
+                objectDef.varpId = 1;
                 objectDef.anInt761 = 1;
                 objectDef.width = 80; // Width
                 objectDef.thickness = 80; // Thickness
@@ -703,7 +700,7 @@ public final class ObjectDefinition {
             case 12719:
                 objectDef.name = "Zone Three";
                 objectDef.actions = new String[]{"Enter", "Leave", null, null, null};
-                objectDef.anInt744 = 1;
+                objectDef.varpId = 1;
                 objectDef.anInt761 = 1;
                 objectDef.width = 80; // Width
                 objectDef.thickness = 80; // Thickness
@@ -712,7 +709,7 @@ public final class ObjectDefinition {
             case 12639:
                 objectDef.name = "Zone Four";
                 objectDef.actions = new String[]{"Enter", "Leave", null, null, null};
-                objectDef.anInt744 = 1;
+                objectDef.varpId = 1;
                 objectDef.anInt761 = 1;
                 objectDef.width = 80; // Width
                 objectDef.thickness = 80; // Thickness
@@ -722,7 +719,7 @@ public final class ObjectDefinition {
             case 11700:
                 objectDef.anIntArray773 = new int[]{4086};
                 objectDef.name = "Venom";
-                objectDef.anInt744 = 3;
+                objectDef.varpId = 3;
                 objectDef.anInt761 = 3;
                 objectDef.aBoolean767 = false;
                 objectDef.aBoolean762 = true;
@@ -780,7 +777,7 @@ public final class ObjectDefinition {
 
     public static void objectDump() {
         try {
-            FileWriter fw = new FileWriter(System.getProperty("user.home") + "/Desktop/Object Dump.txt");
+            FileWriter fw = new FileWriter(System.getProperty("user.home") + "/Desktop/Object Dump2.txt");
             for (int i = 0; i < totalObjects; i++) {
                 ObjectDefinition obj = ObjectDefinition.forID(i);
 
@@ -853,7 +850,7 @@ public final class ObjectDefinition {
         originalModelColors = null;
         // originalTexture = null;
         // modifiedTexture = null;
-        anInt744 = 1;
+        varpId = 1;
         anInt761 = 1;
         aBoolean767 = true;
         aBoolean757 = true;
@@ -881,7 +878,7 @@ public final class ObjectDefinition {
         aBoolean766 = false;
         anInt760 = -1;
         anInt774 = -1;
-        anInt749 = -1;
+        configId = -1;
         childrenIDs = null;
     }
 
@@ -975,13 +972,22 @@ public final class ObjectDefinition {
         int i = -1;
         if (anInt774 != -1) {
             VarBit varBit = VarBit.cache[anInt774];
-            int j = varBit.anInt648;
-            int k = varBit.anInt649;
-            int l = varBit.anInt650;
-            int i1 = Client.anIntArray1232[l - k];
-            i = clientInstance.variousSettings[j] >> k & i1;
-        } else if (anInt749 != -1)
-            i = clientInstance.variousSettings[anInt749];
+            int setting = varBit.anInt648;
+            int start = varBit.anInt649;
+            int end = varBit.anInt650;
+            int mask = Client.anIntArray1232[end - start];
+            Logger.getGlobal().info("Setting Index: " + setting);
+            Logger.getGlobal().info("Start: " + start);
+            Logger.getGlobal().info("End: " + end);
+            Logger.getGlobal().info("Mask: " + mask);
+            Logger.getGlobal().info("Start & Mask: " + (start & mask));
+            Logger.getGlobal().info("Setting Value: " + clientInstance.variousSettings[setting]);
+            Logger.getGlobal().info("Setting Value Shift: " + (clientInstance.variousSettings[setting] >> start & mask));
+            i = clientInstance.variousSettings[setting] >> start & mask;
+            Logger.getGlobal().info("i = : " + i);
+            Logger.getGlobal().info( "Ardougne Calculation: " + (setting + ((i + 1) << 8)));
+        } else if (configId != -1)
+            i = clientInstance.variousSettings[configId];
         if (i < 0 || i >= childrenIDs.length || childrenIDs[i] == -1)
             return null;
         else
@@ -1191,7 +1197,7 @@ public final class ObjectDefinition {
                     }
                 }
             } else if (type == 14)
-                anInt744 = stream.readUnsignedByte();
+                varpId = stream.readUnsignedByte();
             else if (type == 15)
                 anInt761 = stream.readUnsignedByte();
             else if (type == 17)
@@ -1272,9 +1278,9 @@ public final class ObjectDefinition {
                 anInt774 = stream.readUnsignedWord();
                 if (anInt774 == 65535)
                     anInt774 = -1;
-                anInt749 = stream.readUnsignedWord();
-                if (anInt749 == 65535)
-                    anInt749 = -1;
+                configId = stream.readUnsignedWord();
+                if (configId == 65535)
+                    configId = -1;
                 int j1 = stream.readUnsignedByte();
                 childrenIDs = new int[j1 + 1];
                 for (int j2 = 0; j2 <= j1; j2++) {
@@ -1312,12 +1318,12 @@ public final class ObjectDefinition {
     public String name;
     public int width;
     private static final Model[] aModelArray741s = new Model[4];
-    public int anInt744;
+    public int varpId;
     public int anInt745;
     public int anInt746;
     public int[] originalModelColors;
     public int thickness;
-    public int anInt749;
+    public int configId;
     public boolean aBoolean751;
     public static boolean lowMem;
     private static Stream stream;

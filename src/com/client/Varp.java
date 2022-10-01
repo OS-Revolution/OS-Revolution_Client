@@ -3,6 +3,10 @@ package com.client;
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) 
 
+import com.client.definitions.ItemDefinition;
+
+import java.io.FileWriter;
+
 public final class Varp {
 
 	public static int cacheSize;
