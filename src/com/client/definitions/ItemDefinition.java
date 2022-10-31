@@ -1,5 +1,6 @@
 package com.client.definitions;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,6 +17,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.client.*;
+import com.client.runehub.RunehubUtils;
 import com.client.sign.Signlink;
 import com.client.utilities.FileOperations;
 import org.runehub.api.model.math.impl.AdjustableInteger;
@@ -23,7 +25,7 @@ import org.runehub.api.util.SkillDictionary;
 
 public final class ItemDefinition {
     public byte[] customSpriteLocation;
-    private final static List<Integer> starIds = Arrays.asList(22009, 22010, 22011, 22012, 22013, 22014, 22015, 22016, 22017, 22018, 22019, 22020, 22021, 22022, 22023, 22024, 22025, 22026, 22027, 22028, 22029, 22030, 22031, 22032, 22033, 22034, 22035, 22036, 22037, 22038, 22039, 22040, 22041, 22042, 22043, 22044, 22045, 22046, 22047, 22048, 22049, 22050, 22051, 22052, 22053, 22054, 22055, 22056, 22057, 22058, 22059, 22060, 22061, 22062, 22063, 22064, 22065, 22066, 22067, 22068, 22069, 22070, 22071, 22072, 22073, 22074, 22075, 22076, 22077, 22078, 22079, 22080, 22081, 22082, 22083, 22084, 22085, 22086, 22087, 22088, 22089, 22090, 22091, 22092,22191,22227,22228,22229,22230,21873,21874,21875);
+    private final static List<Integer> starIds = Arrays.asList(22009, 22010, 22011, 22012, 22013, 22014, 22015, 22016, 22017, 22018, 22019, 22020, 22021, 22022, 22023, 22024, 22025, 22026, 22027, 22028, 22029, 22030, 22031, 22032, 22033, 22034, 22035, 22036, 22037, 22038, 22039, 22040, 22041, 22042, 22043, 22044, 22045, 22046, 22047, 22048, 22049, 22050, 22051, 22052, 22053, 22054, 22055, 22056, 22057, 22058, 22059, 22060, 22061, 22062, 22063, 22064, 22065, 22066, 22067, 22068, 22069, 22070, 22071, 22072, 22073, 22074, 22075, 22076, 22077, 22078, 22079, 22080, 22081, 22082, 22083, 22084, 22085, 22086, 22087, 22088, 22089, 22090, 22091, 22092, 22191, 22227, 22228, 22229, 22230, 21873, 21874, 21875);
     private static List<ItemDefinition> starDefinitions = new ArrayList<>();
 
 
@@ -245,13 +247,13 @@ public final class ItemDefinition {
             SkillDictionary.Skill skill = SkillDictionary.Skill.values()[skillId];
             String skillName = skill.name();
             if (tier == 0) {
-                createStar(def, "Dull " + capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", getBaseColorForSkill(skill));
+                createStar(def, "Dull " + capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", RunehubUtils.getBaseColorForSkill(skill));
             } else if (tier == 1) {
-                createStar(def, capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", getBaseColorForSkill(skill) + 10);
+                createStar(def, capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", RunehubUtils.getBaseColorForSkill(skill) + 10);
             } else if (tier == 2) {
-                createStar(def, "Shining " + capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", getBaseColorForSkill(skill) + 20);
+                createStar(def, "Shining " + capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", RunehubUtils.getBaseColorForSkill(skill) + 20);
             } else if (tier == 3) {
-                createStar(def, "Glorious " + capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", getBaseColorForSkill(skill) + 40);
+                createStar(def, "Glorious " + capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", RunehubUtils.getBaseColorForSkill(skill) + 40);
             }
 
             System.out.println("Making " + def.name + " ID: " + def.id);
@@ -263,7 +265,7 @@ public final class ItemDefinition {
     private static void generateStars(List<Integer> nullDefinitions) {
         int skillId = 0;
         int tier = 0;
-        int index =0;
+        int index = 0;
         for (int i = 1; i < nullDefinitions.size(); i++) {
             try {
                 SkillDictionary.Skill skill = SkillDictionary.Skill.values()[skillId];
@@ -273,13 +275,13 @@ public final class ItemDefinition {
                 def.id = nullDefinitions.get(index);
 
                 if (tier == 0) {
-                    createStar(def, "Dull " + capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", getBaseColorForSkill(skill));
+                    createStar(def, "Dull " + capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", RunehubUtils.getBaseColorForSkill(skill));
                 } else if (tier == 1) {
-                    createStar(def, capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", getBaseColorForSkill(skill) + 10);
+                    createStar(def, capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", RunehubUtils.getBaseColorForSkill(skill) + 10);
                 } else if (tier == 2) {
-                    createStar(def, "Shining " + capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", getBaseColorForSkill(skill) + 20);
+                    createStar(def, "Shining " + capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", RunehubUtils.getBaseColorForSkill(skill) + 20);
                 } else if (tier == 3) {
-                    createStar(def, "Glorious " + capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", getBaseColorForSkill(skill) + 40);
+                    createStar(def, "Glorious " + capitalize(skillName.toLowerCase()) + " Star", "A Strange Star.", RunehubUtils.getBaseColorForSkill(skill) + 40);
                 }
 
                 tier++;
@@ -296,58 +298,6 @@ public final class ItemDefinition {
         }
     }
 
-
-    private static int getBaseColorForSkill(SkillDictionary.Skill skill) {
-        switch (skill) {
-            case ATTACK:
-                return 810;
-            case DEFENCE:
-                return -30260;
-            case STRENGTH:
-                return 23340;
-            case HITPOINTS:
-                return -4300;
-            case RANGED:
-                return 14133;
-            case PRAYER:
-                return 10707;
-            case MAGIC:
-                return -21700;
-            case COOKING:
-                return -18628;
-            case WOODCUTTING:
-                return 23721;
-            case FLETCHING:
-                return -30802;
-            case FISHING:
-                return -31178;
-            case FIREMAKING:
-                return 8014;
-            case CRAFTING:
-                return 9397;
-            case SMITHING:
-                return 9397;
-            case MINING:
-                return 7208;
-            case HERBLORE:
-                return 22344;
-            case AGILITY:
-                return -23878;
-            case THIEVING:
-                return -18884;
-            case SLAYER:
-                return -1753;
-            case FARMING:
-                return 26038;
-            case RUNECRAFTING:
-                return 10815;
-            case HUNTER:
-                return 11304;
-            case CONSTRUCTION:
-                return 9151;
-        }
-        return 11187;
-    }
 
     private static List<Integer> findNullItems(int total) {
         List<Integer> nullItems = new ArrayList<>();
@@ -378,70 +328,70 @@ public final class ItemDefinition {
 
         switch (itemId) {
             case 7622:
-                copyDef(itemDef,forID(7622));
+                copyDef(itemDef, forID(7622));
                 itemDef.name = "Ultracompost";
                 break;
             case 7623:
-                copyDef(itemDef,forID(7623));
+                copyDef(itemDef, forID(7623));
                 itemDef.name = "Ultracompost";
                 break;
             case 7624:
-                copyDef(itemDef,forID(7624));
+                copyDef(itemDef, forID(7624));
                 itemDef.name = "Bottomless compost bucket";
                 itemDef.inventoryOptions = new String[]{null, "Empty", "Check", null, null};
                 itemDef.description = "Can store up to 10,000 compost charges.";
                 break;
             case 13658:
-                copyDef(itemDef,forID(13658));
+                copyDef(itemDef, forID(13658));
                 itemDef.name = "Deck of Cards";
                 itemDef.description = "A deck of playing cards.";
                 break;
             case 21354:
-                copyDef(itemDef,forID(21354));
+                copyDef(itemDef, forID(21354));
                 itemDef.name = "Feather fan";
                 itemDef.description = "An ornate fan made from the feathers of Tengu it is capable of controlling wind";
                 break;
             case 20035:
-                copyDef(itemDef,forID(20035));
+                copyDef(itemDef, forID(20035));
                 itemDef.name = "Tetsu kasa";
-                itemDef.originalModelColors = new int[] {30385,8920,920};
-                itemDef.modifiedModelColors = new int[] {8497,8617,10378};
+                itemDef.originalModelColors = new int[]{30385, 8920, 920};
+                itemDef.modifiedModelColors = new int[]{8497, 8617, 10378};
                 break;
             case 20038:
-                copyDef(itemDef,forID(20038));
+                copyDef(itemDef, forID(20038));
                 itemDef.name = "Tetsu body";
-                itemDef.originalModelColors = new int[] {30385,30385,8920,920,30385,8800,8920,8920,30385,8920};
-                itemDef.modifiedModelColors = new int[] {8497,8737,63250,22,8617,63002,9019,62348,30,9135};
+                itemDef.originalModelColors = new int[]{30385, 30385, 8920, 920, 30385, 8800, 8920, 8920, 30385, 8920};
+                itemDef.modifiedModelColors = new int[]{8497, 8737, 63250, 22, 8617, 63002, 9019, 62348, 30, 9135};
                 break;
             case 20041:
-                copyDef(itemDef,forID(20041));
+                copyDef(itemDef, forID(20041));
                 itemDef.name = "Tetsu kote";
-                itemDef.originalModelColors = new int[] {53306,33535,30385,8920,33279,32339,32639};
-                itemDef.modifiedModelColors = new int[] {63250,9028,22,63002,9019,9164,9135};
+                itemDef.originalModelColors = new int[]{53306, 33535, 30385, 8920, 33279, 32339, 32639};
+                itemDef.modifiedModelColors = new int[]{63250, 9028, 22, 63002, 9019, 9164, 9135};
                 break;
             case 20044:
-                copyDef(itemDef,forID(20044));
+                copyDef(itemDef, forID(20044));
                 itemDef.name = "Tetsu platelegs";
-                itemDef.originalModelColors = new int[] {30385,920,8920,30385,30385,30385,30385,8920,30385,30385,30385};
-                itemDef.modifiedModelColors = new int[] {8497,9737,63250,18,22,39,8617,63002,9019,30,142};
+                itemDef.originalModelColors = new int[]{30385, 920, 8920, 30385, 30385, 30385, 30385, 8920, 30385, 30385, 30385};
+                itemDef.modifiedModelColors = new int[]{8497, 9737, 63250, 18, 22, 39, 8617, 63002, 9019, 30, 142};
                 break;
             case 21396:
-                copyDef(itemDef,forID(12357));
+                copyDef(itemDef, forID(12357));
                 itemDef.name = "Wind Blade";
-                itemDef.originalModelColors = new int[] {32639,43531,8808};
-                itemDef.modifiedModelColors = new int[] {8644,32836,38792};
+                itemDef.originalModelColors = new int[]{32639, 43531, 8808};
+                itemDef.modifiedModelColors = new int[]{8644, 32836, 38792};
                 break;
             case 20047:
-                copyDef(itemDef,forID(20047));
+                copyDef(itemDef, forID(20047));
                 itemDef.name = "Tetsu kogake";
-                itemDef.originalModelColors = new int[] {30385,30385,8920,920,920,30385,8920};
-                itemDef.modifiedModelColors = new int[] {8497,63250,22,8617,8377,63002,30};
+                itemDef.originalModelColors = new int[]{30385, 30385, 8920, 920, 920, 30385, 8920};
+                itemDef.modifiedModelColors = new int[]{8497, 63250, 22, 8617, 8377, 63002, 30};
                 break;
             case 5553:
                 ItemDefinition rogueChest = forID(5553);
                 itemDef.name = "Death Lotus Assassin Chestplate";
-                itemDef.originalModelColors = new int[] {900,900,900,900,925,900};
-                itemDef.modifiedModelColors = new int[] {49,33,10378,138,6430,10270};
+                itemDef.originalModelColors = new int[]{900, 900, 900, 900, 925, 900};
+                itemDef.modifiedModelColors = new int[]{49, 33, 10378, 138, 6430, 10270};
                 itemDef.modelId = rogueChest.modelId;
                 itemDef.description = rogueChest.description;
                 itemDef.stackAmounts = rogueChest.stackAmounts;
@@ -456,14 +406,14 @@ public final class ItemDefinition {
                 itemDef.equipActions = rogueChest.equipActions;
                 itemDef.maleModel = rogueChest.maleModel;
                 itemDef.femaleModel = rogueChest.femaleModel;
-                itemDef.originalTextureColors = new short[] {40};
-                itemDef.originalTextureColors = new short[] {0};
+                itemDef.originalTextureColors = new short[]{40};
+                itemDef.originalTextureColors = new short[]{0};
                 break;
             case 9055:
                 ItemDefinition rogueHood = forID(5554);
                 itemDef.name = "Death Lotus Assassin Hood";
-                itemDef.originalModelColors = new int[] {925,0,925};
-                itemDef.modifiedModelColors = new int[] {10258,10378,6430};
+                itemDef.originalModelColors = new int[]{925, 0, 925};
+                itemDef.modifiedModelColors = new int[]{10258, 10378, 6430};
                 itemDef.modelId = rogueHood.modelId;
                 itemDef.description = rogueHood.description;
                 itemDef.stackAmounts = rogueHood.stackAmounts;
@@ -482,8 +432,8 @@ public final class ItemDefinition {
             case 9056:
                 ItemDefinition rogueChaps = forID(5555);
                 itemDef.name = "Death Lotus Assassin Chaps";
-                itemDef.originalModelColors = new int[] {0,925,900,925,900,925};
-                itemDef.modifiedModelColors = new int[] {49,10258,10378,9100,6430,10270};
+                itemDef.originalModelColors = new int[]{0, 925, 900, 925, 900, 925};
+                itemDef.modifiedModelColors = new int[]{49, 10258, 10378, 9100, 6430, 10270};
                 itemDef.modelId = rogueChaps.modelId;
                 itemDef.description = rogueChaps.description;
                 itemDef.stackAmounts = rogueChaps.stackAmounts;
@@ -502,8 +452,8 @@ public final class ItemDefinition {
             case 9057:
                 ItemDefinition rogueBoots = forID(5556);
                 itemDef.name = "Death Lotus Assassin Tekoh";
-                itemDef.originalModelColors = new int[] {0,925,0,0};
-                itemDef.modifiedModelColors = new int[] {49,6569,10378,6430};
+                itemDef.originalModelColors = new int[]{0, 925, 0, 0};
+                itemDef.modifiedModelColors = new int[]{49, 6569, 10378, 6430};
                 itemDef.modelId = rogueBoots.modelId;
                 itemDef.description = rogueBoots.description;
                 itemDef.stackAmounts = rogueBoots.stackAmounts;
@@ -522,8 +472,8 @@ public final class ItemDefinition {
             case 9058:
                 ItemDefinition rogueGloves = forID(5557);
                 itemDef.name = "Death Lotus Assassin Tabi";
-                itemDef.originalModelColors = new int[] {900,925};
-                itemDef.modifiedModelColors = new int[] {10378,6430};
+                itemDef.originalModelColors = new int[]{900, 925};
+                itemDef.modifiedModelColors = new int[]{10378, 6430};
                 itemDef.modelId = rogueGloves.modelId;
                 itemDef.description = rogueGloves.description;
                 itemDef.stackAmounts = rogueGloves.stackAmounts;
@@ -618,6 +568,11 @@ public final class ItemDefinition {
                 itemDef.modifiedModelColors = new int[]{61};
                 itemDef.description = "A sip of this doubles your Woodcutting XP for 30 minutes.";
                 itemDef.inventoryOptions[0] = "Drink";
+                break;
+            case 3742:
+                itemDef.inventoryOptions = new String[] {null,"Wear",null,null,"Drop"};
+                itemDef.equipActions = new String[] {"Remove",null,"Operate",null,null};
+                itemDef.description = "Is it really?";
                 break;
             case 2396:
                 copyDef(itemDef, ItemDefinition.forID(2396));
@@ -736,6 +691,46 @@ public final class ItemDefinition {
                 break;
             case 1652:
                 createCoinBasedCurrencyStack(itemDef, "Jewels", "More Precious than Gold!", -32011, 10000);
+                break;
+            case 8023:
+                copyDef(itemDef, ItemDefinition.forID(9718));
+                itemDef.name = "Woodcutting Efficiency Boost (1 Hour)";
+                itemDef.description = "Redeem for 1 hour of x2 Woodcutting Efficiency.";
+                itemDef.originalModelColors = new int[]{20023};
+                itemDef.modifiedModelColors = new int[]{790};
+                itemDef.stackable = true;
+                break;
+            case 8024:
+                copyDef(itemDef, ItemDefinition.forID(9718));
+                itemDef.name = "Woodcutting Efficiency Boost (6 Hour)";
+                itemDef.description = "Redeem for 6 hour of x2 Woodcutting Efficiency.";
+                itemDef.originalModelColors = new int[]{20023};
+                itemDef.modifiedModelColors = new int[]{790};
+                itemDef.stackable = true;
+                break;
+            case 8025:
+                copyDef(itemDef, ItemDefinition.forID(9718));
+                itemDef.name = "Woodcutting Efficiency Boost (12 Hour)";
+                itemDef.description = "Redeem for 12 hour of x2 Woodcutting Efficiency.";
+                itemDef.originalModelColors = new int[]{20023};
+                itemDef.modifiedModelColors = new int[]{790};
+                itemDef.stackable = true;
+                break;
+            case 8026:
+                copyDef(itemDef, ItemDefinition.forID(9718));
+                itemDef.name = "Woodcutting Efficiency Boost (24 Hour)";
+                itemDef.description = "Redeem for 24 hour of x2 Woodcutting Efficiency.";
+                itemDef.originalModelColors = new int[]{20023};
+                itemDef.modifiedModelColors = new int[]{790};
+                itemDef.stackable = true;
+                break;
+            case 13190:
+                itemDef.name = "Membership Bond (30 Days)";
+                itemDef.description = "Redeem for 30 days of membership.";
+                break;
+            case 13192:
+                itemDef.name = "Membership Bond (7 Days)";
+                itemDef.description = "Redeem for 7 days of membership.";
                 break;
             case 7774:
                 itemDef.name = "Reward Token (Common)";

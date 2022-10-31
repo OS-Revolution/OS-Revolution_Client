@@ -507,7 +507,7 @@ public class RSFont extends DrawingArea {
 	private void setTextEffects(String string) {
 		do {
 			try {
-				if (string.startsWith(startColor)) {
+				 if (string.startsWith(startColor)) {
 					String color = string.substring(4);
 					textColor = color.length() < 6 ? Color.decode(color).getRGB() : Integer.parseInt(color, 16);
 				} else if (string.equals(endColor)) {

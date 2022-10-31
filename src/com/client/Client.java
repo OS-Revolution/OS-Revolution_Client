@@ -15,11 +15,9 @@ import com.client.graphics.interfaces.impl.DropdownMenu;
 import com.client.graphics.interfaces.impl.GrandExchange;
 import com.client.graphics.interfaces.impl.SettingsWidget;
 import com.client.graphics.interfaces.impl.Slider;
-import com.client.graphics.loaders.SpriteLoader1;
-import com.client.graphics.loaders.SpriteLoader2;
-import com.client.graphics.loaders.SpriteLoader3;
-import com.client.graphics.loaders.SpriteLoader4;
+import com.client.graphics.loaders.*;
 import com.client.runehub.GameNodeController;
+import com.client.runehub.RunehubUtils;
 import com.client.sign.Signlink;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.reflection.Sun14ReflectionProvider;
@@ -28,6 +26,7 @@ import org.runehub.api.io.load.impl.ItemEquipmentContextLoader;
 import org.runehub.api.io.load.impl.ItemIdContextLoader;
 import org.runehub.api.model.entity.item.ItemContext;
 import org.runehub.api.model.entity.item.ItemEquipmentContext;
+import org.runehub.api.util.SkillDictionary;
 import org.runehub.api.util.StringUtils;
 import sun.rmi.runtime.Log;
 
@@ -98,6 +97,15 @@ public class Client extends RSApplet {
 
     private Matcher matcher;
 
+    public int getPlayPassProgress() {
+        return playPassProgress;
+    }
+
+    public void setPlayPassProgress(int progress) {
+        this.playPassProgress = progress;
+    }
+
+    private int playPassProgress;
     private boolean placeHolders = true;
 
     public static boolean debugModels = false;
@@ -687,6 +695,19 @@ public class Client extends RSApplet {
                                 if (yPos > 0 && yPos < 210)
                                     newRegularFont.drawBasicString(s1 + " " + chatMessages[k], 11, yPos - 1 + yOffset,
                                             0x800080, -1);
+                                j++;
+                                j77++;
+                            }
+                        }
+                        if (chatType == 9) {
+                            if (chatTypeView == 3 || chatTypeView == 0) {
+                                if (yPos > 0 && yPos < 210)
+//                                    newRegularFont.drawBasicString(s1, 11, yPos - 1 + yOffset,
+//                                            0x000000, -1);
+                                    newRegularFont.drawBasicString(chatMessages[k], 11, yPos - 1 + yOffset,
+                                            0x000000, -1);
+//                                    newRegularFont.drawBasicString(chatMessages[k] + "@blu@" + s1 + "@bla@", 11, yPos - 1 + yOffset,
+//                                            0x000000, -1);
                                 j++;
                                 j77++;
                             }
@@ -1612,12 +1633,12 @@ public class Client extends RSApplet {
                 }
             }
 
-            if (k >= i2 && i1 >= j2 && k < i2 + (class9_1.type == 4 ? 100 : class9_1.width)
+            if (k >= i2 && i1 >= j2 && k < i2 + ((class9_1.type == 4 || class9_1.type == 17) ? 100 : class9_1.width)
                     && i1 < j2 + class9_1.height) {
                 if (class9_1.actions != null && !class9_1.invisible && !class9_1.drawingDisabled) {
 
                     if (!(class9_1.contentType == 206 && interfaceIsSelected(class9_1))) {
-                        if ((class9_1.type == 4 && class9_1.message.length() > 0) || class9_1.type == 5) {
+                        if (((class9_1.type == 4 || class9_1.type == 17) && class9_1.message.length() > 0) || class9_1.type == 5) {
 
                             boolean drawOptions = true;
 
@@ -1630,7 +1651,7 @@ public class Client extends RSApplet {
                                 for (int action = class9_1.actions.length - 1; action >= 0; action--) {
                                     if (class9_1.actions[action] != null) {
                                         String s = class9_1.actions[action]
-                                                + (class9_1.type == 4 ? " @or1@" + class9_1.message : "");
+                                                + ((class9_1.type == 4 || class9_1.type == 17) ? " @or1@" + class9_1.message : "");
 
                                         if (s.contains("img")) {
                                             int prefix = s.indexOf("<img=");
@@ -1776,15 +1797,15 @@ public class Client extends RSApplet {
                     menuActionCmd3[menuActionRow] = class9_1.id;
                     menuActionRow++;
                 }
-                if (k >= i2 && i1 >= j2 && k < i2 + (class9_1.type == 4 ? 100 : class9_1.width)
+                if (k >= i2 && i1 >= j2 && k < i2 + ((class9_1.type == 4 || class9_1.type == 17) ? 100 : class9_1.width)
                         && i1 < j2 + class9_1.height) {
 
                     if (class9_1.actions != null) {
-                        if ((class9_1.type == 4 && class9_1.message.length() > 0) || class9_1.type == 5) {
+                        if (((class9_1.type == 4 || class9_1.type == 17) && class9_1.message.length() > 0) || class9_1.type == 5) {
                             for (int action = class9_1.actions.length - 1; action >= 0; action--) {
                                 if (class9_1.actions[action] != null) {
                                     menuActionName[menuActionRow] = class9_1.actions[action]
-                                            + (class9_1.type == 4 ? " " + class9_1.message : "");
+                                            + ((class9_1.type == 4 || class9_1.type == 17) ? " " + class9_1.message : "");
                                     menuActionID[menuActionRow] = 647;
                                     menuActionCmd2[menuActionRow] = action;
                                     menuActionCmd3[menuActionRow] = class9_1.id;
@@ -2496,9 +2517,12 @@ public class Client extends RSApplet {
                             if (((Entity) (obj)).maxHealth >= 255) {
                                 DrawingArea.drawPixels(5, spriteDrawY - 3, spriteDrawX - 15, 65280, i2);
                                 DrawingArea.drawPixels(5, spriteDrawY - 3, (spriteDrawX - 15) + i2, 0xff0000, 30 - i2);
+//                                smallText.drawText(0xebba34,((Entity) obj).currentHealth + "/" + ((Entity) obj).maxHealth,spriteDrawY - 5,spriteDrawX);
+
                             } else {
                                 DrawingArea.drawPixels(5, spriteDrawY - 3, spriteDrawX - 15, 65280, i1);
                                 DrawingArea.drawPixels(5, spriteDrawY - 3, (spriteDrawX - 15) + i1, 0xff0000, 30 - i1);
+//                                smallText.drawText(0xebba34,((Entity) obj).currentHealth + "/" + ((Entity) obj).maxHealth,spriteDrawY - 5,spriteDrawX);
                             }
                             // DrawingArea.drawPixels(5, spriteDrawY - 3, spriteDrawX - 15, 65280, i1);
                             // DrawingArea.drawPixels(5, spriteDrawY - 3, (spriteDrawX - 15) + i1, 0xff0000,
@@ -3648,8 +3672,8 @@ public class Client extends RSApplet {
     public static double[] experience;
     public static int totalExperience;
 
-    public static int getStaticLevelByExperience(int slot) {
-        double exp = experience[slot];
+    public static int getStaticLevelByExperience(int exp) {
+//        double exp = expe[slot];
 
         int points = 0;
         int output = 0;
@@ -4332,6 +4356,7 @@ public class Client extends RSApplet {
      */
     public Sprite logo, loginBackground;
 
+
     public void drawLoadingText(int percentage, String s) {
         anInt1079 = percentage;
         aString1049 = s;
@@ -4528,7 +4553,7 @@ public class Client extends RSApplet {
         int l = menuActionID[i];
         int i1 = menuActionCmd1[i];
         Logger.getGlobal().info("Action Received: " + i);
-        System.out.println("k: " + k);
+//        System.out.println("k: " + k);
         switch (k) {
             case 42522:
                 if (currentScreenMode != ScreenMode.FIXED) {
@@ -5107,6 +5132,12 @@ public class Client extends RSApplet {
                 if (!flag9)
                     pushMessage("Unable to find " + s7, 0, "");
             }
+        }
+        if (l == 927) {
+            String s1 = menuActionName[i];
+            int l1 = s1.indexOf("@lre@");
+            s1 = s1.substring(l1 + 5).trim();
+            launchURL(s1);//Launches the URL in a web browser when clicked
         }
         if (l == 870) {
             stream.createFrame(53);
@@ -5819,7 +5850,7 @@ public class Client extends RSApplet {
                 tabAreaAltered = true;
             }
         }
-
+//        System.out.println("l is " + l);
         if (l == 454) {
             stream.createFrame(41);
             stream.writeWord(i1);
@@ -6558,6 +6589,13 @@ public class Client extends RSApplet {
         }
     }
 
+    public void drawProgressBar(int percent, String text) {
+        RSInterface rsi = RSInterface.interfaceCache[55101];
+        Sprite rsiSprite = rsi.sprite1;
+        Logger.getGlobal().info("RSI: " + rsi);
+        Logger.getGlobal().info("Sprite: " + rsiSprite);
+    }
+
     private void method73() {
         do {
             int j = readChar(-796);
@@ -6896,12 +6934,10 @@ public class Client extends RSApplet {
                         }
 
                         if (inputString.startsWith("::hd")) {
-                            String screenMode;
-                            try {
+                            DrawingArea.setDrawingArea(30, 30, 30, 30);
+                            grandExchangeSprite0.drawSprite(gameScreenWidth / 2, gameScreenHeight / 2);
+                            DrawingArea.drawCircle(10, 10, 25, RunehubUtils.RS2HSB_to_RGB(RunehubUtils.getBaseColorForSkill(0)));
 
-                            } catch (Exception e) {
-                                pushMessage("Not  alid.", 0, "");
-                            }
                         }
                         if (inputString.startsWith("::graphics")) {
                             String graphics;
@@ -8066,13 +8102,22 @@ public class Client extends RSApplet {
                 }
                 l++;
             }
+            if (j1 == 9) {
+                if (j > k1 - 14 && j <= k1) {
+                    menuActionName[menuActionRow] = "Go-to @lre@" + s;
+                    menuActionID[menuActionRow] = 927;
+                    menuActionRow++;
+                }
+                l++;
+            }
         }
     }
 
-    public String setSkillTooltip(int skillLevel) {
-        String[] getToolTipText = new String[4];
+    public String setSkillTooltip(int skillLevel, RSInterface rsi) {
+        String[] getToolTipText = new String[5];
         String setToolTipText = "";
         int maxLevel = 99;
+
 
         if (maxStats[skillLevel] > maxLevel) {
             if (skillLevel != 24) {
@@ -8091,6 +8136,7 @@ public class Client extends RSApplet {
                 getToolTipText[0] = Skills.SKILL_NAMES[skillLevel] + " XP: "
                         + numberFormat.format(currentExp[getSkillId[skillLevel == 21 ? 22 : skillLevel]]) + "\\n";
                 getToolTipText[1] = "Bonus XP: " + "\\r" + (bonusXp.get(getSkillId[skillLevel]) != null ? numberFormat.format(bonusXp.get(getSkillId[skillLevel])) : 0) + "\\n";
+//                getToolTipText[2] = "ID: " + rsi.parentID;
                 setToolTipText = getToolTipText[0] + getToolTipText[1];
             } else {
                 getToolTipText[0] = Skills.SKILL_NAMES[skillLevel] + " XP: " + "\\r"
@@ -8101,7 +8147,7 @@ public class Client extends RSApplet {
                         getXPForLevel(maxStats[getSkillId[skillLevel == 21 ? 22 : skillLevel]] + 1) - currentExp[getSkillId[skillLevel == 21 ? 22 : skillLevel]])
                         + "\\n";
                 getToolTipText[3] = "Bonus XP: " + "\\r" + (bonusXp.get(getSkillId[skillLevel]) != null ? numberFormat.format(bonusXp.get(getSkillId[skillLevel])) : 0) + "\\n";
-
+//                getToolTipText[4] = "ID: " +  rsi.parentID;
                 setToolTipText = getToolTipText[0] + getToolTipText[1] + getToolTipText[2] + getToolTipText[3];
             }
         } else {
@@ -8110,13 +8156,35 @@ public class Client extends RSApplet {
         return setToolTipText;
     }
 
+    public int getTotalXP() {
+        return Arrays.stream(currentExp).sum();
+    }
+
+    public int getTotalLevel() {
+        return Arrays.stream(maxStats).sum();
+    }
+
+    private String getTotalLevelTooltip() {
+        final String[] tooltip = new String[2];
+        final int totalXP = Arrays.stream(currentExp).sum();
+        final int totalBonusXP = bonusXp.keySet().stream().mapToInt(value -> bonusXp.get(value)).sum();
+        tooltip[0] = "Total XP: " + "\\r" + NumberFormat.getInstance().format(totalXP) + "\\n";
+        tooltip[1] = "Total Bonus XP: " + "\\r" + NumberFormat.getInstance().format(totalBonusXP) + "\\n";
+        return tooltip[0] + tooltip[1];
+    }
+
     public void drawFriendsListOrWelcomeScreen(RSInterface class9) {
         int j = class9.contentType;
         if ((j >= 205) && (j <= (205 + 25))) {
             j -= 205;
-            class9.message = setSkillTooltip(j);
+            class9.message = setSkillTooltip(j, class9);
             return;
         }
+
+//        if (class9.id == 19209) {
+//            class9.message = getTotalLevelTooltip();
+//        }
+
         if (j >= 1 && j <= 100 || j >= 701 && j <= 800) {
             if (j == 1 && anInt900 == 0) {
                 class9.message = "Loading friend list";
@@ -12460,7 +12528,94 @@ public class Client extends RSApplet {
             for (int r = 0; r < runeChildren.length; r++)
                 if (class9_1.id == runeChildren[r])
                     class9_1.modelZoom = 775;
+            if (class9_1.id == 57804) {
+                class9_1.message = "@yel@" + getTotalLevel();
+            }
+            if (class9_1.parentID == 57805) {
+
+                for (int q = 0; q < class9_1.children.length; q++) {
+                    int i = class9_1.children[q];
+                    if (i >= 57854 && i <= 57877) {
+                        int skillId = i - 57854;
+                        int totalXPForNextLevel = getXPForLevel(maxStats[skillId] + 1);
+                        int currentXP = currentExp[skillId];
+                        int remaining = totalXPForNextLevel - currentXP;
+                        int startingXP = getXPForLevel(maxStats[skillId]);
+                        int xpForLevel = totalXPForNextLevel - startingXP;
+                        int xpTowardsLevel = currentXP - startingXP;
+                        double progressDouble = (xpTowardsLevel / (double) xpForLevel) * 100D;
+                        int progress = (int)progressDouble;
+//                        System.out.println("1: " + totalXPForNextLevel);
+//                        System.out.println("2: " + currentXP);
+//                        System.out.println("3: " + startingXP + "\n");
+                        RSInterface.interfaceCache[i].progressBarPercentage = (byte) progress;
+//                        int color = progress < 100 ? RSInterface.interfaceCache[i].colorTypes[0] : RSInterface.interfaceCache[i].colorTypes[1];
+//                        int opacity = RSInterface.interfaceCache[i].opacity;
+//                        DrawingArea.fillRectangle(_x + 1, l2 + 1, Math.toIntExact(Math.round((RSInterface.interfaceCache[i].width - 5) * (progress / 100D))), RSInterface.interfaceCache[i].height - 2, color, opacity);
+                    }
+                    if (i >= 57902 && i <= 57925) {
+                        int skillId = i - 57902;
+
+                        int currentLevel = currentStats[skillId];
+                        int actualLevel = maxStats[skillId];
+                        String skillName = RunehubUtils.getSkillName(skillId);
+                        String levelString = currentLevel + "/" + actualLevel;
+                        if (currentLevel > actualLevel) {
+                            levelString = "@gre@" + currentLevel + "@yel@/" + actualLevel;
+                        } else if (currentLevel < actualLevel) {
+                            levelString = "@red@" + currentLevel + "@yel@/" + actualLevel;
+                        } else {
+                            levelString = "@yel@" + currentLevel + "/" + actualLevel;
+                        }
+                        RSInterface.interfaceCache[i].message = skillName + " " + levelString;
+                    }
+
+                    if ( i >= 57926 && i <= 57949) {
+                        int skillId = i - 57926;
+                        int xp = currentExp[skillId];
+                        RSInterface.interfaceCache[i].message = "XP: " + NumberFormat.getInstance().format(xp);
+                    }
+
+                    if (i >= 57950 && i <= 57973) {
+                        int skillId = i - 57950;
+                        int xp = bonusXp.get(skillId);
+                        RSInterface.interfaceCache[i].message = "Bonus XP: " + NumberFormat.getInstance().format(xp);
+                    }
+
+                    if ( i >= 57974 && i <= 57997) {
+                        int skillId = i - 57974;
+                        int totalXPForNextLevel = getXPForLevel(maxStats[skillId] + 1);
+                        int currentXP = currentExp[skillId];
+                        int remaining = totalXPForNextLevel - currentXP;
+                        RSInterface.interfaceCache[i].message = "Next Level: " + NumberFormat.getInstance().format(remaining);
+                    }
+                }
+//                grandExchangeSprite0.drawSprite(30,30);
+//                DrawingArea.drawCircle(10,10,25,RunehubUtils.RS2HSB_to_RGB(RunehubUtils.getBaseColorForSkill(0)));
+            }
+//                System.out.println("Drawing skills");
+//                Arrays.stream(class9_1.children).filter(value -> RSInterface.interfaceCache[value].type == 4).forEach(value -> RSInterface.interfaceCache[value].message = "Current Level: " + c);
+////                TextDrawingArea textDrawingArea = class9_1.textDrawingAreas;
+////                textDrawingArea.drawText(0,"Testing",25,4);
+//            }
             if (class9_1.type == 0) {
+//                System.out.println(class9_1.parentID);
+                if (class9_1.parentID == 3917) { //debug skill tab
+                    for (int i = 0; i < class9_1.children.length; i++) {
+                        if (RSInterface.interfaceCache[class9_1.children[i]].sprite1 != null) {
+//                            System.out.println(RSInterface.interfaceCache[class9_1.children[i]].id);
+//                            System.out.println(RSInterface.interfaceCache[class9_1.children[i]].sprite1.id);
+                        }
+//                        if (RSInterface.interfaceCache[class9_1.children[i]].message != null &&
+//                                RSInterface.interfaceCache[class9_1.children[i]].message.contains("Total level:")) {
+//                        if (RSInterface.interfaceCache[class9_1.children[i]].id == 19209) {
+//                            RSInterface.interfaceCache[class9_1.children[i]].type = 8;
+//                        }
+//                        RSInterface.interfaceCache[class9_1.children[i]].message = "Test";
+
+                    }
+                }
+//                Arrays.stream(class9_1.children).forEach(child -> System.out.println(child));
                 if (class9_1.scrollPosition > class9_1.scrollMax - class9_1.height)
                     class9_1.scrollPosition = class9_1.scrollMax - class9_1.height;
                 if (class9_1.scrollPosition < 0)
@@ -12649,6 +12804,14 @@ public class Client extends RSApplet {
                             i3++;
                         }
                     }
+                } else if (class9_1.type == 23) {
+//                    Logger.getGlobal().info("Drawing Progress Bar [" + "X: " + _x + " Width: " + class9_1.width + " Height: " + class9_1.height + " Y: " + l2);
+//                    DrawingArea.fillPixels(_x, class9_1.width, class9_1.height, 0x005F00, l2);
+                    int progress = class9_1.progressBarPercentage;
+//                    Logger.getGlobal().info("Progress: " + progress + " W:" + Math.toIntExact(Math.round((class9_1.width - 2) * (progress / 100D))));
+                    int color = progress < 100 ? class9_1.colorTypes[0] : class9_1.colorTypes[1];
+                    int opacity = class9_1.opacity;
+                    DrawingArea.fillRectangle(_x + 1, l2 + 1, Math.toIntExact(Math.round((class9_1.width - 2) * (progress / 100D))), class9_1.height - 2, color, opacity);
                 } else if (class9_1.type == 3) {
                     boolean flag = false;
                     if (anInt1039 == class9_1.id || anInt1048 == class9_1.id || anInt1026 == class9_1.id)
@@ -12674,7 +12837,7 @@ public class Client extends RSApplet {
                     else
                         DrawingArea.method338(l2, class9_1.height, 256 - (class9_1.aByte254 & 0xff), colour,
                                 class9_1.width, _x);
-                } else if (class9_1.type == 4) {
+                } else if (class9_1.type == 4 || class9_1.type == 17) {
                     TextDrawingArea textDrawingArea = class9_1.textDrawingAreas;
                     String s = class9_1.message;
                     boolean flag1 = false;
@@ -12859,9 +13022,10 @@ public class Client extends RSApplet {
                             k4++;
                         }
                     }
-                } else if (class9_1.type == 8
-                        && (anInt1500 == class9_1.id || anInt1044 == class9_1.id || anInt1129 == class9_1.id)
-                        && anInt1501 == 50 && !menuOpen) {
+                } else if (
+                        class9_1.type == 8
+                                && ((anInt1500 == class9_1.id || anInt1044 == class9_1.id || anInt1129 == class9_1.id))
+                                && anInt1501 == 50 && !menuOpen) {
                     if (class9_1.parentID == 3917) {
                         return;
                     }
@@ -14324,15 +14488,17 @@ public class Client extends RSApplet {
             int i1 = 0;
             do {
                 int j1 = ai[l++];
-                Logger.getGlobal().info("j1: " + j1);
+//                Logger.getGlobal().info("j1: " + j1);
                 int k1 = 0;
                 byte byte0 = 0;
                 if (j1 == 0)
                     return k;
-                if (j1 == 1)
+                if (j1 == 1) {
                     k1 = currentStats[ai[l++]];
-                if (j1 == 2)
+                }
+                if (j1 == 2) {
                     k1 = maxStats[ai[l++]];
+                }
                 if (j1 == 3)
                     k1 = currentExp[ai[l++]];
                 if (j1 == 4) {
@@ -14364,6 +14530,7 @@ public class Client extends RSApplet {
                 if (j1 == 8)
                     k1 = myPlayer.combatLevel;
                 if (j1 == 9) {
+                    System.out.println(class9.contentType);
                     for (int l1 = 0; l1 < Skills.SKILLS_COUNT; l1++)
                         if (Skills.SKILLS_ENABLED[l1])
                             k1 += maxStats[l1];
@@ -14699,11 +14866,12 @@ public class Client extends RSApplet {
                 : currentScreenMode == ScreenMode.FIXED ? 0 : -5;
         int xOff = Configuration.osbuddyGameframe ? currentScreenMode == ScreenMode.FIXED ? 0 : -6
                 : currentScreenMode == ScreenMode.FIXED ? 0 : -6;
-        String cHP = RSInterface.interfaceCache[4016].message;
-        String mHP = RSInterface.interfaceCache[4017].message;
-        int currentHP = Integer.parseInt(cHP);
-        int maxHP = Integer.parseInt(mHP);
+//        String cHP = RSInterface.interfaceCache[57905].message.split(" ")[1].substring(0,1);
+//        String mHP = RSInterface.interfaceCache[57905].message.split("/")[1];
+        int currentHP = currentStats[3];//Integer.parseInt(cHP);
+        int maxHP = Math.max(myPlayer.maxHealth, maxStats[3]);//Integer.parseInt(mHP);
         int health = (int) (((double) currentHP / (double) maxHP) * 100D);
+//        System.out.println("HP: " + currentHP + "/" + maxHP + " Read as: " + health);
         int hover = poisonType == 0 ? 173 : 173;
         Sprite bg = cacheSprite3[hpHover ? hover : 172];
         int id = 0;
@@ -14734,7 +14902,7 @@ public class Client extends RSApplet {
         }
         cacheSprite3[160].drawSprite(27 + xOffset - xOff, 45 - yOff);
         cacheSprite3[168].drawSprite(27 + xOffset - xOff, 45 - yOff);
-        smallText.method382(getOrbTextColor(health), 15 + xOffset - xOff, "" + cHP, 67 - yOff, true);
+        smallText.method382(getOrbTextColor(health), 15 + xOffset - xOff, "" + currentHP, 67 - yOff, true);
     }
 
     public double fillHP;
@@ -14776,7 +14944,7 @@ public class Client extends RSApplet {
         Sprite fg = prayClicked ? new Sprite("Gameframe/newprayclicked") : cacheSprite1[1];
         bg.drawSprite(0 + xOffset - xOff, 85 - yOff);
         fg.drawSprite(27 + xOffset - xOff, 89 - yOff);
-        int level = Integer.parseInt(RSInterface.interfaceCache[4012].message.replaceAll("%", ""));
+        int level = currentStats[5];//Integer.parseInt(RSInterface.interfaceCache[4012].message.replaceAll("%", ""));
         int max = maxStats[5];
         double percent = level / (double) max;
         cacheSprite1[14].myHeight = (int) (26 * (1 - percent));
@@ -14934,7 +15102,6 @@ public class Client extends RSApplet {
     Sprite[] counter;
 
 
-
     public Sprite xpbg1 = new Sprite("487");
     public Sprite xpbg2 = new Sprite("488");
 
@@ -14969,10 +15136,12 @@ public class Client extends RSApplet {
                 if (skill == 22) {
                     continue;
                 }
+//                System.out.println("X: " + x + " Y: " + y);
                 Sprite sprite = smallXpSprites[skill];
                 x -= sprite.myWidth + 3;
                 y -= sprite.myHeight - 4;
                 sprite.drawAdvancedTransparentSprite(x, y, transparency);
+//                DrawingArea.drawPartialCircle(x/2,40,100,0,100,3);
                 y += sprite.myHeight - 4;
             }
         }
@@ -16074,7 +16243,7 @@ public class Client extends RSApplet {
         RSInterface component = RSInterface.interfaceCache[i];
         if (component != null) {
             component.message = str;
-            if (component.type == 4 && component.atActionType == 1) {
+            if ((component.type == 4 || component.type == 17) && component.atActionType == 1) {
                 component.hoverText = str;
             }
             if (component.parentID == tabInterfaceIDs[tabID])
@@ -16182,11 +16351,13 @@ public class Client extends RSApplet {
                  * Progress Bar Update Packet
                  */
                 case 77:
+                    Logger.getGlobal().info("Received progress bar update");
+                    Logger.getGlobal().info("Offset: " + inStream.currentOffset + " Size: " + packetSize);
                     while (inStream.currentOffset < packetSize) {
                         int interfaceId = inStream.readDWord();
                         byte progressBarState = inStream.readSignedByte();
                         byte progressBarPercentage = inStream.readSignedByte();
-
+                        Logger.getGlobal().info("InterfaceID: " + interfaceId + " State: " + progressBarState + " Percenntage: " + progressBarPercentage);
                         RSInterface rsInterface = RSInterface.interfaceCache[interfaceId];
                         rsInterface.progressBarState = progressBarState;
                         rsInterface.progressBarPercentage = progressBarPercentage;
@@ -16208,6 +16379,7 @@ public class Client extends RSApplet {
                         short entityIndex = (short) inStream.readUnsignedWord();
                         short currentHealth = (short) inStream.readUnsignedWord();
                         short maximumHealth = (short) inStream.readUnsignedWord();
+                        System.out.println("State: " + entityState);
                         entityTarget = new EntityTarget(entityState, entityIndex, currentHealth, maximumHealth,
                                 newSmallFont);
                     } else {
@@ -16239,8 +16411,9 @@ public class Client extends RSApplet {
                     }
 
                     ExperienceDrop drop = new ExperienceDrop(experience, skills);
-                    System.out.println("Experience: " + experience);
-                    System.out.println("Length:" + length);
+//                    System.out.println("Experience: " + experience);
+//                    System.out.println("Length:" + length);
+
                     if (!experienceDrops.isEmpty()) {
                         List<ExperienceDrop> sorted = new ArrayList<ExperienceDrop>(experienceDrops);
                         Collections.sort(sorted, HIGHEST_POSITION);
@@ -16393,6 +16566,10 @@ public class Client extends RSApplet {
                     maxStats[skillId] = 1;
                     xpCounter += currentExp[skillId] - xp;
                     expAdded = currentExp[skillId] - xp;
+//                    if (skillId == 3) {
+//                        myPlayer.currentHealth = currentLevel;
+//                        myPlayer.maxHealth = stream.readUnsignedByte();
+//                    }
                     for (int k20 = 0; k20 < 98; k20++)
                         if (experience2 >= anIntArray1019[k20])
                             maxStats[skillId] = k20 + 2;
@@ -16689,6 +16866,8 @@ public class Client extends RSApplet {
                 case 75:
                     int j3 = inStream.method436();
                     int j11 = inStream.method436();
+//                    System.out.println("j3 " + j3);
+//                    System.out.println("j11 " + j11);
                     RSInterface.interfaceCache[j11].anInt233 = 2;
                     RSInterface.interfaceCache[j11].mediaID = j3;
                     incomingPacket = -1;
@@ -16756,16 +16935,10 @@ public class Client extends RSApplet {
 
                 case 253:
                     String s = inStream.readString();
+
                     if (s.equals(":prayertrue:")) {
                         prayClicked = true;
-                    } /**else if (s.startsWith("sound-")) {
-                     new AudioPlayer(Integer.valueOf(s.substring(6)), true);
-                     } else if (s.startsWith("stopsound-")) {
-                     if (AudioPlayer.audio != null)
-                     AudioPlayer.audio.stop();
-
-                     }*/
-                    else if (s.equals(":prayerfalse:")) {
+                    } else if (s.equals(":prayerfalse:")) {
                         prayClicked = false;
                     } else if (s.equals(":spin")) {
                         setSpinClick(true);
@@ -16794,9 +16967,14 @@ public class Client extends RSApplet {
                     } else if (s.startsWith("/")) {
                         s = s.replaceAll("/", "");
                         pushMessage(s, 11, "");
-                    } else if (s.endsWith("#url#")) {
-                        String link = s.substring(0, s.indexOf("#"));
-                        pushMessage("Join us at: ", 9, link);
+                    } else if (s.contains("url=")) {
+//                        Logger.getGlobal().info("Received URL: " + s);
+                        String[] params = s.substring(s.indexOf("<") + 1, s.lastIndexOf(">")).split(",");
+                        String link = params[1].substring(params[1].indexOf('=') + 1).trim();
+                        String ref = params[0].substring(params[0].indexOf('=') + 1).trim();
+                        String msg = s.substring(0, s.indexOf('<') + 1) + "@blu@" + ref + "@bla@" + s.substring(s.lastIndexOf('>') + 1);//replaceAll("<url=","").replaceAll(">","").replaceAll(link,"@blu@" + link + "@bla@");
+//                        String msg = s.replaceAll("#url#","");
+                        pushMessage(msg, 9, link);
                     } else if (s.endsWith(":duelreq:")) {
                         String s4 = s.substring(0, s.indexOf(":"));
                         long l18 = TextClass.longForName(s4);
@@ -17037,9 +17215,12 @@ public class Client extends RSApplet {
 
                 case 171:
                     boolean flag1 = inStream.readUnsignedByte() == 1;
+
                     int j13 = inStream.readUnsignedWord();
-                    if (RSInterface.interfaceCache[j13] != null)
+                    if (RSInterface.interfaceCache[j13] != null) {
                         RSInterface.interfaceCache[j13].isMouseoverTriggered = flag1;
+                        Logger.getGlobal().info("Packet 171 [flag: " + flag1 + " RSI: " + j13);
+                    }
                     incomingPacket = -1;
                     return true;
 
@@ -17328,7 +17509,6 @@ public class Client extends RSApplet {
                     return true;
 
                 case 219:
-                    System.out.println("Open Interface:" + openInterfaceID);
                     if (invOverlayInterfaceID != -1) {
                         invOverlayInterfaceID = -1;
                         needDrawTabArea = true;
@@ -17351,7 +17531,7 @@ public class Client extends RSApplet {
                     incomingPacket = -1;
                     return true;
 
-                case 34:
+                case 34: //equipping an item
                     needDrawTabArea = true;
                     int i9 = inStream.readUnsignedWord();
                     if (handledPacket34(i9)) {
@@ -17368,6 +17548,7 @@ public class Client extends RSApplet {
                         if (j20 >= 0 && j20 < class9_2.inv.length) {
                             class9_2.inv[j20] = i23;
                             class9_2.invStackSizes[j20] = l25;
+//                            class9_2.tooltip = ItemDefinition.forID(i23 - 1).name;
                         }
                     }
                     incomingPacket = -1;

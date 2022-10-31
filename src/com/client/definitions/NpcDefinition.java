@@ -49,6 +49,10 @@ public final class NpcDefinition {
 //			entityDef.models[5] = 339; //HAND
 ////			entityDef.models[6] = entityDef.femaleModel; //HAND
 //		}
+        if (i == 3455) {
+            entityDef.name = "Derek";
+            entityDef.description = "An ancient nephalem ghost.";
+        }
         if (i == 338) {
             entityDef = forID(301);
             ItemDefinition weapon = ItemDefinition.forID(20733);

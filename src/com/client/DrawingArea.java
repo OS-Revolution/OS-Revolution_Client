@@ -1,8 +1,12 @@
 package com.client;
 
 
+import org.runehub.api.util.math.geometry.impl.Polygon;
+
 import java.awt.*;
 import java.awt.geom.Arc2D;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
 import java.awt.image.Raster;
 
 public class DrawingArea extends NodeSub {
@@ -61,6 +65,96 @@ public class DrawingArea extends NodeSub {
 		while (offset < length) {
 			pixels[(offset++)] = color;
 		}
+	}
+
+	public static void setPixel(int x, int y, int color) {
+		if(x < topX || x > topX + width || y < topY || y > topY + height)
+			return;
+		int px = x + y * width;
+		if(px < 0 || px >= pixels.length)
+			return;
+		pixels[px] = color;
+	}
+
+	public static void setPixel(int x, int y, int color, int opacity) {
+		if(x < topX || x > topX + width || y < topY || y > topY + height)
+			return;
+		int px = x + y * width;
+		if(px < 0 || px >= pixels.length)
+			return;
+		int a = 256 - opacity;
+		int oldR = (pixels[px] >> 16 & 0xff) * a;
+		int oldG = (pixels[px] >> 8 & 0xff) * a;
+		int oldB = (pixels[px] & 0xff) * a;
+		int newR = (color >> 16 & 0xff) * opacity;
+		int newG = (color >> 8 & 0xff) * opacity;
+		int newB = (color & 0xff) * opacity;
+		int pxColor = ((newR + oldR >> 8) << 16) + ((newG + oldG >> 8) << 8) + (newB + oldB >> 8);
+		pixels[px] = pxColor;
+	}
+
+	public static void fillShape(Polygon polygon, int color, int opacity) {
+		polygon.getAllPoints().forEach(point -> setPixel(point.getX(),point.getY(),color,opacity));
+	}
+
+	public static void drawShape(Polygon polygon, int color, int opacity) {
+		polygon.getAllPoints().forEach(point -> setPixel(point.getX(),point.getY(),color,opacity));
+	}
+
+	public static void drawPartialCircle(int x, int y, int diameter, int color,int percent,int thickness) {
+		Ellipse2D.Double outerCircle = new Ellipse2D.Double(x, y, diameter, diameter);
+		Ellipse2D.Double innerCircle = new Ellipse2D.Double(x, y, diameter - thickness, diameter - thickness);
+		Area area = new Area(outerCircle);
+		area.subtract(new Area(innerCircle));
+		double partial = (percent/100D) * diameter;
+
+
+			for (int i = 0; i < (int) partial; i++)
+				for (int i2 = 0; i2 < diameter; i2++)
+					if (outerCircle.contains(i + x, i2 + y) && (!outerCircle.contains(i + x - 1, i2 + y - 1) ||
+							!outerCircle.contains(i + x + 1, i2 + y + 1) || !outerCircle.contains(i + x - 1, i2 + y + 1) ||
+							!outerCircle.contains(i + x + 1, i2 + y - 1))) {
+						setPixel(i + x, i2 + y, color);
+					}
+
+
+	}
+
+
+	public static void drawCircle(int x, int y, int diameter, int color) {
+		Ellipse2D.Double circle = new Ellipse2D.Double(x, y, diameter, diameter);
+		for(int i = 0; i < diameter; i++)
+			for(int i2 = 0; i2 < diameter; i2++)
+				if(circle.contains(i + x, i2 + y) && (!circle.contains(i + x - 1, i2 + y - 1) ||
+						!circle.contains(i + x + 1, i2 + y + 1) || !circle.contains(i + x - 1, i2 + y + 1) ||
+						!circle.contains(i + x + 1, i2 + y - 1)))
+					setPixel(i + x, i2 + y, color);
+	}
+
+	public static void drawCircle(int x, int y, int diameter, int color, int opacity) {
+		Ellipse2D.Double circle = new Ellipse2D.Double(x, y, diameter, diameter);
+		for(int i = 0; i < diameter; i++)
+			for(int i2 = 0; i2 < diameter; i2++)
+				if(circle.contains(i + x, i2 + y) && (!circle.contains(i + x - 1, i2 + y - 1) ||
+						!circle.contains(i + x + 1, i2 + y + 1) || !circle.contains(i + x - 1, i2 + y + 1) ||
+						!circle.contains(i + x + 1, i2 + y - 1)))
+					setPixel(i + x, i2 + y, color, opacity);
+	}
+
+	public static void fillCircle(int x, int y, int diameter, int color) {
+		Ellipse2D.Double circle = new Ellipse2D.Double(x, y, diameter, diameter);
+		for(int i = 0; i < diameter; i++)
+			for(int i2 = 0; i2 < diameter; i2++)
+				if(circle.contains(i + x, i2 + y))
+					setPixel(i + x, i2 + y, color);
+	}
+
+	public static void fillCircle(int x, int y, int diameter, int color, int opacity) {
+		Ellipse2D.Double circle = new Ellipse2D.Double(x, y, diameter, diameter);
+		for(int i = 0; i < diameter; i++)
+			for(int i2 = 0; i2 < diameter; i2++)
+				if(circle.contains(i + x, i2 + y))
+					setPixel(i + x, i2 + y, color, opacity);
 	}
 
 	public static void method336(int i, int j, int k, int l, int i1) {
@@ -542,6 +636,8 @@ public class DrawingArea extends NodeSub {
 
 	}
 
+
+
 	public static void fillRectangle(int x, int y, int width, int height, int colour) {
 		if (x < topX) {
 			width -= topX - x;
@@ -560,12 +656,37 @@ public class DrawingArea extends NodeSub {
 		if (l1 > pixels.length - 1) {
 			l1 = pixels.length - 1;
 		}
+
 		for (int i2 = -height; i2 < 0; i2++) {
-			for (int j2 = -width; j2 < 0; j2++)
+			for (int j2 = -width; j2 < 0; j2++) {
+//				setPixel(j2,i2,colour,50);
 				pixels[l1++] = colour;
 
-			l1 += k1;
+				l1 += k1;
+			}
 		}
+
+	}
+
+	public static void fillRectangle(int x, int y, int width, int height, int colour, int opacity) {
+		if (x < topX) {
+			width -= topX - x;
+			x = topX;
+		}
+		if (y < topY) {
+			height -= topY - y;
+			y = topY;
+		}
+		if (x + width > bottomX)
+			width = bottomX - x;
+		if (y + height > bottomY)
+			height = bottomY - y;
+		int k1 = DrawingArea.width - width;
+		int l1 = x + y * DrawingArea.width;
+		if (l1 > pixels.length - 1) {
+			l1 = pixels.length - 1;
+		}
+		drawPixelsWithOpacity(colour,y,width, height,opacity,x);
 
 	}
 

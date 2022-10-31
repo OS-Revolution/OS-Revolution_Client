@@ -2909,6 +2909,7 @@ public class RSInterface {
 			rsi.actions[2] = action3;
 		}
 		rsi.type = 2;
+//		rsi.contentType = 205;
 	}
 
 	private static void addSprites(int ID, int i, int i2, String name, int configId, int configFrame) {
@@ -4827,7 +4828,7 @@ public class RSInterface {
 		return rsinterface;
 	}
 
-	private static void addConfigButton2(int ID, int pID, int bID, int bID2, int width, int height, String tT,
+	public static void addConfigButton2(int ID, int pID, int bID, int bID2, int width, int height, String tT,
 										 int configID, int aT, int configFrame) {
 		RSInterface Tab = addTabInterface(ID);
 		Tab.parentID = pID;
@@ -5354,6 +5355,7 @@ public class RSInterface {
 
 	public String hoverText;
 	public int opacity;
+
 	public int hoverType;
 	@SuppressWarnings("unused")
 	private boolean inventoryHover;
@@ -5454,6 +5456,21 @@ public class RSInterface {
 		tab.height = 334;
 	}
 
+	protected static void addCachedSprite(int id, int rsiId) {
+		RSInterface tab = interfaceCache[id] = new RSInterface();
+		tab.id = id;
+		tab.parentID = id;
+		tab.type = 5;
+		tab.atActionType = 0;
+		tab.contentType = 0;
+		tab.aByte254 = (byte) 0;
+		tab.mOverInterToTrigger = 52;
+		tab.sprite1 = RSInterface.interfaceCache[rsiId].sprite1;
+		tab.sprite2 = RSInterface.interfaceCache[rsiId].sprite2;
+		tab.width = 512;
+		tab.height = 334;
+	}
+
 	protected static void addHoverButton(int i, String imageName, int j, int width, int height, String text,
 										 int contentType, int hoverOver, int aT) {// hoverable button
 		RSInterface tab = addTabInterface(i);
@@ -5471,7 +5488,7 @@ public class RSInterface {
 		tab.tooltip = text;
 	}
 
-	protected static void addHoveredButton(int i, String imageName, int j, int w, int h, int IMAGEID) {// hoverable button
+	protected static void addHoveredButton(int i, String imageName, int spriteId, int w, int h, int IMAGEID) {// hoverable button
 		RSInterface tab = addTabInterface(i);
 		tab.parentID = i;
 		tab.id = i;
@@ -5483,7 +5500,7 @@ public class RSInterface {
 		tab.aByte254 = 0;
 		tab.mOverInterToTrigger = -1;
 		tab.scrollMax = 0;
-		addHoverImage(IMAGEID, j, j, imageName);
+		addHoverImage(IMAGEID, spriteId, spriteId, imageName);
 		tab.totalChildren(1);
 		tab.child(0, IMAGEID, 0, 0);
 	}
@@ -5501,6 +5518,24 @@ public class RSInterface {
 		tab.mOverInterToTrigger = 52;
 		tab.sprite1 = imageLoader(j, name);
 		tab.sprite2 = imageLoader(k, name);
+	}
+
+	public static void addTransparentSprite(int id, int spriteId, String spriteName, int enable, int disabled) {
+		RSInterface tab = interfaceCache[id] = new RSInterface();
+		tab.id = id;
+		tab.parentID = id;
+		tab.type = 5;
+		tab.atActionType = 0;
+		tab.contentType = 0;
+		tab.aByte254 = (byte) 0;
+		tab.mOverInterToTrigger = 52;
+		tab.sprite1 = imageLoader(spriteId, spriteName);
+		tab.sprite2 = imageLoader(spriteId, spriteName);
+		tab.width = 512;
+		tab.height = 334;
+		tab.drawsTransparent = true;
+		tab.enabledAltSprite = imageLoader(enable,spriteName);
+		tab.disabledAltSprite = imageLoader(disabled,spriteName);
 	}
 
 	public static void addTransparentSprite(int id, int spriteId, String spriteName) {
@@ -5739,7 +5774,7 @@ public class RSInterface {
 
 	public int grandExchangeSlot;
 
-	private int colorTypes[];
+	public int colorTypes[];
 	public byte progressBarState, progressBarPercentage;
 
 	public static final int TYPE_CONTAINER = 0;
@@ -5769,6 +5804,80 @@ public class RSInterface {
 		component.width = width;
 		component.height = height;
 		component.colorTypes = colorTypes;
+		component.opacity = 200;
+	}
+
+	protected static void addProgressBar(int identity, int width, int height, int[] colorTypes, int opacity) {
+		RSInterface component = addInterface(identity);
+		component.id = identity;
+		component.type = 23;
+		component.width = width;
+		component.height = height;
+		component.colorTypes = colorTypes;
+		component.opacity = opacity;
+	}
+
+	public static RSInterface addWrappingText(int id, String text, TextDrawingArea tda[],
+											  int idx, int color, boolean center, boolean shadow, int width) {
+		RSInterface tab = addTabInterface(id);
+		tab.parentID = id;
+		tab.id = id;
+		tab.type = 17;
+		tab.atActionType = 0;
+		tab.width = width;
+		tab.height = 11;
+		tab.contentType = 0;
+		tab.opacity = 0;
+		tab.hoverType = -1;
+		tab.centerText = center;
+		tab.textShadow = shadow;
+		tab.textDrawingAreas = tda[idx];
+		tab.message = getWrappedText(tab.textDrawingAreas, text, tab.width);
+		tab.textColor = color;
+		return tab;
+	}
+
+	public static String getWrappedText(TextDrawingArea tda, String text, int width) {
+		if (text.contains("\\n") || tda.getTextWidth(text) <= width) {
+			return text;
+		}
+		int spaceWidth = tda.getTextWidth(" ");
+		StringBuilder result = new StringBuilder(text.length());
+		StringBuilder line = new StringBuilder();
+		int lineLength = 0;
+		int curIndex = 0;
+		while (true) {
+			int spaceIndex = text.indexOf(' ', curIndex);
+			int newLength = lineLength;
+			boolean last = false;
+			String curWord;
+			if (spaceIndex < 0) {
+				last = true;
+				curWord = text.substring(curIndex);
+			} else {
+				curWord = text.substring(curIndex, spaceIndex);
+				newLength += spaceWidth;
+			}
+			curIndex = spaceIndex + 1;
+			int w = tda.getTextWidth(curWord);
+			newLength += w;
+			if (newLength > width) {
+				result.append(line);
+				result.append("\\n");
+				line = new StringBuilder(curWord);
+				line.append(' ');
+				lineLength = w;
+			} else {
+				line.append(curWord);
+				line.append(' ');
+				lineLength = newLength;
+			}
+			if (last) {
+				break;
+			}
+		}
+		result.append(line);
+		return result.toString();
 	}
 
 	public static void AddInterfaceButton(int id, int sid, String spriteName, String tooltip) {
@@ -5873,7 +5982,7 @@ public class RSInterface {
 		rsi.sprite2 = imageLoader(spriteId, spriteName);
 	}
 
-	private static void addTransparentSprite(int id, int spriteId, String spriteName, int opacity) {
+	protected static void addTransparentSprite(int id, int spriteId, String spriteName, int opacity) {
 		RSInterface tab = interfaceCache[id] = new RSInterface();
 		tab.id = id;
 		tab.parentID = id;

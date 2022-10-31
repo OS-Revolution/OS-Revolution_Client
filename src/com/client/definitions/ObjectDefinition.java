@@ -301,6 +301,10 @@ public final class ObjectDefinition {
             objectDef.aBoolean779 = false;
         }
         switch (i) {
+            case 13636:
+                objectDef.description = "A strange energy emanates from this.";
+                objectDef.actions = new String[]{"Open Rift", null, null, null, null};
+                break;
             case 567:
                 objectDef.description = "A strange energy emanates from this.";
                 objectDef.actions = new String[]{"Teleport", null, null, null, null};
@@ -425,6 +429,10 @@ public final class ObjectDefinition {
             case 20928:
                 objectDef.name = "Fishing Spot";
                 objectDef.actions = new String[]{"Lure", "Bait", null, null, null};
+                break;
+            case 20930:
+                objectDef.name = "Fishing Spot";
+                objectDef.actions = new String[]{"Net", null, null, null, null};
                 break;
             case 20929:
                 objectDef.name = "Fishing Spot";

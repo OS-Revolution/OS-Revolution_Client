@@ -5,6 +5,7 @@ import com.client.Configuration;
 import com.client.DrawingArea;
 import com.client.Rasterizer;
 import com.client.features.gameframe.ScreenMode;
+import org.runehub.api.util.SkillDictionary;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -50,7 +51,7 @@ public class Console {
             Rasterizer.drawHorizontalLine(0, height - 15 + extraConsoleY, Client.gameScreenWidth, 0x979797);
             Rasterizer.drawHorizontalLine(0, height + extraConsoleY, Client.gameScreenWidth, 0x979797);
             client.newSmallFont.drawBasicString("> " + consoleInput, 10, height - 3 + extraConsoleY, 0xFFFFFF, 0);
-
+//            Rasterizer.drawCircle(200, 100, 40, RunehubUtils.RS2HSB_to_RGB(RunehubUtils.getBaseColorForSkill(SkillDictionary.Skill.THIEVING)));
             client.newSmallFont.drawBasicString(((Client.instance.tickDelta % 40 < 20) ? "_" : ""), 10 + client.newSmallFont.getTextWidth("> " + consoleInput), height - 2 + extraConsoleY, 0xFFFFFF, 0);
 
 
