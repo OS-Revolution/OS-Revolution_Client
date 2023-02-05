@@ -1,5 +1,9 @@
 package com.client;
 
+import java.awt.*;
+import java.awt.geom.Arc2D;
+import java.awt.geom.Ellipse2D;
+
 public final class Rasterizer extends DrawingArea {
 
     static boolean saveDepth;
@@ -46,6 +50,28 @@ public final class Rasterizer extends DrawingArea {
             anIntArray1470[k] = (int) (65536D * Math.sin((double) k * 0.0030679614999999999D));
             anIntArray1471[k] = (int) (65536D * Math.cos((double) k * 0.0030679614999999999D));
         }
+    }
+
+    public static void drawProgressArc(Graphics2D graphics, int x, int y, int w, int h, double radiusStart, double radiusEnd, int strokeWidth, Color color)
+    {
+        Stroke stroke = graphics.getStroke();
+        graphics.setStroke(new BasicStroke(strokeWidth, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL));
+        graphics.setColor(color);
+        graphics.draw(new Arc2D.Double(
+                x, y,
+                w, h,
+                radiusStart, radiusEnd,
+                Arc2D.OPEN));
+        graphics.setStroke(stroke);
+    }
+
+    public static Ellipse2D drawEllipse(Graphics2D graphics, int x, int y, Color color)
+    {
+        graphics.setColor(color);
+        Ellipse2D ellipse = new Ellipse2D.Double(x, y, 40, 40);
+        graphics.fill(ellipse);
+        graphics.draw(ellipse);
+        return ellipse;
     }
 
     public static void nullLoader() {

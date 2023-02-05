@@ -1,5 +1,6 @@
 package com.client.runehub;
 
+import com.client.graphics.interfaces.runehub.Rune;
 import org.runehub.api.util.SkillDictionary;
 
 import java.awt.*;
@@ -37,6 +38,10 @@ public class RunehubUtils {
         int decode_saturation = (RS2HSB >> 7) & 0x07;
         int decode_brightness = (RS2HSB & 0x7f);
         return Color.HSBtoRGB((float)decode_hue/63, (float)decode_saturation/7, (float)decode_brightness/127);
+    }
+
+    public static Color getSkillColor(int skill) {
+        return new Color(RS2HSB_to_RGB(getBaseColorForSkill(skill)));
     }
 
     public static int getBaseColorForSkill(SkillDictionary.Skill skill) {
@@ -87,6 +92,42 @@ public class RunehubUtils {
                 return 11304;
             case CONSTRUCTION:
                 return 9151;
+        }
+        return 11187;
+    }
+
+    public static int getBaseColorForRune(Rune runeId) {
+        switch (runeId) {
+            case AIR: //air
+                return 127;
+            case MIND://mind
+                return 5056;
+            case WATER: //water
+                return 43945;
+            case EARTH: //earth
+                return 6036;
+            case FIRE: //fire
+                return 937;
+            case BODY: //body
+                return 43961;
+            case COSMIC: //cosmic
+                return 11200;
+            case CHAOS: // chaos
+                return 7104;
+            case ASTRAL: //astral
+                return 54503;
+            case NATURE: //nature
+                return 22430;
+            case LAW: //law
+                return 43968;
+            case DEATH: //death
+                return 127;
+            case BLOOD: //blood
+                return 926;
+            case SOUL: //soul
+                return 43484;
+            case WRATH: //wrath
+                return 7208;
         }
         return 11187;
     }

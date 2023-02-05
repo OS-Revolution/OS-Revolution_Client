@@ -18,7 +18,10 @@ import com.client.graphics.interfaces.impl.Slider;
 import com.client.graphics.loaders.*;
 import com.client.runehub.GameNodeController;
 import com.client.runehub.RunehubUtils;
+import com.client.runehub.XpGlobe;
+import com.client.runehub.net.ConnectionHandler;
 import com.client.sign.Signlink;
+import com.sun.imageio.plugins.common.ImageUtil;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.reflection.Sun14ReflectionProvider;
 import org.apache.commons.lang3.SystemUtils;
@@ -26,10 +29,12 @@ import org.runehub.api.io.load.impl.ItemEquipmentContextLoader;
 import org.runehub.api.io.load.impl.ItemIdContextLoader;
 import org.runehub.api.model.entity.item.ItemContext;
 import org.runehub.api.model.entity.item.ItemEquipmentContext;
+import org.runehub.api.net.Connection;
 import org.runehub.api.util.SkillDictionary;
 import org.runehub.api.util.StringUtils;
 import sun.rmi.runtime.Log;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.applet.AppletContext;
 import java.awt.*;
@@ -37,6 +42,8 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.geom.Ellipse2D;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.*;
 import java.lang.reflect.Method;
@@ -51,6 +58,8 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Queue;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -9016,6 +9025,226 @@ public class Client extends RSApplet {
         return false;
     }
 
+    private static final int MINIMUM_STEP = 10;
+    private static final int PROGRESS_RADIUS_START = 90;
+    private static final int PROGRESS_RADIUS_REMAINDER = 0;
+    private static final int PROGRESS_BACKGROUND_SIZE = 5;
+    private static final int TOOLTIP_RECT_SIZE_X = 150;
+    private static final Color DARK_OVERLAY_COLOR = new Color(0, 0, 0, 180);
+    private static final double GLOBE_ICON_RATIO = 0.65;
+
+    private double getSkillProgress(int startXp, int currentXp, int goalXp) {
+        double xpGained = currentXp - startXp;
+        double xpGoal = goalXp - startXp;
+
+        return ((xpGained / xpGoal) * 100);
+    }
+
+    private double getSkillProgressRadius(int startXp, int currentXp, int goalXp) {
+        return -(3.6 * getSkillProgress(startXp, currentXp, goalXp)); //arc goes backwards
+    }
+
+
+    private void renderProgressCircle(Graphics2D graphics, XpGlobe skillToDraw, int startXp, int goalXp, int x, int y, Rectangle bounds) {
+        double radiusCurrentXp = getSkillProgressRadius(startXp, skillToDraw.getCurrentXp(), goalXp);
+        double radiusToGoalXp = 360; //draw a circle
+
+        Ellipse2D backgroundCircle = Rasterizer.drawEllipse(graphics, x, y, Color.yellow);
+
+        drawSkillImage(graphics, skillToDraw, x, y);
+        System.out.println("Drawing at X: " + x + " Y: " + y);
+//        Point mouse = getMousePosition();
+//        double mouseX = mouse.getX() - bounds.x;
+//        double mouseY = mouse.getY() - bounds.y;
+//
+//        // If mouse is hovering the globe
+//        if (backgroundCircle.contains(mouseX, mouseY)) {
+//            // Fill a darker overlay circle
+//            graphics.setColor(DARK_OVERLAY_COLOR);
+//            graphics.fill(backgroundCircle);
+//
+//            drawProgressLabel(graphics, skillToDraw, startXp, goalXp, x, y);
+//
+////            if (config.enableTooltips())
+////            {
+////                drawTooltip(skillToDraw, goalXp);
+////            }
+//        }
+
+        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+
+        Rasterizer.drawProgressArc(
+                graphics,
+                x, y,
+                40, 40,
+                PROGRESS_RADIUS_REMAINDER, radiusToGoalXp,
+                PROGRESS_BACKGROUND_SIZE,
+                Color.BLACK
+        );
+        Rasterizer.drawProgressArc(
+                graphics,
+                x, y,
+                40, 40,
+                PROGRESS_RADIUS_START, radiusCurrentXp,
+                2,
+                RunehubUtils.getSkillColor(skillToDraw.getSkill()));
+    }
+
+    private void drawProgressLabel(Graphics2D graphics, XpGlobe globe, int startXp, int goalXp, int x, int y) {
+        if (goalXp <= globe.getCurrentXp()) {
+            return;
+        }
+
+        // Convert to int just to limit the decimal cases
+        String progress = (int) (getSkillProgress(startXp, globe.getCurrentXp(), goalXp)) + "%";
+
+        final FontMetrics metrics = graphics.getFontMetrics();
+        int drawX = x + (40 / 2) - (metrics.stringWidth(progress) / 2);
+        int drawY = y + (40 / 2) + (metrics.getHeight() / 2);
+
+//        OverlayUtil.renderTextLocation(graphics, new Point(drawX, drawY), progress, Color.WHITE);
+    }
+
+    private void drawSkillImage(Graphics2D graphics, XpGlobe xpGlobe, int x, int y) {
+        final int orbSize = 40;
+        final BufferedImage skillImage = getScaledSkillIcon(xpGlobe, orbSize);
+
+        if (skillImage == null) {
+            return;
+        }
+
+        graphics.drawImage(
+                skillImage,
+                x + (orbSize / 2) - (skillImage.getWidth() / 2),
+                y + (orbSize / 2) - (skillImage.getHeight() / 2),
+                null
+        );
+    }
+
+    private BufferedImage getScaledSkillIcon(XpGlobe xpGlobe, int orbSize) {
+        // Cache the previous icon if the size hasn't changed
+
+        if (xpGlobe.getSkillIcon() != null && xpGlobe.getSize() == orbSize) {
+            return xpGlobe.getSkillIcon();
+        }
+
+        BufferedImage icon = getSkillImage(Skill.values()[xpGlobe.getSkill()]);
+        if (icon == null) {
+            return null;
+        }
+
+        final int size = orbSize - 2;
+        final int scaledIconSize = (int) (size * GLOBE_ICON_RATIO);
+        if (scaledIconSize <= 0) {
+            return null;
+        }
+
+        icon = resizeImage(icon, scaledIconSize, scaledIconSize, true);
+
+        xpGlobe.setSkillIcon(icon);
+        xpGlobe.setSize(orbSize);
+        return icon;
+    }
+
+    public static BufferedImage resizeImage(final BufferedImage image, final int newWidth, final int newHeight) {
+        return resizeImage(image, newWidth, newHeight, false);
+    }
+
+    /**
+     * Re-size a BufferedImage to the given dimensions.
+     *
+     * @param image               the BufferedImage.
+     * @param newWidth            The width to set the BufferedImage to.
+     * @param newHeight           The height to set the BufferedImage to.
+     * @param preserveAspectRatio Whether to preserve the original image's aspect ratio. When {@code true}, the image
+     *                            will be scaled to have a maximum of {@code newWidth} width and {@code newHeight}
+     *                            height.
+     * @return The BufferedImage with the specified dimensions
+     */
+    public static BufferedImage resizeImage(final BufferedImage image, final int newWidth, final int newHeight, final boolean preserveAspectRatio) {
+        final Image resized;
+        if (preserveAspectRatio) {
+            if (image.getWidth() > image.getHeight()) {
+                resized = image.getScaledInstance(newWidth, -1, Image.SCALE_SMOOTH);
+            } else {
+                resized = image.getScaledInstance(-1, newHeight, Image.SCALE_SMOOTH);
+            }
+        } else {
+            resized = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+        }
+        return bufferedImageFromImage(resized);
+    }
+
+    public static BufferedImage bufferedImageFromImage(final Image image) {
+        if (image instanceof BufferedImage) {
+            return (BufferedImage) image;
+        }
+
+        return toARGB(image);
+    }
+
+    /**
+     * Creates an ARGB {@link BufferedImage} from an {@link Image}.
+     */
+    public static BufferedImage toARGB(final Image image) {
+        if (image instanceof BufferedImage && ((BufferedImage) image).getType() == BufferedImage.TYPE_INT_ARGB) {
+            return (BufferedImage) image;
+        }
+
+        BufferedImage out = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = out.createGraphics();
+        g2d.drawImage(image, 0, 0, null);
+        g2d.dispose();
+        return out;
+    }
+
+    private final BufferedImage[] imgCache = new BufferedImage[Skill.values().length * 2];
+
+    public BufferedImage getSkillImage(Skill skill, boolean small) {
+        int skillIdx = skill.ordinal() + (small ? Skill.values().length : 0);
+
+        if (imgCache[skillIdx] != null) {
+            return imgCache[skillIdx];
+        }
+
+        String skillIconPath = Signlink.getCacheDirectory() + "sprites\\Interfaces\\runehub\\skill_icons\\" + skill.name().toLowerCase() + ".png";
+        BufferedImage skillImage = null;
+        System.out.println(skillIconPath);
+        try {
+            skillImage = ImageIO.read(new File(skillIconPath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        imgCache[skillIdx] = skillImage;
+
+        return skillImage;
+    }
+
+    public static BufferedImage loadImageResource(final Class<?> c, final String path) {
+        try (InputStream in = c.getResourceAsStream(path)) {
+            synchronized (ImageIO.class) {
+                return ImageIO.read(in);
+            }
+        } catch (IllegalArgumentException e) {
+            final String filePath;
+
+            if (path.startsWith("/")) {
+                filePath = path;
+            } else {
+                filePath = c.getPackage().getName().replace('.', '/') + "/" + path;
+            }
+
+            throw new IllegalArgumentException(path, e);
+        } catch (IOException e) {
+            throw new RuntimeException(path, e);
+        }
+    }
+
+    public BufferedImage getSkillImage(Skill skill) {
+        return getSkillImage(skill, false);
+    }
+
+
     public void login(String s, String s1, boolean flag) {
         if (missingPassword()) {
             return;
@@ -9030,6 +9259,17 @@ public class Client extends RSApplet {
             }
             setConfigButton(23103, informationFile.isRememberRoof());
             socketStream = new RSSocket(this, openSocket(port + portOff));
+//            boolean online = false;
+//            String host;
+//
+//            if (online) {
+//                host = "70.179.169.220";
+//            } else {
+//                host = "localhost";
+//            }
+//
+//
+//            connectionHandlerService.submit(new ConnectionHandler(new Socket(host,ConnectionHandler.SERVER_PORT)));
             long l = TextClass.longForName(s);
             int i = (int) (l >> 16 & 31L);
             stream.currentOffset = 0;
@@ -12544,7 +12784,7 @@ public class Client extends RSApplet {
                         int xpForLevel = totalXPForNextLevel - startingXP;
                         int xpTowardsLevel = currentXP - startingXP;
                         double progressDouble = (xpTowardsLevel / (double) xpForLevel) * 100D;
-                        int progress = (int)progressDouble;
+                        int progress = (int) progressDouble;
 //                        System.out.println("1: " + totalXPForNextLevel);
 //                        System.out.println("2: " + currentXP);
 //                        System.out.println("3: " + startingXP + "\n");
@@ -12570,7 +12810,7 @@ public class Client extends RSApplet {
                         RSInterface.interfaceCache[i].message = skillName + " " + levelString;
                     }
 
-                    if ( i >= 57926 && i <= 57949) {
+                    if (i >= 57926 && i <= 57949) {
                         int skillId = i - 57926;
                         int xp = currentExp[skillId];
                         RSInterface.interfaceCache[i].message = "XP: " + NumberFormat.getInstance().format(xp);
@@ -12582,7 +12822,7 @@ public class Client extends RSApplet {
                         RSInterface.interfaceCache[i].message = "Bonus XP: " + NumberFormat.getInstance().format(xp);
                     }
 
-                    if ( i >= 57974 && i <= 57997) {
+                    if (i >= 57974 && i <= 57997) {
                         int skillId = i - 57974;
                         int totalXPForNextLevel = getXPForLevel(maxStats[skillId] + 1);
                         int currentXP = currentExp[skillId];
@@ -16296,7 +16536,46 @@ public class Client extends RSApplet {
 
     };
 
+    private Dimension renderXpGlobe(List<XpGlobe> globes) {
+        final List<XpGlobe> xpGlobes = globes;
+        final int queueSize = xpGlobes.size();
+        if (queueSize == 0) {
+            return null;
+        }
+
+        // The progress arc is drawn either side of the perimeter of the background. This value accounts for that
+        // when calculating draw positions and overall size of the overlay
+        final int progressArcOffset = (int) Math.ceil(Math.max(PROGRESS_BACKGROUND_SIZE, 2) / 2.0);
+        int curDrawPosition = progressArcOffset;
+        for (final XpGlobe xpGlobe : xpGlobes) {
+//            int startXp = xpTrackerService.getStartGoalXp(xpGlobe.getSkill());
+//            int goalXp = xpTrackerService.getEndGoalXp(xpGlobe.getSkill());
+//            if (config.alignOrbsVertically())
+//            {
+//                renderProgressCircle(graphics, xpGlobe, startXp, goalXp, progressArcOffset, curDrawPosition, getBounds());
+//            }
+//            else
+//            {
+//            graphics.
+            renderProgressCircle((Graphics2D) graphics, xpGlobe, xpGlobe.getCurrentXp(), getXPForLevel(xpGlobe.getCurrentLevel()), curDrawPosition, progressArcOffset, getBounds());
+//            }
+            curDrawPosition += MINIMUM_STEP + 40;
+        }
+//this.globes.clear();
+        // Get length of markers
+        final int markersLength = (queueSize * (40 + progressArcOffset)) + ((MINIMUM_STEP) * (queueSize - 1));
+//        if (config.alignOrbsVertically())
+//        {
+//            return new Dimension(config.xpOrbSize() + progressArcOffset * 2, markersLength);
+//        }
+//        else
+//        {
+        return new Dimension(markersLength, 40 + progressArcOffset * 2);
+//        }
+    }
+
     private Map<Integer, Integer> bonusXp = new HashMap<>();
+
 
     private boolean parsePacket() {
         if (socketStream == null)
@@ -16406,14 +16685,19 @@ public class Client extends RSApplet {
                     byte length = inStream.readSignedByte();
                     int[] skills = new int[length];
 
+
                     for (int j = 0; j < length; j++) {
                         skills[j] = inStream.readSignedByte();
+//                        XpGlobe globe = new XpGlobe(skills[j], Math.toIntExact(experience),maxStats[skills[j]]);
+//                        globes.add(globe);
                     }
 
                     ExperienceDrop drop = new ExperienceDrop(experience, skills);
 //                    System.out.println("Experience: " + experience);
 //                    System.out.println("Length:" + length);
-
+//                    if (!globes.isEmpty()) {
+//                        renderXpGlobe(globes);
+//                    }
                     if (!experienceDrops.isEmpty()) {
                         List<ExperienceDrop> sorted = new ArrayList<ExperienceDrop>(experienceDrops);
                         Collections.sort(sorted, HIGHEST_POSITION);
@@ -16566,6 +16850,14 @@ public class Client extends RSApplet {
                     maxStats[skillId] = 1;
                     xpCounter += currentExp[skillId] - xp;
                     expAdded = currentExp[skillId] - xp;
+
+//                    List<XpGlobe> globes = new ArrayList<>();
+//                    if (skillId <= 22) {
+//                        System.out.println("Drawing xp globe " + skillId);
+//                        XpGlobe globe = new XpGlobe(skillId, currentExp[skillId] - xp, currentLevel);
+//                        globes.add(globe);
+//                        renderXpGlobe(globes);
+//                    }
 //                    if (skillId == 3) {
 //                        myPlayer.currentHealth = currentLevel;
 //                        myPlayer.maxHealth = stream.readUnsignedByte();
@@ -18779,4 +19071,14 @@ public class Client extends RSApplet {
         }
     }
 
+    public Connection getRunehubConnection() {
+        return runehubConnection;
+    }
+
+    public void setRunehubConnection(Connection connection) {
+        this.runehubConnection = connection;
+    }
+
+    private Connection runehubConnection;
+    private final ExecutorService connectionHandlerService = Executors.newSingleThreadExecutor();
 }

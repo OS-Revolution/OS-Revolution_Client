@@ -5943,7 +5943,7 @@ public class RSInterface {
 		RSInterface.tooltip = S;
 	}
 
-	private static void addClickableText(int id, String text, String tooltip, TextDrawingArea tda[], int idx, int color,
+	public static void addClickableText(int id, String text, String tooltip, TextDrawingArea tda[], int idx, int color,
 										 boolean center, boolean shadow, int width) {
 		RSInterface tab = addTabInterface(id);
 		tab.parentID = id;

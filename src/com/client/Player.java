@@ -136,6 +136,7 @@ public final class Player extends Entity {
 		super.anInt1505 = stream.readUnsignedWord();
 		if (super.anInt1505 == 65535)
 			super.anInt1505 = -1;
+
 		name = TextClass.fixName(TextClass.nameForLong(stream.readQWord()));
 		visible = stream.readUnsignedByte() == 0 ? true : false;
 		combatLevel = stream.readUnsignedByte();
@@ -202,8 +203,9 @@ public final class Player extends Entity {
 					k2 = j1;
 				if (k2 >= 256 && k2 < 512 && !IDK.cache[k2 - 256].method537())
 					flag = true;
-				if (k2 >= 512 && !ItemDefinition.forID(k2 - 512).method195(anInt1702))
+				if (k2 >= 512 && !ItemDefinition.forID(k2 - 512).method195(anInt1702)) {
 					flag = true;
+				}
 			}
 
 			if (flag) {

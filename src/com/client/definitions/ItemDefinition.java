@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.client.*;
+import com.client.graphics.interfaces.runehub.Rune;
 import com.client.runehub.RunehubUtils;
 import com.client.sign.Signlink;
 import com.client.utilities.FileOperations;
@@ -218,6 +219,27 @@ public final class ItemDefinition {
         newDefinition.femaleModel = baseDefinition.femaleModel;
     }
 
+    private static ItemDefinition getDef(ItemDefinition newDefinition, ItemDefinition baseDefinition) {
+        newDefinition.name = baseDefinition.name;
+        newDefinition.modelId = baseDefinition.modelId;
+        newDefinition.description = baseDefinition.description;
+        newDefinition.stackAmounts = baseDefinition.stackAmounts;
+        newDefinition.stackIDs = baseDefinition.stackIDs;
+        newDefinition.originalModelColors = baseDefinition.originalModelColors;
+        newDefinition.modifiedModelColors = baseDefinition.modifiedModelColors;
+        newDefinition.stackable = baseDefinition.stackable;
+        newDefinition.modelZoom = baseDefinition.modelZoom;
+        newDefinition.modelOffset1 = baseDefinition.modelOffset1;
+        newDefinition.modelOffset2 = baseDefinition.modelOffset2;
+        newDefinition.modelRotation1 = baseDefinition.modelRotation1;
+        newDefinition.modelRotation2 = baseDefinition.modelRotation2;
+        newDefinition.inventoryOptions = baseDefinition.inventoryOptions;
+        newDefinition.equipActions = baseDefinition.equipActions;
+        newDefinition.maleModel = baseDefinition.maleModel;
+        newDefinition.femaleModel = baseDefinition.femaleModel;
+        return newDefinition;
+    }
+
     private static ItemDefinition createStar(ItemDefinition definition, String name, String description, int newColor) {
         copyDef(definition, ItemDefinition.forID(6824));
         definition.name = name;
@@ -225,6 +247,16 @@ public final class ItemDefinition {
         definition.inventoryOptions = new String[]{"Select Skill", null, null, null, null};
         definition.originalModelColors = new int[]{newColor};
         definition.modifiedModelColors = new int[]{11187};
+        return definition;
+    }
+
+    private static ItemDefinition createAltarTeleportTab(ItemDefinition definition, Rune rune) {
+        copyDef(definition, ItemDefinition.forID(13666));
+        definition.name = RunehubUtils.capitalize(rune.toString().toLowerCase()) + " altar teleport";
+        definition.description = "Break to teleport to the " + RunehubUtils.capitalize(rune.name().toLowerCase() + " altar.");
+//        definition.inventoryOptions = new String[]{"Select Skill", null, null, null, null};
+        definition.originalModelColors = new int[]{49, 53, RunehubUtils.getBaseColorForRune(rune), 24, 127};
+        definition.modifiedModelColors = new int[]{49, 53, 43992, 24, 127};
         return definition;
     }
 
@@ -327,6 +359,124 @@ public final class ItemDefinition {
         }
 
         switch (itemId) {
+            case 8115:
+                createAltarTeleportTab(itemDef, Rune.AIR);
+                break;
+            case 8116:
+                createAltarTeleportTab(itemDef, Rune.MIND);
+                break;
+            case 8117:
+                createAltarTeleportTab(itemDef, Rune.WATER);
+                break;
+            case 8118:
+                createAltarTeleportTab(itemDef, Rune.EARTH);
+                break;
+            case 8119:
+                createAltarTeleportTab(itemDef, Rune.FIRE);
+                break;
+            case 8120:
+                createAltarTeleportTab(itemDef, Rune.BODY);
+                break;
+            case 8121:
+                createAltarTeleportTab(itemDef, Rune.COSMIC);
+                break;
+            case 8246:
+                createAltarTeleportTab(itemDef, Rune.CHAOS);
+                break;
+            case 8247:
+                createAltarTeleportTab(itemDef, Rune.ASTRAL);
+                break;
+            case 8248:
+                createAltarTeleportTab(itemDef, Rune.NATURE);
+                break;
+            case 8380:
+                createAltarTeleportTab(itemDef, Rune.LAW);
+                break;
+            case 8381:
+                createAltarTeleportTab(itemDef, Rune.DEATH);
+                break;
+            case 8382:
+                createAltarTeleportTab(itemDef, Rune.BLOOD);
+                break;
+            case 8383:
+                createAltarTeleportTab(itemDef, Rune.SOUL);
+                break;
+            case 3767:
+                ItemDefinition orginalBody = getDef(itemDef, forID(21892));
+                itemDef.originalModelColors = new int[]{0, 897, 45742, 46884, 46756, 46761, 45750, 45751, 43119};
+                itemDef.modifiedModelColors = new int[]{0, 912, 916, 902, 920, 520, 922, 926, 43119};
+//                itemDef.modifiedModelColors = new int[]{8084,7719,0, 912,916,902,920,520,922,926,43119};
+                itemDef.name = orginalBody.name;
+                itemDef.modelId = orginalBody.modelId;
+                itemDef.description = orginalBody.description;
+                itemDef.stackAmounts = orginalBody.stackAmounts;
+                itemDef.stackIDs = orginalBody.stackIDs;
+                itemDef.stackable = orginalBody.stackable;
+                itemDef.modelZoom = orginalBody.modelZoom;
+                itemDef.modelOffset1 = orginalBody.modelOffset1;
+                itemDef.modelOffset2 = orginalBody.modelOffset2;
+                itemDef.modelRotation1 = orginalBody.modelRotation1;
+                itemDef.modelRotation2 = orginalBody.modelRotation2;
+                itemDef.inventoryOptions = orginalBody.inventoryOptions;
+                itemDef.equipActions = orginalBody.equipActions;
+                itemDef.maleModel = orginalBody.maleModel;
+                itemDef.femaleModel = orginalBody.femaleModel;
+                itemDef.aByte154 = orginalBody.aByte154;
+                itemDef.anInt162 = orginalBody.anInt162;
+                itemDef.anInt164 = orginalBody.anInt164;
+                itemDef.anInt166 = orginalBody.anInt166;
+                itemDef.anInt173 = orginalBody.anInt173;
+                itemDef.aByte205 = orginalBody.aByte205;
+                itemDef.anInt167 = orginalBody.anInt167;
+                itemDef.anInt175 = orginalBody.anInt175;
+                itemDef.anInt184 = orginalBody.anInt184;
+                itemDef.anInt185 = orginalBody.anInt185;
+                itemDef.anInt188 = orginalBody.anInt188;
+                itemDef.anInt191 = orginalBody.anInt191;
+                itemDef.anInt192 = orginalBody.anInt192;
+                itemDef.anInt196 = orginalBody.anInt196;
+                itemDef.anInt197 = orginalBody.anInt197;
+                itemDef.anInt204 = orginalBody.anInt204;
+                itemDef.opcode148 = orginalBody.opcode148;
+                itemDef.opcode140 = orginalBody.opcode140;
+                itemDef.opcode149 = orginalBody.opcode149;
+                itemDef.opcode139 = orginalBody.opcode139;
+                break;
+            case 4395:
+                copyDef(itemDef, forID(6570));
+                itemDef.name = "Water cape";
+                itemDef.description = "A cape of water.";
+
+//                itemDef.originalModelColors = new int[]{6032, 24};
+//                itemDef.modifiedModelColors = new int[]{6032, 40};
+                itemDef.originalModelColors = new int[]{6032, 24, 42879, 65535};
+                itemDef.modifiedModelColors = new int[]{6032, 40, 924, 65535};
+                break;
+            case 4397:
+                copyDef(itemDef, forID(6570));
+                itemDef.name = "Tree cape";
+                itemDef.description = "A cape of leaves.";
+                itemDef.originalModelColors = new int[]{30, 30, 14887, 14887};
+                itemDef.modifiedModelColors = new int[]{6032, 40, 924, 65535};
+                break;
+            case 4399:
+                copyDef(itemDef, forID(5607));
+                itemDef.name = "Portable Furnace";
+                itemDef.description = "A portable furnace";
+                itemDef.inventoryOptions = new String[]{null, "Wear", "Check fuel", "Add fuel", "Drop"};
+                itemDef.originalModelColors = new int[]{48187, 40, 43046, 43033, 43029};
+                itemDef.modifiedModelColors = new int[]{6674, 18, 6550, 6554, 6430};
+                break;
+            case 4214:
+                copyDef(itemDef, forID(4214));
+                itemDef.name = "Water cape";
+                itemDef.description = "A cape of water.";
+                itemDef.opcode148 = 18244;
+//                itemDef.originalModelColors = new int[]{6032, 24};
+//                itemDef.modifiedModelColors = new int[]{6032, 40};
+                itemDef.originalModelColors = new int[]{6674, 43127, 40, 41079, 43129, 43131, 61, 36975};
+                itemDef.modifiedModelColors = new int[]{6674, 43127, 38119, 41079, 43129, 43131, 61, 36975};
+                break;
             case 7622:
                 copyDef(itemDef, forID(7622));
                 itemDef.name = "Ultracompost";
@@ -570,8 +720,8 @@ public final class ItemDefinition {
                 itemDef.inventoryOptions[0] = "Drink";
                 break;
             case 3742:
-                itemDef.inventoryOptions = new String[] {null,"Wear",null,null,"Drop"};
-                itemDef.equipActions = new String[] {"Remove",null,"Operate",null,null};
+                itemDef.inventoryOptions = new String[]{null, "Wear", null, null, "Drop"};
+                itemDef.equipActions = new String[]{"Remove", null, "Operate", null, null};
                 itemDef.description = "Is it really?";
                 break;
             case 2396:
@@ -724,6 +874,94 @@ public final class ItemDefinition {
                 itemDef.modifiedModelColors = new int[]{790};
                 itemDef.stackable = true;
                 break;
+            case 12718:
+                copyDef(itemDef, ItemDefinition.forID(12757));
+                itemDef.name = "Jewel Dye";
+                itemDef.description = "Dyes certain items";
+                itemDef.originalModelColors = new int[]{-32011};
+                itemDef.modifiedModelColors = new int[]{38461};
+                break;
+            case 21037:
+                copyDef(itemDef, ItemDefinition.forID(12757));
+                itemDef.name = "Shadow Dye";
+                itemDef.description = "Dyes certain items";
+                itemDef.originalModelColors = new int[]{46882};
+                itemDef.modifiedModelColors = new int[]{38461};
+                break;
+            case 21038:
+                copyDef(itemDef, ItemDefinition.forID(12757));
+                itemDef.name = "Third Age Dye";
+                itemDef.description = "Dyes certain items";
+                itemDef.originalModelColors = new int[]{6449};
+                itemDef.modifiedModelColors = new int[]{38461};
+                break;
+            case 8276:
+                copyDef(itemDef, ItemDefinition.forID(11785));
+                itemDef.name = "Armadyl crossbow (Shadow)";
+                itemDef.description = "A shadow dyed Armadyl crossbow";
+                itemDef.originalModelColors = new int[]{46915, 46882, 0, 0};
+                itemDef.modifiedModelColors = new int[]{6449, 5409, 5404, 7390};
+                break;
+            case 12719:
+                copyDef(itemDef, ItemDefinition.forID(4587));
+                itemDef.name = "Dragon scimitar (Jewel)";
+                itemDef.description = "A jewel dyed Dragon scimitar";
+                itemDef.originalModelColors = new int[]{37, -32011, -31011};
+                itemDef.modifiedModelColors = new int[]{37, 933, 935};
+                break;
+            case 8236:
+                itemDef.name = "Lovecats";
+                itemDef.description = "2 Cats sitting on a carpet 5 feet apart...";
+                break;
+            case 13216:
+                itemDef.name = "Small Lion";
+                itemDef.description = "Definitely a normal lion.";
+                break;
+            case 7121:
+                itemDef.name = "Surf Board";
+                itemDef.description = "Surf's Up.";
+                break;
+            case 20402:
+                NpcDefinition fareed = NpcDefinition.forID(3456); //4991 color
+                itemDef.name = "Fareed's Scimitar";
+                itemDef.maleModel = fareed.models[4];
+                itemDef.modifiedModelColors = new int[]{9152, 6032, 61};
+                itemDef.originalModelColors = new int[]{4991, 6032, 4991};
+                break;
+            case 5030:
+                copyDef(itemDef, ItemDefinition.forID(1127));
+                itemDef.name = "Fareed's Platebody";
+                itemDef.maleModel = NpcDefinition.forID(3456).models[1];//2 = arms excluding elbows
+                itemDef.modifiedModelColors = new int[]{21, 41, 12, 61};
+                itemDef.originalModelColors = new int[]{21, 4991, 4950, 4991};
+                break;
+            case 4904:
+                copyDef(itemDef, ItemDefinition.forID(4724));
+                itemDef.name = "Fareed's Helm";
+                itemDef.maleModel = NpcDefinition.forID(3456).models[0];
+                itemDef.modifiedModelColors = new int[]{8656, 6020, 10394};
+                itemDef.originalModelColors = new int[]{5991, 6020, 4991};
+                break;
+            case 2912:
+                itemDef.name = "Fareed's Gloves";
+                itemDef.maleModel = NpcDefinition.forID(3456).models[2];
+                itemDef.modifiedModelColors = new int[]{10004};
+                itemDef.originalModelColors = new int[]{4991};
+                break;
+            case 20422:
+                copyDef(itemDef, ItemDefinition.forID(4722));
+                itemDef.name = "Fareed's Platelegs";
+                itemDef.maleModel = NpcDefinition.forID(3456).models[3];
+                itemDef.modifiedModelColors = new int[]{8656, 10388, 8664, 41, 6554, 10394, 138, 268};
+                itemDef.originalModelColors = new int[]{4991, 6991, 2636, 41, 4991, 4991, 138, 4991};
+                break;
+//            case 12720:
+//                copyDef(itemDef,ItemDefinition.forID(4587));
+//                itemDef.name = "Dragon scimitar (Jewel)";
+//                itemDef.description = "A jewel dyed Dragon scimitar";
+//                itemDef.originalModelColors = new int[]{-32011};
+//                itemDef.modifiedModelColors = new int[]{38461};
+//                break;
             case 13190:
                 itemDef.name = "Membership Bond (30 Days)";
                 itemDef.description = "Redeem for 30 days of membership.";
@@ -758,7 +996,62 @@ public final class ItemDefinition {
                 itemDef.inventoryOptions[1] = "Open";
                 itemDef.inventoryOptions[4] = "Drop";
                 break;
-
+            case 5020:
+                itemDef.name = "Artisan's crafter ticket";
+                itemDef.description = "Good for 5 minutes";
+//                itemDef.inventoryOptions = new String[5];
+//                itemDef.inventoryOptions[0] = "Deploy";
+//                itemDef.inventoryOptions[4] = "Drop";
+                break;
+            case 5021:
+                itemDef.name = "Chef's range ticket";
+                itemDef.description = "Good for 5 minutes";
+//                itemDef.inventoryOptions = new String[5];
+//                itemDef.inventoryOptions[0] = "Deploy";
+//                itemDef.inventoryOptions[4] = "Drop";
+                break;
+            case 5022:
+                itemDef.name = "Herbalist's well ticket";
+                itemDef.description = "Good for 5 minutes";
+//                itemDef.inventoryOptions = new String[5];
+//                itemDef.inventoryOptions[0] = "Deploy";
+//                itemDef.inventoryOptions[4] = "Drop";
+                break;
+            case 5023:
+                itemDef.name = "Artisan's sawmill ticket";
+                itemDef.description = "Good for 5 minutes";
+//                itemDef.inventoryOptions = new String[5];
+//                itemDef.inventoryOptions[0] = "Deploy";
+//                itemDef.inventoryOptions[4] = "Drop";
+                break;
+            case 8548:
+                copyDef(itemDef, ItemDefinition.forID(5023));
+                itemDef.name = "Pyromancer's brazier ticket";
+                itemDef.description = "Good for 5 minutes";
+//                itemDef.inventoryOptions = new String[5];
+//                itemDef.inventoryOptions[0] = "Deploy";
+//                itemDef.inventoryOptions[4] = "Drop";
+                break;
+            case 4446:
+                copyDef(itemDef, ItemDefinition.forID(10832));
+                itemDef.name = "Small cash bag";
+                itemDef.description = "Contains 5k coins.";
+                break;
+            case 19505:
+                copyDef(itemDef, ItemDefinition.forID(10832));
+                itemDef.name = "Small cash bag";
+                itemDef.description = "Contains 5k coins.";
+                break;
+            case 19507:
+                copyDef(itemDef, ItemDefinition.forID(10833));
+                itemDef.name = "Medium cash bag";
+                itemDef.description = "Contains 50k coins.";
+                break;
+            case 19509:
+                copyDef(itemDef, ItemDefinition.forID(10834));
+                itemDef.name = "Large cash bag";
+                itemDef.description = "Contains 500k coins.";
+                break;
             case 7791:
             case 7792:
             case 7793:
@@ -1006,6 +1299,7 @@ public final class ItemDefinition {
                 itemDef.inventoryOptions = new String[]{"Open", null, null, null, "Drop"};
                 itemDef.description = "Mystery box that contains goodies.";
                 break;
+
             case 15098:
                 itemDef.name = "Dice (up to 100)";
                 itemDef.description = "A 100-sided dice.";
@@ -1045,8 +1339,8 @@ public final class ItemDefinition {
                 itemDef.description = "Read this scroll to be rewarded with $50 credit.";
                 break;
             case 1464:
-                itemDef.name = "Vote ticket";
-                itemDef.description = "This ticket can be exchanged for a voting point.";
+                itemDef.name = "Death ticket";
+                itemDef.description = "This ticket can be exchanged for any item at Death's Item Retrieval";
                 break;
         }
     }

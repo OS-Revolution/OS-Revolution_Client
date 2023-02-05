@@ -160,8 +160,8 @@ public final class NpcDefinition {
             entityDef.actions = new String[]{"Trade", null, null, null, null};
         }
         if (i == 506) {
-            entityDef.name = "@gre@Ironman Shop";
-            entityDef.description = "@yel@General Store for all iron+";
+            entityDef.name = "Shop Owner";
+            entityDef.description = "General store";
             entityDef.actions = new String[]{"Trade", null, null, null, null};
             //}
             //if(i==3218 || i ==3217){
@@ -302,6 +302,14 @@ public final class NpcDefinition {
             entityDef.anInt91 = 100;
         }
 
+        if (i == 637) {
+            entityDef.actions = new String[]{"Talk-to", null, "Trade", "Teleport", null};
+        }
+
+        if (i == 1328) {
+            entityDef.actions = new String[]{"Talk-to", null, "Trade", null, null};
+        }
+
         if (i == 7144) {
             entityDef.anInt75 = 0;
         }
@@ -313,6 +321,140 @@ public final class NpcDefinition {
         }
         if (i == 7146) {
             entityDef.anInt75 = 2;
+        }
+        NpcDefinition original = NpcDefinition.forID(2637);
+        switch (i) {
+            case 156:
+                 original = NpcDefinition.forID(2637);
+//                entityDef.anInt75 = 2; //overhead
+                entityDef.boundDim = 1;
+                entityDef.name = "Shrinx";
+                entityDef.actions = new String[5];
+                entityDef.actions[0] = null;
+                entityDef.actions[1] = null;
+                entityDef.actions[2] = "Pick-Up";
+                entityDef.actions[3] = null;
+                entityDef.actions[4] = null;
+                entityDef.models = original.models;
+                entityDef.standAnim = original.standAnim;
+                entityDef.walkAnim = original.walkAnim;
+                entityDef.anInt58 = original.anInt58;
+                entityDef.anInt55 = original.anInt55;
+                entityDef.anInt83 = original.anInt83;
+                entityDef.originalColors = original.originalColors;
+                entityDef.newColors = original.newColors;
+                entityDef.anInt86 = 90;
+                entityDef.anInt91 = 90;
+                entityDef.description = "Season 1 Completionist";
+                entityDef.onMinimap = false;
+                entityDef.combatLevel = 0;
+                break;
+            case 6990:
+                original = NpcDefinition.forID(2644);
+                entityDef.boundDim = 1;
+                entityDef.name = "Lovecats";
+                entityDef.actions = new String[5];
+                entityDef.actions[0] = null;
+                entityDef.actions[1] = null;
+                entityDef.actions[2] = "Pick-Up";
+                entityDef.actions[3] = null;
+                entityDef.actions[4] = null;
+                entityDef.models = original.models;
+                entityDef.standAnim = original.standAnim;
+                entityDef.walkAnim = original.walkAnim;
+                entityDef.anInt58 = original.anInt58;
+                entityDef.anInt55 = original.anInt55;
+                entityDef.anInt83 = original.anInt83;
+                entityDef.originalColors = original.originalColors;
+                entityDef.newColors = original.newColors;
+                entityDef.anInt86 = 90;
+                entityDef.anInt91 = 90;
+                entityDef.description = "Play-Pass Season Completionist";
+                entityDef.onMinimap = false;
+                entityDef.combatLevel = 0;
+                break;
+            case 233:
+                original = NpcDefinition.forID(233);
+                entityDef.boundDim = 1;
+                entityDef.name = "Cody Maverick";
+                entityDef.actions = new String[5];
+                entityDef.actions[0] = null;
+                entityDef.actions[1] = null;
+                entityDef.actions[2] = "Pick-Up";
+                entityDef.actions[3] = null;
+                entityDef.actions[4] = null;
+                entityDef.models = original.models;
+                entityDef.standAnim = original.standAnim;
+                entityDef.walkAnim = original.walkAnim;
+                entityDef.anInt58 = original.anInt58;
+                entityDef.anInt55 = original.anInt55;
+                entityDef.anInt83 = original.anInt83;
+                entityDef.originalColors = original.originalColors;
+                entityDef.newColors = original.newColors;
+                entityDef.anInt86 = 90;
+                entityDef.anInt91 = 90;
+                entityDef.description = "Play-Pass Season Completionist";
+                entityDef.onMinimap = false;
+                entityDef.combatLevel = 0;
+                break;
+            case 4709:
+                original = NpcDefinition.forID(4708);
+                entityDef.boundDim = 1;
+                entityDef.name = "Lion Cub..?";
+                entityDef.actions = new String[5];
+                entityDef.actions[0] = null;
+                entityDef.actions[1] = null;
+                entityDef.actions[2] = "Pick-Up";
+                entityDef.actions[3] = null;
+                entityDef.actions[4] = null;
+                entityDef.models = original.models;
+                entityDef.standAnim = original.standAnim;
+                entityDef.walkAnim = original.walkAnim;
+                entityDef.anInt58 = original.anInt58;
+                entityDef.anInt55 = original.anInt55;
+                entityDef.anInt83 = original.anInt83;
+                entityDef.originalColors = original.originalColors;
+                entityDef.newColors = original.newColors;
+                entityDef.anInt86 = 40;
+                entityDef.anInt91 = 40;
+                entityDef.description = "Play-Pass Season Completionist";
+                entityDef.onMinimap = false;
+                entityDef.combatLevel = 0;
+                break;
+            case 5567:
+                entityDef.actions = new String[5];
+                entityDef.actions[0] = "Claim";
+                entityDef.actions[1] = null;
+                entityDef.actions[2] = null;
+                entityDef.actions[3] = null;
+                entityDef.actions[4] = null;
+                entityDef.onMinimap = true;
+                break;
+            case 803:
+                 original = NpcDefinition.forID(805);
+//                entityDef.anInt75 = 2; //overhead
+                entityDef.boundDim = 1;
+                entityDef.name = "Gilded Sheep";
+                entityDef.actions = new String[5];
+                entityDef.actions[0] = null;
+                entityDef.actions[1] = null;
+                entityDef.actions[2] = "Pick-Up";
+                entityDef.actions[3] = null;
+                entityDef.actions[4] = null;
+                entityDef.models = original.models;
+                entityDef.standAnim = original.standAnim;
+                entityDef.walkAnim = original.walkAnim;
+                entityDef.anInt58 = original.anInt58;
+                entityDef.anInt55 = original.anInt55;
+                entityDef.anInt83 = original.anInt83;
+                entityDef.originalColors = original.originalColors;
+                entityDef.newColors = original.newColors;
+                entityDef.anInt86 = 90;
+                entityDef.anInt91 = 90;
+                entityDef.description = "Season 1 Completionist";
+                entityDef.onMinimap = false;
+                entityDef.combatLevel = 0;
+                break;
         }
         return entityDef;
     }

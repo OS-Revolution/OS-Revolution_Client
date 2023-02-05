@@ -301,9 +301,47 @@ public final class ObjectDefinition {
             objectDef.aBoolean779 = false;
         }
         switch (i) {
+            case 6799:
+                objectDef.name = "Artisan's crafting station";
+                objectDef.description = "A highly efficient work station";
+                objectDef.actions = new String[]{"Craft", "Check", "Add Tickets", null, null};
+                break;
+            case 13542:
+                objectDef.name = "Chef's range";
+                objectDef.description = "A highly efficient work station";
+                objectDef.actions = new String[]{"Cook", "Check", "Add Tickets", null, null};
+                break;
+            case 878:
+                objectDef.name = "Herbalist's well";
+                objectDef.description = "A highly efficient work station";
+                objectDef.actions = new String[]{"Fill", "Check", "Add Tickets", null, null};
+                break;
+            case 15468:
+                objectDef.name = "Artisan's sawmill";
+                objectDef.description = "A highly efficient work station";
+                objectDef.actions = new String[]{"Cut", "Check", "Add Tickets", null, null};
+                break;
+            case 11017:
+                objectDef.name = "Pyromancer's brazier";
+                objectDef.description = "A highly efficient work station";
+                objectDef.actions = new String[]{"Burn", "Check", "Add Tickets", null, null};
+                break;
+            case 13520:
+                objectDef.name = "Boss Instance Portal";
+                break;
             case 13636:
                 objectDef.description = "A strange energy emanates from this.";
                 objectDef.actions = new String[]{"Open Rift", null, null, null, null};
+                break;
+            case 13637:
+                copyDef(objectDef,forID(13636));
+                objectDef.description = "A strange energy emanates from this.";
+                objectDef.actions = new String[]{"Open Instance", null, null, null, null};
+                break;
+            case 13620:
+                copyDef(objectDef,forID(13620));
+                objectDef.description = "A portal to your private instance";
+                objectDef.actions = new String[]{"Enter", "Close", null, null, null};
                 break;
             case 567:
                 objectDef.description = "A strange energy emanates from this.";
@@ -359,18 +397,6 @@ public final class ObjectDefinition {
                 objectDef.name = "Dimensional Rift";
                 objectDef.animation = 2260;
                 objectDef.actions = new String[]{"Teleport", null, null, null, null};
-//                objectDef.originalTexture = originalDef.originalTexture;
-//                objectDef.modifiedTexture = originalDef.modifiedTexture;
-//                objectDef.aBoolean736 = originalDef.aBoolean736;
-//                objectDef.aByte737 = originalDef.aByte737;
-//                objectDef.aByte742 = originalDef.aByte742;
-//                objectDef.anInt761 = originalDef.anInt761;
-//                objectDef.anInt744 = originalDef.anInt744;
-//                objectDef.anInt758 = originalDef.anInt758;
-//                objectDef.originalModelColors = originalDef.originalModelColors;
-//                objectDef.modifiedModelColors = originalDef.modifiedModelColors;
-//                objectDef.anInt749 = originalDef.anInt749;
-//                objectDef.height = originalDef.height;
                 break;
             case 28924:
                 objectDef.anIntArray773 = new int[]{31600, 31657};
@@ -426,6 +452,9 @@ public final class ObjectDefinition {
 //                createHerb(objectDef, "Bloodweed", new int[]{947, 822, 925});
 //                objectDef.description = "A rare herb containing a thick blood like substance.";
 //                break;
+            case 15420:
+                objectDef.actions = new String[]{"Build", null, null, null, null};
+                break;
             case 20928:
                 objectDef.name = "Fishing Spot";
                 objectDef.actions = new String[]{"Lure", "Bait", null, null, null};

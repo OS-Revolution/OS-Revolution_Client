@@ -101,6 +101,54 @@ public class Interfaces extends RSInterface {
         addRiftSelection(textDrawingAreas);
         addSkillTab(textDrawingAreas);
         runehubTeleport(textDrawingAreas);
+        skillActionUI(textDrawingAreas);
+        instanceTimer(textDrawingAreas);
+    }
+
+
+    private static void instanceTimer(TextDrawingArea[] tda) {
+        final String path = "Interfaces/runehub/tab/player/SPRITE";
+        RSInterface tab = addTabInterface(57500);
+        RSInterface scroll = addTabInterface(57550);
+        addSprite(57506, 0, path);
+        addText(57507, "Instances", tda, 2, 0xFFA500, true, true);
+
+        addSprite(57513, 14, path);
+
+        addText(57514, "Lorem Ipsum", tda, 2, 0xFFA500, true, true);
+        addText(57515, "Lorem Ipsum", tda, 1, 0xFFA500, true, true);
+        addText(57516, "Players", tda, 1, 0xFFA500, true, true);
+        addProgressBar(57517,167, 21, new int[]{0xA67711, 0x005F00});
+        addClickableText(57518, "Send Invite to Player","Invite Player",tda,2,0xff9040, true, true, 150);
+//        addText(57519, "Invite Player", tda, 1, 0xFFA500, true, true);
+//        addClickableSprites(57520, "Send Invite",path,22,22);
+
+        setChildren(7, tab);
+
+        setBounds(57506, 4, 2, 0, tab);
+        setBounds(57507, 95, 4, 1, tab);
+
+
+        setBounds(57513, 5, 65, 2, tab);
+        setBounds(57514, 95, 30, 3, tab);
+        setBounds(57515, 95, 45, 4, tab);
+//        setBounds(57516, 95, 105, 5, tab);
+        setBounds(57517, 14, 73, 5, tab);
+        setBounds(57550,4, 120,6,tab);
+//        setBounds(57518,20, 230,8,tab);
+//        setBounds(57519, 95, 210, 9, tab);
+//        setBounds(57520, 165, 230, 10, tab);
+
+//        int playerMax = 4;
+//        scroll.totalChildren(playerMax);
+//        for (int i = 0; i < playerMax; i++) {
+//            addClickableText(57551 + i,"player name","Remove",tda,0, 0xff9040, false, true, 150);
+//            setBounds(57551 + i,8,2 + (i * 12),i,scroll);
+//        }
+//
+//        scroll.width = 160;
+//        scroll.height = 190;
+//        scroll.scrollMax = 40;
     }
 
     private static void mysteryBox(TextDrawingArea[] tda) {
@@ -111,26 +159,29 @@ public class Interfaces extends RSInterface {
         //addSprite(65001, 0, "Interfaces/Teleporting/Background");
         addText(47002, "Mystery Box", tda, 2, 0xFFA500, true, true);
         addButton(47003, 527, "Interfaces/MysteryBox/SPRITE", "Close");
-        addButton(47004, 810, "Interfaces/MysteryBox/SPRITE", "Spin!");
-        addText(47005, "@gre@Spin!", tda, 2, 0xFFA500, true, true);
+        addButton(47004, 810, "Interfaces/MysteryBox/SPRITE", "Spin");
+        addText(47005, "Spin 1x", tda, 2, 0xFFA500, true, true);
         addSprite(47006, 530, "Interfaces/MysteryBox/SPRITE");
         addSprite(47007, 531, "Interfaces/MysteryBox/SPRITE");
         addText(47008, "Feeling lucky?", tda, 2, 0xFFA500, true, true);
-        addText(47009, "Sacrifice your box for a chance at something rare!", tda, 1, 0xFFA500, true, true);
+        addWrappingText(47009, "Sacrifice your box for a chance at something rare!", tda, 1, 0xFFA500, false, true, 300);
         addSprite(47010, 528, "Interfaces/MysteryBox/SPRITE");
         addSprite(47011, 533, "Interfaces/MysteryBox/SPRITE");
+        addButton(47012, 810, "Interfaces/MysteryBox/SPRITE", "Spin");
+        addText(47013, "Spin All", tda, 2, 0xFFA500, true, true);
 
-
-        setChildren(13, iface);
+        setChildren(15, iface);
         setBounds(47001, 10, 10, 0, iface);
         setBounds(47002, 253, 13, 1, iface);
         setBounds(47003, 473, 14, 2, iface);
-        setBounds(47004, 218, 256, 3, iface);
-        setBounds(47005, 253, 263, 4, iface);
+        setBounds(47004, 323, 256, 3, iface);
+        setBounds(47005, 358, 263, 4, iface);
         setBounds(47006, 17, 185, 5, iface);
         setBounds(47007, 33, 65, 6, iface);
         setBounds(47008, 253, 78, 7, iface);
-        setBounds(47009, 253, 108, 8, iface);
+        setBounds(47009, 120, 108, 8, iface);
+        setBounds(47012, 393, 256, 13, iface);
+        setBounds(47013, 428, 263, 14, iface);
         // Boxes
         setBounds(47200, 10, 187, 9, iface);
         // Items
@@ -148,7 +199,6 @@ public class Interfaces extends RSInterface {
         for (int i = 0; i < Client.BOXES64; i++) {
             //addSpriteLoader(47201, 1076);
             addSprite(47201, 532, "Interfaces/MysteryBox/SPRITE");
-
             //addSprite(47201, 0, "");
             setBounds(47201, x, 0, i, box);
             x += 2880;
@@ -157,7 +207,7 @@ public class Interfaces extends RSInterface {
         /* Items */
         RSInterface scroll = addInterface(47100);
         scroll.width = 474;
-        addToItemGroup(47101, 1750, 1, 20, 20, false, null, null, null);
+        addToItemGroup(47101, 1750, 1, 13, 10, false, null, null, null);
         setChildren(1, scroll);
         setBounds(47101, 0, 0, 0, scroll);
     }
@@ -363,22 +413,22 @@ public class Interfaces extends RSInterface {
             setBounds(57301 + i, 4 + (i * 37), 5, 2 + i, tab);
         }
 
-        int children = 2;
+        int children = 3;
         int startIndex = 57315;
         scroll.totalChildren(children * 3);
         for (int i = 0; i < children; i++) {
             addClickableSprites(startIndex + i, "Details", path, 21, 2);
-            setBounds(startIndex + i,(5),(40 * i),i,scroll);
+            setBounds(startIndex + i, (5), (40 * i), i, scroll);
         }
 
         for (int i = 0; i < children; i++) {
-            addText(startIndex + (children) + i, "Lorem Ipsum", tda,1, 0xFFA500, true, true);
-            setBounds(startIndex + (children) + i,(82),3 + (40 * i),(children) + i,scroll);
+            addText(startIndex + (children) + i, "Lorem Ipsum", tda, 1, 0xFFA500, true, true);
+            setBounds(startIndex + (children) + i, (82), 3 + (40 * i), (children) + i, scroll);
         }
 
         for (int i = 0; i < children; i++) {
-            addText(startIndex + (children * 2) + i, "Lorem Ipsum", tda,0, 0xFFA500, false, true);
-            setBounds(startIndex + (children * 2) + i,(10),20 + (40 * i),(children * 2) + i,scroll);
+            addText(startIndex + (children * 2) + i, "Lorem Ipsum", tda, 0, 0xFFA500, false, true);
+            setBounds(startIndex + (children * 2) + i, (10), 20 + (40 * i), (children * 2) + i, scroll);
         }
 
         scroll.width = 160;
@@ -712,6 +762,37 @@ public class Interfaces extends RSInterface {
         rsi.child(6, 50009, getXFromBase(getXFromBase(getXFromBase(baseX, panel1X), 10), 5), getYFromBase(getYFromBase(getYFromBase(baseY, 40), 100), 3)); //panel 1 textbox text
         rsi.child(7, 50010, getXFromBase(getXFromBase(getXFromBase(baseX, panel2X), 10), 5), getYFromBase(getYFromBase(getYFromBase(baseY, 40), 100), 3)); //panel 2 textbox text
 
+    }
+
+    public static void skillActionUI(TextDrawingArea[] tda) {
+        final RSInterface rsi = addInterface(49000);
+        final RSInterface leftScroll = addTabInterface(49005);
+        final String dir = "Interfaces/runehub/skill-action/SPRITE";
+        final int baseX = 30;
+        final int baseY = 25;
+
+        addSprite(49001, 0, dir);
+        addText(49002, "Lorem Ipsum", tda, 2, 0xFFA500, true, true);
+        addButton(49003, 1, dir, "Close");
+
+        addText(49004, "Lorem Ipsum", tda, 2, 0xFFA500, true, true);
+        addToItemGroup(49006, 4, 10, 289, 167, true, "Select", null, null);
+
+        rsi.totalChildren(5);
+
+        rsi.child(0, 49001, baseX, baseY);
+        rsi.child(1, 49002, getXFromBase(baseX, 235), getYFromBase(baseY, 5));
+        rsi.child(2, 49003, getXFromBase(baseX, 426), getYFromBase(baseY, 5));
+        rsi.child(3, 49004, getXFromBase(baseX, 90), getYFromBase(baseY, 20));
+        rsi.child(4, 49005, getXFromBase(baseX, 8), getYFromBase(baseY, 30));
+
+        leftScroll.totalChildren(1);
+
+        leftScroll.child(0, 49006, getXFromBase(baseX, 12), getYFromBase(baseY, 30));
+
+        leftScroll.width = 180;
+        leftScroll.height = 230;
+        leftScroll.scrollMax = 300;
     }
 
     private static void runehubTeleport(TextDrawingArea[] tda) {
