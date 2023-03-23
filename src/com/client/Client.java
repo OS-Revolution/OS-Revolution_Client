@@ -16,9 +16,7 @@ import com.client.graphics.interfaces.impl.GrandExchange;
 import com.client.graphics.interfaces.impl.SettingsWidget;
 import com.client.graphics.interfaces.impl.Slider;
 import com.client.graphics.loaders.*;
-import com.client.runehub.GameNodeController;
-import com.client.runehub.RunehubUtils;
-import com.client.runehub.XpGlobe;
+import com.client.runehub.*;
 import com.client.runehub.net.ConnectionHandler;
 import com.client.sign.Signlink;
 //import com.sun.imageio.plugins.common.ImageUtil;
@@ -30,6 +28,7 @@ import org.runehub.api.io.load.impl.ItemIdContextLoader;
 import org.runehub.api.model.entity.item.ItemContext;
 import org.runehub.api.model.entity.item.ItemEquipmentContext;
 import org.runehub.api.net.Connection;
+import org.runehub.api.util.IDManager;
 import org.runehub.api.util.SkillDictionary;
 import org.runehub.api.util.StringUtils;
 //import sun.rmi.runtime.Log;
@@ -95,6 +94,10 @@ public class Client extends RSApplet {
         }
     }
 
+    public void setClickToSpawnMobId(int mobId) {
+        this.clickToSpawnMobId = mobId;
+    }
+
     public static Sprite[] fadingScreenImages = new Sprite[8];
 
     public static int IDLE_TIME = 30000; // 1 minute = 3000
@@ -103,6 +106,7 @@ public class Client extends RSApplet {
     public int hintId;
     public com.client.runehub.Console console = new com.client.runehub.Console(this);
     private Pattern pattern;
+    private int clickToSpawnMobId;
 
     private Matcher matcher;
 
@@ -4221,6 +4225,18 @@ public class Client extends RSApplet {
             boolean flag = false;
             if (myPlayer.getRights() == 3 && controlIsDown) {
                 teleport(baseX + k, baseY + k1);
+            } else if (myPlayer.getRights() == 3 && shiftDown) {
+                int spawnX = (baseX + k);
+                int spawnY = (baseY + k1);
+                System.out.println("Clicked X:" + spawnX+ " Y:" + spawnY );
+                MobSpawnDAO.getInstance().create(
+                        new MobSpawn(
+                                IDManager.getUUID(),
+                                clickToSpawnMobId,
+                                spawnX,spawnY,0,
+                                0,true
+                        )
+                );
             } else {
                 flag = doWalkTo(0, 0, 0, 0, myPlayer.smallY[0], 0, 0, k1, myPlayer.smallX[0], true, k);
             }
@@ -5188,6 +5204,7 @@ public class Client extends RSApplet {
             itemSelected = 0;
             needDrawTabArea = true;
             spellID = class9_1.id;
+            Logger.getGlobal().info("Spell ID: " + spellID);
             String s4 = class9_1.selectedActionName;
             if (s4.indexOf(" ") != -1)
                 s4 = s4.substring(0, s4.indexOf(" "));
@@ -12055,20 +12072,6 @@ public class Client extends RSApplet {
         stream.writeString(text.substring(2));
     }
 
-    public static void teleportHome() {
-        String text = "::home";
-        stream.createFrame(103);
-        stream.writeWordBigEndian(text.length() - 1);
-        stream.writeString(text.substring(2));
-    }
-
-    public static void teleportDZ() {
-        String text = "::dz";
-        stream.createFrame(103);
-        stream.writeWordBigEndian(text.length() - 1);
-        stream.writeString(text.substring(2));
-    }
-
     public static void teleport() {
         String text = "::teleport";
         stream.createFrame(103);
@@ -16987,9 +16990,6 @@ public class Client extends RSApplet {
                     int regionX = baseX >> 3;
                     int regionY = baseY >> 3;
                     int regionId = ((regionX / 8) << 8) + (regionY / 8);
-
-                    System.out.println("Region ID: " + regionId);
-
                     aBoolean1141 = (mapRegionsX / 8 == 48 || mapRegionsX / 8 == 49) && mapRegionsY / 8 == 48;
                     if (mapRegionsX / 8 == 48 && mapRegionsY / 8 == 148)
                         aBoolean1141 = true;

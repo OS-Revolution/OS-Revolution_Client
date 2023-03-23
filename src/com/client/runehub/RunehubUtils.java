@@ -10,6 +10,13 @@ import java.util.List;
 
 public class RunehubUtils {
 
+    public static int getRegionId(int x, int y) {
+        int regionX = x >> 3;
+        int regionY = y >> 3;
+        int regionId = ((regionX / 8) << 8) + (regionY / 8);
+        return regionId;
+    }
+
 
     public static int[] rsToRGB(int rs) {
         if (rs < 0) {
