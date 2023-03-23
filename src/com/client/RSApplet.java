@@ -506,17 +506,17 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 				Client.inputTaken = true;
 				break;
 
-			case KeyEvent.VK_H:
-				Client.teleportHome();
-				break;
-				
-			case KeyEvent.VK_D:
-				Client.teleportDZ();
-				break;
-				
-			case KeyEvent.VK_T:
-				Client.teleport();
-				break;
+//			case KeyEvent.VK_H:
+//				Client.teleportHome();
+//				break;
+//
+//			case KeyEvent.VK_D:
+//				Client.teleportDZ();
+//				break;
+//
+//			case KeyEvent.VK_T:
+//				Client.teleport();
+//				break;
 
 			}
 		}
@@ -602,6 +602,8 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 		}
 		if (keyevent.isControlDown()) {
 			Client.controlIsDown = true;
+		} else if (keyevent.isShiftDown()) {
+			Client.shiftDown = true;
 		}
 		if (j < 30)
 			j = 0;

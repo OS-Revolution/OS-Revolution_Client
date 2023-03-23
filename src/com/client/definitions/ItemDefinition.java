@@ -537,7 +537,13 @@ public final class ItemDefinition {
                 itemDef.originalModelColors = new int[]{30385, 30385, 8920, 920, 920, 30385, 8920};
                 itemDef.modifiedModelColors = new int[]{8497, 63250, 22, 8617, 8377, 63002, 30};
                 break;
-            case 5553:
+            case 10891:
+                copyDef(itemDef, forID(536));
+                itemDef.name = "Superior dragon bones";
+                itemDef.originalModelColors = new int[]{31191};
+                itemDef.modifiedModelColors = new int[]{127};
+                break;
+            case 20415:
                 ItemDefinition rogueChest = forID(5553);
                 itemDef.name = "Death Lotus Assassin Chestplate";
                 itemDef.originalModelColors = new int[]{900, 900, 900, 900, 925, 900};
@@ -1028,29 +1034,137 @@ public final class ItemDefinition {
                 copyDef(itemDef, ItemDefinition.forID(5023));
                 itemDef.name = "Pyromancer's brazier ticket";
                 itemDef.description = "Good for 5 minutes";
+                break;
+            case 8411:
+                copyDef(itemDef, ItemDefinition.forID(19));
+                itemDef.name = "Gold accumulator";
+                itemDef.description = "Gathers up to 1,000,000 coins before degrading to dust.";
+                itemDef.modifiedModelColors = new int[]{10161,939};
+                itemDef.originalModelColors = new int[]{31820, 939};
+                itemDef.inventoryOptions = new String[5];
+                itemDef.inventoryOptions[0] = "Toggle On/Off";
+                itemDef.inventoryOptions[1] = null;
+                itemDef.inventoryOptions[2] = "Check";
+                itemDef.inventoryOptions[3] = null;
+                itemDef.inventoryOptions[4] = "Drop";
+                break;
+//            case 20415:
+//                copyDef(itemDef, ItemDefinition.forID(5553));
+//                break;
+            case 8412:
+                copyDef(itemDef, ItemDefinition.forID(19));
+                itemDef.name = "Advanced Gold accumulator";
+                itemDef.description = "Gathers coins for a price of 10% of the coins gathered.";
+//                itemDef.modifiedModelColors = new int[]{10161,939};
+//                itemDef.originalModelColors = new int[]{31820, 939};
+                itemDef.inventoryOptions = new String[5];
+                itemDef.inventoryOptions[0] = "Toggle On/Off";
+                itemDef.inventoryOptions[1] = null;
+                itemDef.inventoryOptions[2] = "Check";
+                itemDef.inventoryOptions[3] = null;
+                itemDef.inventoryOptions[4] = "Drop";
+                break;
+            case 8413:
+                copyDef(itemDef, ItemDefinition.forID(19));
+                itemDef.name = "Master gold accumulator";
+                itemDef.description = "Consumes all coins with a chance to create a jewel.";
+                itemDef.modifiedModelColors = new int[]{10161,939};
+                itemDef.originalModelColors = new int[]{32383, 939};
+                itemDef.inventoryOptions = new String[5];
+                itemDef.inventoryOptions[0] = "Toggle On/Off";
+                itemDef.inventoryOptions[1] = null;
+                itemDef.inventoryOptions[2] = "Check";
+                itemDef.inventoryOptions[3] = null;
+                itemDef.inventoryOptions[4] = "Drop";
+                break;
+//            case 4446:
+//                copyDef(itemDef, ItemDefinition.forID(10832));
+//                itemDef.name = "Small cash bag";
+//                itemDef.description = "Contains 5k coins.";
+//                break;
+            case 2384:
+                copyDef(itemDef, ItemDefinition.forID(3991));
+                itemDef.name = "Sentinel fragments";
+                itemDef.description = "Component part required for making sentinel rings.";
+                itemDef.modifiedModelColors = new int[]{9139, 5813, 26006};
+                itemDef.originalModelColors = new int[]{22341, 23099, 20132};
 //                itemDef.inventoryOptions = new String[5];
-//                itemDef.inventoryOptions[0] = "Deploy";
+//                itemDef.inventoryOptions[0] = "Wear";
+//                itemDef.inventoryOptions[1] = "Teleport";
+//                itemDef.inventoryOptions[2] = "Burn logs";
 //                itemDef.inventoryOptions[4] = "Drop";
                 break;
-            case 4446:
-                copyDef(itemDef, ItemDefinition.forID(10832));
-                itemDef.name = "Small cash bag";
-                itemDef.description = "Contains 5k coins.";
+            case 8122:
+                copyDef(itemDef, ItemDefinition.forID(1635));
+                itemDef.name = "Oaken sentinel ring";
+                itemDef.description = "A ring crafted from a shard of the Nature's sentinel ring";
+                itemDef.modifiedModelColors = new int[]{9152};
+                itemDef.originalModelColors = new int[]{6598};
+                itemDef.inventoryOptions = new String[5];
+                itemDef.inventoryOptions[0] = null;
+                itemDef.inventoryOptions[1] = "Wear";
+                itemDef.inventoryOptions[2] = "Activate";
+                itemDef.inventoryOptions[3] = "Combine";
+                itemDef.inventoryOptions[4] = "Drop";
+                break;
+            case 8123:
+                copyDef(itemDef, ItemDefinition.forID(1635));
+                itemDef.name = "Willow sentinel ring";
+                itemDef.description = "A ring crafted from a shard of the Nature's sentinel ring";
+                itemDef.modifiedModelColors = new int[]{9152};
+                itemDef.originalModelColors = new int[]{8746};
+                itemDef.inventoryOptions = new String[5];
+                itemDef.inventoryOptions[0] = null;
+                itemDef.inventoryOptions[1] = "Wear";
+                itemDef.inventoryOptions[2] = "Activate";
+                itemDef.inventoryOptions[3] = "Combine";
+                itemDef.inventoryOptions[4] = "Drop";
+                break;
+            case 8124:
+                copyDef(itemDef, ItemDefinition.forID(1635));
+                itemDef.name = "Maple sentinel ring";
+                itemDef.description = "A ring crafted from a shard of the Nature's sentinel ring";
+                itemDef.modifiedModelColors = new int[]{9152};
+                itemDef.originalModelColors = new int[]{6966};
+                itemDef.inventoryOptions = new String[5];
+                itemDef.inventoryOptions[0] = null;
+                itemDef.inventoryOptions[1] = "Wear";
+                itemDef.inventoryOptions[2] = "Activate";
+                itemDef.inventoryOptions[3] = "Combine";
+                itemDef.inventoryOptions[4] = "Drop";
+                break;
+            case 8125:
+                copyDef(itemDef, ItemDefinition.forID(20005));
+                itemDef.name = "Nature's sentinel ring";
+                itemDef.description = "A powerful ring imbued with nature.";
+                itemDef.modifiedModelColors = new int[]{22451, 22331};
+                itemDef.originalModelColors = new int[]{5946, 22331};
+                itemDef.inventoryOptions = new String[5];
+                itemDef.inventoryOptions[0] = null;
+                itemDef.inventoryOptions[1] = "Wear";
+                itemDef.inventoryOptions[2] = "Activate";
+                itemDef.inventoryOptions[4] = "Drop";
                 break;
             case 19505:
                 copyDef(itemDef, ItemDefinition.forID(10832));
                 itemDef.name = "Small cash bag";
                 itemDef.description = "Contains 5k coins.";
+                itemDef.inventoryOptions = new String[5];
+                itemDef.inventoryOptions[0] = "Open";
                 break;
             case 19507:
                 copyDef(itemDef, ItemDefinition.forID(10833));
                 itemDef.name = "Medium cash bag";
                 itemDef.description = "Contains 50k coins.";
+                itemDef.inventoryOptions = new String[5];
+                itemDef.inventoryOptions[0] = "Open";
                 break;
             case 19509:
                 copyDef(itemDef, ItemDefinition.forID(10834));
                 itemDef.name = "Large cash bag";
                 itemDef.description = "Contains 500k coins.";
+                itemDef.inventoryOptions = new String[5];
+                itemDef.inventoryOptions[0] = "Open";
                 break;
             case 7791:
             case 7792:

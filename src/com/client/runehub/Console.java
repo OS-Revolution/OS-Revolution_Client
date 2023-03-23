@@ -89,7 +89,7 @@ public class Console {
      */
     private void handleConsoleInput() {
         String input = consoleInput;
-        if(!input.equals("")) {
+        if(!input.equals("") && !input.startsWith("/")) {
             consoleInputs.add(input);
             consoleInput = "";
             String[] parts = input.split(" ");
@@ -107,6 +107,19 @@ public class Console {
 //            } else {
 //                sendMessage("This command does not exist.");
 //            }
+        } else if(input.startsWith("/")) {
+            String[] command = input.substring(1).split(" ");
+            String identifier = command[0];
+            consoleInputs.add(input);
+            consoleInput = "";
+            String[] parts = input.split(" ");
+            parts[0] = parts[0].toLowerCase();
+            sendMessage(input);
+            System.out.println("Client command received: " + command);
+            if (identifier.equalsIgnoreCase("setmob")) {
+                Client.instance.setClickToSpawnMobId(Integer.parseInt(parts[1]));
+                sendMessage("Click to spawn mob ID set to: " + parts[1]);
+            }
         }
     }
 
