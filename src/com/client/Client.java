@@ -19,7 +19,7 @@ import com.client.graphics.loaders.*;
 import com.client.runehub.*;
 import com.client.runehub.net.ConnectionHandler;
 import com.client.sign.Signlink;
-import com.sun.imageio.plugins.common.ImageUtil;
+//import com.sun.imageio.plugins.common.ImageUtil;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.reflection.Sun14ReflectionProvider;
 import org.apache.commons.lang3.SystemUtils;
@@ -31,7 +31,7 @@ import org.runehub.api.net.Connection;
 import org.runehub.api.util.IDManager;
 import org.runehub.api.util.SkillDictionary;
 import org.runehub.api.util.StringUtils;
-import sun.rmi.runtime.Log;
+//import sun.rmi.runtime.Log;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
