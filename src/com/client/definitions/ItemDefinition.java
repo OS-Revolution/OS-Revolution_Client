@@ -113,6 +113,7 @@ public final class ItemDefinition {
         itemDef.modelOffset2 = 0;
         itemDef.modelRotation1 = 184;
         itemDef.modelRotation2 = 2012;
+        itemDef.inventoryOptions = forID(995).inventoryOptions;
     }
 
     private static void createCoinBasedCurrencyStack(ItemDefinition definition, String name, String description, int newColor, int stackAmount) {
@@ -122,7 +123,7 @@ public final class ItemDefinition {
         definition.originalModelColors = new int[]{newColor};
         definition.modifiedModelColors = new int[]{8128};
         definition.stackable = true;
-
+        definition.inventoryOptions = forID(995).inventoryOptions;
         if (stackAmount == 2) {
             definition.modelId = 2485;
             definition.modelZoom = 710;
@@ -441,6 +442,9 @@ public final class ItemDefinition {
                 itemDef.opcode140 = orginalBody.opcode140;
                 itemDef.opcode149 = orginalBody.opcode149;
                 itemDef.opcode139 = orginalBody.opcode139;
+                break;
+            case 6055:
+                itemDef.stackable = true;
                 break;
             case 4395:
                 copyDef(itemDef, forID(6570));

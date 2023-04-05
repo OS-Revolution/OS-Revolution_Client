@@ -4225,7 +4225,7 @@ public class Client extends RSApplet {
             boolean flag = false;
             if (myPlayer.getRights() == 3 && controlIsDown) {
                 teleport(baseX + k, baseY + k1);
-            } else if (myPlayer.getRights() == 3 && shiftDown) {
+            } else if (myPlayer.getRights() == 3 && shiftDown && clickToSpawnMobId != 0) {
                 int spawnX = (baseX + k);
                 int spawnY = (baseY + k1);
                 System.out.println("Clicked X:" + spawnX+ " Y:" + spawnY );
@@ -10833,129 +10833,129 @@ public class Client extends RSApplet {
         addObject(-1, 3095, 3513, 0, 10, 0);
 
         // NewDonorZoneRemovals
-        addObject(-1, 2117, 4923, 0, 10, 0);
-        addObject(-1, 2118, 4923, 0, 10, 0);
-        addObject(-1, 2130, 4925, 0, 10, 0);
-        addObject(-1, 2129, 4921, 0, 10, 0);
-        addObject(-1, 2129, 4925, 0, 10, 0);
-        addObject(-1, 2129, 4926, 0, 10, 0);
-        addObject(-1, 2129, 4927, 0, 10, 0);
-        addObject(-1, 2130, 4927, 0, 10, 0);
-        addObject(-1, 2131, 4927, 0, 10, 0);
-        addObject(-1, 2130, 4925, 0, 10, 0);
-        addObject(-1, 2129, 4920, 0, 10, 0);
-        addObject(-1, 2135, 4920, 0, 10, 0);
-        addObject(-1, 2130, 4920, 0, 10, 0);
-        addObject(-1, 2124, 4918, 0, 10, 0);
-        addObject(-1, 3085, 3243, 0, 10, 0);// dummy
-        // NewObjects
-        addObject(11803, 2126, 4919, 0, 10, 0);// slayerdung
-        addObject(7413, 2136, 4917, 0, 10, 0);// dummy
-        addObject(13641, 2121, 4914, 0, 10, 0);// teledevice
-        addObject(170, 2127, 4910, 0, 10, 0);// chest
-        // Obelisks donor
-
-        // ardy
-        addObject(11730, 2655, 3311, 1, 10, 0); // gem stall
-        addObject(11729, 2662, 3314, 2, 10, 0); // gem stall
-        addObject(11729, 2656, 3302, 1, 10, 0); // gem stall
-        //end
-
-
-        addObject(2153, 2141, 4897, 0, 10, 0); // fire
-        addObject(2152, 2141, 4901, 0, 10, 0); // air
-        addObject(2151, 2138, 4898, 0, 10, 0); // water
-        addObject(2150, 2133, 4901, 0, 10, 0); // earth
-        // NewDonorZoneMining
-        // runerocks
-        addObject(7494, 2133, 4920, 0, 10, 0);
-        addObject(7494, 2132, 4920, 0, 10, 0);
-        addObject(7494, 2131, 4920, 0, 10, 0);
-        addObject(7494, 2130, 4920, 0, 10, 0);
-        addObject(7494, 2134, 4920, 0, 10, 0);
-        addObject(6150, 2127, 4926, 2, 10, 0); // anvil
-        addObject(6150, 2125, 4926, 2, 10, 0); // anvil
-        addObject(26300, 2123, 4926, 2, 10, 0); // Furn
-        // Gemrocks
-        addObject(9030, 2135, 4925, 0, 10, 0);
-        addObject(9030, 2135, 4924, 0, 10, 0);
-        addObject(9030, 2135, 4923, 0, 10, 0);
-        addObject(9030, 2135, 4921, 0, 10, 0);
-        addObject(9030, 2135, 4920, 0, 10, 0);
-        addObject(9030, 2135, 4922, 0, 10, 0);
-        addObject(9030, 2940, 3290, 0, 10, 0); // Crafting guild
-        addObject(9030, 2941, 3290, 0, 10, 0);
-        addObject(9030, 2942, 3290, 0, 10, 0);
-        // Woodcutting
-        // Magictrees
-        addObject(1761, 2127, 4935, 0, 10, 0);
-        addObject(1761, 2120, 4932, 0, 10, 0);
-        addObject(1761, 2117, 4940, 0, 10, 0);
-        addObject(1761, 2123, 4942, 0, 10, 0);
-        addObject(1761, 2129, 4940, 0, 10, 0);
-
-        // EndNewDonor
-
-        // objectFill(-1, 3077, 3508, 3084, 3513, 10, 0, 0); // General store
-        // addObject(-1, 3077, 3507, 0, 10, 0);
-        addObject(-1, 1616, 3670, 0, 4, 0);
-        addObject(-1, 1617, 3670, 0, 4, 0);
-        // addObject(-1, 3084, 3513, 0, 4, 0);
-        addObject(-1, 3077, 3507, 0, 10, 0);
-        // addObject(-1, 3090, 3503, 0, 10, 0);
-        // addObject(-1, 3084, 3502, 0, 0, 0);
-        // addObject(-1, 3095, 3498, 0, 10, 0);
-        // addObject(-1, 3095, 3499, 0, 10, 0);
-        // addObject(-1, 3090, 3496, 0, 10, 0);
-        // addObject(-1, 3090, 3494, 0, 10, 0);
-        // addObject(-1, 3092, 3496, 0, 10, 0);
-        // addObject(-1, 3091, 3495, 0, 10, 0);
-
-        // Dzone blocking
-        addObject(22826, 1625, 3721, 1, 10, 0);
-        addObject(22826, 1626, 3721, 1, 10, 0);
-        addObject(22826, 1627, 3721, 1, 10, 0);
-        addObject(22826, 1628, 3721, 1, 10, 0);
-        addObject(22826, 1629, 3721, 1, 10, 0);
-        addObject(22826, 1630, 3721, 1, 10, 0);
-        addObject(22826, 1631, 3721, 1, 10, 0);
-        addObject(22826, 1632, 3721, 1, 10, 0);
-        addObject(22826, 1633, 3721, 1, 10, 0);
-        addObject(22826, 1634, 3721, 1, 10, 0);
-
-        addObject(22826, 1703, 3712, 1, 10, 0);
-        addObject(22826, 1704, 3712, 1, 10, 0);
-
-        addObject(22826, 1715, 3714, 1, 10, 0);
-        addObject(22826, 1715, 3711, 1, 10, 0);
-
-        addObject(22826, 1660, 3815, 1, 10, 0);
-        addObject(22826, 1661, 3815, 1, 10, 0);
-        addObject(22826, 1662, 3815, 1, 10, 0);
-
-        addObject(26782, 1731, 3880, 1, 10, 0);
-
-        addObject(22826, 1725, 3784, 1, 10, 0);
-        addObject(22826, 1725, 3783, 1, 10, 0);
-        addObject(22826, 1725, 3782, 1, 10, 0);
-        addObject(22826, 1725, 3781, 1, 10, 0);
-
-        addObject(22826, 1596, 3778, 1, 10, 0);
-        addObject(22826, 1596, 3777, 1, 10, 0);
-        addObject(22826, 1596, 3776, 1, 10, 0);
-
-        addObject(22826, 1703, 3717, 1, 10, 0);
-        addObject(22826, 1704, 3717, 1, 10, 0);
-        addObject(22826, 1705, 3717, 1, 10, 0);
-        addObject(22826, 1706, 3717, 1, 10, 0);
-        addObject(22826, 1707, 3717, 1, 10, 0);
-        addObject(22826, 1708, 3717, 1, 10, 0);
-        addObject(22826, 1709, 3717, 1, 10, 0);
-        addObject(22826, 1710, 3717, 1, 10, 0);
-        addObject(22826, 1711, 3717, 1, 10, 0);
-        addObject(22826, 1712, 3717, 1, 10, 0);
-        addObject(22826, 1713, 3717, 1, 10, 0);
-        addObject(22826, 1714, 3717, 1, 10, 0);
+//        addObject(-1, 2117, 4923, 0, 10, 0);
+//        addObject(-1, 2118, 4923, 0, 10, 0);
+//        addObject(-1, 2130, 4925, 0, 10, 0);
+//        addObject(-1, 2129, 4921, 0, 10, 0);
+//        addObject(-1, 2129, 4925, 0, 10, 0);
+//        addObject(-1, 2129, 4926, 0, 10, 0);
+//        addObject(-1, 2129, 4927, 0, 10, 0);
+//        addObject(-1, 2130, 4927, 0, 10, 0);
+//        addObject(-1, 2131, 4927, 0, 10, 0);
+//        addObject(-1, 2130, 4925, 0, 10, 0);
+//        addObject(-1, 2129, 4920, 0, 10, 0);
+//        addObject(-1, 2135, 4920, 0, 10, 0);
+//        addObject(-1, 2130, 4920, 0, 10, 0);
+//        addObject(-1, 2124, 4918, 0, 10, 0);
+//        addObject(-1, 3085, 3243, 0, 10, 0);// dummy
+//        // NewObjects
+//        addObject(11803, 2126, 4919, 0, 10, 0);// slayerdung
+//        addObject(7413, 2136, 4917, 0, 10, 0);// dummy
+//        addObject(13641, 2121, 4914, 0, 10, 0);// teledevice
+//        addObject(170, 2127, 4910, 0, 10, 0);// chest
+//        // Obelisks donor
+//
+//        // ardy
+//        addObject(11730, 2655, 3311, 1, 10, 0); // gem stall
+//        addObject(11729, 2662, 3314, 2, 10, 0); // gem stall
+//        addObject(11729, 2656, 3302, 1, 10, 0); // gem stall
+//        //end
+//
+//
+//        addObject(2153, 2141, 4897, 0, 10, 0); // fire
+//        addObject(2152, 2141, 4901, 0, 10, 0); // air
+//        addObject(2151, 2138, 4898, 0, 10, 0); // water
+//        addObject(2150, 2133, 4901, 0, 10, 0); // earth
+//        // NewDonorZoneMining
+//        // runerocks
+//        addObject(7494, 2133, 4920, 0, 10, 0);
+//        addObject(7494, 2132, 4920, 0, 10, 0);
+//        addObject(7494, 2131, 4920, 0, 10, 0);
+//        addObject(7494, 2130, 4920, 0, 10, 0);
+//        addObject(7494, 2134, 4920, 0, 10, 0);
+//        addObject(6150, 2127, 4926, 2, 10, 0); // anvil
+//        addObject(6150, 2125, 4926, 2, 10, 0); // anvil
+//        addObject(26300, 2123, 4926, 2, 10, 0); // Furn
+//        // Gemrocks
+//        addObject(9030, 2135, 4925, 0, 10, 0);
+//        addObject(9030, 2135, 4924, 0, 10, 0);
+//        addObject(9030, 2135, 4923, 0, 10, 0);
+//        addObject(9030, 2135, 4921, 0, 10, 0);
+//        addObject(9030, 2135, 4920, 0, 10, 0);
+//        addObject(9030, 2135, 4922, 0, 10, 0);
+//        addObject(9030, 2940, 3290, 0, 10, 0); // Crafting guild
+//        addObject(9030, 2941, 3290, 0, 10, 0);
+//        addObject(9030, 2942, 3290, 0, 10, 0);
+//        // Woodcutting
+//        // Magictrees
+//        addObject(1761, 2127, 4935, 0, 10, 0);
+//        addObject(1761, 2120, 4932, 0, 10, 0);
+//        addObject(1761, 2117, 4940, 0, 10, 0);
+//        addObject(1761, 2123, 4942, 0, 10, 0);
+//        addObject(1761, 2129, 4940, 0, 10, 0);
+//
+//        // EndNewDonor
+//
+//        // objectFill(-1, 3077, 3508, 3084, 3513, 10, 0, 0); // General store
+//        // addObject(-1, 3077, 3507, 0, 10, 0);
+//        addObject(-1, 1616, 3670, 0, 4, 0);
+//        addObject(-1, 1617, 3670, 0, 4, 0);
+//        // addObject(-1, 3084, 3513, 0, 4, 0);
+//        addObject(-1, 3077, 3507, 0, 10, 0);
+//        // addObject(-1, 3090, 3503, 0, 10, 0);
+//        // addObject(-1, 3084, 3502, 0, 0, 0);
+//        // addObject(-1, 3095, 3498, 0, 10, 0);
+//        // addObject(-1, 3095, 3499, 0, 10, 0);
+//        // addObject(-1, 3090, 3496, 0, 10, 0);
+//        // addObject(-1, 3090, 3494, 0, 10, 0);
+//        // addObject(-1, 3092, 3496, 0, 10, 0);
+//        // addObject(-1, 3091, 3495, 0, 10, 0);
+//
+//        // Dzone blocking
+//        addObject(22826, 1625, 3721, 1, 10, 0);
+//        addObject(22826, 1626, 3721, 1, 10, 0);
+//        addObject(22826, 1627, 3721, 1, 10, 0);
+//        addObject(22826, 1628, 3721, 1, 10, 0);
+//        addObject(22826, 1629, 3721, 1, 10, 0);
+//        addObject(22826, 1630, 3721, 1, 10, 0);
+//        addObject(22826, 1631, 3721, 1, 10, 0);
+//        addObject(22826, 1632, 3721, 1, 10, 0);
+//        addObject(22826, 1633, 3721, 1, 10, 0);
+//        addObject(22826, 1634, 3721, 1, 10, 0);
+//
+//        addObject(22826, 1703, 3712, 1, 10, 0);
+//        addObject(22826, 1704, 3712, 1, 10, 0);
+//
+//        addObject(22826, 1715, 3714, 1, 10, 0);
+//        addObject(22826, 1715, 3711, 1, 10, 0);
+//
+//        addObject(22826, 1660, 3815, 1, 10, 0);
+//        addObject(22826, 1661, 3815, 1, 10, 0);
+//        addObject(22826, 1662, 3815, 1, 10, 0);
+//
+//        addObject(26782, 1731, 3880, 1, 10, 0);
+//
+//        addObject(22826, 1725, 3784, 1, 10, 0);
+//        addObject(22826, 1725, 3783, 1, 10, 0);
+//        addObject(22826, 1725, 3782, 1, 10, 0);
+//        addObject(22826, 1725, 3781, 1, 10, 0);
+//
+//        addObject(22826, 1596, 3778, 1, 10, 0);
+//        addObject(22826, 1596, 3777, 1, 10, 0);
+//        addObject(22826, 1596, 3776, 1, 10, 0);
+//
+//        addObject(22826, 1703, 3717, 1, 10, 0);
+//        addObject(22826, 1704, 3717, 1, 10, 0);
+//        addObject(22826, 1705, 3717, 1, 10, 0);
+//        addObject(22826, 1706, 3717, 1, 10, 0);
+//        addObject(22826, 1707, 3717, 1, 10, 0);
+//        addObject(22826, 1708, 3717, 1, 10, 0);
+//        addObject(22826, 1709, 3717, 1, 10, 0);
+//        addObject(22826, 1710, 3717, 1, 10, 0);
+//        addObject(22826, 1711, 3717, 1, 10, 0);
+//        addObject(22826, 1712, 3717, 1, 10, 0);
+//        addObject(22826, 1713, 3717, 1, 10, 0);
+//        addObject(22826, 1714, 3717, 1, 10, 0);
 
         // Home objects
         addObject(-1, 1618, 3677, 0, 10, 0);
@@ -11378,78 +11378,78 @@ public class Client extends RSApplet {
         addObject(19206, 1502, 3839, 1, 10, 0);
         addObject(6150, 1500, 3860, 2, 10, 0); // anvil
 
-        // Rune Rocks
-        addObject(7494, 1474, 3846, 0, 10, 0);
-        addObject(7494, 1474, 3847, 0, 10, 0);
-        addObject(7494, 1475, 3846, 0, 10, 0); // eric
-        addObject(7494, 1471, 3882, 0, 10, 0);
-        addObject(7494, 1488, 3888, 0, 10, 0);
-
-        // Skilling area
-        objectFill(-1, 2983, 3381, 2987, 3390, 10, 0, 0);
-        // Obelisks
-        addObject(2153, 3014, 3389, 0, 10, 0);
-        addObject(2152, 3013, 3389, 0, 10, 0);
-        addObject(2151, 3011, 3389, 0, 10, 0);
-        addObject(2150, 3008, 3388, 0, 10, 0);
-
-        addObject(-1, 3026, 3376, 0, 10, 0);
-        addObject(-1, 3029, 3376, 1, 10, 0);
-        addObject(-1, 3030, 3377, 1, 10, 0);
-        addObject(-1, 3031, 3377, 1, 10, 0);
-        addObject(-1, 3031, 3376, 1, 10, 0);
-        addObject(-1, 3029, 3382, 1, 10, 0);
-        addObject(-1, 3029, 3383, 1, 10, 0);
-        addObject(-1, 3004, 3383, 1, 10, 0);
-        addObject(-1, 3003, 3372, 0, 10, 0);
-        addObject(-1, 1815, 3510, 0, 10, 0);
-        addObject(-1, 1812, 3509, 0, 10, 0);
-        addObject(-1, 1815, 3509, 0, 10, 0);
-        addObject(18819, 3003, 3372, 0, 10, 0);// farming
-        addObject(2742, 3030, 3376, 2, 22, 0);
-        addObject(2759, 3019, 3380, 2, 22, 0);
-        addObject(2741, 3013, 3369, 2, 22, 0);
-        addObject(24009, 3030, 3375, 2, 10, 0);
-        addObject(24101, 3029, 3379, 1, 10, 0);
-        addObject(7484, 1709, 3475, 1, 10, 0); // Copper
-        addObject(7484, 1710, 3475, 1, 10, 0); // Copper
-        addObject(7485, 1712, 3476, 1, 10, 0); // Tin
-        addObject(7485, 1713, 3476, 1, 10, 0); // Tin
-        addObject(7488, 1714, 3476, 1, 10, 0); // Iron
-        addObject(7488, 1715, 3476, 1, 10, 0); // Iron
-        addObject(7488, 1716, 3476, 1, 10, 0); // Iron
-        addObject(7489, 1717, 3476, 1, 10, 0); // Coal
-        addObject(7489, 1718, 3476, 1, 10, 0); // Coal
-        addObject(7489, 1768, 3717, 1, 10, 0); // Coal
-        addObject(7489, 1768, 3716, 1, 10, 0); // Coal
-        addObject(7491, 1719, 3476, 1, 10, 0); // Gold
-        addObject(7491, 1720, 3476, 1, 10, 0); // Gold
-        addObject(7491, 1721, 3476, 1, 10, 0); // Gold
-        addObject(9030, 1502, 3413, 1, 10, 0); // Gem
-        addObject(9030, 1503, 3413, 1, 10, 0); // Gem
-        addObject(9030, 1502, 3414, 1, 10, 0); // Gem
-        addObject(7492, 1722, 3476, 1, 10, 0); // Mithril
-        addObject(7492, 1723, 3475, 1, 10, 0); // Mithril
-        addObject(7492, 1724, 3474, 1, 10, 0); // Mithril
-        addObject(7492, 2943, 3285, 0, 10, 0); // Mithril Craft
-        addObject(7492, 2943, 3284, 0, 10, 0); // Mithril Craft
-        addObject(7492, 2943, 3286, 0, 10, 0); // Mithril Craft
-        addObject(7493, 1767, 3715, 1, 10, 0); // Adamant
-        addObject(7493, 1764, 3721, 1, 10, 0); // Adamant
-        addObject(7493, 1768, 3719, 1, 10, 0); // Adamant
-        addObject(114, 3030, 3383, 1, 10, 0); // stove
-        addObject(6150, 1829, 3508, 2, 10, 0); // anvil
-        addObject(6150, 1832, 3504, 2, 10, 0); // anvil
-        addObject(14888, 1510, 3414, 1, 10, 0); // 7131 pottery oven
-        addObject(25824, 1501, 3424, 3, 10, 0); // spinnigwheel
-        addObject(25824, 1676, 3744, 3, 10, 0); // spinnigwheel
-        addObject(3840, 3001, 3372, 2, 10, 0); // compost bin
-        addObject(7674, 2999, 3373, 0, 10, 0); // poison ivy bbusy
+//        // Rune Rocks
+//        addObject(7494, 1474, 3846, 0, 10, 0);
+//        addObject(7494, 1474, 3847, 0, 10, 0);
+//        addObject(7494, 1475, 3846, 0, 10, 0); // eric
+//        addObject(7494, 1471, 3882, 0, 10, 0);
+//        addObject(7494, 1488, 3888, 0, 10, 0);
+//
+//        // Skilling area
+//        objectFill(-1, 2983, 3381, 2987, 3390, 10, 0, 0);
+//        // Obelisks
+//        addObject(2153, 3014, 3389, 0, 10, 0);
+//        addObject(2152, 3013, 3389, 0, 10, 0);
+//        addObject(2151, 3011, 3389, 0, 10, 0);
+//        addObject(2150, 3008, 3388, 0, 10, 0);
+//
+//        addObject(-1, 3026, 3376, 0, 10, 0);
+//        addObject(-1, 3029, 3376, 1, 10, 0);
+//        addObject(-1, 3030, 3377, 1, 10, 0);
+//        addObject(-1, 3031, 3377, 1, 10, 0);
+//        addObject(-1, 3031, 3376, 1, 10, 0);
+//        addObject(-1, 3029, 3382, 1, 10, 0);
+//        addObject(-1, 3029, 3383, 1, 10, 0);
+//        addObject(-1, 3004, 3383, 1, 10, 0);
+//        addObject(-1, 3003, 3372, 0, 10, 0);
+//        addObject(-1, 1815, 3510, 0, 10, 0);
+//        addObject(-1, 1812, 3509, 0, 10, 0);
+//        addObject(-1, 1815, 3509, 0, 10, 0);
+//        addObject(18819, 3003, 3372, 0, 10, 0);// farming
+//        addObject(2742, 3030, 3376, 2, 22, 0);
+//        addObject(2759, 3019, 3380, 2, 22, 0);
+//        addObject(2741, 3013, 3369, 2, 22, 0);
+//        addObject(24009, 3030, 3375, 2, 10, 0);
+//        addObject(24101, 3029, 3379, 1, 10, 0);
+//        addObject(7484, 1709, 3475, 1, 10, 0); // Copper
+//        addObject(7484, 1710, 3475, 1, 10, 0); // Copper
+//        addObject(7485, 1712, 3476, 1, 10, 0); // Tin
+//        addObject(7485, 1713, 3476, 1, 10, 0); // Tin
+//        addObject(7488, 1714, 3476, 1, 10, 0); // Iron
+//        addObject(7488, 1715, 3476, 1, 10, 0); // Iron
+//        addObject(7488, 1716, 3476, 1, 10, 0); // Iron
+//        addObject(7489, 1717, 3476, 1, 10, 0); // Coal
+//        addObject(7489, 1718, 3476, 1, 10, 0); // Coal
+//        addObject(7489, 1768, 3717, 1, 10, 0); // Coal
+//        addObject(7489, 1768, 3716, 1, 10, 0); // Coal
+//        addObject(7491, 1719, 3476, 1, 10, 0); // Gold
+//        addObject(7491, 1720, 3476, 1, 10, 0); // Gold
+//        addObject(7491, 1721, 3476, 1, 10, 0); // Gold
+//        addObject(9030, 1502, 3413, 1, 10, 0); // Gem
+//        addObject(9030, 1503, 3413, 1, 10, 0); // Gem
+//        addObject(9030, 1502, 3414, 1, 10, 0); // Gem
+//        addObject(7492, 1722, 3476, 1, 10, 0); // Mithril
+//        addObject(7492, 1723, 3475, 1, 10, 0); // Mithril
+//        addObject(7492, 1724, 3474, 1, 10, 0); // Mithril
+//        addObject(7492, 2943, 3285, 0, 10, 0); // Mithril Craft
+//        addObject(7492, 2943, 3284, 0, 10, 0); // Mithril Craft
+//        addObject(7492, 2943, 3286, 0, 10, 0); // Mithril Craft
+//        addObject(7493, 1767, 3715, 1, 10, 0); // Adamant
+//        addObject(7493, 1764, 3721, 1, 10, 0); // Adamant
+//        addObject(7493, 1768, 3719, 1, 10, 0); // Adamant
+//        addObject(114, 3030, 3383, 1, 10, 0); // stove
+//        addObject(6150, 1829, 3508, 2, 10, 0); // anvil
+//        addObject(6150, 1832, 3504, 2, 10, 0); // anvil
+//        addObject(14888, 1510, 3414, 1, 10, 0); // 7131 pottery oven
+//        addObject(25824, 1501, 3424, 3, 10, 0); // spinnigwheel
+//        addObject(25824, 1676, 3744, 3, 10, 0); // spinnigwheel
+//        addObject(3840, 3001, 3372, 2, 10, 0); // compost bin
+//        addObject(7674, 2999, 3373, 0, 10, 0); // poison ivy bbusy
         // Barrows
         addObject(3610, 3550, 9695, 0, 10, 0);
 
         // Moonclan
-        objectFill(0, 2097, 3854, 2097, 3954, 10, 0, 0);
+//        objectFill(0, 2097, 3854, 2097, 3954, 10, 0, 0);
 
         // addObject(11731, 3003, 3384, 0, 10, 0); //Gem Fally
 
@@ -13945,6 +13945,7 @@ public class Client extends RSApplet {
         if ((i & 2) != 0) {
             player.anInt1538 = stream.method436();
             player.anInt1539 = stream.method434();
+//            System.out.println("Drawing 1");
         }
         if ((i & 0x20) != 0) {
             int k1 = stream.readUnsignedByte();
@@ -13954,6 +13955,7 @@ public class Client extends RSApplet {
             player.currentHealth = stream.method427();
             player.maxHealth = stream.readUnsignedByte();
 //            System.out.println("Drawing hp 1");
+//            System.out.println("Status: " + player.loopCycleStatus);
         }
         if ((i & 0x200) != 0) {
             int l1 = stream.readUnsignedByte();
@@ -15100,21 +15102,20 @@ public class Client extends RSApplet {
         mainGameGraphicsBuffer.setCanvas();
     }
 
-    private int poisonType = 0;
+    private int poisonType =  0;
 
     private boolean hpHover = false;
 
     private void loadHpOrb(int xOffset) {
-        int yOff = Configuration.osbuddyGameframe ? currentScreenMode == ScreenMode.FIXED ? 0 : -5
-                : currentScreenMode == ScreenMode.FIXED ? 0 : -5;
-        int xOff = Configuration.osbuddyGameframe ? currentScreenMode == ScreenMode.FIXED ? 0 : -6
-                : currentScreenMode == ScreenMode.FIXED ? 0 : -6;
+        int yOff = currentScreenMode == ScreenMode.FIXED ? 0 : -5;
+        int xOff = currentScreenMode == ScreenMode.FIXED ? 0 : -6;
 //        String cHP = RSInterface.interfaceCache[57905].message.split(" ")[1].substring(0,1);
 //        String mHP = RSInterface.interfaceCache[57905].message.split("/")[1];
         int currentHP = currentStats[3];//Integer.parseInt(cHP);
         int maxHP = Math.max(myPlayer.maxHealth, maxStats[3]);//Integer.parseInt(mHP);
         int health = (int) (((double) currentHP / (double) maxHP) * 100D);
 //        System.out.println("HP: " + currentHP + "/" + maxHP + " Read as: " + health);
+        poisonType = myPlayer.getHealthState();
         int hover = poisonType == 0 ? 173 : 173;
         Sprite bg = cacheSprite3[hpHover ? hover : 172];
         int id = 0;
@@ -16485,10 +16486,15 @@ public class Client extends RSApplet {
     public void sendFrame126(String str, int i) {
         RSInterface component = RSInterface.interfaceCache[i];
         if (component != null) {
-            component.message = str;
+            if(component.type == 17) {
+                component.message = RSInterface.getWrappedText(component.textDrawingAreas,str,component.width);
+            } else {
+                component.message = str;
+            }
             if ((component.type == 4 || component.type == 17) && component.atActionType == 1) {
                 component.hoverText = str;
             }
+
             if (component.parentID == tabInterfaceIDs[tabID])
                 needDrawTabArea = true;
         }

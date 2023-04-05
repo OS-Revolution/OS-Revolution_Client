@@ -120,6 +120,9 @@ public final class NpcDefinition {
         if (i == 3308) {
             entityDef.name = "Draynor Representative";
         }
+        if (i == 5832) {
+            entityDef.actions = new String[]{"Talk-to", null, "Pickpocket", "Trade", null};
+        }
         if (i == 5736) {
             entityDef.standAnim = 106;
             entityDef.walkAnim = 106;

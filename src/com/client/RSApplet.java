@@ -452,9 +452,6 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 		int i = keyevent.getKeyCode();
 		int j = keyevent.getKeyChar();
 
-		if (keyevent.isShiftDown()) {
-			Client.shiftDown = true;
-		}
 		if (i == 32) {
 			if (Client.backDialogID == 979 || Client.backDialogID == 968 || Client.backDialogID == 973
 					|| Client.backDialogID == 986 || Client.backDialogID == 306 || Client.backDialogID == 4887
@@ -477,9 +474,6 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 			Client.instance.console.parseKeyForConsole(keyevent);
 			return;
 		}
-		// if (i == KeyEvent.VK_SPACE) {
-		// Client
-		// }
 
 		if (keyevent.isControlDown()) {
 			if (i == KeyEvent.VK_SPACE) {

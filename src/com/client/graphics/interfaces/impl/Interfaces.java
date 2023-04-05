@@ -118,8 +118,8 @@ public class Interfaces extends RSInterface {
         addText(57514, "Lorem Ipsum", tda, 2, 0xFFA500, true, true);
         addText(57515, "Lorem Ipsum", tda, 1, 0xFFA500, true, true);
         addText(57516, "Players", tda, 1, 0xFFA500, true, true);
-        addProgressBar(57517,167, 21, new int[]{0xA67711, 0x005F00});
-        addClickableText(57518, "Send Invite to Player","Invite Player",tda,2,0xff9040, true, true, 150);
+        addProgressBar(57517, 167, 21, new int[]{0xA67711, 0x005F00});
+        addClickableText(57518, "Send Invite to Player", "Invite Player", tda, 2, 0xff9040, true, true, 150);
 //        addText(57519, "Invite Player", tda, 1, 0xFFA500, true, true);
 //        addClickableSprites(57520, "Send Invite",path,22,22);
 
@@ -134,7 +134,7 @@ public class Interfaces extends RSInterface {
         setBounds(57515, 95, 45, 4, tab);
 //        setBounds(57516, 95, 105, 5, tab);
         setBounds(57517, 14, 73, 5, tab);
-        setBounds(57550,4, 120,6,tab);
+        setBounds(57550, 4, 120, 6, tab);
 //        setBounds(57518,20, 230,8,tab);
 //        setBounds(57519, 95, 210, 9, tab);
 //        setBounds(57520, 165, 230, 10, tab);
@@ -221,7 +221,7 @@ public class Interfaces extends RSInterface {
         addClickableSprites(57002, "Quests", path, 1, 1);
         addClickableSprites(57003, "Achievements", path, 1, 2);
         addClickableSprites(57004, "Distractions & Diversions", path, 1, 2);
-        addClickableSprites(57005, "Coming Soon", path, 1, 2);
+        addClickableSprites(57005, "Journeys", path, 1, 2);
         addSprite(57010, 9, path);
         addSprite(57008, 8, path);
         addSprite(57009, 8, path);
@@ -244,10 +244,13 @@ public class Interfaces extends RSInterface {
         addText(57024, "Membership:", tda, 1, 0xFFA500, false, true);
         addText(57025, "0 Days", tda, 1, 0x0DC10D, false, true);
 
-        addProgressBar(57026, 167, 21, new int[]{0xA67711, 0x005F00});
-//		addSprite(57027,14,path);
-        addClickableSprites(57027, "View Play Pass", path, 14, 14);
+        addProgressBar(57026, 180, 28, new int[]{0xA67711, 0x005F00});
+        addClickableSprites(57027, "View Play Pass", path, 24, 24);
         addText(57028, "Play Pass", tda, 2, 0xffffff, true, false);
+
+        addProgressBar(57037, 180, 28, new int[]{0xA67711, 0x005F00});
+        addClickableSprites(57038, "View Current Journey", path, 24, 24);
+        addText(57039, "Journey", tda, 2, 0xffffff, true, false);
 
         addSprite(57029, 20, path);
         addSprite(57030, 15, path);
@@ -268,7 +271,7 @@ public class Interfaces extends RSInterface {
 //            addClickableSprites(57001 + i, tooltip, path, 1, 2);
 //        }
 
-        setChildren(36, tab);
+        setChildren(39, tab);
         setBounds(57006, 4, 30, 0, tab);
         setBounds(57007, 8, 33, 1, tab);
         setBounds(57010, 4, 56, 2, tab);
@@ -293,8 +296,8 @@ public class Interfaces extends RSInterface {
         setBounds(57025, 105, 143, 19, tab);
 
         setBounds(57027, 4, 185, 20, tab);
-        setBounds(57026, 13, 193, 21, tab);
-        setBounds(57028, 90, 197, 22, tab);
+        setBounds(57026, 4, 186, 21, tab);
+        setBounds(57028, 90, 194, 22, tab);
 
         setBounds(57029, 12, 8, 28, tab);
         setBounds(57030, 50, 8, 29, tab);
@@ -305,6 +308,10 @@ public class Interfaces extends RSInterface {
         setBounds(57034, 4, 162, 33, tab);
         setBounds(57035, 13, 168, 34, tab);
         setBounds(57036, 74, 168, 35, tab);
+
+        setBounds(57038, 4, 219, 36, tab);
+        setBounds(57037, 5, 220, 37, tab);
+        setBounds(57039, 90, 228, 38, tab);
 
         for (int i = 0; i < 5; i++) {
             setBounds(57001 + i, 4 + (i * 37), 5, 23 + i, tab);
@@ -319,7 +326,7 @@ public class Interfaces extends RSInterface {
         addClickableSprites(57102, "Quests", path, 2, 1);
         addClickableSprites(57103, "Achievements", path, 1, 2);
         addClickableSprites(57104, "Distractions & Diversions", path, 1, 2);
-        addClickableSprites(57105, "Coming Soon", path, 1, 2);
+        addClickableSprites(57105, "Journeys", path, 1, 2);
         addSprite(57106, 0, path);
         addText(57107, "Quests", tda, 2, 0xFFA500, false, true);
 
@@ -348,11 +355,12 @@ public class Interfaces extends RSInterface {
     private static void addAchievementTab(TextDrawingArea[] tda) {
         final String path = "Interfaces/runehub/tab/player/SPRITE";
         RSInterface tab = addTabInterface(57200);
+        RSInterface scroll = addTabInterface(57214);
         addClickableSprites(57201, "Player Summary", path, 1, 2);
         addClickableSprites(57202, "Quests", path, 1, 1);
         addClickableSprites(57203, "Achievements", path, 2, 2);
         addClickableSprites(57204, "Distractions & Diversions", path, 1, 2);
-        addClickableSprites(57205, "Coming Soon", path, 1, 2);
+        addClickableSprites(57205, "Journeys", path, 1, 2);
         addSprite(57206, 0, path);
         addText(57207, "Achievements", tda, 2, 0xFFA500, false, true);
 
@@ -361,8 +369,8 @@ public class Interfaces extends RSInterface {
         addSprite(57210, 16, path);
         addSprite(57211, 17, path);
         addSprite(57212, 18, path);
-
-        setChildren(12, tab);
+        addSprite(57213, 0, "Interfaces/runehub/tab/SPRITE");
+        setChildren(14, tab);
 
         setBounds(57206, 4, 30, 0, tab);
         setBounds(57207, 8, 33, 1, tab);
@@ -372,10 +380,35 @@ public class Interfaces extends RSInterface {
         setBounds(57210, 87, 8, 9, tab);
         setBounds(57211, 125, 8, 10, tab);
         setBounds(57212, 163, 8, 11, tab);
+        setBounds(57213, 2, 56, 12, tab);
+        setBounds(57214, 4, 60, 13, tab);
 
         for (int i = 0; i < 5; i++) {
             setBounds(57201 + i, 4 + (i * 37), 5, 2 + i, tab);
         }
+
+        int children = 3;
+        int startIndex = 57215;
+        scroll.totalChildren(children * 3);
+
+        for (int i = 0; i < children; i++) {
+            addClickableSprites(startIndex + i, "Details", path, 23, 23);
+            setBounds(startIndex + i, (5), (40 * i), i, scroll);
+        }
+
+        for (int i = 0; i < children; i++) {
+            addProgressBar(startIndex + (children) + i, 140, 23, new int[]{0xA67711, 0x005F00});
+            setBounds(startIndex + (children) + i, (12), 7+(40 * i), (children) + i, scroll);
+        }
+
+        for (int i = 0; i < children; i++) {
+            addText(startIndex + (children * 2) + i, "Lorem Ipsum", tda, 1, 0xffffff, true, true);
+            setBounds(startIndex + (children * 2) + i, (82), 9 + (40 * i), (children * 2) + i, scroll);
+        }
+
+        scroll.width = 160;
+        scroll.height = 190;
+        scroll.scrollMax = 40 * children + 200;// + totalSkills * 4;
     }
 
     private static void addDnDTab(TextDrawingArea[] tda) {
@@ -386,7 +419,7 @@ public class Interfaces extends RSInterface {
         addClickableSprites(57302, "Quests", path, 1, 1);
         addClickableSprites(57303, "Achievements", path, 1, 2);
         addClickableSprites(57304, "Distractions & Diversions", path, 2, 2);
-        addClickableSprites(57305, "Coming Soon", path, 1, 2);
+        addClickableSprites(57305, "Journeys", path, 1, 2);
         addSprite(57306, 0, path);
         addText(57307, "Distractions & Diversions", tda, 2, 0xFFA500, false, true);
 
@@ -439,21 +472,23 @@ public class Interfaces extends RSInterface {
     private static void addTab5(TextDrawingArea[] tda) {
         final String path = "Interfaces/runehub/tab/player/SPRITE";
         RSInterface tab = addTabInterface(57400);
+        RSInterface scroll = addTabInterface(57414);
         addClickableSprites(57401, "Player Summary", path, 1, 2);
         addClickableSprites(57402, "Quests", path, 1, 1);
         addClickableSprites(57403, "Achievements", path, 1, 2);
         addClickableSprites(57404, "Distractions & Diversions", path, 1, 2);
-        addClickableSprites(57405, "Coming Soon", path, 2, 2);
+        addClickableSprites(57405, "Journeys", path, 2, 2);
         addSprite(57406, 0, path);
-        addText(57407, "Coming Soon", tda, 2, 0xFFA500, false, true);
+        addText(57407, "Journeys", tda, 2, 0xFFA500, false, true);
 
         addSprite(57408, 20, path);
         addSprite(57409, 15, path);
         addSprite(57410, 16, path);
         addSprite(57411, 17, path);
         addSprite(57412, 18, path);
+        addSprite(57413, 0, "Interfaces/runehub/tab/SPRITE");
 
-        setChildren(12, tab);
+        setChildren(14, tab);
 
         setBounds(57406, 4, 30, 0, tab);
         setBounds(57407, 8, 33, 1, tab);
@@ -463,10 +498,34 @@ public class Interfaces extends RSInterface {
         setBounds(57410, 87, 8, 9, tab);
         setBounds(57411, 125, 8, 10, tab);
         setBounds(57412, 163, 8, 11, tab);
+        setBounds(57413, 2, 56, 12, tab);
+        setBounds(57414, 4, 60, 13, tab);
 
         for (int i = 0; i < 5; i++) {
             setBounds(57401 + i, 4 + (i * 37), 5, 2 + i, tab);
         }
+
+        int children = 3;
+        int startIndex = 57415;
+        scroll.totalChildren(children * 3);
+        for (int i = 0; i < children; i++) {
+            addClickableSprites(startIndex + i, "Details", path, 21, 2);
+            setBounds(startIndex + i, (5), (40 * i), i, scroll);
+        }
+
+        for (int i = 0; i < children; i++) {
+            addText(startIndex + (children) + i, "Lorem Ipsum", tda, 1, 0xFFA500, true, true);
+            setBounds(startIndex + (children) + i, (82), 3 + (40 * i), (children) + i, scroll);
+        }
+
+        for (int i = 0; i < children; i++) {
+            addText(startIndex + (children * 2) + i, "Lorem Ipsum", tda, 0, 0xFFA500, true, true);
+            setBounds(startIndex + (children * 2) + i, (82), 20 + (40 * i), (children * 2) + i, scroll);
+        }
+
+        scroll.width = 160;
+        scroll.height = 190;
+        scroll.scrollMax = 40 * children + 200;// + totalSkills * 4;
     }
 
 //    private static void addSkillTab(TextDrawingArea[] tda) {
