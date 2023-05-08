@@ -21,13 +21,18 @@ import com.client.graphics.interfaces.runehub.Rune;
 import com.client.runehub.RunehubUtils;
 import com.client.sign.Signlink;
 import com.client.utilities.FileOperations;
+import org.runehub.api.io.data.impl.ItemContextDAO;
+import org.runehub.api.io.load.impl.ItemIdContextLoader;
+import org.runehub.api.model.entity.item.ItemContext;
 import org.runehub.api.model.math.impl.AdjustableInteger;
 import org.runehub.api.util.SkillDictionary;
 
 public final class ItemDefinition {
     public byte[] customSpriteLocation;
     private final static List<Integer> starIds = Arrays.asList(22009, 22010, 22011, 22012, 22013, 22014, 22015, 22016, 22017, 22018, 22019, 22020, 22021, 22022, 22023, 22024, 22025, 22026, 22027, 22028, 22029, 22030, 22031, 22032, 22033, 22034, 22035, 22036, 22037, 22038, 22039, 22040, 22041, 22042, 22043, 22044, 22045, 22046, 22047, 22048, 22049, 22050, 22051, 22052, 22053, 22054, 22055, 22056, 22057, 22058, 22059, 22060, 22061, 22062, 22063, 22064, 22065, 22066, 22067, 22068, 22069, 22070, 22071, 22072, 22073, 22074, 22075, 22076, 22077, 22078, 22079, 22080, 22081, 22082, 22083, 22084, 22085, 22086, 22087, 22088, 22089, 22090, 22091, 22092, 22191, 22227, 22228, 22229, 22230, 21873, 21874, 21875);
+    private final static List<Integer> lampIds = Arrays.asList(21399,21400,21401,21402,21403,21404,21405,21406,21407,21408,21409,21411,21412,21413,21414,21415,21416,21417,21418,21419,21420,21421,21422,21423,21424,21425,21426,21427,21841,21842,21843,21844,21845,21846,21861,21862,21863,21864,21865,21866,21867,21868,21869,21870,21871,20854,20855,20856,20857,20858,20859,20860,20861,20862,20863,20864,20865,20867,20868,20869,20870,20871,20872,20873,20874,20875,20876,20877,20878,20879,20880,20881,20882,20883,20532,20533,20534,20535,20536,22000,22001,21827,21828,21829,21830,21831,21832,21833,21834,21428,21429,21430);
     private static List<ItemDefinition> starDefinitions = new ArrayList<>();
+    private static List<ItemDefinition> lampDefinition = new ArrayList<>();
 
 
     public static void unpackConfig(final StreamLoader streamLoader) {
@@ -51,6 +56,9 @@ public final class ItemDefinition {
         }
 //        itemDump();
         generateStars(starIds);
+        generateLamps(lampIds);
+        System.out.println(lampIds.size());
+        System.out.println(starIds.size());
     }
 
     public static ItemDefinition forID(int itemId) {
@@ -251,6 +259,28 @@ public final class ItemDefinition {
         return definition;
     }
 
+    private static ItemDefinition createLamp(ItemDefinition definition, String name, String description, int newColor) {
+        copyDef(definition, ItemDefinition.forID(2528));
+        definition.name = name;
+        definition.description = description;
+        definition.inventoryOptions = new String[]{"Rub", null, null, null, null};
+        definition.originalModelColors = new int[]{newColor, newColor - 8};
+        definition.modifiedModelColors = new int[]{11191,11183};
+//        ItemContext context = ItemIdContextLoader.getInstance().read(definition.id);
+//        ItemContextDAO.getInstance().delete(context);
+//        String newName = definition.name.replaceAll("[^\\p{ASCII}\\w\\s]+", "");
+//        System.out.println("Current Name: " + context.getName());
+//        System.out.println("New Name: " + newName);
+//        context.setName(newName);
+//        context.setExamine(definition.description);
+//        context.setTradable(false);
+//        context.setStackable(false);
+//        context.setNoteable(false);
+//        context.setEquippable(false);
+//        ItemContextDAO.getInstance().create(context);
+        return definition;
+    }
+
     private static ItemDefinition createAltarTeleportTab(ItemDefinition definition, Rune rune) {
         copyDef(definition, ItemDefinition.forID(13666));
         definition.name = RunehubUtils.capitalize(rune.toString().toLowerCase()) + " altar teleport";
@@ -331,6 +361,42 @@ public final class ItemDefinition {
         }
     }
 
+    private static void generateLamps(List<Integer> nullDefinitions) {
+        int skillId = 0;
+        int tier = 0;
+        int index = 0;
+        for (int i = 1; i < nullDefinitions.size(); i++) {
+            try {
+                SkillDictionary.Skill skill = SkillDictionary.Skill.values()[skillId];
+                String skillName = skill.name();
+                ItemDefinition def = new ItemDefinition();
+                def.readValues(stream);
+                def.id = nullDefinitions.get(index);
+
+                if (tier == 0) {
+                    createLamp(def, "Small " + capitalize(skillName.toLowerCase()) + " XP Lamp", "A small XP lamp.", RunehubUtils.getBaseColorForSkill(skill));
+                } else if (tier == 1) {
+                    createLamp(def, capitalize(skillName.toLowerCase()) + " XP Lamp", "An XP lamp.", RunehubUtils.getBaseColorForSkill(skill) + 10);
+                } else if (tier == 2) {
+                    createLamp(def, "Large " + capitalize(skillName.toLowerCase()) + " XP Lamp", "A large XP lamp.", RunehubUtils.getBaseColorForSkill(skill) + 20);
+                } else if (tier == 3) {
+                    createLamp(def, "Huge " + capitalize(skillName.toLowerCase()) + " XP Lamp", "A huge XP lamp.", RunehubUtils.getBaseColorForSkill(skill) + 40);
+                }
+
+                tier++;
+                index++;
+//                System.out.println("Making " + def.name + " ID: " + def.id);
+                lampDefinition.add(def);
+                if (i % 4 == 0 && i != 0) {
+                    skillId++;
+                    tier = 0;
+                }
+            } catch (NullPointerException e) {
+                System.out.println("Missing Skill for: " + i);
+            }
+        }
+    }
+
 
     private static List<Integer> findNullItems(int total) {
         List<Integer> nullItems = new ArrayList<>();
@@ -352,6 +418,16 @@ public final class ItemDefinition {
         if ((itemId >= 22009 && itemId <= 22092) || starIds.contains(itemId)) {
             ItemDefinition starDef = starDefinitions.stream().filter(definition -> definition.id == itemId).findAny().orElse(null);
             copyDef(itemDef, ItemDefinition.forID(6824));
+            itemDef.name = starDef.name;
+            itemDef.description = starDef.description;
+            itemDef.inventoryOptions = starDef.inventoryOptions;
+            itemDef.originalModelColors = starDef.originalModelColors;
+            itemDef.modifiedModelColors = starDef.modifiedModelColors;
+        }
+
+        if (lampIds.contains(itemId)) {
+            ItemDefinition starDef = lampDefinition.stream().filter(definition -> definition.id == itemId).findAny().orElse(null);
+            copyDef(itemDef, ItemDefinition.forID(2528));
             itemDef.name = starDef.name;
             itemDef.description = starDef.description;
             itemDef.inventoryOptions = starDef.inventoryOptions;
@@ -1027,6 +1103,7 @@ public final class ItemDefinition {
 //                itemDef.inventoryOptions[0] = "Deploy";
 //                itemDef.inventoryOptions[4] = "Drop";
                 break;
+
             case 5023:
                 itemDef.name = "Artisan's sawmill ticket";
                 itemDef.description = "Good for 5 minutes";
@@ -1268,10 +1345,9 @@ public final class ItemDefinition {
                 itemDef.customSpriteLocation = ph5;
                 break;
             case 7478:
-                itemDef.name = "Donator Token";
-                itemDef.description = "The form of currency for Os-Revolution Donators.";
-                itemDef.inventoryOptions = new String[5];
-                itemDef.inventoryOptions[4] = "Drop";
+                copyDef(itemDef, ItemDefinition.forID(7478));
+                itemDef.name = "Journey point token";
+                itemDef.description = "Redeem this for 1 Journey Point";
                 break;
             case 22506:
                 itemDef.modelId = 8269;

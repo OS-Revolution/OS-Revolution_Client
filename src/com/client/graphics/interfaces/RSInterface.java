@@ -1,6 +1,7 @@
 package com.client.graphics.interfaces;
 
 import java.awt.Dimension;
+import java.util.Arrays;
 import java.util.Objects;
 
 import com.client.*;
@@ -113,10 +114,15 @@ public class RSInterface {
 				rsInterface.actions = new String[6];
 				for (int l3 = 0; l3 < 5; l3++) {
 					rsInterface.actions[l3] = stream.readString();
+					if (rsInterface.parentID == 3822) {
+						System.out.println(Arrays.toString(rsInterface.actions));
+					}
 					if (rsInterface.actions[l3].length() == 0)
 						rsInterface.actions[l3] = null;
-					if (rsInterface.parentID == 3822)
+					if (rsInterface.parentID == 3822) {
 						rsInterface.actions[4] = "Sell X";
+//						rsInterface.actions[3] = "Sell All";
+					}
 					if (rsInterface.parentID == 3824)
 						rsInterface.actions[4] = "Buy X";
 					if (rsInterface.parentID == 1644)

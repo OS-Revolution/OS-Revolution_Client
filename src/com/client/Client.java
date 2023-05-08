@@ -544,6 +544,9 @@ public class Client extends RSApplet {
             } else if (inputDialogState == 28) {
                 newBoldFont.drawCenteredString("Enter Code:", 259, 60 + yOffset, 0, -1);
                 newBoldFont.drawCenteredString(amountOrNameInput + "*", 259, 80 + yOffset, 128, -1);
+            }else if (inputDialogState == 29) {
+                    newBoldFont.drawCenteredString("Enter Password:", 259, 60 + yOffset, 0, -1);
+                    newBoldFont.drawCenteredString(amountOrNameInput + "*", 259, 80 + yOffset, 128, -1);
             } else if (inputDialogState == 7) {
                 newBoldFont.drawCenteredString("Enter the price for the item:", 259, 60 + yOffset, 0, -1);
                 newBoldFont.drawCenteredString(amountOrNameInput + "*", 259, 80 + yOffset, 128, -1);
@@ -5040,7 +5043,6 @@ public class Client extends RSApplet {
             }
             this.worldController.method312(y, x);
         }
-        System.out.println("L is: " + l);
         if (l == 1062) {
             anInt924 += baseX;
             if (anInt924 >= 113) {
@@ -6777,6 +6779,20 @@ public class Client extends RSApplet {
                     inputDialogState = 0;
                     inputTaken = true;
                     sendString(10, amountOrNameInput);
+                }
+                if (j >= 32 && j <= 122 && amountOrNameInput.length() < 40) {
+                    amountOrNameInput += (char) j;
+                    inputTaken = true;
+                }
+                if (j == 8 && amountOrNameInput.length() > 0) {
+                    amountOrNameInput = amountOrNameInput.substring(0, amountOrNameInput.length() - 1);
+                    inputTaken = true;
+                }
+            } else if (inputDialogState == 29) {
+                if (j == 10) {
+                    inputDialogState = 0;
+                    inputTaken = true;
+                    sendString(11, amountOrNameInput);
                 }
                 if (j >= 32 && j <= 122 && amountOrNameInput.length() < 40) {
                     amountOrNameInput += (char) j;
@@ -14240,7 +14256,8 @@ public class Client extends RSApplet {
                     // (currentGameWidth / 2) - 356, RSInterface.interfaceCache[openInterfaceID],
                     // currentScreenMode == ScreenMode.FIXED ? 0 : (currentGameHeight / 2) - 230);
                 } else if (openWalkableWidgetID == 21100 || openWalkableWidgetID == 21119
-                        || openWalkableWidgetID == 29230) {
+                        || openWalkableWidgetID == 29230 || openWalkableWidgetID == 53000) {
+                    System.out.println("Drawing: " + openWalkableWidgetID);
                     /**
                      * Interfaces to draw at top left corner (Ex. Pest Control)
                      **/
@@ -17692,6 +17709,13 @@ public class Client extends RSApplet {
                 case 28:
                     messagePromptRaised = false;
                     inputDialogState = 28;
+                    amountOrNameInput = "";
+                    inputTaken = true;
+                    incomingPacket = -1;
+                    return true;
+                case 29:
+                    messagePromptRaised = false;
+                    inputDialogState = 29;
                     amountOrNameInput = "";
                     inputTaken = true;
                     incomingPacket = -1;

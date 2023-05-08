@@ -53,6 +53,15 @@ public final class NpcDefinition {
             entityDef.name = "Derek";
             entityDef.description = "An ancient nephalem ghost.";
         }
+        if (i == 1039) {
+            entityDef.name = "Jewel Merchant";
+            entityDef.description = "His shop is well stocked";
+        }
+        if (i == 306) {
+            entityDef.name = "Journey Guide";
+            entityDef.description = "Talk to him to begin taking journeys";
+            entityDef.actions = new String[]{"Talk-to", null, "Start Journey", null, null};
+        }
         if (i == 338) {
             entityDef = forID(301);
             ItemDefinition weapon = ItemDefinition.forID(20733);

@@ -306,6 +306,15 @@ public final class ObjectDefinition {
                 objectDef.description = "A highly efficient work station";
                 objectDef.actions = new String[]{"Craft", "Check", "Add Tickets", null, null};
                 break;
+            case 114:
+                objectDef.actions = new String[]{"Cook", null, null, null, null};
+                break;
+            case 2611:
+                objectDef.actions = new String[]{"Add Items", null, null, null, null};
+                break;
+            case 7528:
+                objectDef.actions = new String[]{"Brew", "Open Inventory", null, null, null};
+                break;
             case 13542:
                 objectDef.name = "Chef's range";
                 objectDef.description = "A highly efficient work station";
@@ -315,6 +324,12 @@ public final class ObjectDefinition {
                 objectDef.name = "Herbalist's well";
                 objectDef.description = "A highly efficient work station";
                 objectDef.actions = new String[]{"Fill", "Check", "Add Tickets", null, null};
+                break;
+            case 15931:
+                objectDef.actions = new String[]{"Deposit", null,null, null, null};
+                break;
+            case 1363:
+                objectDef.actions = new String[]{"Chop", null,null, null, null};
                 break;
             case 15468:
                 objectDef.name = "Artisan's sawmill";
@@ -338,8 +353,21 @@ public final class ObjectDefinition {
                 objectDef.description = "A strange energy emanates from this.";
                 objectDef.actions = new String[]{"Open Instance", null, null, null, null};
                 break;
+            case 13619:
+                copyDef(objectDef,forID(13619));
+                objectDef.name = "Tomb Raider Portal";
+                objectDef.description = "A portal to your private instance";
+                objectDef.actions = new String[]{"Enter", "Close", null, null, null};
+                break;
+            case 13638:
+                copyDef(objectDef,forID(13637));
+                objectDef.name = "Tomb Raider Portal";
+                objectDef.description = "A strange energy emanates from this.";
+                objectDef.actions = new String[]{"Open Instance", null, null, null, null};
+                break;
             case 13620:
                 copyDef(objectDef,forID(13620));
+                objectDef.name = "Boss Instance Portal";
                 objectDef.description = "A portal to your private instance";
                 objectDef.actions = new String[]{"Enter", "Close", null, null, null};
                 break;

@@ -221,7 +221,7 @@ public class Interfaces extends RSInterface {
         addClickableSprites(57002, "Quests", path, 1, 1);
         addClickableSprites(57003, "Achievements", path, 1, 2);
         addClickableSprites(57004, "Distractions & Diversions", path, 1, 2);
-        addClickableSprites(57005, "Journeys", path, 1, 2);
+        addClickableSprites(57005, "Miscellaneous", path, 1, 2);
         addSprite(57010, 9, path);
         addSprite(57008, 8, path);
         addSprite(57009, 8, path);
@@ -326,7 +326,7 @@ public class Interfaces extends RSInterface {
         addClickableSprites(57102, "Quests", path, 2, 1);
         addClickableSprites(57103, "Achievements", path, 1, 2);
         addClickableSprites(57104, "Distractions & Diversions", path, 1, 2);
-        addClickableSprites(57105, "Journeys", path, 1, 2);
+        addClickableSprites(57105, "Miscellaneous", path, 1, 2);
         addSprite(57106, 0, path);
         addText(57107, "Quests", tda, 2, 0xFFA500, false, true);
 
@@ -360,7 +360,7 @@ public class Interfaces extends RSInterface {
         addClickableSprites(57202, "Quests", path, 1, 1);
         addClickableSprites(57203, "Achievements", path, 2, 2);
         addClickableSprites(57204, "Distractions & Diversions", path, 1, 2);
-        addClickableSprites(57205, "Journeys", path, 1, 2);
+        addClickableSprites(57205, "Miscellaneous", path, 1, 2);
         addSprite(57206, 0, path);
         addText(57207, "Achievements", tda, 2, 0xFFA500, false, true);
 
@@ -419,7 +419,7 @@ public class Interfaces extends RSInterface {
         addClickableSprites(57302, "Quests", path, 1, 1);
         addClickableSprites(57303, "Achievements", path, 1, 2);
         addClickableSprites(57304, "Distractions & Diversions", path, 2, 2);
-        addClickableSprites(57305, "Journeys", path, 1, 2);
+        addClickableSprites(57305, "Miscellaneous", path, 1, 2);
         addSprite(57306, 0, path);
         addText(57307, "Distractions & Diversions", tda, 2, 0xFFA500, false, true);
 
@@ -477,9 +477,9 @@ public class Interfaces extends RSInterface {
         addClickableSprites(57402, "Quests", path, 1, 1);
         addClickableSprites(57403, "Achievements", path, 1, 2);
         addClickableSprites(57404, "Distractions & Diversions", path, 1, 2);
-        addClickableSprites(57405, "Journeys", path, 2, 2);
+        addClickableSprites(57405, "Miscellaneous", path, 2, 2);
         addSprite(57406, 0, path);
-        addText(57407, "Journeys", tda, 2, 0xFFA500, false, true);
+        addText(57407, "Miscellaneous", tda, 2, 0xFFA500, false, true);
 
         addSprite(57408, 20, path);
         addSprite(57409, 15, path);
@@ -505,23 +505,27 @@ public class Interfaces extends RSInterface {
             setBounds(57401 + i, 4 + (i * 37), 5, 2 + i, tab);
         }
 
-        int children = 3;
+        int children = 30;
         int startIndex = 57415;
-        scroll.totalChildren(children * 3);
+        scroll.totalChildren(children);
         for (int i = 0; i < children; i++) {
-            addClickableSprites(startIndex + i, "Details", path, 21, 2);
-            setBounds(startIndex + i, (5), (40 * i), i, scroll);
+            addClickableText(startIndex + i, "","", tda, 1, 0xFFA500, true, false,160);
+            setBounds(startIndex + i, (5), (20 * i), i, scroll);
         }
+//        for (int i = 0; i < children; i++) {
+//            addClickableSprites(startIndex + i, "Details", path, 21, 2);
+//            setBounds(startIndex + i, (5), (40 * i), i, scroll);
+//        }
 
-        for (int i = 0; i < children; i++) {
-            addText(startIndex + (children) + i, "Lorem Ipsum", tda, 1, 0xFFA500, true, true);
-            setBounds(startIndex + (children) + i, (82), 3 + (40 * i), (children) + i, scroll);
-        }
-
-        for (int i = 0; i < children; i++) {
-            addText(startIndex + (children * 2) + i, "Lorem Ipsum", tda, 0, 0xFFA500, true, true);
-            setBounds(startIndex + (children * 2) + i, (82), 20 + (40 * i), (children * 2) + i, scroll);
-        }
+//        for (int i = 0; i < children; i++) {
+//            addText(startIndex + (children) + i, "Lorem Ipsum", tda, 1, 0xFFA500, true, true);
+//            setBounds(startIndex + (children) + i, (82), 3 + (40 * i), (children) + i, scroll);
+//        }
+//
+//        for (int i = 0; i < children; i++) {
+//            addText(startIndex + (children * 2) + i, "Lorem Ipsum", tda, 0, 0xFFA500, true, true);
+//            setBounds(startIndex + (children * 2) + i, (82), 20 + (40 * i), (children * 2) + i, scroll);
+//        }
 
         scroll.width = 160;
         scroll.height = 190;
@@ -2555,11 +2559,11 @@ public class Interfaces extends RSInterface {
 //		addText(53009, "0", tda, 0, 0xFD851A, true, true);
         addSprite(53009, 6, "Interfaces/Achievements/IMAGE");
         setChildren(9, rsi);
-        setBounds(53001, 485, 55, 0, rsi);
+        setBounds(53001, 455, 55, 0, rsi);
         for (int index = 1; index < 7; index++)
             setBounds(53001 + index, 485, 60 + index * 14, index, rsi);
-        setBounds(53008, 485, 35, 8, rsi);
-        setBounds(53009, 390, 35, 7, rsi);
+        setBounds(53008, 455, 35, 8, rsi);
+        setBounds(53009, 360, 35, 7, rsi);
     }
 
     private static void achievements(TextDrawingArea[] tda) {
