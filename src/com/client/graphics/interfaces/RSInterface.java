@@ -742,7 +742,7 @@ public class RSInterface {
 
 		RSInterface items = addInterface(38520);
 		items.totalChildren(1);
-		itemGroup(38521, 4, 3, 4, 5, true, true);
+		itemGroup(38521, 4, 5, 4, 5, true, true);
 		// fill(38521);
 		interfaceCache[38521].contentType = 206;
 		items.child(0, 38521, 5, 5);
@@ -2891,6 +2891,25 @@ public class RSInterface {
 			rsi.actions[5] = action6;
 		}
 		rsi.type = 2;
+	}
+
+	protected static void addToItemGroup(int id, int w, int h, int x, int y, int padX, int padY) {
+		RSInterface rsi = addInterface(id);
+		rsi.width = w;
+		rsi.height = h;
+		rsi.inv = new int[w * h];
+		rsi.invStackSizes = new int[w * h];
+		rsi.usableItemInterface = false;
+		rsi.isInventoryInterface = false;
+		rsi.isMouseoverTriggered = false;
+		rsi.invSpritePadX = padX;
+		rsi.invSpritePadY = padY;
+		rsi.spritesX = new int[20];
+		rsi.spritesY = new int[20];
+		rsi.sprites = new Sprite[20];
+		rsi.actions = new String[5];
+		rsi.type = 2;
+//		rsi.contentType = 205;
 	}
 
 	protected static void addToItemGroup(int id, int w, int h, int x, int y, boolean actions, String action1,

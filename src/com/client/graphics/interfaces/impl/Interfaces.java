@@ -100,9 +100,11 @@ public class Interfaces extends RSInterface {
         addTab5(textDrawingAreas);
         addRiftSelection(textDrawingAreas);
         addSkillTab(textDrawingAreas);
-        runehubTeleport(textDrawingAreas);
+//        runehubTeleport(textDrawingAreas);
         skillActionUI(textDrawingAreas);
         instanceTimer(textDrawingAreas);
+
+        addSailingTradeSelectionUI(textDrawingAreas);
     }
 
 
@@ -217,7 +219,7 @@ public class Interfaces extends RSInterface {
         RSInterface tab = addTabInterface(57000);
         addSprite(57006, 0, path);
         addText(57007, "Player Summary", tda, 2, 0xFFA500, false, true);
-        addClickableSprites(57001, "Player Summary", path, 2, 2);
+        addClickableSprites(57001, "Player Summary", path, 2, 1);
         addClickableSprites(57002, "Quests", path, 1, 1);
         addClickableSprites(57003, "Achievements", path, 1, 2);
         addClickableSprites(57004, "Distractions & Diversions", path, 1, 2);
@@ -398,7 +400,7 @@ public class Interfaces extends RSInterface {
 
         for (int i = 0; i < children; i++) {
             addProgressBar(startIndex + (children) + i, 140, 23, new int[]{0xA67711, 0x005F00});
-            setBounds(startIndex + (children) + i, (12), 7+(40 * i), (children) + i, scroll);
+            setBounds(startIndex + (children) + i, (12), 7 + (40 * i), (children) + i, scroll);
         }
 
         for (int i = 0; i < children; i++) {
@@ -509,7 +511,7 @@ public class Interfaces extends RSInterface {
         int startIndex = 57415;
         scroll.totalChildren(children);
         for (int i = 0; i < children; i++) {
-            addClickableText(startIndex + i, "","", tda, 1, 0xFFA500, true, false,160);
+            addClickableText(startIndex + i, "", "", tda, 1, 0xFFA500, true, false, 160);
             setBounds(startIndex + i, (5), (20 * i), i, scroll);
         }
 //        for (int i = 0; i < children; i++) {
@@ -856,6 +858,181 @@ public class Interfaces extends RSInterface {
         leftScroll.width = 180;
         leftScroll.height = 230;
         leftScroll.scrollMax = 300;
+    }
+
+//    private static void addSailingTradeSelectionUI(TextDrawingArea[] tda) {
+//        final RSInterface baseUI = addInterface(50100);
+//        final String baseDir = "Interfaces/runehub/sailing/SPRITE";
+//        final int baseX = 30;
+//        final int baseY = 25;
+//
+//        addSprite(50101, 0, baseDir);
+//        addText(50102, "Select Trade Goods", tda, 2, 0xFFA500, true, true);
+//        //buy offer slots
+//        addToItemGroup(50103, 1, 5, 160, 40, 0, 14);
+//        //sell offer slots
+//        addToItemGroup(50141, 1, 5, 410, 40, 0, 14);
+//        //Membership stars
+//        addSprite(50104, 6, baseDir);
+//        addSprite(50105, 6, baseDir);
+//        addSprite(50106, 6, baseDir);
+//        addSprite(50107, 6, baseDir);
+//        addSprite(50108, 6, baseDir);
+//        addSprite(50109, 6, baseDir);
+//        //buy icons
+//        addClickableSprites(50110, "Make Buy Request", baseDir, 1, 1);
+//        addClickableSprites(50111, "Make Buy Request", baseDir, 1, 1);
+//        addClickableSprites(50112, "Make Buy Request", baseDir, 1, 1);
+//        addClickableSprites(50113, "Make Buy Request", baseDir, 1, 1);
+//        addClickableSprites(50114, "Make Buy Request", baseDir, 1, 1);
+//        //sell icons
+//        addClickableSprites(50115, "Make Sell Request", baseDir, 1, 1);
+//        addClickableSprites(50116, "Make Sell Request", baseDir, 1, 1);
+//        addClickableSprites(50117, "Make Sell Request", baseDir, 1, 1);
+//        addClickableSprites(50118, "Make Sell Request", baseDir, 1, 1);
+//        addClickableSprites(50119, "Make Sell Request", baseDir, 1, 1);
+//        //close button
+//        addButton(50120, 3, baseDir, "Close");
+//        //Voyage details
+//        addText(50121, "Island Name", tda, 2, 0xFFA500, true, true);
+//        addText(50122, "Region Name", tda, 2, 0xFFA500, true, true);
+//        addText(50123, "Seafaring: 0/0", tda, 1, 0xFFA500, false, true);
+//        addText(50124, "Combat: 0/0", tda, 1, 0xFFA500, false, true);
+//        addText(50125, "Morale: 0/0", tda, 1, 0xFFA500, false, true);
+//        addText(50126, "Distance: 100 Leagues", tda, 1, 0xFFA500, false, true);
+//        addText(50127, "Cargo Stats", tda, 2, 0xFFA500, false, true);
+//        addText(50128, "Voyage Stats", tda, 2, 0xFFA500, false, true);
+//        addText(50140, "Weight: 0/0", tda, 1, 0xFFA500, false, true);
+//        //voyage progress
+//        addProgressBar(50129, 137, 28, new int[]{0xA67711, 0x005F00});
+//        addClickableSprites(50130, "Voyage Progress", baseDir, 24, 24);
+//        addText(50131, "Voyage Progress", tda, 2, 0xffffff, true, false);
+//        //buttons
+//        addButton(50132, 25, baseDir, "Start Voyage");
+//        addButton(50133, 25, baseDir, "Cancel Voyage");
+//        addButton(50134, 25, baseDir, "Claim Voyage");
+//        addButton(50135, 25, baseDir, "Repair Ship");
+//        addText(50136, "Start", tda, 1, 0xffffff, true, false);
+//        addText(50137, "Cancel", tda, 1, 0xffffff, true, false);
+//        addText(50138, "Claim", tda, 1, 0xffffff, true, false);
+//        addText(50139, "Repair", tda, 1, 0xffffff, true, false);
+//
+//        baseUI.totalChildren(41);
+//        baseUI.child(0, 50101, baseX, baseY);
+//        baseUI.child(1, 50102, getXFromBase(baseX, 235), getYFromBase(baseY, 5));
+//        baseUI.child(2, 50103, getXFromBase(baseX, 160), getYFromBase(baseY, 40));
+//        baseUI.child(40, 50141, getXFromBase(baseX, 410), getYFromBase(baseY, 40));
+//        //Membership stars
+//        baseUI.child(3, 50104, getXFromBase(baseX, 168), getYFromBase(baseY, 247));
+//        baseUI.child(4, 50105, getXFromBase(baseX, 168), getYFromBase(baseY, 200));
+//        baseUI.child(5, 50106, getXFromBase(baseX, 168), getYFromBase(baseY, 154));
+//        baseUI.child(6, 50107, getXFromBase(baseX, 418), getYFromBase(baseY, 247));
+//        baseUI.child(7, 50108, getXFromBase(baseX, 418), getYFromBase(baseY, 200));
+//        baseUI.child(8, 50109, getXFromBase(baseX, 418), getYFromBase(baseY, 154));
+//        //buy icons
+//        baseUI.child(9, 50110, getXFromBase(baseX, 250), getYFromBase(baseY, 38));
+//        baseUI.child(10, 50111, getXFromBase(baseX, 250), getYFromBase(baseY, 84));
+//        baseUI.child(11, 50112, getXFromBase(baseX, 250), getYFromBase(baseY, 130));
+//        baseUI.child(12, 50113, getXFromBase(baseX, 250), getYFromBase(baseY, 176));
+//        baseUI.child(13, 50114, getXFromBase(baseX, 250), getYFromBase(baseY, 222));
+//        //sell icons
+//        baseUI.child(14, 50115, getXFromBase(baseX, 307), getYFromBase(baseY, 38));
+//        baseUI.child(15, 50116, getXFromBase(baseX, 307), getYFromBase(baseY, 84));
+//        baseUI.child(16, 50117, getXFromBase(baseX, 307), getYFromBase(baseY, 130));
+//        baseUI.child(17, 50118, getXFromBase(baseX, 307), getYFromBase(baseY, 176));
+//        baseUI.child(18, 50119, getXFromBase(baseX, 307), getYFromBase(baseY, 222));
+//        //close button
+//        baseUI.child(19, 50120, 463, 28);
+//        //voyage details
+//        baseUI.child(20, 50121, getXFromBase(baseX, 72), getYFromBase(baseY, 28));
+//        baseUI.child(21, 50122, getXFromBase(baseX, 72), getYFromBase(baseY, 41));
+//        baseUI.child(22, 50123, getXFromBase(baseX, 10), getYFromBase(baseY, 78));
+//        baseUI.child(23, 50124, getXFromBase(baseX, 10), getYFromBase(baseY, 93));
+//        baseUI.child(24, 50125, getXFromBase(baseX, 10), getYFromBase(baseY, 108));
+//        baseUI.child(25, 50126, getXFromBase(baseX, 10), getYFromBase(baseY, 123));
+//        baseUI.child(26, 50127, getXFromBase(baseX, 10), getYFromBase(baseY, 138));
+//        baseUI.child(27, 50128, getXFromBase(baseX, 10), getYFromBase(baseY, 60));
+//        baseUI.child(39, 50140, getXFromBase(baseX, 10), getYFromBase(baseY, 153));
+//        //voyage progress
+//        baseUI.child(29, 50129, getXFromBase(baseX, 8), getYFromBase(baseY, 170));
+//        baseUI.child(28, 50130, getXFromBase(baseX, 8), getYFromBase(baseY, 170));
+//        baseUI.child(30, 50131, getXFromBase(baseX, 76), getYFromBase(baseY, 177));
+//        //buttons
+//        baseUI.child(31, 50132, getXFromBase(baseX, 8), getYFromBase(baseY, 200));
+//        baseUI.child(32, 50133, getXFromBase(baseX, 77), getYFromBase(baseY, 200));//77 145
+//        baseUI.child(33, 50134, getXFromBase(baseX, 8), getYFromBase(baseY, 232));
+//        baseUI.child(34, 50135, getXFromBase(baseX, 77), getYFromBase(baseY, 232));
+//        //button text
+//        baseUI.child(35, 50136, getXFromBase(baseX, 43), getYFromBase(baseY, 205));
+//        baseUI.child(36, 50137, getXFromBase(baseX, 110), getYFromBase(baseY, 205));//77 145
+//        baseUI.child(37, 50138, getXFromBase(baseX, 43), getYFromBase(baseY, 237));
+//        baseUI.child(38, 50139, getXFromBase(baseX, 110), getYFromBase(baseY, 237));
+//    }
+
+    private static void addSailingTradeSelectionUI(TextDrawingArea[] tda) {
+        final RSInterface baseUI = addInterface(50100);
+        final String baseDir = "Interfaces/runehub/sailing/SPRITE";
+        final int baseX = 30;
+        final int baseY = 25;
+
+        //empty frame
+        addSprite(50101, 7, baseDir);
+        //frame title
+        addText(50102, "Select Trade Goods", tda, 2, 0xFFA500, true, true);
+        //close button
+        addButton(50103, 3, baseDir, "Close");
+        //item group titles
+        addText(50104, "Selling", tda, 2, 0xFFA500, true, true);
+        addText(50105, "Buying", tda, 2, 0xFFA500, true, true);
+        //Item groups
+        addToItemGroup(50106, 5, 2, 160, 40, 8, 8);
+        addToItemGroup(50107, 5, 2, 160, 40, 8, 8);
+        //clickable item sprites
+        for (int i = 0; i < 10; i++) {
+            int childId = 50108;
+            addClickableSprites(childId + i, "Buy", baseDir, 8, 8);
+        }
+        for (int i = 0; i < 10; i++) {
+            int childId = 50118;
+            addClickableSprites(childId + i, "Sell", baseDir, 8, 8);
+        }
+
+
+        baseUI.totalChildren(27);
+        //empty frame positioning
+        baseUI.child(0, 50101, baseX, baseY);
+        //frame title positioning
+        baseUI.child(1, 50102, getXFromBase(baseX, 235), getYFromBase(baseY, 5));
+        //exit button positioning
+        baseUI.child(2, 50103, 463, 28);
+        //selling text positioning
+        baseUI.child(3, 50104, 300, 50);
+        //buying text positioning
+        baseUI.child(4, 50105, 300, 180);
+        //Clickable item sprite positions
+        for (int i = 0; i < 10; i++) {
+            int index = 5;
+            int childId = 50108;
+            if (i < 5) {
+                baseUI.child(index + i, childId + i, 275 + (i * 40), 75);
+            } else {
+                baseUI.child(index + i, childId + i, 275 + ((i - 5) * 40), 115);
+            }
+        }
+        //selling item group positioning
+        baseUI.child(15, 50106, 280, 79);
+        for (int i = 0; i < 10; i++) {
+            int childId = 50118;
+            int index = 16;
+            if (i < 5) {
+                baseUI.child(index + i, childId + i, 275 + (i * 40), 205);
+            } else {
+                baseUI.child(index + i, childId + i, 275 + ((i - 5) * 40), 245);
+            }
+            System.out.println("Index: " + (index + i));
+        }
+        //buying item group positioning
+        baseUI.child(26, 50107, 280, 209);
     }
 
     private static void runehubTeleport(TextDrawingArea[] tda) {

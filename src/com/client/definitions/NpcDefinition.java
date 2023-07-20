@@ -62,6 +62,25 @@ public final class NpcDefinition {
             entityDef.description = "Talk to him to begin taking journeys";
             entityDef.actions = new String[]{"Talk-to", null, "Start Journey", null, null};
         }
+        if (i == 6999) {
+            entityDef.description = "Talk to him to learn about Sailing";
+            entityDef.actions = new String[]{"Talk-to", null, "Voyage", "Stockpile", "Coffers"};
+        }
+        if (i == 4274) {
+            NpcDefinition originalDefinition = forID(4274);
+            ItemDefinition cape = ItemDefinition.forID(19988);
+            System.out.println(Arrays.toString(originalDefinition.models));
+            entityDef.models[0]= originalDefinition.models[0];//head
+            entityDef.models[1] = originalDefinition.models[1];//torso
+            entityDef.models[2] = originalDefinition.models[2];//arms
+            entityDef.models[3] = originalDefinition.models[3];//hands
+            entityDef.models[4] = originalDefinition.models[4];//legs
+            entityDef.models[5] = originalDefinition.models[5];//feet
+//            entityDef.models[6] = originalDefinition.models[6];//headband
+            entityDef.models[6] = cape.femaleModel; //CAPE
+//            entityDef.actions = new String[]{"Talk-to", null, "Pickpocket", "Trade", null};
+            //3 = hands, 2= arms, 1 = torso, 0 = head (not headband), 4=  legs,5=feet,6=headband
+        }
         if (i == 338) {
             entityDef = forID(301);
             ItemDefinition weapon = ItemDefinition.forID(20733);

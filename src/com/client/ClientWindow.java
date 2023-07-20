@@ -14,6 +14,13 @@ public class ClientWindow extends Client implements ActionListener, WindowListen
 
 	private static final long serialVersionUID = -6978617783576386732L;
 
+	private void addButtons() {
+		JPanel buttonBar = new JPanel();
+		buttonBar.setSize(frame.getWidth(),30);
+		buttonBar.setBorder(BorderFactory.createLineBorder(Color.yellow));
+		frame.getContentPane().add(buttonBar,BorderLayout.PAGE_END);
+	}
+
 	public void initUI() {
 		try {
 			icon = new ImageIcon(new URL(ClientProperties.getInstance().getClientIcon())).getImage();
@@ -29,6 +36,7 @@ public class ClientWindow extends Client implements ActionListener, WindowListen
 			gamePanel.add(this);
 			gamePanel.setPreferredSize(new Dimension(765, 503));
 			frame.getContentPane().add(gamePanel, BorderLayout.CENTER);
+//			addButtons();
 			frame.pack();
 			insets = frame.getInsets();
 			frame.setLocationRelativeTo(null);

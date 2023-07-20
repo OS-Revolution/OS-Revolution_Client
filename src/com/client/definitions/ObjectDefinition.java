@@ -348,6 +348,11 @@ public final class ObjectDefinition {
                 objectDef.description = "A strange energy emanates from this.";
                 objectDef.actions = new String[]{"Open Rift", null, null, null, null};
                 break;
+            case 2279:
+                objectDef.name = "Upgrade Workbench";
+                objectDef.description = "A workbench for upgrading items";
+                objectDef.actions = new String[]{"Upgrade", null, null, null, null};
+                break;
             case 13637:
                 copyDef(objectDef,forID(13636));
                 objectDef.description = "A strange energy emanates from this.";

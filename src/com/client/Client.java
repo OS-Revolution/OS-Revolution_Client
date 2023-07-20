@@ -544,9 +544,12 @@ public class Client extends RSApplet {
             } else if (inputDialogState == 28) {
                 newBoldFont.drawCenteredString("Enter Code:", 259, 60 + yOffset, 0, -1);
                 newBoldFont.drawCenteredString(amountOrNameInput + "*", 259, 80 + yOffset, 128, -1);
-            }else if (inputDialogState == 29) {
-                    newBoldFont.drawCenteredString("Enter Password:", 259, 60 + yOffset, 0, -1);
-                    newBoldFont.drawCenteredString(amountOrNameInput + "*", 259, 80 + yOffset, 128, -1);
+            } else if (inputDialogState == 29) {
+                newBoldFont.drawCenteredString("Enter Password:", 259, 60 + yOffset, 0, -1);
+                newBoldFont.drawCenteredString(amountOrNameInput + "*", 259, 80 + yOffset, 128, -1);
+            } else if (inputDialogState == 30) {
+                newBoldFont.drawCenteredString("Enter Amount:", 259, 60 + yOffset, 0, -1);
+                newBoldFont.drawCenteredString(amountOrNameInput + "*", 259, 80 + yOffset, 128, -1);
             } else if (inputDialogState == 7) {
                 newBoldFont.drawCenteredString("Enter the price for the item:", 259, 60 + yOffset, 0, -1);
                 newBoldFont.drawCenteredString(amountOrNameInput + "*", 259, 80 + yOffset, 128, -1);
@@ -4231,13 +4234,13 @@ public class Client extends RSApplet {
             } else if (myPlayer.getRights() == 3 && shiftDown && clickToSpawnMobId != 0) {
                 int spawnX = (baseX + k);
                 int spawnY = (baseY + k1);
-                System.out.println("Clicked X:" + spawnX+ " Y:" + spawnY );
+                System.out.println("Clicked X:" + spawnX + " Y:" + spawnY);
                 MobSpawnDAO.getInstance().create(
                         new MobSpawn(
                                 IDManager.getUUID(),
                                 clickToSpawnMobId,
-                                spawnX,spawnY,0,
-                                0,true
+                                spawnX, spawnY, 0,
+                                0, true
                         )
                 );
             } else {
@@ -6793,6 +6796,20 @@ public class Client extends RSApplet {
                     inputDialogState = 0;
                     inputTaken = true;
                     sendString(11, amountOrNameInput);
+                }
+                if (j >= 32 && j <= 122 && amountOrNameInput.length() < 40) {
+                    amountOrNameInput += (char) j;
+                    inputTaken = true;
+                }
+                if (j == 8 && amountOrNameInput.length() > 0) {
+                    amountOrNameInput = amountOrNameInput.substring(0, amountOrNameInput.length() - 1);
+                    inputTaken = true;
+                }
+            } else if (inputDialogState == 30) {
+                if (j == 10) {
+                    inputDialogState = 0;
+                    inputTaken = true;
+                    sendString(12, amountOrNameInput);
                 }
                 if (j >= 32 && j <= 122 && amountOrNameInput.length() < 40) {
                     amountOrNameInput += (char) j;
@@ -15119,7 +15136,7 @@ public class Client extends RSApplet {
         mainGameGraphicsBuffer.setCanvas();
     }
 
-    private int poisonType =  0;
+    private int poisonType = 0;
 
     private boolean hpHover = false;
 
@@ -16503,8 +16520,8 @@ public class Client extends RSApplet {
     public void sendFrame126(String str, int i) {
         RSInterface component = RSInterface.interfaceCache[i];
         if (component != null) {
-            if(component.type == 17) {
-                component.message = RSInterface.getWrappedText(component.textDrawingAreas,str,component.width);
+            if (component.type == 17) {
+                component.message = RSInterface.getWrappedText(component.textDrawingAreas, str, component.width);
             } else {
                 component.message = str;
             }
@@ -17716,6 +17733,13 @@ public class Client extends RSApplet {
                 case 29:
                     messagePromptRaised = false;
                     inputDialogState = 29;
+                    amountOrNameInput = "";
+                    inputTaken = true;
+                    incomingPacket = -1;
+                    return true;
+                case 30:
+                    messagePromptRaised = false;
+                    inputDialogState = 30;
                     amountOrNameInput = "";
                     inputTaken = true;
                     incomingPacket = -1;

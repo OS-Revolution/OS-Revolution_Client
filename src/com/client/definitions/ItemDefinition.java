@@ -478,6 +478,58 @@ public final class ItemDefinition {
             case 8383:
                 createAltarTeleportTab(itemDef, Rune.SOUL);
                 break;
+            case 19887:
+                copyDef(itemDef, forID(13438));
+                itemDef.name="Wushanko supply cache";
+                itemDef.inventoryOptions = new String[]{"Open", null, null, null, "Drop"};
+                itemDef.description="A cache of materials from the Wushanko Isles";
+                break;
+            case 13355:
+                copyDef(itemDef, forID(13355));
+                itemDef.originalModelColors = new int[]{939,3674,5855};
+                itemDef.modifiedModelColors = new int[]{5665,5559,5784};
+                itemDef.name="Cherrywood";
+                itemDef.description="A strong and pliable wood from the Wushanko Isles";
+                break;
+            case 20798:
+                copyDef(itemDef, forID(1761));
+                itemDef.originalModelColors = new int[]{6969};
+                itemDef.modifiedModelColors = new int[]{7062};
+                itemDef.name="Terracotta";
+                itemDef.description="Glazed Terracotta from the Wushanko Isles";
+                break;
+            case 10873:
+                itemDef.name="Stainless steel";
+                itemDef.description="A strong steel from the Wushanko Isles";
+                break;
+            case 7108:
+                itemDef.description="A highly explosive powder from the Wushanko Isles";
+                break;
+            case 7941:
+                itemDef.name="Black slate";
+                itemDef.description="A rock mined from the Wushanko Isles";
+                break;
+            case 8162:
+                copyDef(itemDef, forID(6308));
+                itemDef.originalModelColors = new int[]{15017,6585,6825};
+                itemDef.modifiedModelColors = new int[]{15017,6614,6825};
+                itemDef.name="Bamboo";
+                itemDef.description="The most common wood in the Wushanko Isles";
+                break;
+            case 3565:
+                copyDef(itemDef, forID(3062));
+                itemDef.originalModelColors = new int[]{22380,21450,20434};
+                itemDef.modifiedModelColors = new int[]{37,57,28};
+                itemDef.name="Eastern Jade";
+                itemDef.description="A large chunk of cut jade mined from the Wushanko Isles";
+                break;
+            case 2795:
+                copyDef(itemDef, forID(19677));
+                itemDef.originalModelColors = new int[]{33135,32091,34687,33228,34515,34482,32565,36703};
+                itemDef.modifiedModelColors = new int[]{49088,47382,49046,38119,24,49946,49707,45534};
+                itemDef.name="Azure";
+                itemDef.description="A small chunk of azure mines in the Wushanko Isles";
+                break;
             case 3767:
                 ItemDefinition orginalBody = getDef(itemDef, forID(21892));
                 itemDef.originalModelColors = new int[]{0, 897, 45742, 46884, 46756, 46761, 45750, 45751, 43119};
