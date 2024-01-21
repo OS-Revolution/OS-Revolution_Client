@@ -2669,6 +2669,11 @@ public class RSInterface {
 		setBounds(59508, 374, 127, 7, tab);
 		setBounds(59509, 374, 127, 8, tab);
 	}
+	protected static void welcomeM(TextDrawingArea[] wid) {
+		RSInterface tab = addInterface(49500);
+		addSprite(49501, 0, "Interfaces/M/LOGIN");
+		setChildren(2, tab);
+	}
 
 	public static void bank(TextDrawingArea[] tda) {
 		RSInterface rs = addInterface(5292);

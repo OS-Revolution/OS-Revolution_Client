@@ -222,9 +222,9 @@ public class Client extends RSApplet {
         }
 
         component.setMinimumSize(new Dimension(765, mode == ScreenMode.FIXED ? 503 : 610));
-        //component.setMinimumSize(new Dimension(
-        // mode == ScreenMode.FIXED ? 765+30 : 850,
-        //mode == ScreenMode.FIXED ? 503+39 : 600));
+        component.setMinimumSize(new Dimension(
+         mode == ScreenMode.FIXED ? 765+30 : 850,
+        mode == ScreenMode.FIXED ? 503+39 : 600));
 
         component.setResizable(mode.isResizable());
         Insets insets = ClientWindow.getInset();
@@ -3186,7 +3186,7 @@ public class Client extends RSApplet {
     }
 
     public void resetLogout() {
-        firstLoginMessage = "Enter your username & password.";
+        firstLoginMessage = ""; //Enter Your Username & Password.
         secondLoginMessage = "";
         try {
             if (socketStream != null)
@@ -9067,9 +9067,9 @@ public class Client extends RSApplet {
     public boolean missingPassword() {
 
         if (myPassword == null || myPassword.isEmpty()) {
-            System.out.println("Empty password detected!");
+            System.out.println(""); //mpty password detected!
             loginScreenCursorPos = 0;
-            firstLoginMessage = "Please enter your password.";
+            firstLoginMessage = ""; //Please enter your password
             return true;
         }
         return false;
@@ -12151,7 +12151,7 @@ public class Client extends RSApplet {
         g.fillRect(0, 0, 765, 503);
         method4(1);
         if (loadingError) {
-            aBoolean831 = false;
+            aBoolean831 = true;
             g.setFont(new Font("Helvetica", 1, 16));
             g.setColor(Color.yellow);
             int k = 35;
@@ -12171,7 +12171,7 @@ public class Client extends RSApplet {
             g.drawString("4: If the error continues then contact a staff member", 30, k);
         }
         if (genericLoadingError) {
-            aBoolean831 = false;
+            aBoolean831 = true;
             g.setFont(new Font("Helvetica", 1, 20));
             g.setColor(Color.white);
             g.drawString("Error - unable to load game!", 50, 50);
@@ -12179,7 +12179,7 @@ public class Client extends RSApplet {
             g.drawString("http://www.RuneScape.com", 50, 150);
         }
         if (rsAlreadyLoaded) {
-            aBoolean831 = false;
+            aBoolean831 = true;
             g.setColor(Color.yellow);
             int l = 35;
             g.drawString("Error a copy of " + ClientProperties.getInstance().getGameName() + " already appears to be loaded", 30, l);
@@ -14578,9 +14578,9 @@ public class Client extends RSApplet {
     }
 
     public void nullLoader() {
-        aBoolean831 = false;
+        aBoolean831 = true;
         while (drawingFlames) {
-            aBoolean831 = false;
+            aBoolean831 = true;
             try {
                 Thread.sleep(50L);
             } catch (Exception _ex) {
@@ -15683,10 +15683,7 @@ public class Client extends RSApplet {
         screenImages.put("background", new Sprite("Login/background"));
     }
 
-    public Sprite loginAsset0 = new Sprite("Login/remember0");
-    public Sprite loginAsset1 = new Sprite("Login/remember1");
-    public Sprite loginAsset2 = new Sprite("Login/remember2");
-    public Sprite loginAsset3 = new Sprite("Login/remember3");
+   
     public Sprite loginAsset4 = new Sprite("Login/logo");
     private String firstLoginMessage = "";
     private String secondLoginMessage = "";
@@ -15750,14 +15747,20 @@ public class Client extends RSApplet {
             // newBoldFont.drawCenteredString("@yel@" + firstLoginMessage ,(myWidth / 2) -
             // 4, myHeight / 2 - 48,0xffffff,0x191919, 255);
             newBoldFont.drawString(
-                    "    " + myUsername + ((loginScreenCursorPos == 0) ? "@yel@|" : ""),
-                    (myWidth / 2) - 119, myHeight / 2 - 21, 0xffffff, 0x191919, 255);
+                    "" + myUsername + ((loginScreenCursorPos == 0) ? "@red@*" : ""),
+                    (myWidth / 1) - 625, myHeight / 1 - 71, 0xffffff, 0x191919, 255);
             j += 15;
+            //TITLESCREEN
+            //LOGINBOX
             newBoldFont.drawString(
-                    "    " + TextClass.passwordAsterisks(myPassword)
-                            + ((loginScreenCursorPos == 1) ? "@yel@|" : ""),
-                    (myWidth / 2) - 119, myHeight / 2 + 31, 0xffffff, 0x191919, 255);
-
+                    "" + TextClass.passwordAsterisks(myPassword)
+                            + ((loginScreenCursorPos == 1) ? "*" : ""),
+                    (myWidth / 2) - -30, myHeight / 2 + 184, 0xffffff, 0x191919, 255);
+            newBoldFont.drawString(
+                    "" + ((loginScreenCursorPos == 0) ? "" : ""),
+                    (myWidth / 1) - 350, myHeight / 1 - 60, 0xffffff, 0x191919, 255);
+            j += 15;
+            newBoldFont.drawString("Enter Your Username [TAB] & Password [ENTER] To Login.", 190, 480, 0xffffff, 0x191919, 255);
             // Buttons
             //titleButton.drawBackground((myWidth / 2 - 72) + (78) + 3, (myHeight / 2) + 50 - 11);
             //titleButton.drawBackground((myWidth / 2 - 77) - (78) + 3, (myHeight / 2) + 50 - 11);
@@ -15768,52 +15771,10 @@ public class Client extends RSApplet {
             //255);
 
             //newSmallFont.drawString("@yal@Remember username", 383, 408, 0xffffff, 0xffffff, 455);
-            //newSmallFont.drawString("Remember password", 414, 308, 0xffffff, 0x191919, 255);
-            if (super.clickMode3 == 1 && super.saveClickX >= 5
-                    && super.saveClickX <= 118 && super.saveClickY >= 5
-                    && super.saveClickY <= 65) {
-                launchURL("http://www.os-revolution.com/forum");
-            } else if (super.clickMode3 == 1 && super.saveClickX >= 118
-                    && super.saveClickX <= 227 && super.saveClickY >= 5
-                    && super.saveClickY <= 65) {
-                launchURL("https://os-revolution.com/forum/index.php?/shop/");
-            } else if (super.clickMode3 == 1 && super.saveClickX >= 535
-                    && super.saveClickX <= 625 && super.saveClickY >= 5
-                    && super.saveClickY <= 65) {
-                launchURL("https://os-revolution.com/forum/index.php?/vote/");
-            } else if (super.clickMode3 == 1 && super.saveClickX >= 630
-                    && super.saveClickX <= 770 && super.saveClickY >= 5
-                    && super.saveClickY <= 65) {
-                launchURL("https://os-revolution.com/forum/index.php?/highscores/");
-            }
+            //
+          
 
-            if (!informationFile.isUsernameRemembered()) {
-                if (!rememberMeHover) {
-                    loginAsset0.drawSprite(200, 400);
-                } else {
-                    loginAsset1.drawSprite(200, 400);
-                }
-            } else {
-                if (!rememberMeHover) {
-                    loginAsset2.drawSprite(200, 400);
-                } else {
-                    loginAsset3.drawSprite(200, 400);
-                }
-            }
-
-            if (!informationFile.isPasswordRemembered()) {
-                if (!rememberPasswordHover) {
-                    loginAsset0.drawSprite(200, 400);
-                } else {
-                    loginAsset1.drawSprite(200, 400);
-                }
-            } else {
-                if (!rememberPasswordHover) {
-                    loginAsset2.drawSprite(200, 400);
-                } else {
-                    loginAsset3.drawSprite(200, 400);
-                }
-            }
+        
 
             // if (flag) {
             int i1 = myWidth - 80;
@@ -16304,8 +16265,8 @@ public class Client extends RSApplet {
         if (super.clickMode3 == 1 && super.saveClickX >= i1 - 75 && super.saveClickX <= i1 + 75
                 && super.saveClickY >= k1 - 20 && super.saveClickY <= k1 + 20) {
             loginScreenState = 0;
-            // myUsername = "";
-            // myPassword = "";
+             myUsername = "";
+            myPassword = "";
         }
         do {
             int l1 = readChar(-796);
@@ -18323,7 +18284,7 @@ public class Client extends RSApplet {
     public float LP;
 
     Client() {
-        firstLoginMessage = "Enter your username & password.";
+        firstLoginMessage = ""; //Enter Your Username & Password.
         secondLoginMessage = "";
         xpAddedPos = expAdded = 0;
         xpLock = false;
@@ -18343,7 +18304,7 @@ public class Client extends RSApplet {
         anIntArrayArray825 = new int[104][104];
         friendsNodeIDs = new int[200];
         groundArray = new NodeList[4][104][104];
-        aBoolean831 = false;
+        aBoolean831 = true;
         aStream_834 = new Stream(new byte[5000]);
         npcArray = new NPC[16384];
         npcIndices = new int[16384];
