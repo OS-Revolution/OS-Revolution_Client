@@ -49,6 +49,7 @@ public final class NpcDefinition {
 //			entityDef.models[5] = 339; //HAND
 ////			entityDef.models[6] = entityDef.femaleModel; //HAND
 //		}
+   
         if (i == 3455) {
             entityDef.name = "Derek";
             entityDef.description = "An ancient nephalem ghost.";
@@ -151,6 +152,23 @@ public final class NpcDefinition {
         if (i == 5832) {
             entityDef.actions = new String[]{"Talk-to", null, "Pickpocket", "Trade", null};
         }
+        //Michael Added
+        
+        if (i == 921) {
+            entityDef.actions = new String[]{"Trade", null, null, null, null};
+        }
+        if (i == 6059) {
+            entityDef.actions = new String[]{"Trade", null, null, null, null};
+        }
+        if (i == 1079) {
+            entityDef.actions = new String[]{"Trade", null, null, null, null};
+        }
+        if (i == 2471) {
+            entityDef.actions = new String[]{"Trade", null, null, null, null};
+        }
+        
+      
+        //End
         if (i == 5736) {
             entityDef.standAnim = 106;
             entityDef.walkAnim = 106;
@@ -163,8 +181,8 @@ public final class NpcDefinition {
             entityDef.name = "@red@Donator Shop";
             entityDef.description = "@yel@Thanks for all the support!";
             entityDef.actions = new String[]{"Trade", null, null, null, null};
-
         }
+
         if (i == 507) {
             entityDef.name = "@cya@General Store";
             entityDef.description = "@yel@General store for all players";
@@ -332,6 +350,7 @@ public final class NpcDefinition {
             entityDef.anInt86 = 100;
             entityDef.anInt91 = 100;
         }
+       
 
         if (i == 637) {
             entityDef.actions = new String[]{"Talk-to", null, "Trade", "Teleport", null};
@@ -355,6 +374,29 @@ public final class NpcDefinition {
         }
         NpcDefinition original = NpcDefinition.forID(2637);
         switch (i) {
+        case 1430:
+        	original = NpcDefinition.forID(1430);
+        	entityDef.models = new int[9];
+        	entityDef.models[0] = 215; 			// HEAD
+        	entityDef.models[1] = 247; 			// JAW/NECK
+            entityDef.models[2] = 305; 			// CHEST 
+            entityDef.models[3] = 38100; 		// CAPE
+            entityDef.models[4] = 151; 			// ARM 
+            entityDef.models[5] = 179; 			// HAND
+            //entityDef.models[6] = ;		 	// WEAPON
+            entityDef.models[7] = 254; 			// LEG
+            entityDef.models[8] = 185; 			// BOOT
+            entityDef.name = "Port Master";
+            //entityDef.models = original.models;
+            entityDef.standAnim = original.standAnim;
+            entityDef.walkAnim = original.walkAnim;
+            entityDef.anInt58 = original.anInt58;
+            entityDef.anInt55 = original.anInt55;
+            entityDef.anInt83 = original.anInt83;
+            entityDef.originalColors = original.originalColors;
+            entityDef.combatLevel = 0;
+            break;
+ 
             case 156:
                  original = NpcDefinition.forID(2637);
 //                entityDef.anInt75 = 2; //overhead

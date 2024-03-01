@@ -7,7 +7,7 @@ import com.client.features.gameframe.ScreenMode;
 import com.client.features.gametimers.GameTimer;
 import com.client.features.gametimers.GameTimerHandler;
 import com.client.features.settings.AccountData;
-import com.client.features.settings.AccountManager;
+//import com.client.features.settings.AccountManager;
 import com.client.features.settings.InformationFile;
 import com.client.graphics.FadingScreen;
 import com.client.graphics.interfaces.RSInterface;
@@ -203,6 +203,7 @@ public class Client extends RSApplet {
     }
 
     public void setGameMode(ScreenMode mode) {
+    	System.out.println("Setting screen mode to " + mode.name());
         if (currentScreenMode == mode)
             return;
 
@@ -222,10 +223,11 @@ public class Client extends RSApplet {
         }
 
         component.setMinimumSize(new Dimension(765, mode == ScreenMode.FIXED ? 503 : 610));
-        component.setMinimumSize(new Dimension(
-         mode == ScreenMode.FIXED ? 765+30 : 850,
-        mode == ScreenMode.FIXED ? 503+39 : 600));
 
+
+        if(!mode.isResizable()) {
+        	component.setExtendedState(component.getExtendedState() ^ JFrame.MAXIMIZED_BOTH);
+        }
         component.setResizable(mode.isResizable());
         Insets insets = ClientWindow.getInset();
 
@@ -3193,8 +3195,8 @@ public class Client extends RSApplet {
                 socketStream.close();
         } catch (Exception _ex) {
         }
-
-        //new AudioPlayer(AudioPlayer.LOGIN_MUSIC, true);
+//music
+       // new AudioPlayer(AudioPlayer.LOGIN_MUSIC, true);
         socketStream = null;
         loggedIn = false;
         prayClicked = false;
@@ -3203,7 +3205,7 @@ public class Client extends RSApplet {
             entityTarget.stop();
         }
         GameTimerHandler.getSingleton().stopAll();
-        AccountManager.saveAccount();
+        //AccountManager.saveAccount();
         // myUsername = "";
         // myPassword = "";
         unlinkMRUNodes();
@@ -3216,6 +3218,7 @@ public class Client extends RSApplet {
         nextSong = -1;
         prevSong = 0;
         experienceCounter = 0;
+       
         setGameMode(ScreenMode.FIXED);
 
     }
@@ -4401,6 +4404,7 @@ public class Client extends RSApplet {
         loginScreenGraphicsBuffer.initDrawingArea();
         Sprite background = new Sprite("loginscreen/background");
         background.drawAdvancedSprite(0, 0);
+        
         int x = 765 / 2 - 543 / 2;
         int y = 475 - 20 + 8;
         int width = 540;
@@ -4547,7 +4551,7 @@ public class Client extends RSApplet {
         drawLoadingMessages(2, "Connection lost.", "Please wait - attempting to reestablish.");
         mainGameGraphicsBuffer.drawGraphics(0, super.graphics, 0);
         minimapState = 0;
-        AccountManager.saveAccount();
+       // AccountManager.saveAccount();
         destX = 0;
         RSSocket rsSocket = socketStream;
         loggedIn = false;
@@ -9397,7 +9401,7 @@ public class Client extends RSApplet {
                 super.awtFocus = true;
                 aBoolean954 = true;
                 loggedIn = true;
-                final AccountData account = new AccountData(s, s1);
+               /* final AccountData account = new AccountData(s, s1);
                 if (informationFile.isUsernameRemembered()) {
                     AccountManager.addAccount(account);
                     currentAccount = AccountManager.getAccount(s);
@@ -9405,7 +9409,7 @@ public class Client extends RSApplet {
                         currentAccount = account;
                     }
                     AccountManager.saveAccount();
-                }
+                } */
                 stream.currentOffset = 0;
                 inStream.currentOffset = 0;
                 incomingPacket = -1;
@@ -10634,8 +10638,6 @@ public class Client extends RSApplet {
         addObject(9030, 3183, 5090, 1, 10, 0);
         addObject(9030, 3183, 5088, 1, 10, 0);
         addObject(25824, 3155, 5076, 2, 10, 0);
-        addObject(4878, 2918, 5469, 0, 10, 0);
-        addObject(4877, 2918, 5467, 0, 10, 0);
         addObject(1278, 3161, 5090, 0, 10, 0);
         addObject(1278, 3161, 5082, 0, 10, 0);
         addObject(1278, 3174, 5090, 0, 10, 0);
@@ -11780,7 +11782,7 @@ public class Client extends RSApplet {
             for (int i = 0; i < minimapIcons.length; i++) {
                 minimapIcons[i] = new Sprite("Mapicons/ICON " + i);
             }
-            //loginBackground2 = 	new AnimatedSprite(new URL("https://cdn.discordapp.com/attachments/454138282780131329/454147023046836235/Ascend-CB.gif"));
+            loginBackground2 = 	new AnimatedSprite(new URL("https://os-revolution.com/Downloads/Untitled.gif")); //CUSTOM LOGIN BOX
             mapFlag = new Sprite(streamLoader_2, "mapmarker", 0);
             mapMarker = new Sprite(streamLoader_2, "mapmarker", 1);
             for (int k4 = 0; k4 < 8; k4++)
@@ -11934,7 +11936,7 @@ public class Client extends RSApplet {
             ObjectDefinition.clientInstance = this;
             NpcDefinition.clientInstance = this;
             Class36.clientInstance = this;
-            AccountManager.loadAccount();
+            //AccountManager.loadAccount();
             return;
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -12496,7 +12498,7 @@ public class Client extends RSApplet {
     }
 
     private void drawGameScreen() {
-//        loginBackground2.drawSprite(0,0);
+        loginBackground2.drawSprite(0,0);
         if (welcomeScreenRaised) {
             welcomeScreenRaised = false;
             needDrawTabArea = true;
@@ -12639,7 +12641,7 @@ public class Client extends RSApplet {
             mainGameGraphicsBuffer.setCanvas();
         }
         tickDelta = 0;
-        // loginBackground2.drawSprite(0,0);
+         loginBackground2.drawSprite(0,0);
         if (fullscreenInterfaceID != -1 && (loadingStage == 2 || super.fullGameScreen != null)) {
             if (loadingStage == 2) {
                 method119(tickDelta, fullscreenInterfaceID);
@@ -14966,9 +14968,9 @@ public class Client extends RSApplet {
 
             markMinimap(mapIcon7, ((3089 - baseX) * 4 + 2) - myPlayer.x / 32,
                     ((3495) * 4 + 2) - myPlayer.y / 32); //store
-            markMinimap(mapIcon5, ((3097 - baseX) * 4 + 2) - myPlayer.x / 32,
+         /*   markMinimap(mapIcon5, ((3097 - baseX) * 4 + 2) - myPlayer.x / 32,
                     ((3474 - baseY) * 4 + 2) - myPlayer.y / 32); //bank
-
+*/
             markMinimap(mapIcon8, ((2972 - baseX) * 4 + 2) - myPlayer.x / 32,
                     ((2782 - baseY) * 4 + 2) - myPlayer.y / 32); //bank
         }
@@ -15668,130 +15670,150 @@ public class Client extends RSApplet {
     }
 
     private enum LoginScreenState {
-        LOGIN, DOWNLOADING_CLIENT;
-    }
+		LOGIN, DOWNLOADING_CLIENT;
+	}
 
-    private LoginScreenState loginState = LoginScreenState.LOGIN;
+	private LoginScreenState loginState = LoginScreenState.LOGIN;
 
-    private Map<String, Sprite> screenImages;
+	private Map<String, Sprite> screenImages;
 
-    private final void createScreenImages() {
-        if (screenImages != null) {
-            return;
-        }
-        screenImages = new HashMap<>();
-        screenImages.put("background", new Sprite("Login/background"));
-    }
+	private final void createScreenImages() {
+		if (screenImages != null) {
+			return;
+		}
+		screenImages = new HashMap<>();
+		screenImages.put("background", new Sprite("Login/background"));
+	}
 
-   
-    public Sprite loginAsset4 = new Sprite("Login/logo");
-    private String firstLoginMessage = "";
-    private String secondLoginMessage = "";
+	//public Sprite loginAsset0 = new Sprite("Login/remember0");
+	//public Sprite loginAsset1 = new Sprite("Login/remember1");
+	//public Sprite loginAsset2 = new Sprite("Login/remember2");
+	//public Sprite loginAsset3 = new Sprite("Login/remember3");
+	public Sprite loginAsset4 = new Sprite("Login/logo");
+	private String firstLoginMessage = "";
+	private String secondLoginMessage = "";
     Image icon = null;
-    String loginscreen_welcome_message_header = "Welcome to " + ClientProperties.getInstance().getGameName();
-    String loginscreen_message_footer = "Footer here";
+	//String loginscreen_welcome_message_header = "Welcome to " + Configuration.CLIENT_TITLE;
+	String loginscreen_message_footer = "Footer here";
 
-    public boolean rememberMeHover;
+	public boolean rememberMeHover;
     long lastLogin = 0;
     long loadDelay = 0;
+	public void drawLoginScreen(boolean flag) {
+		// rememberPasswordHover = mouseInRegion(416 - extraPos, 282, 433 - extraPos,
+		// 295);
+		int centerX = myWidth / 2, centerY = myHeight / 2;
 
-    public void drawTestLoginScreen() {
-        drawBlackBox(0, 490);
-    }
+		resetImageProducers();
+		loginScreenGraphicsBuffer.initDrawingArea();
 
-    public void drawLoginScreen(boolean flag) {
-        // rememberPasswordHover = mouseInRegion(416 - extraPos, 282, 433 - extraPos,
-        // 295);
-        int centerX = myWidth / 2, centerY = myHeight / 2;
-
-        resetImageProducers();
-        loginScreenGraphicsBuffer.initDrawingArea();
-
-        if (System.currentTimeMillis() - lastLogin > 1) {
-            Sprite background = new Sprite("/Login/background");
-            background.drawAdvancedSprite(0, 0);
-            //   System.out.print("Drawing "+loadDelay);
-            // currentLogin++;
-            lastLogin = System.currentTimeMillis();
-        }
-        //loginBackground2.drawSprite(0,0);
-
-        // 270 && super.saveClickY <= 283 && super.saveClickX >= 286 - extraPos &&
-        // super.saveClickX <= 301 - extraPos
-        int extraPos = 18;
-        // rememberPasswordHover = mouseInRegion(286 - extraPos, 270, 301 - extraPos,
-        // 283);
-        rememberMeHover = mouseInRegion(257 - extraPos, 358, 291 - extraPos, 358);
-        // rememberMeHover = mouseInRegion(286 - extraPos, 282, 301 - extraPos, 295);
-        rememberPasswordHover = mouseInRegion(416 - extraPos, 300, 433 - extraPos, 313);
-
-        // Background
-        //screenImages.get("background").drawAdvancedSprite(0, 0);
-
-
-        // Login Box
-        if (loginScreenState == 0 || loginScreenState == 2) {
-
-            //titleBox.drawBackground(centerX / 2 + 13, (centerY / 2 + 34));
-
-            int j = centerY - 40;
-            if (firstLoginMessage.length() > 0) {
-                newBoldFont.drawCenteredString(firstLoginMessage, centerX - 3, j - 11, 0xffffff, 0x191919, 255);
-                newBoldFont.drawCenteredString(secondLoginMessage, centerX - 3, j + 300, 0xffffff, 0x191919, 255);
-                j += 30;
-            } else {
-                newBoldFont.drawString(secondLoginMessage, myWidth / 2 - 3, j - 7, 0xffff00, 0x191919, 255);
-                j += 30;
+		    if(System.currentTimeMillis() - lastLogin > 1) {
+                Sprite background = new Sprite("/Login/background");
+                  background.drawAdvancedSprite(0,0);
+             //   System.out.print("Drawing "+loadDelay);
+               // currentLogin++;
+                lastLogin = System.currentTimeMillis();
             }
+		loginBackground2.drawSprite(0,0);
 
-            // newBoldFont.drawCenteredString("@yel@" + firstLoginMessage ,(myWidth / 2) -
-            // 4, myHeight / 2 - 48,0xffffff,0x191919, 255);
-            newBoldFont.drawString(
-                    "" + myUsername + ((loginScreenCursorPos == 0) ? "@red@*" : ""),
-                    (myWidth / 1) - 625, myHeight / 1 - 71, 0xffffff, 0x191919, 255);
-            j += 15;
-            //TITLESCREEN
-            //LOGINBOX
-            newBoldFont.drawString(
-                    "" + TextClass.passwordAsterisks(myPassword)
-                            + ((loginScreenCursorPos == 1) ? "*" : ""),
-                    (myWidth / 2) - -30, myHeight / 2 + 184, 0xffffff, 0x191919, 255);
-            newBoldFont.drawString(
-                    "" + ((loginScreenCursorPos == 0) ? "" : ""),
-                    (myWidth / 1) - 350, myHeight / 1 - 60, 0xffffff, 0x191919, 255);
-            j += 15;
-            newBoldFont.drawString("Enter Your Username [TAB] & Password [ENTER] To Login.", 190, 480, 0xffffff, 0x191919, 255);
-            // Buttons
-            //titleButton.drawBackground((myWidth / 2 - 72) + (78) + 3, (myHeight / 2) + 50 - 11);
-            //titleButton.drawBackground((myWidth / 2 - 77) - (78) + 3, (myHeight / 2) + 50 - 11);
+		// 270 && super.saveClickY <= 283 && super.saveClickX >= 286 - extraPos &&
+		// super.saveClickX <= 301 - extraPos
+		int extraPos = 18;
+		// rememberPasswordHover = mouseInRegion(286 - extraPos, 270, 301 - extraPos,
+		// 283);
+		rememberMeHover = mouseInRegion(286 - extraPos, 300, 301 - extraPos, 313);
+		// rememberMeHover = mouseInRegion(286 - extraPos, 282, 301 - extraPos, 295);
+		rememberPasswordHover = mouseInRegion(416 - extraPos, 300, 433 - extraPos, 313);
 
-            //newBoldFont.drawString("Login", 280 + 3, 325 - 11, 0xffffff, 0x191919, 255);
-            //newBoldFont.drawString("Cancel", 438 + 3, 325 - 11, 0xffffff, 0x191919, 255);
-            //newSmallFont.drawString("@yel@Forgotten your password? @whi@Click here.", 280, 346, 0xffffff, 0x191919,
-            //255);
+		// Background
+		//screenImages.get("background").drawAdvancedSprite(0, 0);
 
-            //newSmallFont.drawString("@yal@Remember username", 383, 408, 0xffffff, 0xffffff, 455);
-            //
-          
 
-        
+		// Login Box
+		if (loginScreenState == 0 || loginScreenState == 2) {
 
-            // if (flag) {
-            int i1 = myWidth - 80;
-            int l1 = myHeight + 50;
-            newRegularFont.drawString("Register", i1, l1 + 5, 0xffffff, 0x191919, 300);
-            i1 = myWidth / 2 + 50;
-            titleButton.drawBackground(i1 - 73, l1 - 20);
-            newRegularFont.drawString("Login", i1, l1 + 5, 0xffffff, 0x191919, 300);
-            // }
-        }
-        loginScreenGraphicsBuffer.drawGraphics(0, 0, super.graphics);
-    }
+			//titleBox.drawBackground(centerX / 2 + 13, (centerY / 2 + 34));
+			// MOUSE POSITION
+			aTextDrawingArea_1271.method385(0xffff00, "Mouse X: " + super.mouseX
+					+ " , Mouse Y: " + super.mouseY, 229, 17);
+			// END
+			int j = centerY - 40;
+			if (firstLoginMessage.length() > 0) {
+				newBoldFont.drawCenteredString(firstLoginMessage, centerX - 3, j - 11, 0xffffff, 0x191919, 255);
+				newBoldFont.drawCenteredString(secondLoginMessage, centerX - 3, j + 300, 0xffffff, 0x191919, 255);
+				j += 30;
+			} else {
+				newBoldFont.drawString(secondLoginMessage, myWidth / 2 - 3, j - 7, 0xffff00, 0x191919, 255);
+				j += 30;
+			}
+
+			// newBoldFont.drawCenteredString("@yel@" + firstLoginMessage ,(myWidth / 2) -
+			// 4, myHeight / 2 - 48,0xffffff,0x191919, 255);
+			newBoldFont.drawString(
+					"Username: " + myUsername + ((loginScreenCursorPos == 0) ? "@blu@|" : ""),
+					(myWidth / 2) - 119, myHeight / 2 - 21, 0xffffff, 0x191919, 255);
+			j += 15;
+			newBoldFont.drawString(
+					"Password: " + TextClass.passwordAsterisks(myPassword)
+							+ ((loginScreenCursorPos == 1) ? "@blu@|" : ""),
+					(myWidth / 2) - 119, myHeight / 2 + 31, 0xffffff, 0x191919, 255);
+
+			// Buttons
+			//titleButton.drawBackground((myWidth / 2 - 72) + (78) + 3, (myHeight / 2) + 50 - 11);
+			//titleButton.drawBackground((myWidth / 2 - 77) - (78) + 3, (myHeight / 2) + 50 - 11);
+
+			//newBoldFont.drawString("Login", 280 + 3, 325 - 11, 0xffffff, 0x191919, 255);
+			//newBoldFont.drawString("Cancel", 438 + 3, 325 - 11, 0xffffff, 0x191919, 255);
+			//newSmallFont.drawString("@yel@Forgotten your password? @whi@Click here.", 280, 346, 0xffffff, 0x191919,
+					//255);
+
+			//newSmallFont.drawString("Remember username", 283, 308, 0xffffff, 0x191919, 255);
+			//newSmallFont.drawString("Remember password", 414, 308, 0xffffff, 0x191919, 255);
+/*
+			if (!informationFile.isUsernameRemembered()) {
+				if (!rememberMeHover) {
+					loginAsset0.drawSprite(264, 295);
+				} else {
+					loginAsset1.drawSprite(264, 295);
+				}
+			} else {
+				if (!rememberMeHover) {
+					loginAsset2.drawSprite(264, 295);
+				} else {
+					loginAsset3.drawSprite(264, 295);
+				}
+			}
+			loginAsset4.drawARGBSprite2(currentGameWidth / 2 - (336 / 2), 25);
+			if (!informationFile.isPasswordRemembered()) {
+				if (!rememberPasswordHover) {
+					loginAsset0.drawSprite(395, 295);
+				} else {
+					loginAsset1.drawSprite(395, 295);
+				}
+			} else {
+				if (!rememberPasswordHover) {
+					loginAsset2.drawSprite(395, 295);
+				} else {
+					loginAsset3.drawSprite(395, 295);
+				}
+			}
+*/
+			// if (flag) {
+			int i1 = myWidth - 80;
+			int l1 = myHeight + 50;
+			newRegularFont.drawString("Register", i1, l1 + 5, 0xffffff, 0x191919, 255);
+			i1 = myWidth / 2 + 80;
+			titleButton.drawBackground(i1 - 73, l1 - 20);
+			newRegularFont.drawString("Login", i1, l1 + 5, 0xffffff, 0x191919, 255);
+			// }
+		}
+		loginScreenGraphicsBuffer.drawGraphics(0, 0, super.graphics);
+	}
 
     /**
      * Displays the saved accounts
      */
-    public void displayAccounts() {
+   /* public void displayAccounts() {
         final int centerX = 765 / 2, centerY = 503 / 2;
         int x = centerX - 215;
         if (AccountManager.accounts != null) {
@@ -15814,7 +15836,7 @@ public class Client extends RSApplet {
             }
         }
     }
-
+*/
     private void drawFlames() {
         try {
             long l = System.currentTimeMillis();
@@ -16245,6 +16267,7 @@ public class Client extends RSApplet {
         k1 += 20;
         // System.out.println("saveClickX = " + super.saveClickX + ", saveClickY = " +
         // super.saveClickY);
+        // MICHAEL LOGIN BOX - LOGIN BUTTON
         if (super.clickMode3 == 1 && super.saveClickX >= 231 && super.saveClickX <= 376 && super.saveClickY >= 323
                 && super.saveClickY <= 353) {
 
@@ -18367,7 +18390,7 @@ public class Client extends RSApplet {
         openWalkableWidgetID = -1;
         anIntArray1030 = new int[5];
         aBoolean1031 = false;
-        mapFunctions = new Sprite[100];
+        mapFunctions = new Sprite[100]; //MAP ICONS
         dialogID = -1;
         maxStats = new int[Skills.SKILLS_COUNT];
         anIntArray1045 = new int[25000];
@@ -18392,7 +18415,7 @@ public class Client extends RSApplet {
         menuActionID = new int[500];
         menuActionCmd1 = new int[500];
         headIcons = new Sprite[20];
-        modHeadIcons = new Sprite[26];
+        modHeadIcons = new Sprite[26]; // MOD ICONS
         skullIcons = new Sprite[20];
         headIconsHint = new Sprite[20];
         tabAreaAltered = false;
@@ -18422,7 +18445,7 @@ public class Client extends RSApplet {
         anIntArray1203 = new int[5];
         chatAreaScrollLength = 78;
         promptInput = "";
-        modIcons = new Sprite[25];
+        modIcons = new Sprite[30]; //MOD ICON ADDITONS
         tabID = 3;
         inputTaken = false;
         songChanging = true;
@@ -18502,6 +18525,7 @@ public class Client extends RSApplet {
     private final int[] currentExp;
     private Sprite mapFlag;
     private Sprite mapMarker;
+    private static Sprite backgroundgif;
     private AnimatedSprite loginBackground2;
     private final int[] anIntArray873;
     private final boolean[] aBooleanArray876;

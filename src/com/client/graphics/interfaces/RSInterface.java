@@ -844,17 +844,16 @@ public class RSInterface {
 	}
     protected static void infoTab(TextDrawingArea[] tda) {
         RSInterface tab = addTabInterface(47500);
-        addText(47501, "@or1@Info Tab", tda, 2, 16750899, false, true);
-        addHoverText(47502, "@or1@Call for help", "Call help",tda, 2, 16750899, true, true,100);
+        addText(47501, "@gre@ Os-Revolution - Info", tda, 2, 16750899, false, true);
+        addHoverText(47502, " @cr2@@red@ Request Staff / Report", "Request Staff / Report",tda, 2, 16750899, true, true,100);
         addSprite(47503, 0, "Interfaces/infoTab/SPRITE");
         addSprite(47504, 1, "Interfaces/infoTab/SPRITE");
-        addText(47505, "@cr10@", tda, 2, 16750899, false, true);
+        addText(47505, " @cr10@", tda, 2, 16750899, false, true);
         tab.totalChildren(7);
         tab.child(0, 47501, 20, 7);
         tab.child(1, 47502, 38, 240);
         tab.child(2, 47503, 0, 35);
         tab.child(3, 47504, 0, 230);
-
         tab.child(4, 47503, 0, 32);
         tab.child(5, 47506, 2, 34);
         tab.child(6, 47505, 3, 10);
@@ -867,14 +866,20 @@ public class RSInterface {
 
         infoList.totalChildren(58);
 
-        addText(47507, "@or1@Useful Stuff", tda, 2, 16750899, false, true);
-        addHoverText(47508, "@or1@View Achievements", "View Achievements", tda, 0, 1022259, false, true, 150);
-        addHoverText(47509, "@or1@View Npc Drops", "View  Npc Drops", tda, 0, 1022259, false, true, 150);
-        addHoverText(47510, "@or1@View Npc KillCount", "View Npc KillCount", tda, 0, 1022259, false, true, 150);
-        addHoverText(47511, "@or1@View Titles", "View Titles", tda, 0, 1022259, false, true, 150);
-        addHoverText(47512, "", "View Details", tda, 0, 1022259, false, true, 150);
-        addText(47513, "@or1@Quick Links", tda, 2, 16750899, false, true);
-
+        addText(47507, "@or1@Staff", tda, 2, 16750899, false, true);
+        addText(47508, " @cr2@@or1@ Michael", tda, 0, 1022259);
+        addText(47509, " @cr2@@or1@ Og Panda", tda, 0, 1022259, false, true);
+        addText(47510, " @cr2@@or1@ Phantasye", tda, 0, 1022259, false, true);
+        addText(47511, " @cr23@@or1@ Biberty", tda, 0, 1022259, false, true);
+        addText(47512, "@or1@", tda, 0, 1022259, false, true);
+        addText(47513, "@or1@Useful Links:", tda, 2, 16750899, false, true);
+        addText(47514, "", tda, 0, 1022259, false, true);
+        addText(47515, "", tda, 0, 1022259, false, true);
+        addText(47516, "", tda, 0, 1022259, false, true);
+        addText(47517, "", tda, 0, 1022259, false, true);
+        addText(47518, "", tda, 0, 1022259, false, true);
+        
+        
         infoList.totalChildren(58);
         infoList.child(0, 47507, 1, 3);
         infoList.child(1, 47508, 1, 25);
@@ -2262,6 +2267,32 @@ public class RSInterface {
 		setBounds(64018, 20, 20, 0, subWidget);
 		setBounds(64019, 48, 20, 1, subWidget);
 	}
+	
+	//MICHAEL'S INTERFACES
+	/*
+	protected static void Teleinfo(TextDrawingArea[] tda) {
+		RSInterface widget = addInterface(59525);
+		addSprite(59526, 1, "Interfaces/HelpInterface/IMAGE");
+		addInputField(59527, 200, 0xFF981F, "Describe the bug you've experienced. (200 characters max)", 430, 28, false,
+				false, "[A-Za-z0-9 .,]");
+		addText(59528, "Help Request", tda, 2, 0xFF981F, true, true);
+		addText(59529,
+				"You are only allowed to request help when you need it. Situations such as being stuck,\\n"
+						+ "threatened by another player, problems with a donation, or experiencing a bug are all\\n"
+						+ "viable uses of the help system. Improper use of this system may lead to punishment.",
+				tda, 0, 0xFF981F, false, true);
+		addHoverButton(59530, "Interfaces/HelpInterface/IMAGE", 2, 16, 16, "Close", -1, 59531, 3);
+		addHoveredButton(59531, "Interfaces/HelpInterface/IMAGE", 3, 16, 16, 59532);
+		setChildren(6, widget);
+		setBounds(59526, 33, 106, 0, widget);
+		setBounds(59527, 40, 192, 1, widget);
+		setBounds(59528, 256, 113, 2, widget);
+		setBounds(59529, 40, 135, 3, widget);
+		setBounds(59530, 456, 112, 4, widget);
+		setBounds(59531, 456, 112, 5, widget);
+	} */
+	
+	//END
 	private static void caelTournamentSupplies(TextDrawingArea[] tda) {
 		RSInterface main = addInterface(55100);
 
@@ -2758,7 +2789,6 @@ public class RSInterface {
 		setBounds(58063, 25, 298, 26, rs); // Search
 		setBounds(58064, 250, 11, 27, rs);
 	}
-
 	private static void addInputField(int identity, int characterLimit, int color, String text, int width, int height,
 									  boolean asterisks, boolean updatesEveryInput, String regex) {
 		RSInterface field = addFullScreenInterface(identity);
@@ -4159,7 +4189,25 @@ public class RSInterface {
 		addRuneText(ID + 7, ra3 + 1, r3, TDA);
 		setBounds(ID + 7, 142, 79, 8, INT);
 	}
+	 public static void configHoverButton1(int id, String tooltip, String spriteName, int sprite2, int sprite1, int enabledAltSprite,
+			 int disabledAltSprite, boolean active, int... buttonsToDisable) {
 
+				RSInterface tab = addInterface(id);
+				
+				tab.tooltip = tooltip;
+				tab.atActionType = OPTION_OK;
+				tab.type = TYPE_CONFIG_HOVER;
+				tab.sprite2 = imageLoader(sprite2, spriteName);
+				tab.sprite1 = imageLoader(sprite1, spriteName);
+				tab.width = tab.sprite2.myWidth;
+				tab.height = tab.sprite1.myHeight;
+				tab.enabledAltSprite = imageLoader(enabledAltSprite, spriteName);
+				tab.disabledAltSprite = imageLoader(disabledAltSprite, spriteName);
+				tab.buttonsToDisable = buttonsToDisable;
+				tab.active = active;
+				tab.toggled = active;
+				tab.spriteOpacity = 255;
+				}
 	public Sprite enabledAltSprite;
 	public Sprite disabledAltSprite;
 	private int[] buttonsToDisable;

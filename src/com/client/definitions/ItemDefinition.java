@@ -663,6 +663,30 @@ public final class ItemDefinition {
                 itemDef.originalModelColors = new int[]{32639, 43531, 8808};
                 itemDef.modifiedModelColors = new int[]{8644, 32836, 38792};
                 break;
+            case 4375:
+                itemDef.name = "Sailing Cape";
+                itemDef.modelId = 38101;
+                itemDef.modelZoom = 2315;
+                //itemDef.modelOffset1 = -4;
+                itemDef.modelOffset2 = -5;
+                itemDef.modelRotation1 = 400;
+                //itemDef.modelRotation2 = 2000;
+                itemDef.maleModel = 38100;
+                itemDef.description = "Once a Seaman, now a Master of the Sea.";
+                itemDef.femaleModel = 38100;
+                break;
+            case 4377:
+                itemDef.name = "Sailing Cape (t)";
+                itemDef.modelId = 38103;
+                itemDef.modelZoom = 2310;
+                //itemDef.modelOffset1 = -30; 	// X-Axis
+                itemDef.modelOffset2 = -5; 		// Y-Axis
+                itemDef.modelRotation1 = 400; 	// Y-Rotation
+                //itemDef.modelRotation2 = 0;	// Z-Rotation
+                itemDef.maleModel = 38102;
+                itemDef.description = "Once a Seaman, now a Master of the Sea.";
+                itemDef.femaleModel = 38102;
+                break;
             case 20047:
                 copyDef(itemDef, forID(20047));
                 itemDef.name = "Tetsu kogake";
